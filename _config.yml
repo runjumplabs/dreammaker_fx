@@ -1,0 +1,10 @@
+baseurl: "/dreammaker_fx"
+production_url : https://runjumplabs.github.io/dreammaker_fx
+
+include: ['docs/']
+
+collections:
+  effect_types:
+    output: true
+  effects:
+    output: true

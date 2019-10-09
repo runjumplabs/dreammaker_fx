@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="/static/style.css">
+
+    <!-- add after bootstrap.min.css -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.3.0/dist/bootstrap-toc.min.css">
+
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/default.min.css">
+
+    <title>Looper With Echo - DreamMakerFX</title>
+  </head>
+
+  <body  data-spy="scroll" data-target="#toc">
+  	<nav>
+
+</nav>
+
+
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <a href="/"><img src="/dreammaker_fx/assets/images/dfx_logo.png"></a>
+  <h5 class="my-0 mr-md-auto font-weight-normal"></h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+
+  
+    <a class="p-2 text-dark" href="/dreammaker_fx/" >Home</a>
+  
+    <a class="p-2 text-dark" href="/dreammaker_fx/browse" >Browse Effects</a>
+  
+    <a class="p-2 text-dark" href="/dreammaker_fx/docs/" >Docs</a>
+  
+
+  </nav>
+
+</div>
+
+    
+
+    <div class="container">
+      <h5>Looper With Echo </h3>
+<ul>
+<li>Created by:  </li>
+<li>Minimum firmware ver:  </li>
+<li>Description:  </li>
+</ul>
+<strong>Arduino sketch</strong>
+<pre><code class="cpp" style="arduino">#include "dm_fx.h"
+
+/*
+This is a basic looper pedal that uses the route_control() function to pass the tapped
+loop length along to an echo effect. The echo effect is set to 1/4 the lenght of the loop
+so each time a new loop is set, the echo time is updated to.
+
+                +--------+    +-----------+
+                |        |    |           |
+                |        |    |           |
+Instr In +----->+ Looper +--->+   Delay   +-----> Amp Out
+                |        |    |           |
+                |        |    |           |
+                +---+----+    +------+----+
+                    |                ^
+                    +----------------+
+                        loop length
+ 
+ */
+
+fx_looper   loopy( 0.8,   // Dry mix
+                   0.8,   // Looped audio mix
+                   12,    // Max loop length in seconds
+                   false); // Disable FX processing as audio enters the loop
+
+fx_delay    echo(3000,    // Max lenght of 3 seconds
+                 0.7 );   // Feedback of 0.7
+
+void setup() {
+  
+  // put your setup code here, to run once:
+  pedal.init();
+
+  // for template, just pass audio from input to output jack
+  pedal.route_audio(pedal.instr_in, loopy.input);
+  pedal.route_audio(loopy.output, echo.input);
+  pedal.route_audio(echo.output, pedal.amp_out);
+
+  // Connect the tapped loop length of our looper to the delay size and divide by 1/4 and convert to milliseconds (so four echoes per loop)
+  pedal.route_control(loopy.loop_length_seconds, 
+                      echo.length_ms, 
+                      250.0,        // Scale by 1000 * 1/4 (convert to ms and then divide by 4 so we get four echoes)
+                      0);           // Offset = 0
+
+  // Optional code to print out the routing details to console
+  if (true) {
+    pedal.print_instance_stack();
+    pedal.print_routing_table();
+    pedal.print_param_tables();
+  }
+  
+  // Run this effect
+  pedal.run();
+
+  // Disable echo initially
+  echo.bypass();
+
+}
+  
+void loop() {
+
+  // Add an event if pot 0 has changed
+  if (pedal.pot_0.has_changed()) { 
+  } 
+
+  // Add an event if pot 0 has changed
+  if (pedal.pot_1.has_changed()) { 
+  } 
+
+  #if 0
+    // Add an event if pot 2 has changed (DOESN'T WORK ON FIRST GEN HARDWARE YET)
+    if (pedal.pot_2.has_changed()) { 
+    } 
+  #endif   
+
+  // Service 
+  pedal.service();
+}
+
+// Footswitch 1 - typically used for enable/bypass
+void footswitch_1_pressed() { 
+  
+  // Declared as static so state is preserved between calls
+  static bool bypassed = false;
+
+  // Bypass code
+  if (bypassed) {
+    // If we are currently bypassed, switch pedal to active mode and turn on LED next to SW1
+    pedal.enable_fx();
+    digitalWrite(PIN_FOOTSW_LED_1, HIGH); // Turn on LED
+  } else {
+    // If we are currently active, switch pedal to bypassed mode and turn off LED next to SW1
+    pedal.bypass_fx();
+    digitalWrite(PIN_FOOTSW_LED_1, LOW);  // Turn off LED
+  }
+  bypassed = !bypassed; // Toggle bypassed state variable
+}
+
+// Footswitch 2 - used to trigger loop
+void footswitch_2_pressed() {
+
+  static bool looping = false;
+
+  if (!looping) {
+    loopy.start_loop_recording();
+    Serial.println("\nLoop recording");
+    digitalWrite(PIN_FOOTSW_LED_2, HIGH); // Turn on LED
+  } else {
+    loopy.stop_loop_recording();
+    Serial.println("\nLoop recording complete");
+    digitalWrite(PIN_FOOTSW_LED_2, LOW); // Turn off LED
+    echo.enable();
+  }
+
+  looping = !looping;
+}
+
+</code></pre>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.3.0/dist/bootstrap-toc.min.js"></script>
+     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+
+     <script>
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('pre code').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+});
+     </script>
+
+
+  </body>
+</html>

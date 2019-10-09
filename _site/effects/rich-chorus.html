@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="/static/style.css">
+
+    <!-- add after bootstrap.min.css -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.3.0/dist/bootstrap-toc.min.css">
+
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/default.min.css">
+
+    <title>Rich Chorus - DreamMakerFX</title>
+  </head>
+
+  <body  data-spy="scroll" data-target="#toc">
+  	<nav>
+
+</nav>
+
+
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <a href="/"><img src="/dreammaker_fx/assets/images/dfx_logo.png"></a>
+  <h5 class="my-0 mr-md-auto font-weight-normal"></h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+
+  
+    <a class="p-2 text-dark" href="/dreammaker_fx/" >Home</a>
+  
+    <a class="p-2 text-dark" href="/dreammaker_fx/browse" >Browse Effects</a>
+  
+    <a class="p-2 text-dark" href="/dreammaker_fx/docs/" >Docs</a>
+  
+
+  </nav>
+
+</div>
+
+    
+
+    <div class="container">
+      <h5>Rich Chorus </h3>
+<ul>
+<li>Created by:  </li>
+<li>Minimum firmware ver:  </li>
+<li>Description:  </li>
+</ul>
+<strong>Arduino sketch</strong>
+<pre><code class="cpp" style="arduino">#include "dm_fx.h"
+
+/*
+
+
+*/
+
+fx_variable_delay var_del1(0.31, 0.2, -0.1, OSC_SINE);
+fx_variable_delay var_del2(0.33, 0.1, -0.1, OSC_SINE);
+fx_variable_delay var_del3(0.37, 0.15, -0.1, OSC_SINE);
+
+fx_variable_delay pitch_mod(2.0, 0.3, 0.0, OSC_SINE);
+
+fx_mixer_3    mix3;
+
+fx_gain       post_gain(0.3);
+
+void setup() {
+  
+  // put your setup code here, to run once:
+  pedal.init();
+
+  // Route audio
+  pedal.route_audio(pedal.instr_in, var_del1.input);
+  pedal.route_audio(pedal.instr_in, var_del2.input);
+  pedal.route_audio(pedal.instr_in, var_del3.input);
+
+  pedal.route_audio(var_del1.output, mix3.input_1);
+  pedal.route_audio(var_del2.output, mix3.input_2);
+  pedal.route_audio(var_del3.output, mix3.input_3);
+  
+  pedal.route_audio(mix3.output, post_gain.input);
+  pedal.route_audio(post_gain.output, pitch_mod.input);
+  pedal.route_audio(pitch_mod.modulated_out, pedal.amp_out);
+
+  // Run this effect
+  pedal.run();
+
+}
+  
+void loop() {
+
+  // Service 
+  pedal.service();
+}
+
+
+// Footswitch 1 - typically used for enable/bypass
+void footswitch_1_pressed() { 
+  
+  Serial.println("\nSW1 pressed");
+
+  // Declared as static so state is preserved between calls
+  static bool bypassed = false;
+
+  // Bypass code
+  if (bypassed) {
+    // If we are currently bypassed, switch pedal to active mode and turn on LED next to SW1
+    pedal.enable_fx();
+    digitalWrite(PIN_FOOTSW_LED_1, HIGH); // Turn on LED
+  } else {
+    // If we are currently active, switch pedal to bypassed mode and turn off LED next to SW1
+    pedal.bypass_fx();
+    digitalWrite(PIN_FOOTSW_LED_1, LOW);  // Turn off LED
+  }
+  bypassed = !bypassed; // Toggle bypassed state variable
+}
+
+// Footswitch 2 - add code here to handle what SW2 does
+void footswitch_2_pressed() { 
+  Serial.println("\nSW2 pressed");
+}
+
+// User PB on PCB - add code here to handle what the User PB on the PCB does
+void user_pb_pressed() { 
+  Serial.println("\nUser PB pressed");
+}
+
+</code></pre>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.3.0/dist/bootstrap-toc.min.js"></script>
+     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+
+     <script>
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('pre code').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+});
+     </script>
+
+
+  </body>
+</html>

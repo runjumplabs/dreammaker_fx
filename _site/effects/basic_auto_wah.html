@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="/static/style.css">
+
+    <!-- add after bootstrap.min.css -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.3.0/dist/bootstrap-toc.min.css">
+
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/default.min.css">
+
+    <title>Basic_auto_wah - DreamMakerFX</title>
+  </head>
+
+  <body  data-spy="scroll" data-target="#toc">
+  	<nav>
+
+</nav>
+
+
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <a href="/"><img src="/dreammaker_fx/assets/images/dfx_logo.png"></a>
+  <h5 class="my-0 mr-md-auto font-weight-normal"></h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+
+  
+    <a class="p-2 text-dark" href="/dreammaker_fx/" >Home</a>
+  
+    <a class="p-2 text-dark" href="/dreammaker_fx/browse" >Browse Effects</a>
+  
+    <a class="p-2 text-dark" href="/dreammaker_fx/docs/" >Docs</a>
+  
+
+  </nav>
+
+</div>
+
+    
+
+    <div class="container">
+      <h5>Basic_auto_wah </h3>
+<ul>
+<li>Created by:  </li>
+<li>Minimum firmware ver:  </li>
+<li>Description:  </li>
+</ul>
+<strong>Arduino sketch</strong>
+<pre><code class="cpp" style="arduino">#include "dm_fx.h"
+
+fx_envelope_tracker   envy_tracky(10, 100, false);
+fx_biquad_filter      wah_filter(300.0, FILTER_WIDTH_NARROW, BIQUAD_TYPE_BPF);
+
+
+void setup() {
+  
+  // put your setup code here, to run once:
+  pedal.init();
+
+  // for template, just pass audio from input to output jack
+  pedal.route_audio(pedal.instr_in, wah_filter.input);
+  pedal.route_audio(wah_filter.output, pedal.amp_out);
+
+  pedal.route_audio(pedal.instr_in, envy_tracky.input);
+  pedal.route_control(envy_tracky.envelope, wah_filter.freq, 1000.0, 300.0);  // map range 0->1 to 300->300+1000
+  
+
+  // Optional code to print out the routing details to console
+  if (true) {
+    pedal.print_instance_stack();
+    pedal.print_routing_table();
+    pedal.print_param_tables();
+  }
+  // Run this effect
+  pedal.run();
+
+}
+  
+void loop() {
+
+  // Add an event if pot 0 has changed
+  if (pedal.pot_0.has_changed()) { 
+  } 
+
+  // Add an event if pot 0 has changed
+  if (pedal.pot_1.has_changed()) { 
+  } 
+
+#if 0
+  // Add an event if pot 2 has changed (DOESN'T WORK ON FIRST GEN HARDWARE YET)
+  if (pedal.pot_2.has_changed()) { 
+  } 
+#endif   
+
+  // Service 
+  pedal.service();
+}
+
+
+void sw1_pressed() { 
+  Serial.println("SW1 pressed");
+}
+
+void sw2_pressed() { 
+  Serial.println("SW2 pressed");
+}
+
+void sw3_pressed() { 
+  Serial.println("SW3 pressed");
+}
+
+void sw4_pressed() { 
+  Serial.println("SW4 pressed");
+}
+
+</code></pre>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.3.0/dist/bootstrap-toc.min.js"></script>
+     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+
+     <script>
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('pre code').forEach((block) => {
+    hljs.highlightBlock(block);
+  });
+});
+     </script>
+
+
+  </body>
+</html>
