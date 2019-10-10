@@ -16,7 +16,7 @@
 
   <link rel="stylesheet" href="/dreammaker_fx/assets/css/github-markdown.css">
 
-  <title>Harmonic_tremelo - DreamMakerFX</title>
+  <title>Harmonic tremelo effect - DreamMakerFX</title>
 
 
   <style>
@@ -84,17 +84,17 @@
  
 
  <div class="container">
-  <h5>Harmonic_tremelo </h3>
+  <h5>Harmonic tremelo effect </h3>
 <ul>
-<li>Created by:  </li>
-<li>Minimum firmware ver:  </li>
-<li>Description:  </li>
+<li>Created by: Dan </li>
+<li>Minimum firmware ver: 1.1.0 </li>
+<li>Description: Uses two tremelos that are 180 degrees out of phase that run through low-pass and high-pass filters to create a rich harmonic tremelo effect </li>
 </ul>
 <strong>Arduino sketch</strong>
 <pre><code class="cpp" style="arduino">#include "dm_fx.h"
 
 /*
-A harmonic tremelo is basically a pair of tremelos that are 180º out of 
+A harmonic tremelo is basically a pair of tremelos that are 180 degrees out of 
 phase.  The first tremelo is run through a low pass filter and the second
 tremelo is run through a high pass filter.  The result is a tremelo type 
 sounds but the volume remains rather constant.
@@ -102,14 +102,14 @@ sounds but the volume remains rather constant.
              +-------+    +----------------------+    +-------+
              |       |    |                      |    |       |
              | LPF   |    | Tremelo              |    |       |
-         +-->+ 500Hz +--->+ (0º initial phase)   +--->+       +-+
+         +-->+ 500Hz +--->+ (0 initial phase)    +--->+       +-+
          |   |       |    |                      |    |       | |
          |   +-------+    +----------------------+    |       | |
 Instr In |                                            | Mix 2 |  > Amp Out
          |   +-------+    +----------------------+    |       | |
          |   |       |    |                      |    |       | |
          +-->+ HPF   +--->+ Tremelo              +--->+       +-+
-             | 500Hz |    | (180º initial phase) |    |       |
+             | 500Hz |    | (180  initial phase) |    |       |
              |       |    |                      |    |       |
              +-------+    +----------------------+    +-------+
 

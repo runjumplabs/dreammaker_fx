@@ -29,6 +29,7 @@ for subdir, dirs, files in os.walk(source_path):
                         data = json.load(j)
                         effect.update(data)
                     print("Found config file!")
+                    print(json_file)
 
                 with open(ino_file, 'r') as file:
                     effect['ino_txt'] = file.read()

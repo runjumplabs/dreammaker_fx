@@ -2,6 +2,10 @@
 layout: default
 name: harmonic_tremelo
 effect_type: tremelos
+title: Harmonic tremelo effect
+creator: Dan
+description: Uses two tremelos that are 180 degrees out of phase that run through low-pass and high-pass filters to create a rich harmonic tremelo effect
+min_firmware: 1.1.0
 ---
 <h5>{{ page.title }} </h3>
 <ul>
@@ -13,7 +17,7 @@ effect_type: tremelos
 <pre><code class="cpp" style="arduino">#include "dm_fx.h"
 
 /*
-A harmonic tremelo is basically a pair of tremelos that are 180º out of 
+A harmonic tremelo is basically a pair of tremelos that are 180 degrees out of 
 phase.  The first tremelo is run through a low pass filter and the second
 tremelo is run through a high pass filter.  The result is a tremelo type 
 sounds but the volume remains rather constant.
@@ -21,14 +25,14 @@ sounds but the volume remains rather constant.
              +-------+    +----------------------+    +-------+
              |       |    |                      |    |       |
              | LPF   |    | Tremelo              |    |       |
-         +-->+ 500Hz +--->+ (0º initial phase)   +--->+       +-+
+         +-->+ 500Hz +--->+ (0 initial phase)    +--->+       +-+
          |   |       |    |                      |    |       | |
          |   +-------+    +----------------------+    |       | |
 Instr In |                                            | Mix 2 |  > Amp Out
          |   +-------+    +----------------------+    |       | |
          |   |       |    |                      |    |       | |
          +-->+ HPF   +--->+ Tremelo              +--->+       +-+
-             | 500Hz |    | (180º initial phase) |    |       |
+             | 500Hz |    | (180  initial phase) |    |       |
              |       |    |                      |    |       |
              +-------+    +----------------------+    +-------+
 
