@@ -72,8 +72,36 @@
 <strong>Arduino sketch</strong>
 <pre><code class="cpp" style="arduino">#include "dm_fx.h"
 
-fx_envelope_tracker   envy_tracky(10, 100, false);
-fx_biquad_filter      wah_filter(300.0, FILTER_WIDTH_NARROW, BIQUAD_TYPE_BPF);
+/**
+This is an example of an envelope filter or "auto-wah".  It uses the amplitude
+of the incoming signal to the center frequency of a bandpass filter in real time.
+The louder you play, the higher the filter is swept.
+
+
+                          +------------+
+                          |            |
+Instr In +-------+------->+ Bandpass   +-------------------------> Amp Out
+                 |        | filter     |
+                 |        +-----+------+
+                 |              ^
+                 |              |  Control center frequency of filter
+                 |        +-----+------+
+                 |        |            |
+                 +------->+ Envelope   |
+                          | tracker    |
+                          +------------+
+
+
+*/
+
+fx_envelope_tracker   envy_tracky(10,     // 10 ms attack
+                                  100,    // 100 ms release
+                                  false); // not triggered
+
+                                  
+fx_biquad_filter      wah_filter(300.0,                 // 300 Hz starting frequency
+                                 FILTER_WIDTH_NARROW,   // Narrow
+                                 BIQUAD_TYPE_BPF);      // Type is bandpass
 
 
 void setup() {
@@ -104,37 +132,19 @@ void loop() {
 
   // Add an event if pot 0 has changed
   if (pedal.pot_0.has_changed()) { 
+    envy_tracky.set_attack_speed_ms(pedal.pot_0.value*1000.0);
   } 
 
   // Add an event if pot 0 has changed
   if (pedal.pot_1.has_changed()) { 
   } 
 
-#if 0
-  // Add an event if pot 2 has changed (DOESN'T WORK ON FIRST GEN HARDWARE YET)
+  // Add an event if pot 2 has changed
   if (pedal.pot_2.has_changed()) { 
   } 
-#endif   
 
   // Service 
   pedal.service();
-}
-
-
-void sw1_pressed() { 
-  Serial.println("SW1 pressed");
-}
-
-void sw2_pressed() { 
-  Serial.println("SW2 pressed");
-}
-
-void sw3_pressed() { 
-  Serial.println("SW3 pressed");
-}
-
-void sw4_pressed() { 
-  Serial.println("SW4 pressed");
 }
 
 </code></pre>

@@ -115,7 +115,7 @@ void loop() {
     echoey.set_length_ms(1000.0 * pedal.pot_0.val);
   } 
 
-  // Add an event if pot 0 has changed
+  // Add an event if pot 1 has changed
   if (pedal.pot_1.has_changed()) { 
     echoey.set_feedback(pedal.pot_1.val);
   } 
@@ -129,21 +129,6 @@ void loop() {
 }
 
 
-void sw1_pressed() { 
-  Serial.println("SW1 pressed");
-}
-
-void sw2_pressed() { 
-  Serial.println("SW2 pressed");
-}
-
-void sw3_pressed() { 
-  Serial.println("SW3 pressed");
-}
-
-void sw4_pressed() { 
-  Serial.println("SW4 pressed");
-}
 
 </code></pre>
 

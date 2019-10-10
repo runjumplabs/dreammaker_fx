@@ -4,9 +4,7 @@ import json
 import glob
 
 source_path = "/Users/danledger/Dropbox/Shared/Dreammaker FX/Arduino Effect Sketches"
-output_path = "/Users/danledger/Github/Dreammaker_FX/runjumplabs.github.io/dreammaker_fx/_effects/"
-
-
+output_path = "/Users/danledger/Github/Dreammaker_FX/dreammaker_fx_web/_effects/"
 
 files = glob.glob(output_path+"*")
 for f in files:
