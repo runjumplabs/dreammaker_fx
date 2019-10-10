@@ -1,24 +1,44 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="/static/style.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="/static/style.css">
 
-    <!-- add after bootstrap.min.css -->
-    <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.3.0/dist/bootstrap-toc.min.css">
+  <!-- add after bootstrap.min.css -->
+  <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.3.0/dist/bootstrap-toc.min.css">
 
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/default.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/default.min.css">
 
-    <title>Docs - DreamMakerFX</title>
-  </head>
+  <link rel="stylesheet" href="/dreammaker_fx/assets/css/github-markdown.css">
 
-  <body  data-spy="scroll" data-target="#toc">
-  	<nav>
+  <title>Docs - DreamMakerFX</title>
+
+
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+
+</head>
+
+<body  data-spy="scroll" data-target="#toc">
+ <nav>
 
 </nav>
 
@@ -40,19 +60,19 @@
 
 </div>
 
-    
+ 
 
-    <div class="container">
-      <div class="container">
-    <div class="row">
-      <!-- sidebar, which will move to the top on a small screen -->
-      <div class="col-sm-3">
-        <nav id="toc" data-toggle="toc" class="sticky-top"></nav>
-      </div>
-      <!-- main content area -->
-      <div class="col-sm-9">
-
-<h1 id="afxtutorial">AFX Tutorial</h1>
+ <div class="container">
+  <div class="container">
+  <div class="row">
+    <!-- sidebar, which will move to the top on a small screen -->
+    <div class="col-sm-3">
+      <nav id="toc" data-toggle="toc" class="sticky-top"></nav>
+    </div>
+    <!-- main content area -->
+    <div class="col-sm-9">
+      <article class="markdown-body">
+        <h1 id="dreammakerfxtutorial">DreamMaker FX Tutorial</h1>
 <p>Hi there.  Welcome to this tutorial.  Get ready because pretty soon you're going to blowing minds.  Get excited!  </p>
 <h4 id="sohowdoesthisthingwork">So how does this thing work?</h4>
 <p>Okay, here it is: you write simple code (or copy and paste it from the web) into a simple, free programming tool (Arduino).  And then a bunch of magic happens and suddenly you're playing through the coolest effect you've ever heard.  </p>
@@ -448,17 +468,11 @@ void loop() {
 <code>class</code><a href="#classfx__variable__delay"><code>fx_variable_delay</code></a> | Effect: Variable delay - foundational block of flangers and choruses.
 <code>struct</code><a href="#structDSP__STATUS"><code>DSP_STATUS</code></a> | </p>
 <h1 id="classfx_amplitude_mod">class <code>fx_amplitude_mod</code></h1>
-<p>Effect: Amplitude modulator for creating tremelo-like effects.</p>
-<p>Copyright (c) 2019 Run Jump Labs LLC. All right reserved.</p>
-<p>This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either</p>
-<p>version 2.1 of the License, or (at your option) any later version.</p>
-<p>This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.</p>
-<p>The GNU Lesser General Public License can be found here: <a href="https://www.gnu.org/licenses/lgpl-3.0.en.html">https://www.gnu.org/licenses/lgpl-3.0.en.html</a></p>
-<p>Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</p>
-<p>Amplitude Modulator</p>
-<p>An amplitude modulator will change the volume or "amplitude" of the audioœ</p>
-<p><a href="https://www.youtube.com/watch?v=AxZVMyIFqcA">https://www.youtube.com/watch?v=AxZVMyIFqcA</a></p>
-<p>Example: </p>
+<p>Effect: Amplitude modulator for creating tremelo-like effects.
+Amplitude Modulator
+An amplitude modulator will change the volume or "amplitude" of the audioœ
+<a href="https://www.youtube.com/watch?v=AxZVMyIFqcA">https://www.youtube.com/watch?v=AxZVMyIFqcA</a>
+Copyright (c) 2019 Run Jump Labs LLC. All rights reserved. Example: </p>
 <pre><code>#include &lt;afx.h&gt;
 
 fx_amplitude_mod  tremelo1(0.5,    // Rate in Hz
@@ -509,17 +523,17 @@ void loop() {
 <h4 id="initializerfx_amplitude_modclassfx__amplitude__mod_1acfe6780b005b6b34ba58e82b9b64cf50rate_hzdepth"><em>(initializer)</em> <a href="#classfx__amplitude__mod_1acfe6780b005b6b34ba58e82b9b64cf50"><code>fx_amplitude_mod</code></a><code>(rate_hz,depth)</code></h4>
 <p>Basic constructor/initializer for amplitude modulator.</p>
 <ul>
-<li><p><code>modulation_rate</code> The amp modifier rate in Hertz (cycles / second) </p></li>
-<li><p><code>modulation_depth</code> The amp modifier depth (0.0 is no modulation -&gt; 1.0 is full modulation)</p></li>
+<li><code>modulation_rate</code> The amp modifier rate in Hertz (cycles / second) </li>
+<li><code>modulation_depth</code> The amp modifier depth (0.0 is no modulation -&gt; 1.0 is full modulation)</li>
 </ul>
 <h4 id="initializerfx_amplitude_modclassfx__amplitude__mod_1a354b528d3a59d766b7fc3e1ed74427f9rate_hzdepthinitial_phase_degosc_typesmodulation_typebooluse_ext_modulator"><em>(initializer)</em> <a href="#classfx__amplitude__mod_1a354b528d3a59d766b7fc3e1ed74427f9"><code>fx_amplitude_mod</code></a><code>(rate_hz,depth,initial_phase_deg,OSC_TYPES modulation_type,bool use_ext_modulator)</code></h4>
 <p>Advanced constructor for the amplitude modulator.</p>
 <ul>
-<li><p><code>rate_hz</code> The amp modifier rate in Hertz (cycles / second) </p></li>
-<li><p><code>depth</code> The amp modifier depth (0.0 is no modulation -&gt; 1.0 is full modulation) </p></li>
-<li><p><code>initial_phase_deg</code> The initial phase of the oscillator in degrees (0-360)</p></li>
-<li><p><code>modulation_type</code> The amp modifier type - see the definition of OSC_TYPES to see the different waveform options </p></li>
-<li><p><code>use_ext_modulator</code> Whether or not to use an externally generated waveform as the modulation source</p></li>
+<li><code>rate_hz</code> The amp modifier rate in Hertz (cycles / second) </li>
+<li><code>depth</code> The amp modifier depth (0.0 is no modulation -&gt; 1.0 is full modulation) </li>
+<li><code>initial_phase_deg</code> The initial phase of the oscillator in degrees (0-360)</li>
+<li><code>modulation_type</code> The amp modifier type - see the definition of OSC_TYPES to see the different waveform options </li>
+<li><code>use_ext_modulator</code> Whether or not to use an externally generated waveform as the modulation source</li>
 </ul>
 <h4 id="modifierenableclassfx__amplitude__mod_1a4c21c0e9725c1dd515a2bf0b2fb8f99e"><em>(modifier)</em> <a href="#classfx__amplitude__mod_1a4c21c0e9725c1dd515a2bf0b2fb8f99e"><code>enable</code></a><code>()</code></h4>
 <p>Enable the amplitude modululator (it is enabled by default)</p>
@@ -539,12 +553,6 @@ void loop() {
 <p>Print the parameters for this effect.</p>
 <h1 id="classfx_biquad_filter">class<code>fx_biquad_filter</code></h1>
 <p>Effect: Biquad filter for implementing various types of filters (low pass, high pass, band pass, etc.)</p>
-<p>Copyright (c) 2019 Run Jump Labs LLC. All right reserved.</p>
-<p>This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either</p>
-<p>version 2.1 of the License, or (at your option) any later version.</p>
-<p>This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.</p>
-<p>The GNU Lesser General Public License can be found here: <a href="https://www.gnu.org/licenses/lgpl-3.0.en.html">https://www.gnu.org/licenses/lgpl-3.0.en.html</a></p>
-<p>Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</p>
 <h2 id="details-1">Details</h2>
 <h4 id="audio_nodeinputclassfx__biquad__filter_1a4a9f3a5ff4eac9f44e1378ee23e3211c"><em>(audio_node)</em> <a href="#classfx__biquad__filter_1a4a9f3a5ff4eac9f44e1378ee23e3211c"><code>input</code></a></h4>
 <p>Audio routing node: primary audio input</p>
@@ -559,18 +567,18 @@ void loop() {
 <h4 id="initializerfx_biquad_filterclassfx__biquad__filter_1a1403541bb51773482c8b221dc82969e1filt_freqbiquad_filter_widthfilt_widthbiquad_filter_typefilt_type"><em>(initializer)</em> <a href="#classfx__biquad__filter_1a1403541bb51773482c8b221dc82969e1"><code>fx_biquad_filter</code></a><code>(filt_freq,BIQUAD_FILTER_WIDTH filt_width,BIQUAD_FILTER_TYPE filt_type)</code></h4>
 <p>Basic constructor for biquad filter.</p>
 <ul>
-<li><p><code>filt_freq</code> The filter critical/cutoff frequency </p></li>
-<li><p><code>filt_width</code> The filter width, see BIQUAD<em>FILTER</em>WIDTH for options </p></li>
-<li><p><code>filt_type</code> The filter type, see BIQUAD<em>FILTER</em>TYPE for options</p></li>
+<li><code>filt_freq</code> The filter critical/cutoff frequency </li>
+<li><code>filt_width</code> The filter width, see BIQUAD<em>FILTER</em>WIDTH for options </li>
+<li><code>filt_type</code> The filter type, see BIQUAD<em>FILTER</em>TYPE for options</li>
 </ul>
 <h4 id="initializerfx_biquad_filterclassfx__biquad__filter_1ae9b661ee241ea12c78f37fd5cd30ea89filt_freqfilt_widthfilter_gainbiquad_filter_typefilt_typeeffect_transition_speedtrans_speed"><em>(initializer)</em> <a href="#classfx__biquad__filter_1ae9b661ee241ea12c78f37fd5cd30ea89"><code>fx_biquad_filter</code></a><code>(filt_freq,filt_width,filter_gain,BIQUAD_FILTER_TYPE filt_type,EFFECT_TRANSITION_SPEED trans_speed)</code></h4>
 <p>Advanced constructor for biquad filter.</p>
 <ul>
-<li><p><code>filt_freq</code> The filter critical/cutoff frequency </p></li>
-<li><p><code>filt_width</code> The filter Q factor </p></li>
-<li><p><code>filter_gain</code> The filter gain in dB </p></li>
-<li><p><code>filt_type</code> The filter type, see BIQUAD<em>FILTER</em>TYPE for options </p></li>
-<li><p><code>trans_speed</code> The transaction speed when new filter parameters are suppliued, see EFFECT<em>TRANSITION</em>SPEED for options</p></li>
+<li><code>filt_freq</code> The filter critical/cutoff frequency </li>
+<li><code>filt_width</code> The filter Q factor </li>
+<li><code>filter_gain</code> The filter gain in dB </li>
+<li><code>filt_type</code> The filter type, see BIQUAD<em>FILTER</em>TYPE for options </li>
+<li><code>trans_speed</code> The transaction speed when new filter parameters are suppliued, see EFFECT<em>TRANSITION</em>SPEED for options</li>
 </ul>
 <h4 id="modifierenableclassfx__biquad__filter_1aaf296f748135cba4ec2dcb8eb72ae229"><em>(modifier)</em> <a href="#classfx__biquad__filter_1aaf296f748135cba4ec2dcb8eb72ae229"><code>enable</code></a><code>()</code></h4>
 <p>Enable the biquad filter (it is enabled by default)</p>
@@ -595,12 +603,6 @@ void loop() {
 <p>Print the parameters for this effect.</p>
 <h1 id="classfx_clipper">class<code>fx_clipper</code></h1>
 <p>Effect: Clipper - provides various types of hard and soft clippers for creating different types of distortions.</p>
-<p>Copyright (c) 2019 Run Jump Labs LLC. All right reserved.</p>
-<p>This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either</p>
-<p>version 2.1 of the License, or (at your option) any later version.</p>
-<p>This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.</p>
-<p>The GNU Lesser General Public License can be found here: <a href="https://www.gnu.org/licenses/lgpl-3.0.en.html">https://www.gnu.org/licenses/lgpl-3.0.en.html</a></p>
-<p>Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</p>
 <h2 id="details-2">Details</h2>
 <h4 id="audio_nodeinputclassfx__clipper_1a3e9f54141fd3cc133527d1e9a2fb246c"><em>(audio_node)</em> <a href="#classfx__clipper_1a3e9f54141fd3cc133527d1e9a2fb246c"><code>input</code></a></h4>
 <p>Audio routing node [input]: primary audio input</p>
@@ -613,19 +615,19 @@ void loop() {
 <h4 id="initializerfx_clipperclassfx__clipper_1a3a7af25b7b48496cfeb1c1c8b9d3306dtresholddriveboolsignal_rectifypoly_clip_funcclip_type"><em>(initializer)</em> <a href="#classfx__clipper_1a3a7af25b7b48496cfeb1c1c8b9d3306d"><code>fx_clipper</code></a><code>(treshold,drive,bool signal_rectify,POLY_CLIP_FUNC clip_type)</code></h4>
 <p>Basic constructor for the clipper.</p>
 <ul>
-<li><p><code>treshold</code> The treshold </p></li>
-<li><p><code>drive</code> The drive </p></li>
-<li><p><code>signal_rectify</code> The signal rectify </p></li>
-<li><p><code>clip_type</code> The clip type</p></li>
+<li><code>treshold</code> The treshold </li>
+<li><code>drive</code> The drive </li>
+<li><code>signal_rectify</code> The signal rectify </li>
+<li><code>clip_type</code> The clip type</li>
 </ul>
 <h4 id="initializerfx_clipperclassfx__clipper_1aa0353bea38204047b0b91bdd1593fa90tresholddriveboolsignal_rectifypoly_clip_funcclip_typeboolupsample"><em>(initializer)</em> <a href="#classfx__clipper_1aa0353bea38204047b0b91bdd1593fa90"><code>fx_clipper</code></a><code>(treshold,drive,bool signal_rectify,POLY_CLIP_FUNC clip_type,bool upsample)</code></h4>
 <p>Advanced constructor for the clipper.</p>
 <ul>
-<li><p><code>treshold</code> The treshold </p></li>
-<li><p><code>drive</code> The drive </p></li>
-<li><p><code>signal_rectify</code> The signal rectify </p></li>
-<li><p><code>clip_type</code> The clip type </p></li>
-<li><p><code>upsample</code> The upsample</p></li>
+<li><code>treshold</code> The treshold </li>
+<li><code>drive</code> The drive </li>
+<li><code>signal_rectify</code> The signal rectify </li>
+<li><code>clip_type</code> The clip type </li>
+<li><code>upsample</code> The upsample</li>
 </ul>
 <h4 id="modifierenableclassfx__clipper_1a21a7779b0cc969a75af734ed233ea7d3"><em>(modifier)</em> <a href="#classfx__clipper_1a21a7779b0cc969a75af734ed233ea7d3"><code>enable</code></a><code>()</code></h4>
 <p>Enable the clipper (it is enabled by default)</p>
@@ -644,17 +646,12 @@ void loop() {
 <h4 id="modifierprint_paramsclassfx__clipper_1a9816731e0ccb59ab00ab3cee369eb290void"><em>(modifier)</em> <a href="#classfx__clipper_1a9816731e0ccb59ab00ab3cee369eb290"><code>print_params</code></a><code>(void)</code></h4>
 <p>Print the parameters for this effect.</p>
 <h1 id="classfx_compressor">class <code>fx_compressor</code></h1>
-<p>Effect: Compressor/Limiter.</p>
-<p>Copyright (c) 2019 Run Jump Labs LLC. All right reserved.</p>
-<p>This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either</p>
-<p>version 2.1 of the License, or (at your option) any later version.</p>
-<p>This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.</p>
-<p>The GNU Lesser General Public License can be found here: <a href="https://www.gnu.org/licenses/lgpl-3.0.en.html">https://www.gnu.org/licenses/lgpl-3.0.en.html</a></p>
-<p>Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA Example:</p>
-<p>// Declare an instance of the compressor with initial values <a href="#classfx__compressor">fx_compressor</a> compy(-50.0, // Threshold to -50dB 100.0, // Ratio to 1:100 (like a limiter) 10.0, // Attack time in ms 100, // Release time in ms 3.0); // Output gain</p>
-<p>… pedal.route<em>audio(pedal.instr</em>in, compy.input); pedal.route<em>audio(compy.output, pedal.amp</em>out); if (pedal.pot<em>0.has</em>changed()) { compy.set<em>threshold(pedal.pot</em>0.val*-40.0); }</p>
-<p>if (pedal.pot<em>1.has</em>changed()) { compy.set<em>ratio(pedal.pot</em>1.val*100.0); }</p>
-<p>if (pedal.pot<em>2.has</em>changed()) { compy.set<em>output</em>gain(pedal.pot_1.val*4.0); }</p>
+<p>Effect: Compressor/Limiter.
+ Example:
+// Declare an instance of the compressor with initial values <a href="#classfx__compressor">fx<em>compressor</a> compy(-50.0, // Threshold to -50dB 100.0, // Ratio to 1:100 (like a limiter) 10.0, // Attack time in ms 100, // Release time in ms 3.0); // Output gain
+… pedal.route</em>audio(pedal.instr<em>in, compy.input); pedal.route</em>audio(compy.output, pedal.amp<em>out); if (pedal.pot</em>0.has<em>changed()) { compy.set</em>threshold(pedal.pot<em>0.val<em>-40.0); }
+if (pedal.pot</em>1.has<em>changed()) { compy.set</em>ratio(pedal.pot<em>1.val</em>100.0); }
+if (pedal.pot</em>2.has<em>changed()) { compy.set</em>output<em>gain(pedal.pot</em>1.val*4.0); }</p>
 <h2 id="details-3">Details</h2>
 <h4 id="audio_nodeinputclassfx__compressor_1a2c22d60ca1e0c7e6f2c45f3e8e8dd437"><em>(audio_node)</em> <a href="#classfx__compressor_1a2c22d60ca1e0c7e6f2c45f3e8e8dd437"><code>input</code></a></h4>
 <p>Audio routing node: primary audio input</p>
@@ -683,12 +680,6 @@ void loop() {
 <h4 id="modifierprint_paramsclassfx__compressor_1aae183cb59a7d0299438a65196d91b213void"><em>(modifier)</em> <a href="#classfx__compressor_1aae183cb59a7d0299438a65196d91b213"><code>print_params</code></a><code>(void)</code></h4>
 <h1 id="classfx_delay">class<code>fx_delay</code></h1>
 <p>Effect: Delay/echo.</p>
-<p>Copyright (c) 2019 Run Jump Labs LLC. All right reserved.</p>
-<p>This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either</p>
-<p>version 2.1 of the License, or (at your option) any later version.</p>
-<p>This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.</p>
-<p>The GNU Lesser General Public License can be found here: <a href="https://www.gnu.org/licenses/lgpl-3.0.en.html">https://www.gnu.org/licenses/lgpl-3.0.en.html</a></p>
-<p>Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</p>
 <h2 id="details-4">Details</h2>
 <h4 id="audio_nodeinputclassfx__delay_1a07652b9b855e12f74705811f65670068"><em>(audio_node)</em> <a href="#classfx__delay_1a07652b9b855e12f74705811f65670068"><code>input</code></a></h4>
 <p>Audio routing node [input]: primary audio input</p>
@@ -707,17 +698,17 @@ void loop() {
 <h4 id="initializerfx_delayclassfx__delay_1aac7eb3b50aeb93b9938456ca659e7cd4delay_len_msfeedback"><em>(initializer)</em> <a href="#classfx__delay_1aac7eb3b50aeb93b9938456ca659e7cd4"><code>fx_delay</code></a><code>(delay_len_ms,feedback)</code></h4>
 <p>Basic constructor for delay effect.</p>
 <ul>
-<li><p><code>delay_len_ms</code> The length of the delay in milliseconds (1/1000s of a second) </p></li>
-<li><p><code>feedback</code> The feedback ration (between 0.0 and 1.0)</p></li>
+<li><code>delay_len_ms</code> The length of the delay in milliseconds (1/1000s of a second) </li>
+<li><code>feedback</code> The feedback ration (between 0.0 and 1.0)</li>
 </ul>
 <h4 id="initializerfx_delayclassfx__delay_1a7fe8a29ac3f6c99f3f975e31a93593a9delay_len_msdelay_len_max_msfeedbackfeedthroughboolenable_ext_fx"><em>(initializer)</em> <a href="#classfx__delay_1a7fe8a29ac3f6c99f3f975e31a93593a9"><code>fx_delay</code></a><code>(delay_len_ms,delay_len_max_ms,feedback,feedthrough,bool enable_ext_fx)</code></h4>
 <p>Advanced constructor for delay effect.</p>
 <ul>
-<li><p><code>delay_len_ms</code> The length of the delay in milliseconds (1/1000s of a second) </p></li>
-<li><p><code>delay_len_max_ms</code> The maximum length of the delay (if the delay length is modified) </p></li>
-<li><p><code>feedback</code> The feedback ration (between 0.0 and 1.0) </p></li>
-<li><p><code>feedthrough</code> The delay feed through ratio (between 0.0 and 1.0) </p></li>
-<li><p><code>enable_ext_fx</code> Enable the send/receive FX loop</p></li>
+<li><code>delay_len_ms</code> The length of the delay in milliseconds (1/1000s of a second) </li>
+<li><code>delay_len_max_ms</code> The maximum length of the delay (if the delay length is modified) </li>
+<li><code>feedback</code> The feedback ration (between 0.0 and 1.0) </li>
+<li><code>feedthrough</code> The delay feed through ratio (between 0.0 and 1.0) </li>
+<li><code>enable_ext_fx</code> Enable the send/receive FX loop</li>
 </ul>
 <h4 id="modifierenableclassfx__delay_1aa2b2f620ddfa1b85800aadc764a07f6f"><em>(modifier)</em> <a href="#classfx__delay_1aa2b2f620ddfa1b85800aadc764a07f6f"><code>enable</code></a><code>()</code></h4>
 <p>Enable the <strong>this_effect</strong> (it is enabled by default)</p>
@@ -733,12 +724,6 @@ void loop() {
 <p>Prints the parameters for the delay effect.</p>
 <h1 id="classfx_envelope_tracker">class<code>fx_envelope_tracker</code></h1>
 <p>Effect: Envelope tracker.</p>
-<p>Copyright (c) 2019 Run Jump Labs LLC. All right reserved.</p>
-<p>This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either</p>
-<p>version 2.1 of the License, or (at your option) any later version.</p>
-<p>This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.</p>
-<p>The GNU Lesser General Public License can be found here: <a href="https://www.gnu.org/licenses/lgpl-3.0.en.html">https://www.gnu.org/licenses/lgpl-3.0.en.html</a></p>
-<p>Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</p>
 <h2 id="details-5">Details</h2>
 <h4 id="audio_nodeinputclassfx__envelope__tracker_1a90a1db3263c82aa7b59e7292b777bd82"><em>(audio_node)</em> <a href="#classfx__envelope__tracker_1a90a1db3263c82aa7b59e7292b777bd82"><code>input</code></a></h4>
 <h4 id="control_nodedecay_speed_msclassfx__envelope__tracker_1ae8aae7e2034e97ac804e26f7cfa9bfbe"><em>(control_node)</em> <a href="#classfx__envelope__tracker_1ae8aae7e2034e97ac804e26f7cfa9bfbe"><code>decay_speed_ms</code></a></h4>
@@ -750,12 +735,6 @@ void loop() {
 <h4 id="modifierprint_paramsclassfx__envelope__tracker_1a7b51364941f46e57860cfbaae1d315dbvoid"><em>(modifier)</em> <a href="#classfx__envelope__tracker_1a7b51364941f46e57860cfbaae1d315db"><code>print_params</code></a><code>(void)</code></h4>
 <h1 id="classfx_gain">class <code>fx_gain</code></h1>
 <p>Effect: Gain - used to increase or decrease the volume of an audio signal.</p>
-<p>Copyright (c) 2019 Run Jump Labs LLC. All right reserved.</p>
-<p>This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either</p>
-<p>version 2.1 of the License, or (at your option) any later version.</p>
-<p>This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.</p>
-<p>The GNU Lesser General Public License can be found here: <a href="https://www.gnu.org/licenses/lgpl-3.0.en.html">https://www.gnu.org/licenses/lgpl-3.0.en.html</a></p>
-<p>Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</p>
 <h2 id="details-6">Details</h2>
 <h4 id="audio_nodeinputclassfx__gain_1a292efdc7356082aaacf2a79bef496390"><em>(audio_node)</em> <a href="#classfx__gain_1a292efdc7356082aaacf2a79bef496390"><code>input</code></a></h4>
 <h4 id="audio_nodeoutputclassfx__gain_1adac79db68119e32509a27ee24d1d7c6e"><em>(audio_node)</em> <a href="#classfx__gain_1adac79db68119e32509a27ee24d1d7c6e"><code>output</code></a></h4>
@@ -780,12 +759,6 @@ void loop() {
 <p>Prints the parameters for the delay effect.</p>
 <h1 id="classfx_instr_synth">class <code>fx_instr_synth</code></h1>
 <p>Effect: Instrument synth - your basic guitar/bass synth.</p>
-<p>Copyright (c) 2019 Run Jump Labs LLC. All right reserved.</p>
-<p>This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either</p>
-<p>version 2.1 of the License, or (at your option) any later version.</p>
-<p>This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.</p>
-<p>The GNU Lesser General Public License can be found here: <a href="https://www.gnu.org/licenses/lgpl-3.0.en.html">https://www.gnu.org/licenses/lgpl-3.0.en.html</a></p>
-<p>Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</p>
 <h2 id="details-7">Details</h2>
 <h4 id="audio_nodeinputclassfx__instr__synth_1a4a6082269fcec84a71835c6a5b4d64f1"><em>(audio_node)</em> <a href="#classfx__instr__synth_1a4a6082269fcec84a71835c6a5b4d64f1"><code>input</code></a></h4>
 <p>Audio routing node: primary audio input</p>
@@ -798,12 +771,6 @@ void loop() {
 <p>Bypass the <strong>this_effect</strong> (will just pass clean audio through)</p>
 <h1 id="classfx_looper">class <code>fx_looper</code></h1>
 <p>Effect: Looper - capture and playback loops.</p>
-<p>Copyright (c) 2019 Run Jump Labs LLC. All right reserved.</p>
-<p>This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either</p>
-<p>version 2.1 of the License, or (at your option) any later version.</p>
-<p>This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.</p>
-<p>The GNU Lesser General Public License can be found here: <a href="https://www.gnu.org/licenses/lgpl-3.0.en.html">https://www.gnu.org/licenses/lgpl-3.0.en.html</a></p>
-<p>Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</p>
 <h2 id="details-8">Details</h2>
 <h4 id="audio_nodenode_loop_pp_sendclassfx__looper_1a07ff4befa4c862f24ee87b16909f5aaf"><em>(audio_node)</em> <a href="#classfx__looper_1a07ff4befa4c862f24ee87b16909f5aaf"><code>node_loop_pp_send</code></a></h4>
 <h4 id="audio_nodenode_loop_pp_receiveclassfx__looper_1ae89bc61cb29de5cc05b0702ff0fc742d"><em>(audio_node)</em> <a href="#classfx__looper_1ae89bc61cb29de5cc05b0702ff0fc742d"><code>node_loop_pp_receive</code></a></h4>
@@ -835,12 +802,6 @@ void loop() {
 <p>Prints the parameters for the delay effect.</p>
 <h1 id="classfx_mixer_2">class <code>fx_mixer_2</code></h1>
 <p>Utility: 2 channel mixer.</p>
-<p>Copyright (c) 2019 Run Jump Labs LLC. All right reserved.</p>
-<p>This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either</p>
-<p>version 2.1 of the License, or (at your option) any later version.</p>
-<p>This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.</p>
-<p>The GNU Lesser General Public License can be found here: <a href="https://www.gnu.org/licenses/lgpl-3.0.en.html">https://www.gnu.org/licenses/lgpl-3.0.en.html</a></p>
-<p>Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</p>
 <h2 id="details-9">Details</h2>
 <h4 id="audio_nodenode_input_2classfx__mixer__2_1abfeceb13ef340672ed99b7a057789b28"><em>(audio_node)</em> <a href="#classfx__mixer__2_1abfeceb13ef340672ed99b7a057789b28"><code>node_input_2</code></a></h4>
 <h4 id="audio_nodeinput_1classfx__mixer__2_1ac3dd5da659c05886d30025ba81254da8"><em>(audio_node)</em> <a href="#classfx__mixer__2_1ac3dd5da659c05886d30025ba81254da8"><code>input_1</code></a></h4>
@@ -876,32 +837,31 @@ void loop() {
 <h4 id="modifierprint_paramsclassfx__mixer__4_1a3f5586bcf1bddd567c41c2fae7ecabdfvoid"><em>(modifier)</em> <a href="#classfx__mixer__4_1a3f5586bcf1bddd567c41c2fae7ecabdf"><code>print_params</code></a><code>(void)</code></h4>
 <h1 id="classfx_oscillator">class <code>fx_oscillator</code></h1>
 <p>Utility: Oscillator that can has both audio and control outputs.</p>
-<p>Copyright (c) 2019 Run Jump Labs LLC. All right reserved.</p>
-<p>This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either</p>
-<p>version 2.1 of the License, or (at your option) any later version.</p>
-<p>This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.</p>
-<p>The GNU Lesser General Public License can be found here: <a href="https://www.gnu.org/licenses/lgpl-3.0.en.html">https://www.gnu.org/licenses/lgpl-3.0.en.html</a></p>
-<p>Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</p>
 <h2 id="details-12">Details</h2>
 <h4 id="audio_nodeoutputclassfx__oscillator_1ad443f83c5e49e2a849e44fadef36bd9f"><em>(audio_node)</em> <a href="#classfx__oscillator_1ad443f83c5e49e2a849e44fadef36bd9f"><code>output</code></a></h4>
+<p>Audio routing node: primary audio oscillator output</p>
 <h4 id="control_nodefreqclassfx__oscillator_1aeeb44f7cd3b37d8426de735d765ad992"><em>(control_node)</em> <a href="#classfx__oscillator_1aeeb44f7cd3b37d8426de735d765ad992"><code>freq</code></a></h4>
+<p>Control routing node: frequency of the oscillator in Hz</p>
 <h4 id="control_nodeamplitudeclassfx__oscillator_1aee2c66fe29de2ec4f47bce0ed77b2445"><em>(control_node)</em> <a href="#classfx__oscillator_1aee2c66fe29de2ec4f47bce0ed77b2445"><code>amplitude</code></a></h4>
+<p>Control routing node: amplitude of the oscillator (linear, typically between 0.0 and 1.0)</p>
 <h4 id="control_nodeoffsetclassfx__oscillator_1a97089210c8bfbb4bbd1071699289ad76"><em>(control_node)</em> <a href="#classfx__oscillator_1a97089210c8bfbb4bbd1071699289ad76"><code>offset</code></a></h4>
+<p>Control routing node: The DC offset of the amplifier. Useful if you're using this to control parameters in ranges not centered around 0.0.</p>
 <h4 id="control_nodevalueclassfx__oscillator_1a80c56e026c17bea6c0b00b83338e1982"><em>(control_node)</em> <a href="#classfx__oscillator_1a80c56e026c17bea6c0b00b83338e1982"><code>value</code></a></h4>
+<p>Control routing node: The current value of the oscillator. Connect this node to external oscillator nodes for effects.</p>
 <h4 id="initializerfx_oscillatorclassfx__oscillator_1af7cd903dc9cc687017083aa6abbd24d3osc_typesosc_typefreqamplitude"><em>(initializer)</em> <a href="#classfx__oscillator_1af7cd903dc9cc687017083aa6abbd24d3"><code>fx_oscillator</code></a><code>(OSC_TYPES osc_type,freq,amplitude)</code></h4>
 <p>Basic constructor for an oscillator when used as an audio source.</p>
 <ul>
-<li><p><code>osc_type</code> The osc type (see OSC_TYPES) </p></li>
-<li><p><code>freq</code> The frequency in Hz </p></li>
-<li><p><code>amplitude</code> The amplitude (linear scale e.g. 0.0 -&gt; 1.0 typically)</p></li>
+<li><code>osc_type</code> The osc type (see OSC_TYPES) </li>
+<li><code>freq</code> The frequency in Hz </li>
+<li><code>amplitude</code> The amplitude (linear scale e.g. 0.0 -&gt; 1.0 typically)</li>
 </ul>
 <h4 id="initializerfx_oscillatorclassfx__oscillator_1a39d70bef48bbf44c7bc1f0a28ecc7157osc_typesosc_typefreqamplitudeoffset"><em>(initializer)</em> <a href="#classfx__oscillator_1a39d70bef48bbf44c7bc1f0a28ecc7157"><code>fx_oscillator</code></a><code>(OSC_TYPES osc_type,freq,amplitude,offset)</code></h4>
 <p>Basic constructor for an oscillator used as a control source.</p>
 <ul>
-<li><p><code>osc_type</code> The osc type (see OSC_TYPES) </p></li>
-<li><p><code>freq</code> The frequency in Hz </p></li>
-<li><p><code>amplitude</code> The amplitude (linear scale e.g. 0.0 -&gt; 1.0 typically) </p></li>
-<li><p><code>offset</code> The DC offset (for example, if you wanted an LFO that ranged from 400 - 800, you could set the offset to 600 and the amplitude of the waveform for 200.)</p></li>
+<li><code>osc_type</code> The osc type (see OSC_TYPES) </li>
+<li><code>freq</code> The frequency in Hz </li>
+<li><code>amplitude</code> The amplitude (linear scale e.g. 0.0 -&gt; 1.0 typically) </li>
+<li><code>offset</code> The DC offset (for example, if you wanted an LFO that ranged from 400 - 800, you could set the offset to 600 and the amplitude of the waveform for 200.)</li>
 </ul>
 <h4 id="modifierenableclassfx__oscillator_1af8097f269a5e90da896abd8f7e6ef5e2"><em>(modifier)</em> <a href="#classfx__oscillator_1af8097f269a5e90da896abd8f7e6ef5e2"><code>enable</code></a><code>()</code></h4>
 <p>Enable the oscillator (it is enabled by default)</p>
@@ -925,13 +885,8 @@ void loop() {
 <h4 id="modifierprint_paramsclassfx__oscillator_1a630f9545124147322faea04790240e61void"><em>(modifier)</em> <a href="#classfx__oscillator_1a630f9545124147322faea04790240e61"><code>print_params</code></a><code>(void)</code></h4>
 <p>Print the parameters for this effect.</p>
 <h1 id="classfx_phase_shifter">class <code>fx_phase_shifter</code></h1>
-<p>Effect: Phase shifter for creating rich phase shifts.</p>
-<p>Copyright (c) 2019 Run Jump Labs LLC. All right reserved.</p>
-<p>This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either</p>
-<p>version 2.1 of the License, or (at your option) any later version.</p>
-<p>This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.</p>
-<p>The GNU Lesser General Public License can be found here: <a href="https://www.gnu.org/licenses/lgpl-3.0.en.html">https://www.gnu.org/licenses/lgpl-3.0.en.html</a></p>
-<p>Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USAExample: <strong>phase<em>shifter</em>1.c</strong></p>
+<p>Effect: Phase shifter for creating rich phase shifts.
+Example: <strong>phase<em>shifter</em>1.c</strong></p>
 <h2 id="details-13">Details</h2>
 <h4 id="audio_nodeinputclassfx__phase__shifter_1a6b3c2e7b30e37e8f39f4ea74edcc1da8"><em>(audio_node)</em> <a href="#classfx__phase__shifter_1a6b3c2e7b30e37e8f39f4ea74edcc1da8"><code>input</code></a></h4>
 <p>Audio routing node: primary audio input</p>
@@ -946,9 +901,9 @@ void loop() {
 <h4 id="initializerfx_phase_shifterclassfx__phase__shifter_1a3a121772ae94e0f4821bbc67349881d3rate_hzdepthfeedback"><em>(initializer)</em> <a href="#classfx__phase__shifter_1a3a121772ae94e0f4821bbc67349881d3"><code>fx_phase_shifter</code></a><code>(rate_hz,depth,feedback)</code></h4>
 <p>Basic constructor/initializer for the phase shifter.</p>
 <ul>
-<li><p><code>rate_hz</code> The rate hz of the LFO modulating the phase shifter </p></li>
-<li><p><code>depth</code> The depth of the phase shifter </p></li>
-<li><p><code>feedback</code> The feedback of the phase shifter</p></li>
+<li><code>rate_hz</code> The rate hz of the LFO modulating the phase shifter </li>
+<li><code>depth</code> The depth of the phase shifter </li>
+<li><code>feedback</code> The feedback of the phase shifter</li>
 </ul>
 <h4 id="modifierenableclassfx__phase__shifter_1a02b925c2b19530efcda28486ff7d286a"><em>(modifier)</em> <a href="#classfx__phase__shifter_1a02b925c2b19530efcda28486ff7d286a"><code>enable</code></a><code>()</code></h4>
 <p>Enable the phase shifter (it is enabled by default)</p>
@@ -973,12 +928,6 @@ void loop() {
 <p>Print the parameters for this effect.</p>
 <h1 id="classfx_pitch_shift">class <code>fx_pitch_shift</code></h1>
 <p>Effect: Pitch shifter - shifts audio up or down in pitch.</p>
-<p>Copyright (c) 2019 Run Jump Labs LLC. All right reserved.</p>
-<p>This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either</p>
-<p>version 2.1 of the License, or (at your option) any later version.</p>
-<p>This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.</p>
-<p>The GNU Lesser General Public License can be found here: <a href="https://www.gnu.org/licenses/lgpl-3.0.en.html">https://www.gnu.org/licenses/lgpl-3.0.en.html</a></p>
-<p>Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</p>
 <h2 id="details-14">Details</h2>
 <h4 id="audio_nodeinputclassfx__pitch__shift_1aa1388ecdbad1942b8c69e21d4c99ab53"><em>(audio_node)</em> <a href="#classfx__pitch__shift_1aa1388ecdbad1942b8c69e21d4c99ab53"><code>input</code></a></h4>
 <p>Audio routing node: primary audio input</p>
@@ -998,13 +947,8 @@ void loop() {
 <h4 id="modifierprint_paramsclassfx__pitch__shift_1aa91b1d28891296a2a4199e8d94c871f3void"><em>(modifier)</em> <a href="#classfx__pitch__shift_1aa91b1d28891296a2a4199e8d94c871f3"><code>print_params</code></a><code>(void)</code></h4>
 <p>Print the parameters for this effect.</p>
 <h1 id="classfx_ring_mod">class<code>fx_ring_mod</code></h1>
-<p>Effect: Ring modulator - frequency modulates the audio - crazy sounding.</p>
-<p>Copyright (c) 2019 Run Jump Labs LLC. All right reserved.</p>
-<p>This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either</p>
-<p>version 2.1 of the License, or (at your option) any later version.</p>
-<p>This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.</p>
-<p>The GNU Lesser General Public License can be found here: <a href="https://www.gnu.org/licenses/lgpl-3.0.en.html">https://www.gnu.org/licenses/lgpl-3.0.en.html</a></p>
-<p>Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA The following example is a full ring modulator pedal with tone control, wet/dry mix and of course ring modulator.</p>
+<p>Effect: Ring modulator - frequency modulates the audio - crazy sounding.
+ The following example is a full ring modulator pedal with tone control, wet/dry mix and of course ring modulator.</p>
 <pre><code>#include &lt;afx.h&gt;
 
 fx_ring_mod      ring_mod_1(200.0, // Carrier frequency in Hz
@@ -1093,12 +1037,6 @@ void sw4_pressed() { }
 <p>Prints the parameters for the delay effect.</p>
 <h1 id="classfx_shaper">class <code>fx_shaper</code></h1>
 <p>Effect: Slicer - chops up audio in the time domain and pipes to different effects.</p>
-<p>Copyright (c) 2019 Run Jump Labs LLC. All right reserved.</p>
-<p>This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either</p>
-<p>version 2.1 of the License, or (at your option) any later version.</p>
-<p>This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.</p>
-<p>The GNU Lesser General Public License can be found here: <a href="https://www.gnu.org/licenses/lgpl-3.0.en.html">https://www.gnu.org/licenses/lgpl-3.0.en.html</a></p>
-<p>Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</p>
 <h2 id="details-16">Details</h2>
 <h4 id="audio_nodeinputclassfx__shaper_1aac7d9824de259c99f4c78860d82e431d"><em>(audio_node)</em> <a href="#classfx__shaper_1aac7d9824de259c99f4c78860d82e431d"><code>input</code></a></h4>
 <p>Audio routing node: primary audio input</p>
@@ -1121,10 +1059,10 @@ void sw4_pressed() { }
 <h4 id="initializerfx_shaperclassfx__shaper_1a443695f97f603e9782a80ce2ad0058baclean_mixshaper_mixoct_1_mixoct_2_mix"><em>(initializer)</em> <a href="#classfx__shaper_1a443695f97f603e9782a80ce2ad0058ba"><code>fx_shaper</code></a><code>(clean_mix,shaper_mix,oct_1_mix,oct_2_mix)</code></h4>
 <p>Constructor for the shaper.</p>
 <ul>
-<li><p><code>clean_mix</code> The clean mix (0.0 -&gt; 1.0) </p></li>
-<li><p><code>shaper_mix</code> The shaper mix (0.0 -&gt; 1.0) </p></li>
-<li><p><code>oct_1_mix</code> The octal 1 mix (0.0 -&gt; 1.0) </p></li>
-<li><p><code>oct_2_mix</code> The octal 2 mix (0.0 -&gt; 1.0)</p></li>
+<li><code>clean_mix</code> The clean mix (0.0 -&gt; 1.0) </li>
+<li><code>shaper_mix</code> The shaper mix (0.0 -&gt; 1.0) </li>
+<li><code>oct_1_mix</code> The octal 1 mix (0.0 -&gt; 1.0) </li>
+<li><code>oct_2_mix</code> The octal 2 mix (0.0 -&gt; 1.0)</li>
 </ul>
 <h4 id="modifierenableclassfx__shaper_1a40a90f65699e4fced2f8cf0219bc24f1"><em>(modifier)</em> <a href="#classfx__shaper_1a40a90f65699e4fced2f8cf0219bc24f1"><code>enable</code></a><code>()</code></h4>
 <p>Enable the amplitude modululator (it is enabled by default)</p>
@@ -1137,8 +1075,8 @@ void sw4_pressed() { }
 <h4 id="modifierprint_paramsclassfx__shaper_1a20e8109535f876b202ae0843c6a96e1evoid"><em>(modifier)</em> <a href="#classfx__shaper_1a20e8109535f876b202ae0843c6a96e1e"><code>print_params</code></a><code>(void)</code></h4>
 <p>Print the parameters for this effect.</p>
 <h1 id="classfx_slicer">class <code>fx_slicer</code></h1>
-<p>Effect: Slicer - chops up audio in the time domain and pipes to different effects.</p>
-<p>Example: </p>
+<p>Effect: Slicer - chops up audio in the time domain and pipes to different effects.
+Copyright (c) 2019 Run Jump Labs LLC. All rights reserved. Example: </p>
 <pre><code>#include "afx.h"
 
 /*
@@ -1251,8 +1189,8 @@ void loop() {
 <h4 id="initializerfx_slicerclassfx__slicer_1aa58475e7abee046901e228b6d6befdfeperiod_msint32_tchannels"><em>(initializer)</em> <a href="#classfx__slicer_1aa58475e7abee046901e228b6d6befdfe"><code>fx_slicer</code></a><code>(period_ms,int32_t channels)</code></h4>
 <p>Basic constructor/initializer for the slicer.</p>
 <ul>
-<li><p><code>period_ms</code> The period in milliseconds </p></li>
-<li><p><code>channels</code> The number of channels to slice between during the period</p></li>
+<li><code>period_ms</code> The period in milliseconds </li>
+<li><code>channels</code> The number of channels to slice between during the period</li>
 </ul>
 <h4 id="modifierenableclassfx__slicer_1a0005ae49c5345637e329d5bdb9b59994"><em>(modifier)</em> <a href="#classfx__slicer_1a0005ae49c5345637e329d5bdb9b59994"><code>enable</code></a><code>()</code></h4>
 <p>Enable the slicer (it is enabled by default)</p>
@@ -1266,11 +1204,11 @@ void loop() {
 <h4 id="modifierprint_paramsclassfx__slicer_1ab7bcfb6dbe69577d7a060ba2cfdf83a7void"><em>(modifier)</em> <a href="#classfx__slicer_1ab7bcfb6dbe69577d7a060ba2cfdf83a7"><code>print_params</code></a><code>(void)</code></h4>
 <p>Print the parameters for this effect.</p>
 <h1 id="classfx_variable_delay">class <code>fx_variable_delay</code></h1>
-<p>Effect: Variable delay - foundational block of flangers and choruses.</p>
-<p>The variable delay effect is the basis for a number of time-varying delay effects like chorus, flanger, phaser, vibrato, Leslie simulator, etc.</p>
-<p>Here's a nice tutorial on how variable delays work in these various building blocks: <a href="https://www.dsprelated.com/freebooks/pasp/Time_Varying_Delay_Effects.html">https://www.dsprelated.com/freebooks/pasp/Time<em>Varying</em>Delay_Effects.html</a></p>
-<p>Example: </p>
-<pre><code>#include &lt;afx.h&gt;
+<p>Effect: Variable delay - foundational block of flangers and choruses.
+The variable delay effect is the basis for a number of time-varying delay effects like chorus, flanger, phaser, vibrato, Leslie simulator, etc.
+Here's a nice tutorial on how variable delays work in these various building blocks: <a href="https://www.dsprelated.com/freebooks/pasp/Time_Varying_Delay_Effects.html">https://www.dsprelated.com/freebooks/pasp/Time<em>Varying</em>Delay_Effects.html</a>
+Example: </p>
+<pre><code>#include "dm_fx"
 
 fx_variable_delay   flanger1(0.5,       // Rate is 0.5Hz 
                              0.5,       // Depth set to 0.5
@@ -1330,21 +1268,21 @@ void loop() {
 <h4 id="initializerfx_variable_delayclassfx__variable__delay_1a9fb9b742eefcf08eb2e026824a31384avar_del_rate_hzvar_del_depthvar_del_feedbackosc_typesvar_del_mod_type"><em>(initializer)</em> <a href="#classfx__variable__delay_1a9fb9b742eefcf08eb2e026824a31384a"><code>fx_variable_delay</code></a><code>(var_del_rate_hz,var_del_depth,var_del_feedback,OSC_TYPES var_del_mod_type)</code></h4>
 <p>Basic constructor/initializer for variable delay.</p>
 <ul>
-<li><p><code>var_del_rate_hz</code> The modulation rate in Hz </p></li>
-<li><p><code>var_del_depth</code> The modulation depth (0.0 -&gt; 1.0) </p></li>
-<li><p><code>var_del_feedback</code> The feedback from output to input (-1.0 -&gt; 1.0) </p></li>
-<li><p><code>var_del_mod_type</code> The shape of the waveform used to modulate (e.g. OSC<em>SINE, OSC</em>TRI, etc.)</p></li>
+<li><code>var_del_rate_hz</code> The modulation rate in Hz </li>
+<li><code>var_del_depth</code> The modulation depth (0.0 -&gt; 1.0) </li>
+<li><code>var_del_feedback</code> The feedback from output to input (-1.0 -&gt; 1.0) </li>
+<li><code>var_del_mod_type</code> The shape of the waveform used to modulate (e.g. OSC<em>SINE, OSC</em>TRI, etc.)</li>
 </ul>
 <h4 id="initializerfx_variable_delayclassfx__variable__delay_1aa8345309d8a9ae9ced2eb53b3b12c4a1var_del_rate_hzvar_del_depthvar_del_feedbackvar_del_buf_size_msvar_del_mix_cleanosc_typesvar_del_mod_typeboolvar_del_ext_mod"><em>(initializer)</em> <a href="#classfx__variable__delay_1aa8345309d8a9ae9ced2eb53b3b12c4a1"><code>fx_variable_delay</code></a><code>(var_del_rate_hz,var_del_depth,var_del_feedback,var_del_buf_size_ms,var_del_mix_clean,OSC_TYPES var_del_mod_type,bool var_del_ext_mod)</code></h4>
 <p>Basic constructor/initializer for variable delay.</p>
 <ul>
-<li><p><code>var_del_rate_hz</code> The modulation rate in Hz </p></li>
-<li><p><code>var_del_depth</code> The modulation depth (0.0 -&gt; 1.0) </p></li>
-<li><p><code>var_del_feedback</code> The feedback from output to input (-1.0 -&gt;1.0) </p></li>
-<li><p><code>var_del_buf_size_ms</code> The size of the audio in milliseconds (start wtih a value around 30) </p></li>
-<li><p><code>var_del_mix_clean</code> The clean mix. If this is set to 0.0, then you'll just get the pitch changing aspect of the wave that can used for tape delay simulators, etc. </p></li>
-<li><p><code>var_del_mod_type</code> The shape of the waveform used to modulate (e.g. OSC<em>SINE, OSC</em>TRI, etc.) </p></li>
-<li><p><code>var_del_ext_mod</code> whether to use an external modulation source (set to true or false)</p></li>
+<li><code>var_del_rate_hz</code> The modulation rate in Hz </li>
+<li><code>var_del_depth</code> The modulation depth (0.0 -&gt; 1.0) </li>
+<li><code>var_del_feedback</code> The feedback from output to input (-1.0 -&gt;1.0) </li>
+<li><code>var_del_buf_size_ms</code> The size of the audio in milliseconds (start wtih a value around 30) </li>
+<li><code>var_del_mix_clean</code> The clean mix. If this is set to 0.0, then you'll just get the pitch changing aspect of the wave that can used for tape delay simulators, etc. </li>
+<li><code>var_del_mod_type</code> The shape of the waveform used to modulate (e.g. OSC<em>SINE, OSC</em>TRI, etc.) </li>
+<li><code>var_del_ext_mod</code> whether to use an external modulation source (set to true or false)</li>
 </ul>
 <h4 id="modifierenableclassfx__variable__delay_1ad40a88ff09f879bcb21a6ee55d8771e8"><em>(modifier)</em> <a href="#classfx__variable__delay_1ad40a88ff09f879bcb21a6ee55d8771e8"><code>enable</code></a><code>()</code></h4>
 <p>Enable the <strong>this_effect</strong> (it is enabled by default)</p>
@@ -1371,8 +1309,8 @@ void loop() {
 <li><code>mix_clean</code> The new clean mix value</li>
 </ul>
 <h4 id="modifierprint_paramsclassfx__variable__delay_1a69e0bdf848f4f2ab1de57a7f23fb5088void"><em>(modifier)</em> <a href="#classfx__variable__delay_1a69e0bdf848f4f2ab1de57a7f23fb5088"><code>print_params</code></a><code>(void)</code></h4>
-<p>Prints the parameters for this effect.</p>
-<p>Generated by <a href="https://sourcey.com/moxygen">Moxygen</a></p>
+<p>Prints the parameters for this effect.
+Generated by <a href="https://sourcey.com/moxygen">Moxygen</a></p>
 <h2 id="appendixbsomecbasics">Appendix B: Some C++ basics</h2>
 <p>C++ is a programming language that has been around for several decades.  While it has a lot of advanced capabilities, one only needs to learn a few basics to starting creating some amazing sounds.</p>
 <h4 id="1addingcommentstoyourcode">1. Adding comments to your code</h4>
@@ -1391,31 +1329,29 @@ This is a comment that...
 
 }
 </code></pre>
-
-      </div>
+      </article>
     </div>
   </div>
+</div>
+</div>
 
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.3.0/dist/bootstrap-toc.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
 
-    </div>
+<script>
 
-    <!-- Optional JavaScript -->
-     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-     <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.3.0/dist/bootstrap-toc.min.js"></script>
-     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
-
-     <script>
-
-document.addEventListener('DOMContentLoaded', (event) => {
-  document.querySelectorAll('pre code').forEach((block) => {
-    hljs.highlightBlock(block);
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((block) => {
+      hljs.highlightBlock(block);
+    });
   });
-});
-     </script>
+</script>
 
 
-  </body>
+</body>
 </html>
