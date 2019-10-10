@@ -126,7 +126,7 @@ void loop() {
 <p>As mentioned above, be sure the LED near the USB jack is fading in / fading out.  This means the platform is in bootloader mode and is ready to accept a new effect.  If the LED is not doing this, press the reset button twice in quick succession.</p>
 <p>Click the download button in the upper-left hand side of the Arduino IDE (it's the arrow pointing to the right).  Your code will compile and then download to the board.  Once it has downloaded, it is burned in flash and will run even if the board is power cycled.</p>
 <p>Navigate to Tools -&gt; Serial Monitor.  This will bring up the console log.  When your effect configuration is processed on the Arduino processor, some information will be sent to the console letting you know how things were routed and everything is okay.  You'll also see the telemtry data from the DSP too so you can see if any effect failed to initialize or something went wrong.</p>
-<h2 id="6thebasicsofcreatingaddingeffects">6. The basics of creating / adding effects</h2>
+<h2 id="thebasicsofcreatingaddingeffects">The basics of creating / adding effects</h2>
 <p>As you hopefully remember from 12 seconds ago, we create/declare the effects we want to use at the top of program.</p>
 <pre><code>// Create/declare one echo effect and configure it
 fx_delay   my_echo_1(1000.0, 0.7);    
@@ -154,7 +154,7 @@ fx_amplitude_mod    tremelo_2(1.0,      // Rate is 1Hz
                               OSC_TRI,  // Modulation waveform is triangle instead of sine
                               false);   // Not using an external signal as our modulator                           
 </code></pre>
-<h2 id="7thebasicsofroutingaudio">7. The basics of routing audio</h2>
+<h2 id="thebasicsofroutingaudio">The basics of routing audio</h2>
 <p>Get ready because we're going to start using the word <em>node</em> a lot.  I hope that's okay.  A node is what it sounds like: it's a <em>node</em>.  Or a point of connection.  </p>
 <h5 id="effectaudionodes">Effect audio nodes</h5>
 <p>Each effect has one or more <em>nodes</em> that can pipe audio into it or out of it.  All effects that process audio have both an <code>input</code> node and an <code>output</code> node.  Things like an envelope tracker that are just measuring an audio signal may just have an audio <code>input</code> node but no audio <code>output</code> node.  Also, some effects have additional nodes beyond <code>input</code> and <code>output</code> and this is where shit gets real.  Did you see the movie Inception?  That question will make sense eventually.  </p>
@@ -229,7 +229,7 @@ pedal.route_audio(my_mixer_2, pedal.amp_out);
 <ol start="3">
 <li>And you can't route input nodes to other input nodes, or output nodes to other output nodes.  It's always output-&gt;input.</li>
 </ol>
-<h2 id="8thebasicsofcontrollingeffects">8. The basics of controlling effects</h2>
+<h2 id="thebasicsofcontrollingeffects">The basics of controlling effects</h2>
 <p>We've been talking a lot about getting effects set up and running.  Now let's talk about how to change the proverbial knobs on the effects once they're running.</p>
 <p>Now, take a deep breath and get comfortable because this next sentence is important.  There are two ways we can control effects: 1) we can use other effects that generate control signals (like the envelope tracker) to control the parameters of other effects OR 2) we can control the parameters directly from our program.</p>
 <h5 id="option1usingeffectcontrolnodes">Option 1: Using effect control nodes</h5>
@@ -382,7 +382,7 @@ void loop() {
 <li><code>POLY_SIMPLE_1</code> - try it and see if you like it</li>
 <li><code>POLY_SIMPLE_2</code> - try it and see if you like it</li>
 </ul>
-<h3 id="apireference">API Reference</h3>
+<h1 id="appendixapireference">Appendix: API Reference</h1>
 <h1 id="summary">Summary</h1>
 <p>Members                        | Descriptions<br />
 --------------------------------|---------------------------------------------
@@ -662,10 +662,10 @@ void loop() {
 <li><p><code>signal_rectify</code> Boolean value (true or false) whether or not to rectify the output (to create a fuzz effect) </p></li>
 <li><p><code>clip_type</code> Polynomial clipping function; See <code>POLY_CLIP_FUNC</code> in Special parameters and constants</p></li>
 </ul>
-<h4 id="initializerfx_clipperclassfx__clipper_1aa0353bea38204047b0b91bdd1593fa90tresholddriveboolsignal_rectifypoly_clip_funcclip_typeboolupsample"><em>(initializer)</em> <a href="#classfx__clipper_1aa0353bea38204047b0b91bdd1593fa90"><code>fx_clipper</code></a><code>(treshold,drive,bool signal_rectify,POLY_CLIP_FUNC clip_type,bool upsample)</code></h4>
+<h4 id="initializerfx_clipperclassfx__clipper_1a6ec8c400cc0bad12964e92f1bb164b06thresholddriveboolsignal_rectifypoly_clip_funcclip_typeboolupsample"><em>(initializer)</em> <a href="#classfx__clipper_1a6ec8c400cc0bad12964e92f1bb164b06"><code>fx_clipper</code></a><code>(threshold,drive,bool signal_rectify,POLY_CLIP_FUNC clip_type,bool upsample)</code></h4>
 <p>Advanced constructor for the clipper.</p>
 <ul>
-<li><p><code>treshold</code> The clipping threshold of the distortion (typically between 0.1 and 0.5 where 1.0 is full scale audio) </p></li>
+<li><p><code>threshold</code> The clipping threshold of the distortion (typically between 0.1 and 0.5 where 1.0 is full scale audio) </p></li>
 <li><p><code>drive</code> The input drive before the polynomial clipping section </p></li>
 <li><p><code>signal_rectify</code> Boolean value (true or false) whether or not to rectify the output (to create a fuzz effect) </p></li>
 <li><p><code>clip_type</code> Polynomial clipping function; See <code>POLY_CLIP_FUNC</code> in Special parameters and constants </p></li>
@@ -689,6 +689,8 @@ void loop() {
 <p>Print the parameters for this effect.</p>
 <h1 id="classfx_compressor">class <code>fx_compressor</code></h1>
 <p>Effect: Compressor/Limiter.</p>
+<p>Here's a nice primer on how compressors work:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8nM5GsNNbyA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe>
 <p>Example:</p>
 <p>// Declare an instance of the compressor with initial values <a href="#classfx__compressor">fx_compressor</a> compy(-50.0, // Threshold to -50dB 100.0, // Ratio to 1:100 (like a limiter) 10.0, // Attack time in ms 100, // Release time in ms 3.0); // Output gain</p>
 <p>… pedal.route<em>audio(pedal.instr</em>in, compy.input); pedal.route<em>audio(compy.output, pedal.amp</em>out); if (pedal.pot<em>0.has</em>changed()) { compy.set<em>threshold(pedal.pot</em>0.val*-40.0); }</p>
@@ -775,6 +777,8 @@ void loop() {
 <p>Prints the parameters for the delay effect.</p>
 <h1 id="classfx_envelope_tracker">class<code>fx_envelope_tracker</code></h1>
 <p>Effect: Envelope tracker.</p>
+<p>Here's a nice tutorial on one effect that can be created with an envelope tracker</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gFltSCZVqx0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe>
 <h2 id="details-5">Details</h2>
 <h4 id="audio_nodeinputclassfx__envelope__tracker_1a90a1db3263c82aa7b59e7292b777bd82"><em>(audio_node)</em> <a href="#classfx__envelope__tracker_1a90a1db3263c82aa7b59e7292b777bd82"><code>input</code></a></h4>
 <h4 id="control_nodedecay_speed_msclassfx__envelope__tracker_1ae8aae7e2034e97ac804e26f7cfa9bfbe"><em>(control_node)</em> <a href="#classfx__envelope__tracker_1ae8aae7e2034e97ac804e26f7cfa9bfbe"><code>decay_speed_ms</code></a></h4>
@@ -1516,7 +1520,7 @@ void loop() {
 <h4 id="modifierprint_paramsclassfx__variable__delay_1a69e0bdf848f4f2ab1de57a7f23fb5088void"><em>(modifier)</em> <a href="#classfx__variable__delay_1a69e0bdf848f4f2ab1de57a7f23fb5088"><code>print_params</code></a><code>(void)</code></h4>
 <p>Prints the parameters for this effect.</p>
 <p>Generated by <a href="https://sourcey.com/moxygen">Moxygen</a></p>
-<h2 id="appendixbsomecbasics">Appendix B: Some C++ basics</h2>
+<h1 id="appendixsomecbasics">Appendix: Some C++ basics</h1>
 <p>C++ is a programming language that has been around for several decades.  While it has a lot of advanced capabilities, one only needs to learn a few basics to starting creating some amazing sounds.</p>
 <h4 id="1addingcommentstoyourcode">1. Adding comments to your code</h4>
 <p>It's always good to leave some comments for yourself when writing code so you can remind yourself of how things work down the road.  There are two types of comments in C++: single line comments and multi-line comments.</p>
