@@ -27,7 +27,9 @@ Programming allows us to do some cooler stuff that gets a bit tricky with some o
 #### What is that word, Arduino?
 Have you heard about **Arduino**?  If not, Arduino is this little circuit board created about 10 years ago which was designed to make programming hardware easy.  I won't bore you with the details but that shit got huge.  Now lots of people make Arduino-compatible boards (that use their simple programming software) and accessory boards with sensors and other batshit crazy stuff.
 
-So rather than learning some arcane programming language and software tools, you're using one of the easiest programming tools ever created.  And there are plenty of resources for learning and getting help out there.  Here's a great set of tutorials to get started if you're new to Arduino in general: https://www.arduino.cc/en/Tutorial/HomePage?from=Main.Tutorials.
+So rather than learning some arcane programming language and software tools, you're using one of the easiest programming tools ever created.  And there are plenty of resources for learning and getting help out there.  Here's a great set of tutorials to get started if you're new to Arduino in general: 
+
+[https://www.arduino.cc/en/Tutorial/HomePage?from=Main.Tutorials](https://www.arduino.cc/en/Tutorial/HomePage?from=Main.Tutorials)
 
 Okay, so buckle in and get ready to blow some minds.
 
