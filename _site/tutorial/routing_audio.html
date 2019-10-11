@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="/static/style.css">
+
+  <!-- add after bootstrap.min.css -->
+  <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/default.min.css">
+
+  <link rel="stylesheet" href="/dreammaker_fx/assets/css/github-markdown.css">
+
+  <title>Docs - DreamMakerFX</title>
+
+
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+
+    nav[data-toggle="toc"] {
+      top: 42px;
+    }
+
+    /* small screens */
+    @media (max-width: 768px) {
+      /* override stickyness so that the navigation does not follow scrolling */
+      nav[data-toggle="toc"] {
+        margin-bottom: 42px;
+        position: static;
+      }
+
+      /* PICK ONE */
+      /* don't expand nested items, which pushes down the rest of the page when navigating */
+      /*
+      nav[data-toggle="toc"] .nav .active .nav {
+        display: none;
+      }*/
+      /* alternatively, if you *do* want the second-level navigation to be shown (as seen on this page on mobile), use this */
+      
+      nav[data-toggle='toc'] .nav .nav {
+        display: block;
+      }
+      
+    }
+
+    h3 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
+
+  </style>
+
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+ <nav>
+
+</nav>
+
+
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <a href="/"><img src="/dreammaker_fx/assets/images/dfx_logo.png"></a>
+  <h5 class="my-0 mr-md-auto font-weight-normal"></h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+
+  
+    <a class="p-2 text-dark" href="/dreammaker_fx/" >Home</a>
+  
+    <a class="p-2 text-dark" href="/dreammaker_fx/tutorial/" >Getting Started</a>
+  
+    <a class="p-2 text-dark" href="/dreammaker_fx/browse" >Browse Examples</a>
+  
+    <a class="p-2 text-dark" href="/dreammaker_fx/docs/" >API Docs</a>
+  
+
+  </nav>
+
+</div>
+
+ 
+
+ <div class="container">
+  <h3 id="the-basics-of-routing-audio">The basics of routing audio</h3>
+
+<p>Get ready because we’re going to start using the word <em>node</em> a lot.  I hope that’s okay.  A node is what it sounds like: it’s a <em>node</em>.  Or a point of connection.</p>
+
+<h5 id="effect-audio-nodes">Effect audio nodes</h5>
+<p>Each effect has one or more <em>nodes</em> that can pipe audio into it or out of it.  All effects that process audio have both an <code class="highlighter-rouge">input</code> node and an <code class="highlighter-rouge">output</code> node.  Things like an envelope tracker that are just measuring an audio signal may just have an audio <code class="highlighter-rouge">input</code> node but no audio <code class="highlighter-rouge">output</code> node.  Also, some effects have additional nodes beyond <code class="highlighter-rouge">input</code> and <code class="highlighter-rouge">output</code> and this is where shit gets real.  Did you see the movie Inception?  That question will make sense eventually.</p>
+
+<p>Details on the nodes that each effect has can be found in Appendix A.</p>
+
+<h5 id="system-audio-nodes">System audio nodes</h5>
+<p>And the system has <em>nodes</em> for input from instrument and output to amp.</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">pedal.instr_in</code> is the input jack of the pedal.  This might blow your mind, but this is actually an output jack in the sense that it is outputting audio that we can send to the inputs of other effects.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">pedal.amp_out</code> is the output hack of the pedal.  This might blow your mind again, but this is actually an input jack in the sense that it is receiving audio from other effects (and then sending to the amp).</p>
+  </li>
+</ul>
+
+<h5 id="connecting-nodes">Connecting nodes</h5>
+<p>As we just saw in the echo example, there is a function called <code class="highlighter-rouge">route_audio</code> that we use to connect our effects to the input and output jacks of the pedal and also to each other.  The first <em>argument</em> of this function is an output node and the second <em>argument</em> is an input node.</p>
+
+<p>Let’s use it in a (programming) sentence.  In this example, we’re going to have a tremelo that then feeds into a delay.  It’ll be like having your guitar plugged into a tremelo pedal that then plugs into a delay pedal that then plugs into your amp.</p>
+
+<p>(<em>note: if it’s not yet obvious, you can call each effect you create just about whatever you want</em>).</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Create objects for these effects
+fx_amplitude_mod  happy_tremelo(1.0, 0.5);      // 1Hz rate, 0.5 depth
+fx_delay          sweet_baby_echo(1000.0, 0.7); // 1000ms, 0.7 feedback  
+
+
+void setup() {
+  pedal.init();   // Initialize the system
+
+  // Route tremelo through echo/delay effect
+  pedal.route_audio(pedal.instr_in, happy_tremelo.input);
+  pedal.route_audio(happy_tremelo.output, sweet_baby_echo.input);
+  pedal.route_audio(sweet_baby_echo.output, pedal.amp_out);
+
+  pedal.run();    // Run the effect
+}
+
+</code></pre></div></div>
+
+<p>Or let’s get more crazy.  Let’s say we have a delay pedal and each time through the delay, we’re going to pitch shift up.  So it would sound like this: ECHO Echo echo echo (where each time you say ‘echo’ you say it in a lower pitch voice).</p>
+
+<p>The fx_delay has two additional nodes called <code class="highlighter-rouge">fx_send</code> and <code class="highlighter-rouge">fx_receive</code>.  We’re going to run these through our handy-dandy pitch shifter.  For this, we’re going to use the more advanced delay setup function that allows us to pass a few additional parameters (more info in Appendix A on this):</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Create objects for these effects
+fx_delay          echoey_snail(1000.0,     // Delay length: 1000ms
+                              1000.0,     // Max delay length: 1000ms
+                              0.7,        // Feedback: 0.7
+                              1.0,        // Feedthrough: 1.0
+                              true);      // Enable delay fx loop
+fx_pitch_shift    shift_down(0.85);       // Pitch shift down 0.85 x current pitch
+
+
+void setup() {
+  pedal.init();   // Initialize the system
+
+  // input -&gt; delay -&gt; output
+  pedal.route_audio(pedal.instr_in, echoey_snail.input);
+  pedal.route_audio(echoey_snail.output, pedal.amp_out);
+
+  // Now patch in pitch shifter into delay fx loop
+  pedal.route_audio(echoey_snail.fx_send, shift_down.input);
+  pedal.route_audio(shift_down.output, echoey_snail.fx_receive);
+
+  pedal.run();    // Run the effect
+}
+
+</code></pre></div></div>
+
+<p>Pretty cool, right?</p>
+
+<h5 id="a-few-routing-rules">A few routing rules</h5>
+<p>Obey these rules to avoid humiliation and sadness:</p>
+
+<ol>
+  <li>An output node can be routed to multiple input nodes
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pedal.route_audio(pedal.instr_in, delay_1.input);
+pedal.route_audio(pedal.instr_in, delay_2.input);
+</code></pre></div>    </div>
+  </li>
+  <li>An input node can only have one input.  However, you can use the <code class="highlighter-rouge">fx_mixer</code> nodes if you want to send multiple outputs to an input.
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pedal.route_audio(delay_1.output, my_mixer_2.input_1);
+pedal.route_audio(delay_2.output, my_mixer_2.input_2);
+pedal.route_audio(my_mixer_2, pedal.amp_out);
+</code></pre></div>    </div>
+  </li>
+  <li>And you can’t route input nodes to other input nodes, or output nodes to other output nodes.  It’s always output-&gt;input.</li>
+</ol>
+
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((block) => {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+
+</body>
+</html>

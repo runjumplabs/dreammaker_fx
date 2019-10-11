@@ -1,0 +1,42 @@
+I"K<h2 id="the-basics-of-creating--adding-effects">The basics of creating / adding effects</h2>
+
+<p>As you hopefully remember from 12 seconds ago, we create/declare the effects we want to use at the top of program.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Create/declare one echo effect and configure it
+fx_delay   my_echo_1(1000.0, 0.7);    
+</code></pre></div></div>
+
+<p>The first word (which in this case is <code class="highlighter-rouge">fx_delay</code>) is the <em>type</em> of effect we want to create.  The API docs contain the complete list of the effects that are available.</p>
+
+<p>We then provide a name for our effect object (which in the example above is <code class="highlighter-rouge">my_echo_1</code>).  This needs to be a unique word with no spaces (just characters and underscores really).</p>
+
+<p>And finally, we provide the initial parameters for that effect (i.e. where the knobs are set initially).</p>
+
+<p>Appendix A has more details on the effects types and their parameters.</p>
+
+<p>What’s neat is that this <em>object</em> then becomes its own stand-alone effect.  We can create multiple objects of the same type in our program (i.e. multiple delays in this case) that each have their own parameters and which are each wired-in in their own ways.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Create/declare one echo effect and configure it
+fx_delay   my_echo_1(1000.0, 0.7);    
+fx_delay   my_echo_2(2000.0, 0.8);    // Totally legit!    
+</code></pre></div></div>
+
+<p>Just make sure each object you create/declare in your system has a unique name even if they are different effect types.  For example, don’t do this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Create/declare one echo effect and configure it
+fx_delay        ricky_bobby(1000.0, 0.7);    
+fx_pitch_shift  ricky_bobby(0.8);    // BAD! DON'T DO THIS!    
+</code></pre></div></div>
+
+<p>Oh yeah, this is important: in some cases an effect will have a few different ways you can initialize it.  Most effects have a <em>simple</em> initializer that you just need to pass one or two values to.  And, they may have a more <em>advanced</em> initializer that allows you to do ever more things with that effect. Usually the advanced initializer is a super-set of the simple initializer.</p>
+
+<p>Here’s an example of us initializing two <code class="highlighter-rouge">fx_amplitude_mod</code> objects with both the simple and advanced initializer functions:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fx_amplitude_mod    tremelo_1(1.0,     // Rate is 1Hz
+                              0.5);    // Depth is 0.5 (0-&gt;1)
+fx_amplitude_mod    tremelo_2(1.0,      // Rate is 1Hz
+                              0.5,      // Depth is 0.5 (0-&gt;1)
+                              OSC_TRI,  // Modulation waveform is triangle instead of sine
+                              false);   // Not using an external signal as our modulator                           
+</code></pre></div></div>
+:ET

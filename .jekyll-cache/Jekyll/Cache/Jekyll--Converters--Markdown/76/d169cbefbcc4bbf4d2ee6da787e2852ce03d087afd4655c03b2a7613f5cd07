@@ -1,0 +1,101 @@
+I".<p>Effects and synth code is coded in the Arduino IDE and coded in the C++ programming language.  However, one doesn’t have to be a programmer to use this platform.  The coding patterns for creating various effect and synth components, wiring them together and controlling their parameters is straight forward.</p>
+
+<h4 id="basic-arduino-anatomy">Basic Arduino anatomy</h4>
+
+<p>With the Arduino app open, go to File-&gt;New.  You’ll see a new text editor window appear with a new “sketch” (aka a program in Arduino-speak).  This sketch will come pre-populated with two <em>functions</em>. One is called <code class="highlighter-rouge">setup()</code> and another is called <code class="highlighter-rouge">loop()</code>.</p>
+
+<p>When the sketch is downloaded to our hardware, it will run any commands in the <code class="highlighter-rouge">setup()</code> function first.  And then it will run the <code class="highlighter-rouge">loop()</code> function indefinitely.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>void setup() {
+  // put your setup code here, to run once:
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+</code></pre></div></div>
+
+<p>So when creating effects, we will define how the effects connect together in the <code class="highlighter-rouge">setup()</code> function and we will then (optionally) adjust the parameters for these effects in the <code class="highlighter-rouge">loop()</code> routine.</p>
+
+<p>Let’s start by creating a simple echo effect to see how the pieces fit together.</p>
+
+<h5 id="1-add-the-effects-library-of-functions">1. Add the effects library of functions</h5>
+
+<p>At the top of the file, we’ll add a line that will link in all of the functions, variables and objects that you’ll use to create your effects.  At the very top of the file, add <code class="highlighter-rouge">#include "dm_fx.h"</code>.  You’ll add this line to the top of every Arduino sketch you create for this platform.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Include DreamMaker FX library of effects routines
+#include "dm_fx.h"
+</code></pre></div></div>
+
+<h5 id="2-add-any-effects-or-synthesis-objects">2. Add any effects or synthesis <em>objects</em></h5>
+
+<p>Above the setup routine, we will add (aka <em>declare</em>) any effect and synth <em>objects</em> that we’ll be using.  When we add an object, in many cases we will also provide the initial parameters.</p>
+
+<p>In this case, we are going to create a single echo / delay effect object and name it <code class="highlighter-rouge">my_echo_1</code>.  When we initialize an echo object, it takes two <em>arguments</em> or initial parameters.  The first is how long the echo is in milliseconds (1000th of a second).  And the second is the <em>feedback</em> ratio (between 0.0 and 1.0) which determines how much audio is fed back into the echo and thus how long the echo lasts.  If feedback is set to 1.0, it will echo forever.  And if feedback is set to 0.0, it won’t echo at all.  Let’s set the echo length to be 1 second (or 1000 milliseconds) and the feedback ratio at 0.7.</p>
+
+<p>Add the following code after your <code class="highlighter-rouge">#include "dm_fx.h"</code> line.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Create/declare one echo effect and configure it
+fx_delay   my_echo_1(1000.0,  // 1 second echo
+                     0.7);    // 0.7 feedback ratio
+</code></pre></div></div>
+
+<h5 id="3-route-the-effect-into-our-pedal">3. Route the effect into our pedal</h5>
+
+<p>Next, in the <code class="highlighter-rouge">setup()</code> routine, we need to initialize our effects <code class="highlighter-rouge">pedal</code> and route the audio from the pedal in and out jacks through the various effects and synth objects we’re using.  In this case, we just have one object.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>void setup() {
+
+  pedal.init();   // Initialize the system
+
+  // Connect our effect(s) to input and output jacks
+  pedal.route_audio(pedal.instr_in, my_echo_1.input);
+  pedal.route_audio(my_echo_1.output, pedal.amp_out);
+
+  pedal.run();    // Run the effect
+
+}
+</code></pre></div></div>
+
+<p>Let’s deconstruct what we just did here.</p>
+
+<p>First, we <em>called</em> the <code class="highlighter-rouge">pedal.init();</code> function to set up our system.</p>
+
+<p>Next, we connected the audio from the input jack of our pedal (aka <code class="highlighter-rouge">instr_in</code>) to the input of our echo object (aka <code class="highlighter-rouge">my_echo_1.input</code>) using the <code class="highlighter-rouge">route_audio()</code> function.</p>
+
+<p>After this, we connected the output of our echo object (aka <code class="highlighter-rouge">my_echo_1.output</code>) to the amp_out jack (aka <code class="highlighter-rouge">amp_out</code>) of our pedal.</p>
+
+<p>And finally, we call <code class="highlighter-rouge">pedal.run();</code> which takes our effect configuration, performs the magic, sends it over to the DSP where the effects are run.</p>
+
+<p>Let’s now look at the whole echo effect:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Include our library of effects routines
+#include "dm_fx.h"
+
+// Create/declare one echo effect and configure it
+fx_delay   my_echo_1(1000.0,  // 1 second echo
+                     0.7);    // 0.7 feedback ratio
+
+void setup() {
+
+  pedal.init();   // Initialize the system
+
+  // Connect our effect(s) to input and output jacks
+  pedal.route_audio(pedal.instr_in, my_echo_1.input);
+  pedal.route_audio(my_echo_1.output, pedal.amp_out);
+
+  pedal.run();    // Run the effect
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+  // sweet nothings to/from DSP
+  pedal.service();
+}
+
+</code></pre></div></div>
+:ET

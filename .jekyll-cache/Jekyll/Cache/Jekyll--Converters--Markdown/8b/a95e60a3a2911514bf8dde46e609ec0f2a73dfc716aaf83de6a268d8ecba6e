@@ -1,0 +1,78 @@
+I"�<p>Let’s start by creating a simple echo effect to see how the pieces fit together.</p>
+
+<h5 id="add-the-effects-library-of-functions">Add the effects library of functions</h5>
+
+<p>At the top of the file, we’ll add a line that will link in all of the functions, variables and objects that you’ll use to create your effects.  At the very top of the file, add <code class="highlighter-rouge">#include "dm_fx.h"</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Include our library of effects routines
+#include "dm_fx.h"
+</code></pre></div></div>
+
+<h5 id="add-any-effects-or-synthesis-objects">Add any effects or synthesis objects</h5>
+
+<p>Above the setup routine, we will add (aka <em>declare</em>) any effect and synth <em>objects</em> that we’ll be using.  When we add an object, we will also provide the initial parameters.  You’ll add this line to the top of every Arduino sketch you create.</p>
+
+<p>In this case, we are going to create a single echo / delay effect object and name it <code class="highlighter-rouge">my_echo_1</code>.  When we initialize an echo object, it takes two <em>arguments</em>.  The first is how long the echo is in milliseconds (1000th of a second).  And the second is the <em>feedback</em> ratio (between 0.0 and 1.0) which determines how much audio is fed back into the echo and thus how long the echo lasts.  If feedback is set to 1.0, it will echo forever.  And if feedback is set to 0.0, it won’t echo at all.  Let’s set the echo length to be 1 second (or 1000 milliseconds) and the feedback ratio at 0.7.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Create/declare one echo effect and configure it
+fx_delay   my_echo_1(1000.0,  // 1 second echo
+                     0.7);    // 0.7 feedback ratio
+</code></pre></div></div>
+
+<h5 id="route-the-effect-into-our-pedal">Route the effect into our pedal</h5>
+
+<p>Next, in the <code class="highlighter-rouge">setup()</code> routine, we need to initialize our effects <code class="highlighter-rouge">pedal</code> and route the audio from the pedal in and out jacks through the various effects and synth objects we’re using.  In this case, we just have one object.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>void setup() {
+
+  pedal.init();   // Initialize the system
+
+  // Connect our effect(s) to input and output jacks
+  pedal.route_audio(pedal.instr_in, my_echo_1.input);
+  pedal.route_audio(my_echo_1.output, pedal.amp_out);
+
+  pedal.run();    // Run the effect
+
+}
+</code></pre></div></div>
+
+<p>Let’s deconstruct what we just did here.</p>
+
+<p>First, we <em>called</em> the <code class="highlighter-rouge">pedal.init();</code> function to set up our system.</p>
+
+<p>Next, we connected the audio from the input jack of our pedal (aka <code class="highlighter-rouge">instr_in</code>) to the input of our echo object (aka <code class="highlighter-rouge">my_echo_1.input</code>) using the <code class="highlighter-rouge">route_audio()</code> function.</p>
+
+<p>After this, we connected the output of our echo object (aka <code class="highlighter-rouge">my_echo_1.output</code>) to the amp_out jack (aka <code class="highlighter-rouge">amp_out</code>) of our pedal.</p>
+
+<p>And finally, we call <code class="highlighter-rouge">pedal.run();</code> which takes our effect configuration, performs the magic, sends it over to the DSP where the effects are run.</p>
+
+<p>Let’s now look at the whole echo effect:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Include our library of effects routines
+#include "dm_fx.h"
+
+// Create/declare one echo effect and configure it
+fx_delay   my_echo_1(1000.0,  // 1 second echo
+                     0.7);    // 0.7 feedback ratio
+
+void setup() {
+
+  pedal.init();   // Initialize the system
+
+  // Connect our effect(s) to input and output jacks
+  pedal.route_audio(pedal.instr_in, my_echo_1.input);
+  pedal.route_audio(my_echo_1.output, pedal.amp_out);
+
+  pedal.run();    // Run the effect
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+  // sweet nothings to/from DSP
+  pedal.service();
+}
+
+</code></pre></div></div>
+:ET

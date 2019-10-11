@@ -3,6 +3,8 @@ production_url : https://runjumplabs.github.io/dreammaker_fx
 
 include: ['docs/']
 
+markdown: kramdown
+
 collections:
   effect_types:
     output: true
