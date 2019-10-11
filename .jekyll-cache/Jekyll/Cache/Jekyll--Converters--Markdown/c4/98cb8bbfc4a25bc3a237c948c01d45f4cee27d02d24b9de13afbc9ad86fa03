@@ -1,97 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link href="/static/style.css">
-
-  <!-- add after bootstrap.min.css -->
-  <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css" />
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/default.min.css">
-
-  <link rel="stylesheet" href="/dreammaker_fx/assets/css/github-markdown.css">
-
-  <title>Docs - DreamMakerFX</title>
-
-
-  <style>
-    .markdown-body {
-      box-sizing: border-box;
-      min-width: 200px;
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 45px;
-    }
-
-    nav[data-toggle="toc"] {
-      top: 42px;
-    }
-
-    /* small screens */
-    @media (max-width: 768px) {
-      /* override stickyness so that the navigation does not follow scrolling */
-      nav[data-toggle="toc"] {
-        margin-bottom: 42px;
-        position: static;
-      }
-
-      /* PICK ONE */
-      /* don't expand nested items, which pushes down the rest of the page when navigating */
-      /*
-      nav[data-toggle="toc"] .nav .active .nav {
-        display: none;
-      }*/
-      /* alternatively, if you *do* want the second-level navigation to be shown (as seen on this page on mobile), use this */
-      
-      nav[data-toggle='toc'] .nav .nav {
-        display: block;
-      }
-      
-    }
-
-    h3 {
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 10px;
-    }
-
-  </style>
-
-</head>
-
-<body data-spy="scroll" data-target="#toc">
- <nav>
-
-</nav>
-
-
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-  <a href="/"><img src="/dreammaker_fx/assets/images/dfx_logo.png"></a>
-  <h5 class="my-0 mr-md-auto font-weight-normal"></h5>
-  <nav class="my-2 my-md-0 mr-md-3">
-
-  
-    <a class="p-2 text-dark" href="/dreammaker_fx/" >Home</a>
-  
-    <a class="p-2 text-dark" href="/dreammaker_fx/tutorial/" >Getting Started</a>
-  
-    <a class="p-2 text-dark" href="/dreammaker_fx/browse" >Browse Examples</a>
-  
-    <a class="p-2 text-dark" href="/dreammaker_fx/docs/" >API Docs</a>
-  
-
-  </nav>
-
-</div>
-
- 
-
- <div class="container">
-  <h3 id="using-the-api">Using the API</h3>
+I"B5<h3 id="using-the-api">Using the API</h3>
 
 <p>There is an ever-growing list of effects and synth objects that can be routed and controlled in very interesting and novel ways.  These building blocks can be routed together and novel ways.  And, some building blocks and control the parameters of other building blocks.</p>
 
@@ -172,26 +79,122 @@
   <li><code class="highlighter-rouge">POLY_SIMPLE_2</code> - try it and see if you like it</li>
 </ul>
 
-
-</div>
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
-
-<script>
-
-  document.addEventListener('DOMContentLoaded', (event) => {
-    document.querySelectorAll('pre code').forEach((block) => {
-      hljs.highlightBlock(block);
-    });
-  });
-</script>
-
-
-</body>
-</html>
+<table>
+  <thead>
+    <tr>
+      <th>Members</th>
+      <th>Descriptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__amplitude__mod"><code class="highlighter-rouge">fx_amplitude_mod</code></a></td>
+      <td>Effect: Amplitude modulator for creating tremelo-like effects.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__audio__node"><code class="highlighter-rouge">fx_audio_node</code></a></td>
+      <td>Class for effects audio node.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__biquad__filter"><code class="highlighter-rouge">fx_biquad_filter</code></a></td>
+      <td>Effect: Biquad filter for implementing various types of filters (low pass, high pass, band pass, etc.)</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__canvas"><code class="highlighter-rouge">fx_canvas</code></a></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__clipper"><code class="highlighter-rouge">fx_clipper</code></a></td>
+      <td>Effect: Clipper - provides various types of hard and soft clippers for creating different types of distortions.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__compressor"><code class="highlighter-rouge">fx_compressor</code></a></td>
+      <td>Effect: Compressor/Limiter.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__control__node"><code class="highlighter-rouge">fx_control_node</code></a></td>
+      <td>Class for effects control node.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__delay"><code class="highlighter-rouge">fx_delay</code></a></td>
+      <td>Effect: Delay/echo.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__effect"><code class="highlighter-rouge">fx_effect</code></a></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__envelope__tracker"><code class="highlighter-rouge">fx_envelope_tracker</code></a></td>
+      <td>Effect: Envelope tracker.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__gain"><code class="highlighter-rouge">fx_gain</code></a></td>
+      <td>Effect: Gain - used to increase or decrease the volume of an audio signal.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__instr__synth"><code class="highlighter-rouge">fx_instr_synth</code></a></td>
+      <td>Effect: Instrument synth - your basic guitar/bass synth.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__looper"><code class="highlighter-rouge">fx_looper</code></a></td>
+      <td>Effect: Looper - capture and playback loops.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__mixer__2"><code class="highlighter-rouge">fx_mixer_2</code></a></td>
+      <td>Utility: 2 channel mixer.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__mixer__3"><code class="highlighter-rouge">fx_mixer_3</code></a></td>
+      <td>Utility: 3 channel mixer.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__mixer__4"><code class="highlighter-rouge">fx_mixer_4</code></a></td>
+      <td>Utility: 4 channel mixer.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__oscillator"><code class="highlighter-rouge">fx_oscillator</code></a></td>
+      <td>Utility: Oscillator that can has both audio and control outputs.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__phase__shifter"><code class="highlighter-rouge">fx_phase_shifter</code></a></td>
+      <td>Effect: Phase shifter for creating rich phase shifts.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__pitch__shift"><code class="highlighter-rouge">fx_pitch_shift</code></a></td>
+      <td>Effect: Pitch shifter - shifts audio up or down in pitch.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__pot__buddy"><code class="highlighter-rouge">fx_pot_buddy</code></a></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__ring__mod"><code class="highlighter-rouge">fx_ring_mod</code></a></td>
+      <td>Effect: Ring modulator - frequency modulates the audio - crazy sounding.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__shaper"><code class="highlighter-rouge">fx_shaper</code></a></td>
+      <td>Effect: Slicer - chops up audio in the time domain and pipes to different effects.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__slicer"><code class="highlighter-rouge">fx_slicer</code></a></td>
+      <td>Effect: Slicer - chops up audio in the time domain and pipes to different effects.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">class </code><a href="#classfx__variable__delay"><code class="highlighter-rouge">fx_variable_delay</code></a></td>
+      <td>Effect: Variable delay - foundational block of flangers and choruses.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">struct </code><a href="#structAUDIO__ROUTE"><code class="highlighter-rouge">AUDIO_ROUTE</code></a></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">struct </code><a href="#structCTRL__ROUTE"><code class="highlighter-rouge">CTRL_ROUTE</code></a></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">struct </code><a href="#structDSP__STATUS"><code class="highlighter-rouge">DSP_STATUS</code></a></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+:ET

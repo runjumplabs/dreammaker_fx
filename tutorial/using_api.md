@@ -69,3 +69,4 @@ Some objects take inputs that aren't numbers but rather a constant that is chose
   * `POLY_SMOOTHERSTEP` - try it and see if you like it
   * `POLY_SIMPLE_1` - try it and see if you like it
   * `POLY_SIMPLE_2` - try it and see if you like it
+
