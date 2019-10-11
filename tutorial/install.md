@@ -16,7 +16,7 @@ First order of business, let's go download some free software and get rolling.
  - Scroll down and you should see a link to DreamMaker FX by Run Jump Labs.  Click Install!  
  - You are now ready to rock!
 
-The setup process is very similar to Adafruit boards which use the same Arduino processor (Atmel SAMD51 family).  This page may offer some additional help [https://learn.adafruit.com/adafruit-metro-m4-express-featuring-atsamd51/setup]. 
+The setup process is very similar to Adafruit boards which use the same Arduino processor (Atmel SAMD51 family).  This page may offer some additional help [https://learn.adafruit.com/adafruit-metro-m4-express-featuring-atsamd51/setup](https://learn.adafruit.com/adafruit-metro-m4-express-featuring-atsamd51/setup). 
 
 
 ### Getting the Hardware Connected
