@@ -19,7 +19,7 @@ First order of business, let's go download some free software and get rolling.
 The setup process is very similar to Adafruit boards which use the same Arduino processor (Atmel SAMD51 family).  This page may offer some additional help [https://learn.adafruit.com/adafruit-metro-m4-express-featuring-atsamd51/setup]. 
 
 
-## Getting the Hardware Connected
+### Getting the Hardware Connected
 
 The DreamMaker FX hardware is not USB powered so you'll need to plug it into the wall using the included wall-wart.
 
