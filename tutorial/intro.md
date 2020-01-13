@@ -6,9 +6,9 @@ title: Docs
 # Introduction 
 ------
 
-Welcome the DreamMaker FX!  This is an audio platform that makes it very easy to create powerful and unique instrument effects.\s\s
+Welcome the DreamMaker FX!  This is an audio platform that makes it very easy to create powerful and unique instrument effects.  
 
-It is designed to be accesible for experienced programmers and those who have done no programming.   
+It is designed to be accesible for experienced programmers and those who have done no programming.  
 
 At its core, this platform is a microprocessor that connects to a powerful SHARC DSP.  We program the microprocessor using Arduino tools making it very easy.
 
