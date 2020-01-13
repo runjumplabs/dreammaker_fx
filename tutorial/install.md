@@ -5,7 +5,7 @@ title: Docs
 
 
 # Installing the Arduino tools
-======
+------
 
 The DreamMaker FX hardware currently supports Windows 10, OS X, and probably Linux.  If you're running Windows 7, there are a few additional steps that are required to get the UF2 USB device drivers installed.  
 
@@ -21,7 +21,7 @@ The setup process is very similar to Adafruit boards which use the same Arduino 
 
 
 # Getting the Hardware Connected
-======
+------
 
 
 The DreamMaker FX hardware is not USB powered so you'll need to plug it into the wall using the included wall-wart.
