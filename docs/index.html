@@ -17,9 +17,9 @@ title: Docs
 <li><code>class</code><a href="#classfx__amplitude__mod"><code>fx_amplitude_mod</code></a> | Effect: Amplitude modulator for creating tremelo-like effects.</li>
 <li><code>class</code><a href="#classfx__audio__node"><code>fx_audio_node</code></a> | Class for effects audio node.</li>
 <li><code>class</code><a href="#classfx__biquad__filter"><code>fx_biquad_filter</code></a> | Effect: Biquad filter for implementing various types of filters (low pass, high pass, band pass, etc.)</li>
-<li>* <code>class</code><a href="#classfx__clipper"><code>fx_clipper</code></a> | Effect: Clipper - provides various types of hard and soft clippers for creating different types of distortions.</li>
-<li><code>class</code><a href="#classfx__compressor"><code>fx_compressor</code></a> | Effect: Compressor/Limiter.</li>
+<li>* <code>class</code><a href="#classfx__compressor"><code>fx_compressor</code></a> | Effect: Compressor/Limiter.</li>
 <li>* <code>class</code><a href="#classfx__delay"><code>fx_delay</code></a> | Effect: Delay/echo.</li>
+<li><code>class</code><a href="#classfx__destructor"><code>fx_destructor</code></a> | Effect: Destructor - provides various types of hard and soft destructors for creating different types of distortions.</li>
 <li>* <code>class</code><a href="#classfx__envelope__tracker"><code>fx_envelope_tracker</code></a> | Effect: Envelope tracker.</li>
 <li><code>class</code><a href="#classfx__gain"><code>fx_gain</code></a> | Effect: Gain - used to increase or decrease the volume of an audio signal.</li>
 <li><code>class</code><a href="#classfx__instr__synth"><code>fx_instr_synth</code></a> | Effect: Instrument synth - your basic guitar/bass synth.</li>
@@ -27,11 +27,11 @@ title: Docs
 <li><code>class</code><a href="#classfx__mixer__2"><code>fx_mixer_2</code></a> | Utility: 2 channel mixer.</li>
 <li><code>class</code><a href="#classfx__mixer__3"><code>fx_mixer_3</code></a> | Utility: 3 channel mixer.</li>
 <li><code>class</code><a href="#classfx__mixer__4"><code>fx_mixer_4</code></a> | Utility: 4 channel mixer.</li>
+<li><code>class</code><a href="#classfx__octave"><code>fx_octave</code></a> | Effect: - chops up audio in the time domain and pipes to different effects.</li>
 <li><code>class</code><a href="#classfx__oscillator"><code>fx_oscillator</code></a> | Utility: Oscillator that can has both audio and control outputs.</li>
 <li><code>class</code><a href="#classfx__phase__shifter"><code>fx_phase_shifter</code></a> | Effect: Phase shifter for creating rich phase shifts.</li>
 <li><code>class</code><a href="#classfx__pitch__shift"><code>fx_pitch_shift</code></a> | Effect: Pitch shifter - shifts audio up or down in pitch.</li>
 <li>* <code>class</code><a href="#classfx__ring__mod"><code>fx_ring_mod</code></a> | Effect: Ring modulator - frequency modulates the audio - crazy sounding.</li>
-<li><code>class</code><a href="#classfx__shaper"><code>fx_shaper</code></a> | Effect: Slicer - chops up audio in the time domain and pipes to different effects.</li>
 <li><code>class</code><a href="#classfx__slicer"><code>fx_slicer</code></a> | Effect: Slicer - chops up audio in the time domain and pipes to different effects.</li>
 <li><code>class</code><a href="#classfx__variable__delay"><code>fx_variable_delay</code></a> | Effect: Variable delay - foundational block of flangers and choruses.</li>
 <li>*  * <code>struct</code><a href="#structDSP__STATUS"><code>DSP_STATUS</code></a> | </li>
@@ -43,7 +43,7 @@ title: Docs
 <p><a href="https://www.youtube.com/watch?v=AxZVMyIFqcA">https://www.youtube.com/watch?v=AxZVMyIFqcA</a></p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/AxZVMyIFqcA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe>
 <p>Example: </p>
-<pre><code>#include "dm_fx.h"
+<pre><code>#include &lt;dreammakerfx.h&gt;
 
 fx_amplitude_mod  tremelo1(0.5,    // Rate in Hz
                            0.7);  // Depth 
@@ -137,21 +137,39 @@ void loop() {
 <p>Control routing node: width of the filter</p>
 <h4 id="control_nodegainclassfx__biquad__filter_1a76aa6221915b88905f3b45f1cc0f7929"><em>(control_node)</em> <a href="#classfx__biquad__filter_1a76aa6221915b88905f3b45f1cc0f7929"><code>gain</code></a></h4>
 <p>Control routing node: gain of the filter (used in shelving filters)</p>
-<h4 id="initializerfx_biquad_filterclassfx__biquad__filter_1a1403541bb51773482c8b221dc82969e1filt_freqbiquad_filter_widthfilt_widthbiquad_filter_typefilt_type"><em>(initializer)</em> <a href="#classfx__biquad__filter_1a1403541bb51773482c8b221dc82969e1"><code>fx_biquad_filter</code></a><code>(filt_freq,BIQUAD_FILTER_WIDTH filt_width,BIQUAD_FILTER_TYPE filt_type)</code></h4>
+<h4 id="initializerfx_biquad_filterclassfx__biquad__filter_1aea807f35dde115fe6897cf96900d2926filt_freqfilt_resonancebiquad_filter_typefilt_type"><em>(initializer)</em> <a href="#classfx__biquad__filter_1aea807f35dde115fe6897cf96900d2926"><code>fx_biquad_filter</code></a><code>(filt_freq,filt_resonance,BIQUAD_FILTER_TYPE filt_type)</code></h4>
 <p>Basic constructor for biquad filter.</p>
 <ul>
 <li><p><code>filt_freq</code> The filter critical/cutoff frequency </p></li>
-<li><p><code>filt_width</code> The filter width, see BIQUAD<em>FILTER</em>WIDTH for options </p></li>
+<li><p><code>filt_resonance</code> The filter resonance, 1.0 is standard resonance, &gt; 1.0 is more resonant, &lt; 1.0 is less resonant </p></li>
 <li><p><code>filt_type</code> The filter type, see BIQUAD<em>FILTER</em>TYPE for options</p></li>
 </ul>
-<h4 id="initializerfx_biquad_filterclassfx__biquad__filter_1ae9b661ee241ea12c78f37fd5cd30ea89filt_freqfilt_widthfilter_gainbiquad_filter_typefilt_typeeffect_transition_speedtrans_speed"><em>(initializer)</em> <a href="#classfx__biquad__filter_1ae9b661ee241ea12c78f37fd5cd30ea89"><code>fx_biquad_filter</code></a><code>(filt_freq,filt_width,filter_gain,BIQUAD_FILTER_TYPE filt_type,EFFECT_TRANSITION_SPEED trans_speed)</code></h4>
+<h4 id="initializerfx_biquad_filterclassfx__biquad__filter_1a05c86bf75f906d74fb22d00c42f858e7filt_freqfilt_resonancebiquad_filter_typefilt_typebiquad_filter_orderorder"><em>(initializer)</em> <a href="#classfx__biquad__filter_1a05c86bf75f906d74fb22d00c42f858e7"><code>fx_biquad_filter</code></a><code>(filt_freq,filt_resonance,BIQUAD_FILTER_TYPE filt_type,BIQUAD_FILTER_ORDER order)</code></h4>
+<p>Basic constructor for biquad filter.</p>
+<ul>
+<li><p><code>filt_freq</code> The filter critical/cutoff frequency </p></li>
+<li><p><code>filt_resonance</code> The filter resonance, 1.0 is standard resonance, &gt; 1.0 is more resonant, &lt; 1.0 is less resonant </p></li>
+<li><p><code>filt_type</code> The filter type, see BIQUAD<em>FILTER</em>TYPE for options </p></li>
+<li><p><code>order</code> The order of the filter (higher = tighter)</p></li>
+</ul>
+<h4 id="initializerfx_biquad_filterclassfx__biquad__filter_1ae0b02c6616a737417bb0037cab6af05cfilt_freqfilt_resonancefilter_gainbiquad_filter_typefilt_typeeffect_transition_speedtrans_speed"><em>(initializer)</em> <a href="#classfx__biquad__filter_1ae0b02c6616a737417bb0037cab6af05c"><code>fx_biquad_filter</code></a><code>(filt_freq,filt_resonance,filter_gain,BIQUAD_FILTER_TYPE filt_type,EFFECT_TRANSITION_SPEED trans_speed)</code></h4>
+<p>Advanced constructor for biquad filter.</p>
+<ul>
+<li><p><code>filt_freq</code> The filter critical/cutoff frequency </p></li>
+<li><p><code>filt_resonance</code> The filter resonance, 1.0 is standard resonance, &gt; 1.0 is more resonant, &lt; 1.0 is less resonant </p></li>
+<li><p><code>filter_gain</code> The filter gain in dB </p></li>
+<li><p><code>filt_type</code> The filter type, see BIQUAD<em>FILTER</em>TYPE for options </p></li>
+<li><p><code>trans_speed</code> The transaction speed when new filter parameters are suppliued, see EFFECT<em>TRANSITION</em>SPEED for options</p></li>
+</ul>
+<h4 id="initializerfx_biquad_filterclassfx__biquad__filter_1a811e9ea2343ba6c147b70691a334cfe0filt_freqfilt_widthfilter_gainbiquad_filter_typefilt_typeeffect_transition_speedtrans_speedbiquad_filter_orderorder"><em>(initializer)</em> <a href="#classfx__biquad__filter_1a811e9ea2343ba6c147b70691a334cfe0"><code>fx_biquad_filter</code></a><code>(filt_freq,filt_width,filter_gain,BIQUAD_FILTER_TYPE filt_type,EFFECT_TRANSITION_SPEED trans_speed,BIQUAD_FILTER_ORDER order)</code></h4>
 <p>Advanced constructor for biquad filter.</p>
 <ul>
 <li><p><code>filt_freq</code> The filter critical/cutoff frequency </p></li>
 <li><p><code>filt_width</code> The filter Q factor </p></li>
 <li><p><code>filter_gain</code> The filter gain in dB </p></li>
 <li><p><code>filt_type</code> The filter type, see BIQUAD<em>FILTER</em>TYPE for options </p></li>
-<li><p><code>trans_speed</code> The transaction speed when new filter parameters are suppliued, see EFFECT<em>TRANSITION</em>SPEED for options</p></li>
+<li><p><code>trans_speed</code> The transaction speed when new filter parameters are suppliued, see EFFECT<em>TRANSITION</em>SPEED for options </p></li>
+<li><p><code>order</code> The order of the filter (higher = tighter)</p></li>
 </ul>
 <h4 id="modifierenableclassfx__biquad__filter_1aaf296f748135cba4ec2dcb8eb72ae229"><em>(modifier)</em> <a href="#classfx__biquad__filter_1aaf296f748135cba4ec2dcb8eb72ae229"><code>enable</code></a><code>()</code></h4>
 <p>Enable the biquad filter (it is enabled by default)</p>
@@ -174,8 +192,131 @@ void loop() {
 </ul>
 <h4 id="modifierprint_paramsclassfx__biquad__filter_1a50f5ec518d1656ebcc3bde26b2735a75void"><em>(modifier)</em> <a href="#classfx__biquad__filter_1a50f5ec518d1656ebcc3bde26b2735a75"><code>print_params</code></a><code>(void)</code></h4>
 <p>Print the parameters for this effect.</p>
-<h1 id="classfx_clipper">class<code>fx_clipper</code></h1>
-<p>Effect: Clipper - provides various types of hard and soft clippers for creating different types of distortions.</p>
+<h1 id="classfx_compressor">class<code>fx_compressor</code></h1>
+<p>Effect: Compressor/Limiter.</p>
+<p>Here's a nice primer on how compressors work:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8nM5GsNNbyA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe>
+<p>Example: </p>
+<pre><code>#include "dm_fx.h"
+
+// Declare an instance of the compressor with initial values
+fx_compressor compy(-50.0,             // Threshold to -50dB
+                    100.0,         // Ratio to 1:100 (like a limiter)
+                    10.0,             // Attack time in ms
+                    100,             // Release time in ms
+                    3.0);            // Output gain
+
+void setup() {
+
+  // Init the effects system
+  pedal.init();                           
+
+  pedal.route_audio(pedal.instr_in, compy.input);
+  pedal.route_audio(compy.output, pedal.amp_out);
+
+  // Run this effect
+  pedal.run();                           
+
+}
+
+
+void loop() {
+
+  if (pedal.pot_0.has_changed()) {
+      compy.set_threshold(pedal.pot_0.val * (-40.0));
+  }
+
+  if (pedal.pot_1.has_changed()) {
+      compy.set_ratio(pedal.pot_1.val * 100.0); 
+  }  
+
+  if (pedal.pot_2.has_changed()) {
+      compy.set_output_gain(pedal.pot_2.val * 4.0);
+  }  
+
+  // Service 
+  pedal.service();
+}
+</code></pre>
+<h2 id="details-2">Details</h2>
+<h4 id="audio_nodeinputclassfx__compressor_1a2c22d60ca1e0c7e6f2c45f3e8e8dd437"><em>(audio_node)</em> <a href="#classfx__compressor_1a2c22d60ca1e0c7e6f2c45f3e8e8dd437"><code>input</code></a></h4>
+<p>Audio routing node: primary audio input</p>
+<h4 id="audio_nodeoutputclassfx__compressor_1a35ca7aaa8bbe1c70112fe9069d35b3d6"><em>(audio_node)</em> <a href="#classfx__compressor_1a35ca7aaa8bbe1c70112fe9069d35b3d6"><code>output</code></a></h4>
+<p>Audio routing node: primary audio output</p>
+<h4 id="control_nodethresholdclassfx__compressor_1a42928cf2614b69066cd1ed73d21d80f1"><em>(control_node)</em> <a href="#classfx__compressor_1a42928cf2614b69066cd1ed73d21d80f1"><code>threshold</code></a></h4>
+<p>Control routing node [input]: Compressor/limiter threshold in dB (i.e. -30.0)</p>
+<h4 id="control_noderatioclassfx__compressor_1a15fecdddd6b8410d5ae03779651c0fcf"><em>(control_node)</em> <a href="#classfx__compressor_1a15fecdddd6b8410d5ae03779651c0fcf"><code>ratio</code></a></h4>
+<p>Control routing node [input]: Compressor/limiter compression ratio (a value of 100.0 would be a ratio of 1:100)</p>
+<h4 id="control_nodeattackclassfx__compressor_1afb966172a248750454f3480bb9d488b7"><em>(control_node)</em> <a href="#classfx__compressor_1afb966172a248750454f3480bb9d488b7"><code>attack</code></a></h4>
+<p>Control routing node [input]: Compressor/limiter attack rate in milliseconds</p>
+<h4 id="control_nodereleaseclassfx__compressor_1a1197bdfd89e0d4bb9a184a56f40e834e"><em>(control_node)</em> <a href="#classfx__compressor_1a1197bdfd89e0d4bb9a184a56f40e834e"><code>release</code></a></h4>
+<p>Control routing node [input]: Compressor/limiter release rate in milliseconds</p>
+<h4 id="control_nodeout_gainclassfx__compressor_1ae7a36bbef9491c451d94d11ff973b1e4"><em>(control_node)</em> <a href="#classfx__compressor_1ae7a36bbef9491c451d94d11ff973b1e4"><code>out_gain</code></a></h4>
+<p>Control routing node [input]: Compressor/limiter output gain (linear value so a value of 2.0 would double the signal amplitude)</p>
+<h4 id="initializerfx_compressorclassfx__compressor_1a74243ee589778514f32e7b71c30e9ce4threshratioattackreleasegain_out"><em>(initializer)</em> <a href="#classfx__compressor_1a74243ee589778514f32e7b71c30e9ce4"><code>fx_compressor</code></a><code>(thresh,ratio,attack,release,gain_out)</code></h4>
+<h4 id="modifierenableclassfx__compressor_1aeba0ed24a0ef7b44fe98a0e23137b638"><em>(modifier)</em> <a href="#classfx__compressor_1aeba0ed24a0ef7b44fe98a0e23137b638"><code>enable</code></a><code>()</code></h4>
+<p>Enable the <strong>this_effect</strong> (it is enabled by default)</p>
+<h4 id="modifierbypassclassfx__compressor_1ada718d7f67f7ad3632e3ff938cd52fdc"><em>(modifier)</em> <a href="#classfx__compressor_1ada718d7f67f7ad3632e3ff938cd52fdc"><code>bypass</code></a><code>()</code></h4>
+<p>Bypass the <strong>this_effect</strong> (will just pass clean audio through)</p>
+<h4 id="modifierset_thresholdclassfx__compressor_1a4f31a53de17275b2c2e28c285c38a363threshold"><em>(modifier)</em> <a href="#classfx__compressor_1a4f31a53de17275b2c2e28c285c38a363"><code>set_threshold</code></a><code>(threshold)</code></h4>
+<h4 id="modifierset_ratioclassfx__compressor_1a3c369e147e311baeff7e519bfb9f1040ratio"><em>(modifier)</em> <a href="#classfx__compressor_1a3c369e147e311baeff7e519bfb9f1040"><code>set_ratio</code></a><code>(ratio)</code></h4>
+<h4 id="modifierset_attackclassfx__compressor_1a88b69c8c2e6bd7d73ef18f883027102aattack"><em>(modifier)</em> <a href="#classfx__compressor_1a88b69c8c2e6bd7d73ef18f883027102a"><code>set_attack</code></a><code>(attack)</code></h4>
+<h4 id="modifierset_releaseclassfx__compressor_1aa7c6b0dad11f29b33c307639e9d0781arelease"><em>(modifier)</em> <a href="#classfx__compressor_1aa7c6b0dad11f29b33c307639e9d0781a"><code>set_release</code></a><code>(release)</code></h4>
+<h4 id="modifierset_output_gainclassfx__compressor_1a475a80b206024c87f6a38c4bf898d6f6gain_out"><em>(modifier)</em> <a href="#classfx__compressor_1a475a80b206024c87f6a38c4bf898d6f6"><code>set_output_gain</code></a><code>(gain_out)</code></h4>
+<h4 id="modifierprint_paramsclassfx__compressor_1aae183cb59a7d0299438a65196d91b213void"><em>(modifier)</em> <a href="#classfx__compressor_1aae183cb59a7d0299438a65196d91b213"><code>print_params</code></a><code>(void)</code></h4>
+<h1 id="classfx_delay">class<code>fx_delay</code></h1>
+<p>Effect: Delay/echo.</p>
+<p>This is basically an echo effect.</p>
+<p>Here's a nice video explaining the different parameters of a typical delay pedal <iframe width="560" height="315" src="https://www.youtube.com/embed/9LWRgA597O4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe></p>
+<h2 id="details-3">Details</h2>
+<h4 id="audio_nodeinputclassfx__delay_1a07652b9b855e12f74705811f65670068"><em>(audio_node)</em> <a href="#classfx__delay_1a07652b9b855e12f74705811f65670068"><code>input</code></a></h4>
+<p>Audio routing node [input]: primary audio input</p>
+<h4 id="audio_nodeoutputclassfx__delay_1aa247832fc523f7a1d82dcd94e0c46757"><em>(audio_node)</em> <a href="#classfx__delay_1aa247832fc523f7a1d82dcd94e0c46757"><code>output</code></a></h4>
+<p>Audio routing node [output]: primary audio output</p>
+<h4 id="audio_nodefx_sendclassfx__delay_1a47d0604757c9fae775e9dc1d0c8e0c43"><em>(audio_node)</em> <a href="#classfx__delay_1a47d0604757c9fae775e9dc1d0c8e0c43"><code>fx_send</code></a></h4>
+<p>Audio routing node [output]: effect loop send before entering delay line of this effect</p>
+<h4 id="audio_nodefx_receiveclassfx__delay_1a48f73cc2af7f37afde7a96e885961d4a"><em>(audio_node)</em> <a href="#classfx__delay_1a48f73cc2af7f37afde7a96e885961d4a"><code>fx_receive</code></a></h4>
+<p>Audio routing node [output]: effect loop return before entering delay line of this effect</p>
+<h4 id="control_nodelength_msclassfx__delay_1ab3ab27196c40eaae2fc8f874642eca50"><em>(control_node)</em> <a href="#classfx__delay_1ab3ab27196c40eaae2fc8f874642eca50"><code>length_ms</code></a></h4>
+<p>Control routing node [input]: Length of delay line in milliseconds (1/1000s of a second)</p>
+<h4 id="control_nodefeedbackclassfx__delay_1a632917c322f068445ab1772877b24661"><em>(control_node)</em> <a href="#classfx__delay_1a632917c322f068445ab1772877b24661"><code>feedback</code></a></h4>
+<p>Control routing node [input]: Feedback ratio (between 0.0 and 1.0)</p>
+<h4 id="control_nodedry_mixclassfx__delay_1a38c230d5672d588c699b514f2dcbac39"><em>(control_node)</em> <a href="#classfx__delay_1a38c230d5672d588c699b514f2dcbac39"><code>dry_mix</code></a></h4>
+<p>Control routing node [input]: Dry mix (between 0.0 and 1.0)</p>
+<h4 id="control_nodewet_mixclassfx__delay_1a6f3bbdd01c6153ad211f12b122fe05bb"><em>(control_node)</em> <a href="#classfx__delay_1a6f3bbdd01c6153ad211f12b122fe05bb"><code>wet_mix</code></a></h4>
+<p>Control routing node [input]: Wet mix (between 0.0 and 1.0)</p>
+<h4 id="initializerfx_delayclassfx__delay_1aac7eb3b50aeb93b9938456ca659e7cd4delay_len_msfeedback"><em>(initializer)</em> <a href="#classfx__delay_1aac7eb3b50aeb93b9938456ca659e7cd4"><code>fx_delay</code></a><code>(delay_len_ms,feedback)</code></h4>
+<p>Basic constructor for delay effect.</p>
+<ul>
+<li><p><code>delay_len_ms</code> The length of the delay in milliseconds (1/1000s of a second) </p></li>
+<li><p><code>feedback</code> The feedback ration (between 0.0 and 1.0)</p></li>
+</ul>
+<h4 id="initializerfx_delayclassfx__delay_1ae7412fb1c040a2b1b2b515d32cf3513adelay_len_msdelay_len_max_msfeedbackmix_drymix_wetboolenable_ext_fx"><em>(initializer)</em> <a href="#classfx__delay_1ae7412fb1c040a2b1b2b515d32cf3513a"><code>fx_delay</code></a><code>(delay_len_ms,delay_len_max_ms,feedback,mix_dry,mix_wet,bool enable_ext_fx)</code></h4>
+<p>Advanced constructor for delay effect.</p>
+<ul>
+<li><p><code>delay_len_ms</code> The length of the delay in milliseconds (1/1000s of a second) </p></li>
+<li><p><code>delay_len_max_ms</code> The maximum length of the delay (if the delay length is modified) </p></li>
+<li><p><code>feedback</code> The feedback ration (between 0.0 and 1.0) </p></li>
+<li><p><code>feedthrough</code> The delay feed through ratio (between 0.0 and 1.0) </p></li>
+<li><p><code>enable_ext_fx</code> Enable the send/receive FX loop</p></li>
+</ul>
+<h4 id="modifierenableclassfx__delay_1aa2b2f620ddfa1b85800aadc764a07f6f"><em>(modifier)</em> <a href="#classfx__delay_1aa2b2f620ddfa1b85800aadc764a07f6f"><code>enable</code></a><code>()</code></h4>
+<p>Enable the <strong>this_effect</strong> (it is enabled by default)</p>
+<h4 id="modifierbypassclassfx__delay_1a01012a63d6c8ea4536f6b3dfbab32e73"><em>(modifier)</em> <a href="#classfx__delay_1a01012a63d6c8ea4536f6b3dfbab32e73"><code>bypass</code></a><code>()</code></h4>
+<p>Bypass the <strong>this_effect</strong> (will just pass clean audio through)</p>
+<h4 id="modifierset_length_msclassfx__delay_1ad2712b329a719dad80041f63cd5c39e1len_ms"><em>(modifier)</em> <a href="#classfx__delay_1ad2712b329a719dad80041f63cd5c39e1"><code>set_length_ms</code></a><code>(len_ms)</code></h4>
+<p>Update the length of the delay.</p>
+<p>Note, if you used the simple constructor, the length of the delay needs to be less than or equal to the initial delay value. If you want the ability to set a longer delay than the initial value, use the advanced constructor as this will allow you to also specify the total amount of delay space to allocate which is then the maximum length of a delay.</p>
+<h4 id="modifierset_feedbackclassfx__delay_1a27d2959ee0ad5ec9abfce93df89c865cfeedback"><em>(modifier)</em> <a href="#classfx__delay_1a27d2959ee0ad5ec9abfce93df89c865c"><code>set_feedback</code></a><code>(feedback)</code></h4>
+<p>Updates the feedback parameter of the delay.</p>
+<h4 id="modifierset_dry_mixclassfx__delay_1a21441b57577d8996d5500a5d15a79afcdry_mix"><em>(modifier)</em> <a href="#classfx__delay_1a21441b57577d8996d5500a5d15a79afc"><code>set_dry_mix</code></a><code>(dry_mix)</code></h4>
+<p>Updates the dry / clean mix of the delay (0.0 to 1.0)</p>
+<h4 id="modifierset_wet_mixclassfx__delay_1a0e7a8f0f8276ff4b0c1cfad589bd30b5wet_mix"><em>(modifier)</em> <a href="#classfx__delay_1a0e7a8f0f8276ff4b0c1cfad589bd30b5"><code>set_wet_mix</code></a><code>(wet_mix)</code></h4>
+<p>Updates the wet / delay mix of the delay (0.0 to 1.0)</p>
+<h4 id="modifierprint_paramsclassfx__delay_1a0982e31da3096ac3d850e71eca18f6fcvoid"><em>(modifier)</em> <a href="#classfx__delay_1a0982e31da3096ac3d850e71eca18f6fc"><code>print_params</code></a><code>(void)</code></h4>
+<p>Prints the parameters for the delay effect.</p>
+<h1 id="classfx_destructor">class <code>fx_destructor</code></h1>
+<p>Effect: Destructor - provides various types of hard and soft destructors for creating different types of distortions.</p>
 <p>Here's a nice summary of clipping using polynomials to create various types of distortions topic: <a href="http://sites.music.columbia.edu/cmc/music-dsp/FAQs/guitar_distortion_FAQ.html">http://sites.music.columbia.edu/cmc/music-dsp/FAQs/guitar<em>distortion</em>FAQ.html</a></p>
 <p>Example: </p>
 <pre><code>#include "dm_fx.h"
@@ -275,173 +416,46 @@ void loop() {
   pedal.service();
 }
 </code></pre>
-<h2 id="details-2">Details</h2>
-<h4 id="audio_nodeinputclassfx__clipper_1a3e9f54141fd3cc133527d1e9a2fb246c"><em>(audio_node)</em> <a href="#classfx__clipper_1a3e9f54141fd3cc133527d1e9a2fb246c"><code>input</code></a></h4>
+<h2 id="details-4">Details</h2>
+<h4 id="audio_nodeinputclassfx__destructor_1acfe69ee1186777714f16434dba235f51"><em>(audio_node)</em> <a href="#classfx__destructor_1acfe69ee1186777714f16434dba235f51"><code>input</code></a></h4>
 <p>Audio routing node [input]: primary audio input</p>
-<h4 id="audio_nodeoutputclassfx__clipper_1a08f9ef770f68969603238e7bdb05c250"><em>(audio_node)</em> <a href="#classfx__clipper_1a08f9ef770f68969603238e7bdb05c250"><code>output</code></a></h4>
+<h4 id="audio_nodeoutputclassfx__destructor_1a158a2d7421fa46d57cc4ede297a5437e"><em>(audio_node)</em> <a href="#classfx__destructor_1a158a2d7421fa46d57cc4ede297a5437e"><code>output</code></a></h4>
 <p>Audio routing node [output]: primary audio output</p>
-<h4 id="control_nodethresholdclassfx__clipper_1a521b6ca951974410c75958280ad76f95"><em>(control_node)</em> <a href="#classfx__clipper_1a521b6ca951974410c75958280ad76f95"><code>threshold</code></a></h4>
+<h4 id="control_nodeparam_1classfx__destructor_1a12a568312921f87d35a0dd3f4f8e0bc6"><em>(control_node)</em> <a href="#classfx__destructor_1a12a568312921f87d35a0dd3f4f8e0bc6"><code>param_1</code></a></h4>
 <p>Control routing node [input]: clipping threshold (0.0 -&gt; 1.0)</p>
-<h4 id="control_nodedriveclassfx__clipper_1ad0c2a47651109ee4a7d0519cdaa7bfd5"><em>(control_node)</em> <a href="#classfx__clipper_1ad0c2a47651109ee4a7d0519cdaa7bfd5"><code>drive</code></a></h4>
-<p>Control routing node [input]: input drive multiplier before clipper (up to 64.0)</p>
-<h4 id="initializerfx_clipperclassfx__clipper_1a23df83c1fa305c0bfc67770770647acdthresholddriveboolsignal_rectifypoly_clip_funcclip_type"><em>(initializer)</em> <a href="#classfx__clipper_1a23df83c1fa305c0bfc67770770647acd"><code>fx_clipper</code></a><code>(threshold,drive,bool signal_rectify,POLY_CLIP_FUNC clip_type)</code></h4>
-<p>Basic constructor for the clipper.</p>
+<h4 id="control_nodeparam_2classfx__destructor_1af0f29b6db5fa74a39ce5d6562555acb3"><em>(control_node)</em> <a href="#classfx__destructor_1af0f29b6db5fa74a39ce5d6562555acb3"><code>param_2</code></a></h4>
+<p>Control routing node [input]: input drive multiplier before destructor (up to 64.0)</p>
+<h4 id="initializerfx_destructorclassfx__destructor_1a4e0e00623681636a95b1533fa4a9753dparam_1param_2destructor_typeclip_type"><em>(initializer)</em> <a href="#classfx__destructor_1a4e0e00623681636a95b1533fa4a9753d"><code>fx_destructor</code></a><code>(param_1,param_2,DESTRUCTOR_TYPE clip_type)</code></h4>
+<p>Basic constructor for the destructor.</p>
 <ul>
-<li><p><code>threshold</code> The clipping threshold of the distortion (typically between 0.1 and 0.5 where 1.0 is full scale audio) </p></li>
-<li><p><code>drive</code> The input drive before the polynomial clipping section </p></li>
-<li><p><code>signal_rectify</code> Boolean value (true or false) whether or not to rectify the output (to create a fuzz effect) </p></li>
-<li><p><code>clip_type</code> Polynomial clipping function; See <code>POLY_CLIP_FUNC</code> in Special parameters and constants</p></li>
+<li><p><code>param_1</code> The first parameter of the destructor (varies by destructor type) </p></li>
+<li><p><code>param_2</code> The second parameter of the destructor (varies by destructor type) </p></li>
+<li><p><code>clip_type</code> Destructor function; See <code>DESTRUCTOR_TYPE</code> in Special parameters and constants</p></li>
 </ul>
-<h4 id="initializerfx_clipperclassfx__clipper_1a6ec8c400cc0bad12964e92f1bb164b06thresholddriveboolsignal_rectifypoly_clip_funcclip_typeboolupsample"><em>(initializer)</em> <a href="#classfx__clipper_1a6ec8c400cc0bad12964e92f1bb164b06"><code>fx_clipper</code></a><code>(threshold,drive,bool signal_rectify,POLY_CLIP_FUNC clip_type,bool upsample)</code></h4>
-<p>Advanced constructor for the clipper.</p>
+<h4 id="initializerfx_destructorclassfx__destructor_1a18bf3bcfe2a035859b01e201c2240859param_1param_2destructor_typeclip_typeboolupsample"><em>(initializer)</em> <a href="#classfx__destructor_1a18bf3bcfe2a035859b01e201c2240859"><code>fx_destructor</code></a><code>(param_1,param_2,DESTRUCTOR_TYPE clip_type,bool upsample)</code></h4>
+<p>Advanced constructor for the destructor.</p>
 <ul>
-<li><p><code>threshold</code> The clipping threshold of the distortion (typically between 0.1 and 0.5 where 1.0 is full scale audio) </p></li>
-<li><p><code>drive</code> The input drive before the polynomial clipping section </p></li>
-<li><p><code>signal_rectify</code> Boolean value (true or false) whether or not to rectify the output (to create a fuzz effect) </p></li>
-<li><p><code>clip_type</code> Polynomial clipping function; See <code>POLY_CLIP_FUNC</code> in Special parameters and constants </p></li>
+<li><p><code>param_1</code> The first parameter of the destructor (varies by destructor type) </p></li>
+<li><p><code>param_2</code> The second parameter of the destructor (varies by destructor type) </p></li>
+<li><p><code>clip_type</code> Destructor function; See <code>DESTRUCTOR_TYPE</code> in Special parameters and constants </p></li>
 <li><p><code>upsample</code> When set to true, the input signal is upsampled to 192kHz before clipping to reduce aliasing of harmonics. This increases the CPU load required but results in a slightly higher quality clipping function</p></li>
 </ul>
-<h4 id="modifierenableclassfx__clipper_1a21a7779b0cc969a75af734ed233ea7d3"><em>(modifier)</em> <a href="#classfx__clipper_1a21a7779b0cc969a75af734ed233ea7d3"><code>enable</code></a><code>()</code></h4>
-<p>Enable the clipper (it is enabled by default)</p>
-<h4 id="modifierbypassclassfx__clipper_1afdc7fbb38ea931ffadc3c82168019be4"><em>(modifier)</em> <a href="#classfx__clipper_1afdc7fbb38ea931ffadc3c82168019be4"><code>bypass</code></a><code>()</code></h4>
-<p>Bypass the clipper (will just pass clean audio through)</p>
-<h4 id="modifierset_thresholdclassfx__clipper_1adf8e7429ec4de106524b0b2bba91b09enew_threshold"><em>(modifier)</em> <a href="#classfx__clipper_1adf8e7429ec4de106524b0b2bba91b09e"><code>set_threshold</code></a><code>(new_threshold)</code></h4>
+<h4 id="modifierenableclassfx__destructor_1ae6508408f362e499ef10e38d4d717b9e"><em>(modifier)</em> <a href="#classfx__destructor_1ae6508408f362e499ef10e38d4d717b9e"><code>enable</code></a><code>()</code></h4>
+<p>Enable the destructor (it is enabled by default)</p>
+<h4 id="modifierbypassclassfx__destructor_1a055f88b1889bba2f78b641fda272d96a"><em>(modifier)</em> <a href="#classfx__destructor_1a055f88b1889bba2f78b641fda272d96a"><code>bypass</code></a><code>()</code></h4>
+<p>Bypass the destructor (will just pass clean audio through)</p>
+<h4 id="modifierset_param_1classfx__destructor_1a4b6f0afb22d356a234b4ec9f5f663af7new_param_1"><em>(modifier)</em> <a href="#classfx__destructor_1a4b6f0afb22d356a234b4ec9f5f663af7"><code>set_param_1</code></a><code>(new_param_1)</code></h4>
 <p>Sets the clipping threshold.</p>
 <ul>
 <li><code>threshold</code> The threshold for clipping should be between 0.1 and 1.0. A value of 0.1 will provide aggressive clipping where as a value of 0.8 will provide more gentle clipping.</li>
 </ul>
-<h4 id="modifierset_input_driveclassfx__clipper_1a210e65dc3f00a0e210261b2357d82c59new_drive"><em>(modifier)</em> <a href="#classfx__clipper_1a210e65dc3f00a0e210261b2357d82c59"><code>set_input_drive</code></a><code>(new_drive)</code></h4>
-<p>Sets the input drive before the clipper.</p>
+<h4 id="modifierset_param_2classfx__destructor_1ab59713631500f1d26b32eed43d56b758new_param_2"><em>(modifier)</em> <a href="#classfx__destructor_1ab59713631500f1d26b32eed43d56b758"><code>set_param_2</code></a><code>(new_param_2)</code></h4>
+<p>Sets the input drive before the destructor.</p>
 <ul>
-<li><code>drive</code> The drive a value that the incoming signal will get multiplied by before entering the clipper.</li>
+<li><code>drive</code> The drive a value that the incoming signal will get multiplied by before entering the destructor.</li>
 </ul>
-<h4 id="modifierprint_paramsclassfx__clipper_1a9816731e0ccb59ab00ab3cee369eb290void"><em>(modifier)</em> <a href="#classfx__clipper_1a9816731e0ccb59ab00ab3cee369eb290"><code>print_params</code></a><code>(void)</code></h4>
+<h4 id="modifierprint_paramsclassfx__destructor_1afad28fe3b74e9866b03558bcfa6b9bb6void"><em>(modifier)</em> <a href="#classfx__destructor_1afad28fe3b74e9866b03558bcfa6b9bb6"><code>print_params</code></a><code>(void)</code></h4>
 <p>Print the parameters for this effect.</p>
-<h1 id="classfx_compressor">class <code>fx_compressor</code></h1>
-<p>Effect: Compressor/Limiter.</p>
-<p>Here's a nice primer on how compressors work:</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/8nM5GsNNbyA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe>
-<p>Example: </p>
-<pre><code>#include "dm_fx.h"
-
-// Declare an instance of the compressor with initial values
-fx_compressor compy(-50.0,             // Threshold to -50dB
-                    100.0,         // Ratio to 1:100 (like a limiter)
-                    10.0,             // Attack time in ms
-                    100,             // Release time in ms
-                    3.0);            // Output gain
-
-void setup() {
-
-  // Init the effects system
-  pedal.init();                           
-
-  pedal.route_audio(pedal.instr_in, compy.input);
-  pedal.route_audio(compy.output, pedal.amp_out);
-
-  // Run this effect
-  pedal.run();                           
-
-}
-
-
-void loop() {
-
-  if (pedal.pot_0.has_changed()) {
-      compy.set_threshold(pedal.pot_0.val * (-40.0));
-  }
-
-  if (pedal.pot_1.has_changed()) {
-      compy.set_ratio(pedal.pot_1.val * 100.0); 
-  }  
-
-  if (pedal.pot_2.has_changed()) {
-      compy.set_output_gain(pedal.pot_2.val * 4.0);
-  }  
-
-  // Service 
-  pedal.service();
-}
-</code></pre>
-<h2 id="details-3">Details</h2>
-<h4 id="audio_nodeinputclassfx__compressor_1a2c22d60ca1e0c7e6f2c45f3e8e8dd437"><em>(audio_node)</em> <a href="#classfx__compressor_1a2c22d60ca1e0c7e6f2c45f3e8e8dd437"><code>input</code></a></h4>
-<p>Audio routing node: primary audio input</p>
-<h4 id="audio_nodeoutputclassfx__compressor_1a35ca7aaa8bbe1c70112fe9069d35b3d6"><em>(audio_node)</em> <a href="#classfx__compressor_1a35ca7aaa8bbe1c70112fe9069d35b3d6"><code>output</code></a></h4>
-<p>Audio routing node: primary audio output</p>
-<h4 id="control_nodethresholdclassfx__compressor_1a42928cf2614b69066cd1ed73d21d80f1"><em>(control_node)</em> <a href="#classfx__compressor_1a42928cf2614b69066cd1ed73d21d80f1"><code>threshold</code></a></h4>
-<p>Control routing node [input]: Compressor/limiter threshold in dB (i.e. -30.0)</p>
-<h4 id="control_noderatioclassfx__compressor_1a15fecdddd6b8410d5ae03779651c0fcf"><em>(control_node)</em> <a href="#classfx__compressor_1a15fecdddd6b8410d5ae03779651c0fcf"><code>ratio</code></a></h4>
-<p>Control routing node [input]: Compressor/limiter compression ratio (a value of 100.0 would be a ratio of 1:100)</p>
-<h4 id="control_nodeattackclassfx__compressor_1afb966172a248750454f3480bb9d488b7"><em>(control_node)</em> <a href="#classfx__compressor_1afb966172a248750454f3480bb9d488b7"><code>attack</code></a></h4>
-<p>Control routing node [input]: Compressor/limiter attack rate in milliseconds</p>
-<h4 id="control_nodereleaseclassfx__compressor_1a1197bdfd89e0d4bb9a184a56f40e834e"><em>(control_node)</em> <a href="#classfx__compressor_1a1197bdfd89e0d4bb9a184a56f40e834e"><code>release</code></a></h4>
-<p>Control routing node [input]: Compressor/limiter release rate in milliseconds</p>
-<h4 id="control_nodeout_gainclassfx__compressor_1ae7a36bbef9491c451d94d11ff973b1e4"><em>(control_node)</em> <a href="#classfx__compressor_1ae7a36bbef9491c451d94d11ff973b1e4"><code>out_gain</code></a></h4>
-<p>Control routing node [input]: Compressor/limiter output gain (linear value so a value of 2.0 would double the signal amplitude)</p>
-<h4 id="initializerfx_compressorclassfx__compressor_1a74243ee589778514f32e7b71c30e9ce4threshratioattackreleasegain_out"><em>(initializer)</em> <a href="#classfx__compressor_1a74243ee589778514f32e7b71c30e9ce4"><code>fx_compressor</code></a><code>(thresh,ratio,attack,release,gain_out)</code></h4>
-<h4 id="modifierenableclassfx__compressor_1aeba0ed24a0ef7b44fe98a0e23137b638"><em>(modifier)</em> <a href="#classfx__compressor_1aeba0ed24a0ef7b44fe98a0e23137b638"><code>enable</code></a><code>()</code></h4>
-<p>Enable the <strong>this_effect</strong> (it is enabled by default)</p>
-<h4 id="modifierbypassclassfx__compressor_1ada718d7f67f7ad3632e3ff938cd52fdc"><em>(modifier)</em> <a href="#classfx__compressor_1ada718d7f67f7ad3632e3ff938cd52fdc"><code>bypass</code></a><code>()</code></h4>
-<p>Bypass the <strong>this_effect</strong> (will just pass clean audio through)</p>
-<h4 id="modifierset_thresholdclassfx__compressor_1a4f31a53de17275b2c2e28c285c38a363threshold"><em>(modifier)</em> <a href="#classfx__compressor_1a4f31a53de17275b2c2e28c285c38a363"><code>set_threshold</code></a><code>(threshold)</code></h4>
-<h4 id="modifierset_ratioclassfx__compressor_1a3c369e147e311baeff7e519bfb9f1040ratio"><em>(modifier)</em> <a href="#classfx__compressor_1a3c369e147e311baeff7e519bfb9f1040"><code>set_ratio</code></a><code>(ratio)</code></h4>
-<h4 id="modifierset_attackclassfx__compressor_1a88b69c8c2e6bd7d73ef18f883027102aattack"><em>(modifier)</em> <a href="#classfx__compressor_1a88b69c8c2e6bd7d73ef18f883027102a"><code>set_attack</code></a><code>(attack)</code></h4>
-<h4 id="modifierset_releaseclassfx__compressor_1aa7c6b0dad11f29b33c307639e9d0781arelease"><em>(modifier)</em> <a href="#classfx__compressor_1aa7c6b0dad11f29b33c307639e9d0781a"><code>set_release</code></a><code>(release)</code></h4>
-<h4 id="modifierset_output_gainclassfx__compressor_1a475a80b206024c87f6a38c4bf898d6f6gain_out"><em>(modifier)</em> <a href="#classfx__compressor_1a475a80b206024c87f6a38c4bf898d6f6"><code>set_output_gain</code></a><code>(gain_out)</code></h4>
-<h4 id="modifierprint_paramsclassfx__compressor_1aae183cb59a7d0299438a65196d91b213void"><em>(modifier)</em> <a href="#classfx__compressor_1aae183cb59a7d0299438a65196d91b213"><code>print_params</code></a><code>(void)</code></h4>
-<h1 id="classfx_delay">class<code>fx_delay</code></h1>
-<p>Effect: Delay/echo.</p>
-<p>This is basically an echo effect.</p>
-<p>Here's a nice video explaining the different parameters of a typical delay pedal <iframe width="560" height="315" src="https://www.youtube.com/embed/9LWRgA597O4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe></p>
-<h2 id="details-4">Details</h2>
-<h4 id="audio_nodeinputclassfx__delay_1a07652b9b855e12f74705811f65670068"><em>(audio_node)</em> <a href="#classfx__delay_1a07652b9b855e12f74705811f65670068"><code>input</code></a></h4>
-<p>Audio routing node [input]: primary audio input</p>
-<h4 id="audio_nodeoutputclassfx__delay_1aa247832fc523f7a1d82dcd94e0c46757"><em>(audio_node)</em> <a href="#classfx__delay_1aa247832fc523f7a1d82dcd94e0c46757"><code>output</code></a></h4>
-<p>Audio routing node [output]: primary audio output</p>
-<h4 id="audio_nodefx_sendclassfx__delay_1a47d0604757c9fae775e9dc1d0c8e0c43"><em>(audio_node)</em> <a href="#classfx__delay_1a47d0604757c9fae775e9dc1d0c8e0c43"><code>fx_send</code></a></h4>
-<p>Audio routing node [output]: effect loop send before entering delay line of this effect</p>
-<h4 id="audio_nodefx_receiveclassfx__delay_1a48f73cc2af7f37afde7a96e885961d4a"><em>(audio_node)</em> <a href="#classfx__delay_1a48f73cc2af7f37afde7a96e885961d4a"><code>fx_receive</code></a></h4>
-<p>Audio routing node [output]: effect loop return before entering delay line of this effect</p>
-<h4 id="control_nodelength_msclassfx__delay_1ab3ab27196c40eaae2fc8f874642eca50"><em>(control_node)</em> <a href="#classfx__delay_1ab3ab27196c40eaae2fc8f874642eca50"><code>length_ms</code></a></h4>
-<p>Control routing node [input]: Length of delay line in milliseconds (1/1000s of a second)</p>
-<h4 id="control_nodefeedbackclassfx__delay_1a632917c322f068445ab1772877b24661"><em>(control_node)</em> <a href="#classfx__delay_1a632917c322f068445ab1772877b24661"><code>feedback</code></a></h4>
-<p>Control routing node [input]: Feedback ratio (between 0.0 and 1.0)</p>
-<h4 id="control_nodefeedthroughclassfx__delay_1a1d1b170aadff6e8d387f8d3100227b7e"><em>(control_node)</em> <a href="#classfx__delay_1a1d1b170aadff6e8d387f8d3100227b7e"><code>feedthrough</code></a></h4>
-<p>Control routing node [input]: Feedthrough ratio (between 0.0 and 1.0)</p>
-<h4 id="initializerfx_delayclassfx__delay_1aac7eb3b50aeb93b9938456ca659e7cd4delay_len_msfeedback"><em>(initializer)</em> <a href="#classfx__delay_1aac7eb3b50aeb93b9938456ca659e7cd4"><code>fx_delay</code></a><code>(delay_len_ms,feedback)</code></h4>
-<p>Basic constructor for delay effect.</p>
-<ul>
-<li><p><code>delay_len_ms</code> The length of the delay in milliseconds (1/1000s of a second) </p></li>
-<li><p><code>feedback</code> The feedback ration (between 0.0 and 1.0)</p></li>
-</ul>
-<h4 id="initializerfx_delayclassfx__delay_1a7fe8a29ac3f6c99f3f975e31a93593a9delay_len_msdelay_len_max_msfeedbackfeedthroughboolenable_ext_fx"><em>(initializer)</em> <a href="#classfx__delay_1a7fe8a29ac3f6c99f3f975e31a93593a9"><code>fx_delay</code></a><code>(delay_len_ms,delay_len_max_ms,feedback,feedthrough,bool enable_ext_fx)</code></h4>
-<p>Advanced constructor for delay effect.</p>
-<ul>
-<li><p><code>delay_len_ms</code> The length of the delay in milliseconds (1/1000s of a second) </p></li>
-<li><p><code>delay_len_max_ms</code> The maximum length of the delay (if the delay length is modified) </p></li>
-<li><p><code>feedback</code> The feedback ration (between 0.0 and 1.0) </p></li>
-<li><p><code>feedthrough</code> The delay feed through ratio (between 0.0 and 1.0) </p></li>
-<li><p><code>enable_ext_fx</code> Enable the send/receive FX loop</p></li>
-</ul>
-<h4 id="modifierenableclassfx__delay_1aa2b2f620ddfa1b85800aadc764a07f6f"><em>(modifier)</em> <a href="#classfx__delay_1aa2b2f620ddfa1b85800aadc764a07f6f"><code>enable</code></a><code>()</code></h4>
-<p>Enable the <strong>this_effect</strong> (it is enabled by default)</p>
-<h4 id="modifierbypassclassfx__delay_1a01012a63d6c8ea4536f6b3dfbab32e73"><em>(modifier)</em> <a href="#classfx__delay_1a01012a63d6c8ea4536f6b3dfbab32e73"><code>bypass</code></a><code>()</code></h4>
-<p>Bypass the <strong>this_effect</strong> (will just pass clean audio through)</p>
-<h4 id="modifierset_length_msclassfx__delay_1ad2712b329a719dad80041f63cd5c39e1len_ms"><em>(modifier)</em> <a href="#classfx__delay_1ad2712b329a719dad80041f63cd5c39e1"><code>set_length_ms</code></a><code>(len_ms)</code></h4>
-<p>Update the length of the delay.</p>
-<p>Note, if you used the simple constructor, the length of the delay needs to be less than or equal to the initial delay value. If you want the ability to set a longer delay than the initial value, use the advanced constructor as this will allow you to also specify the total amount of delay space to allocate which is then the maximum length of a delay.</p>
-<h4 id="modifierset_feedbackclassfx__delay_1a27d2959ee0ad5ec9abfce93df89c865cfeedback"><em>(modifier)</em> <a href="#classfx__delay_1a27d2959ee0ad5ec9abfce93df89c865c"><code>set_feedback</code></a><code>(feedback)</code></h4>
-<p>Updates the feedback parameter of the delay.</p>
-<h4 id="modifierset_feedthroughclassfx__delay_1a317aa525e9900bc020eb7799b97578edfeedthrough"><em>(modifier)</em> <a href="#classfx__delay_1a317aa525e9900bc020eb7799b97578ed"><code>set_feedthrough</code></a><code>(feedthrough)</code></h4>
-<p>Updates the feedthrough parameter of the delay.</p>
-<h4 id="modifierenable_dampeningclassfx__delay_1ae12ccc1b582f0ef980b32cbe284572acvoid"><em>(modifier)</em> <a href="#classfx__delay_1ae12ccc1b582f0ef980b32cbe284572ac"><code>enable_dampening</code></a><code>(void)</code></h4>
-<p>Enable a simple first order low pass filter in the feedback path.</p>
-<h4 id="modifierdisable_dampeningclassfx__delay_1a5cc2342f7f2222434e681f3e4bf38503void"><em>(modifier)</em> <a href="#classfx__delay_1a5cc2342f7f2222434e681f3e4bf38503"><code>disable_dampening</code></a><code>(void)</code></h4>
-<p>Disable a simple first order low pass filter in the feedback path.</p>
-<h4 id="modifierset_dampening_coeffclassfx__delay_1a7e21d7c88b66bffe7dac3ad76255ae03coeff"><em>(modifier)</em> <a href="#classfx__delay_1a7e21d7c88b66bffe7dac3ad76255ae03"><code>set_dampening_coeff</code></a><code>(coeff)</code></h4>
-<p>Sets the coefficient of the filter (0.0-1.0)</p>
-<h4 id="modifierprint_paramsclassfx__delay_1a0982e31da3096ac3d850e71eca18f6fcvoid"><em>(modifier)</em> <a href="#classfx__delay_1a0982e31da3096ac3d850e71eca18f6fc"><code>print_params</code></a><code>(void)</code></h4>
-<p>Prints the parameters for the delay effect.</p>
 <h1 id="classfx_envelope_tracker">class<code>fx_envelope_tracker</code></h1>
 <p>Effect: Envelope tracker.</p>
 <p>Here's a nice tutorial on one effect that can be created with an envelope tracker</p>
@@ -524,7 +538,7 @@ void loop() {
 <p>Effect: Looper - capture and playback loops.</p>
 <p>Here's a nice tutorial on how looper pedals work in general <iframe width="560" height="315" src="https://www.youtube.com/embed/Gd0NhglZWtw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe></p>
 <p>Example: </p>
-<pre><code> #include "dm_fx.h"
+<pre><code>#include &lt;dreammakerfx.h&gt;
 
 /*
 This is a basic looper pedal that uses the route_control() function to pass the tapped
@@ -648,7 +662,9 @@ void footswitch_2_pressed() {
 <h4 id="control_nodeloop_mixclassfx__looper_1ac2d6a671a7a74f01112a632fd5d871a6"><em>(control_node)</em> <a href="#classfx__looper_1ac2d6a671a7a74f01112a632fd5d871a6"><code>loop_mix</code></a></h4>
 <p>Control routing node: clean/dry mix</p>
 <h4 id="control_nodeloop_length_secondsclassfx__looper_1a445745ac04fa40f9a2aa1fd447a65897"><em>(control_node)</em> <a href="#classfx__looper_1a445745ac04fa40f9a2aa1fd447a65897"><code>loop_length_seconds</code></a></h4>
-<p>Control routing node: [output] loop lenght - can be tied to things like delay length to create delay lines that are synced to the loop length</p>
+<p>Control routing node: [output] loop length - can be tied to things like delay length to create delay lines that are synced to the loop length</p>
+<h4 id="control_nodeloop_length_seconds_setclassfx__looper_1ad4b220fbde6c9ce3803a31aac0c856a3"><em>(control_node)</em> <a href="#classfx__looper_1ad4b220fbde6c9ce3803a31aac0c856a3"><code>loop_length_seconds_set</code></a></h4>
+<p>Control routing node: [input] loop length - used to set loop length before a loop is recorded (to sync with other loops)</p>
 <h4 id="initializerfx_looperclassfx__looper_1aa2e8fed242f70089c0da68f5867e7006looper_dry_mixlooper_loop_mixlooper_max_length_secondsboollooper_enable_loop_preprocessing"><em>(initializer)</em> <a href="#classfx__looper_1aa2e8fed242f70089c0da68f5867e7006"><code>fx_looper</code></a><code>(looper_dry_mix,looper_loop_mix,looper_max_length_seconds,bool looper_enable_loop_preprocessing)</code></h4>
 <p>Constructor/initializer for amplitude modulator.</p>
 <ul>
@@ -663,7 +679,18 @@ void footswitch_2_pressed() {
 <p>Bypass the <strong>this_effect</strong> (will just pass clean audio through)</p>
 <h4 id="modifierstart_loop_recordingclassfx__looper_1ad554b506c7981908af1eafdf0238ef68"><em>(modifier)</em> <a href="#classfx__looper_1ad554b506c7981908af1eafdf0238ef68"><code>start_loop_recording</code></a><code>()</code></h4>
 <h4 id="modifierstop_loop_recordingclassfx__looper_1a7ead4d6a0f9e8abf21525c2203e41234"><em>(modifier)</em> <a href="#classfx__looper_1a7ead4d6a0f9e8abf21525c2203e41234"><code>stop_loop_recording</code></a><code>()</code></h4>
+<h4 id="modifierstop_loop_playbackclassfx__looper_1aa09814d95654004c1007c33044652e59"><em>(modifier)</em> <a href="#classfx__looper_1aa09814d95654004c1007c33044652e59"><code>stop_loop_playback</code></a><code>()</code></h4>
 <h4 id="modifierset_playback_rateclassfx__looper_1af02b19a5487fa9c049cc789ff239d1dfplayback_rate"><em>(modifier)</em> <a href="#classfx__looper_1af02b19a5487fa9c049cc789ff239d1df"><code>set_playback_rate</code></a><code>(playback_rate)</code></h4>
+<h4 id="modifierset_loop_mixclassfx__looper_1a2b0208ff650d9a78cff1febbe33c552anew_loop_mix"><em>(modifier)</em> <a href="#classfx__looper_1a2b0208ff650d9a78cff1febbe33c552a"><code>set_loop_mix</code></a><code>(new_loop_mix)</code></h4>
+<p>Sets the loop mix.</p>
+<ul>
+<li><code>new_loop_mix</code> The new loop mix value (0.0 -&gt; 1.0)</li>
+</ul>
+<h4 id="modifierset_dry_mixclassfx__looper_1a02af876345bd7dc26a4a0f17fe6facc6new_dry_mix"><em>(modifier)</em> <a href="#classfx__looper_1a02af876345bd7dc26a4a0f17fe6facc6"><code>set_dry_mix</code></a><code>(new_dry_mix)</code></h4>
+<p>Sets the dry mix.</p>
+<ul>
+<li><code>new_dry_mix</code> The new dry mix value (0.0 -&gt; 1.0)</li>
+</ul>
 <h4 id="modifierprint_paramsclassfx__looper_1a7f16134ea6c25fcde6d1e2fab601cf37void"><em>(modifier)</em> <a href="#classfx__looper_1a7f16134ea6c25fcde6d1e2fab601cf37"><code>print_params</code></a><code>(void)</code></h4>
 <p>Prints the parameters for the delay effect.</p>
 <h1 id="classfx_mixer_2">class <code>fx_mixer_2</code></h1>
@@ -711,9 +738,49 @@ void footswitch_2_pressed() {
 <p>Simple constructor takes no arguments.</p>
 <h4 id="modifierprint_paramsclassfx__mixer__4_1a3f5586bcf1bddd567c41c2fae7ecabdfvoid"><em>(modifier)</em> <a href="#classfx__mixer__4_1a3f5586bcf1bddd567c41c2fae7ecabdf"><code>print_params</code></a><code>(void)</code></h4>
 <p>Print the parameters for this effect.</p>
+<h1 id="classfx_octave">class <code>fx_octave</code></h1>
+<p>Effect: - chops up audio in the time domain and pipes to different effects.</p>
+<h2 id="details-12">Details</h2>
+<h4 id="audio_nodeinputclassfx__octave_1afaf86d517e4c1df846c65878e5eb8286"><em>(audio_node)</em> <a href="#classfx__octave_1afaf86d517e4c1df846c65878e5eb8286"><code>input</code></a></h4>
+<p>Audio routing node: primary audio input</p>
+<h4 id="audio_nodeoutputclassfx__octave_1a78e79bf1b3e4f5585a53d4376783fceb"><em>(audio_node)</em> <a href="#classfx__octave_1a78e79bf1b3e4f5585a53d4376783fceb"><code>output</code></a></h4>
+<p>Audio routing node: primary audio output</p>
+<h4 id="audio_nodesynth_outputclassfx__octave_1a68f34f8f493ba10b98c0bfa8683645a8"><em>(audio_node)</em> <a href="#classfx__octave_1a68f34f8f493ba10b98c0bfa8683645a8"><code>synth_output</code></a></h4>
+<p>Audio routing node: synth only raw output</p>
+<h4 id="audio_nodeoct_1_outputclassfx__octave_1ae3b2f1e055e6c5c30b7f3fe42c7ef75e"><em>(audio_node)</em> <a href="#classfx__octave_1ae3b2f1e055e6c5c30b7f3fe42c7ef75e"><code>oct_1_output</code></a></h4>
+<p>Audio routing node: octave 1 raw output</p>
+<h4 id="audio_nodeoct_2_outputclassfx__octave_1a2943cab28eecb0eac3f3ec4bb63c951e"><em>(audio_node)</em> <a href="#classfx__octave_1a2943cab28eecb0eac3f3ec4bb63c951e"><code>oct_2_output</code></a></h4>
+<p>Audio routing node: octave 2 raw output</p>
+<h4 id="control_nodeclean_mixclassfx__octave_1adc2d6b1da1af82b46622a72dc084f232"><em>(control_node)</em> <a href="#classfx__octave_1adc2d6b1da1af82b46622a72dc084f232"><code>clean_mix</code></a></h4>
+<p>Control routing node: Clean mix (0.0 -&gt; 1.0)</p>
+<h4 id="control_nodeoctave_mixclassfx__octave_1ae9fbe75c4c6076219f91eaec1a178844"><em>(control_node)</em> <a href="#classfx__octave_1ae9fbe75c4c6076219f91eaec1a178844"><code>octave_mix</code></a></h4>
+<p>Control routing node: Shaper mix (0.0 -&gt; 1.0)</p>
+<h4 id="control_nodeoct_1_mixclassfx__octave_1af2f99541ecdf6b798d29f574b3ca9bbf"><em>(control_node)</em> <a href="#classfx__octave_1af2f99541ecdf6b798d29f574b3ca9bbf"><code>oct_1_mix</code></a></h4>
+<p>Control routing node: Octave below mix (0.0 -&gt; 1.0)</p>
+<h4 id="control_nodeoct_2_mixclassfx__octave_1a989bbf38060257de6df644ae2908dca3"><em>(control_node)</em> <a href="#classfx__octave_1a989bbf38060257de6df644ae2908dca3"><code>oct_2_mix</code></a></h4>
+<p>Control routing node: Two octaves below mix (0.0 -&gt; 1.0)</p>
+<h4 id="initializerfx_octaveclassfx__octave_1a3eeb7dc1b3e91b6c35a1f21d64ef53a3osc_typestypeclean_mixoct_0_mixoct_1_mixoct_2_mix"><em>(initializer)</em> <a href="#classfx__octave_1a3eeb7dc1b3e91b6c35a1f21d64ef53a3"><code>fx_octave</code></a><code>(OSC_TYPES type,clean_mix,oct_0_mix,oct_1_mix,oct_2_mix)</code></h4>
+<p>Constructor for the octave.</p>
+<ul>
+<li><p><code>clean_mix</code> The clean mix (0.0 -&gt; 1.0) </p></li>
+<li><p><code>octave_mix</code> The octave mix (0.0 -&gt; 1.0) </p></li>
+<li><p><code>oct_1_mix</code> The octal 1 mix (0.0 -&gt; 1.0) </p></li>
+<li><p><code>oct_2_mix</code> The octal 2 mix (0.0 -&gt; 1.0)</p></li>
+</ul>
+<h4 id="modifierenableclassfx__octave_1abca5ff95385e0721f8ab2267d7ee3b0d"><em>(modifier)</em> <a href="#classfx__octave_1abca5ff95385e0721f8ab2267d7ee3b0d"><code>enable</code></a><code>()</code></h4>
+<p>Enable the amplitude modululator (it is enabled by default)</p>
+<h4 id="modifierbypassclassfx__octave_1a10164ff7320aa607ce847a8f40bd4292"><em>(modifier)</em> <a href="#classfx__octave_1a10164ff7320aa607ce847a8f40bd4292"><code>bypass</code></a><code>()</code></h4>
+<p>Bypass the amplitude modululator (will just pass clean audio through)</p>
+<h4 id="modifierset_clean_mixclassfx__octave_1a22543217b05834576aa61058b9ef913bclean_mix"><em>(modifier)</em> <a href="#classfx__octave_1a22543217b05834576aa61058b9ef913b"><code>set_clean_mix</code></a><code>(clean_mix)</code></h4>
+<h4 id="modifierset_oct_0_mixclassfx__octave_1a0d8f8c5669cd8d63e34dcc460c92ee8foctave_mix"><em>(modifier)</em> <a href="#classfx__octave_1a0d8f8c5669cd8d63e34dcc460c92ee8f"><code>set_oct_0_mix</code></a><code>(octave_mix)</code></h4>
+<h4 id="modifierset_oct_1_mixclassfx__octave_1a1f40b222d1f06a0adb5295e64eb45557oct_1_mix"><em>(modifier)</em> <a href="#classfx__octave_1a1f40b222d1f06a0adb5295e64eb45557"><code>set_oct_1_mix</code></a><code>(oct_1_mix)</code></h4>
+<h4 id="modifierset_oct_2_mixclassfx__octave_1a79513b818e794826b7c54e637787e5cboct_2_mix"><em>(modifier)</em> <a href="#classfx__octave_1a79513b818e794826b7c54e637787e5cb"><code>set_oct_2_mix</code></a><code>(oct_2_mix)</code></h4>
+<h4 id="modifierset_semitone_shiftclassfx__octave_1af5493c55f2f654a14dee61ac02180559intsemitones_up"><em>(modifier)</em> <a href="#classfx__octave_1af5493c55f2f654a14dee61ac02180559"><code>set_semitone_shift</code></a><code>(int semitones_up)</code></h4>
+<h4 id="modifierprint_paramsclassfx__octave_1a8952f3107bf0003550fdc5a86ffaab76void"><em>(modifier)</em> <a href="#classfx__octave_1a8952f3107bf0003550fdc5a86ffaab76"><code>print_params</code></a><code>(void)</code></h4>
+<p>Print the parameters for this effect.</p>
 <h1 id="classfx_oscillator">class <code>fx_oscillator</code></h1>
 <p>Utility: Oscillator that can has both audio and control outputs.</p>
-<h2 id="details-12">Details</h2>
+<h2 id="details-13">Details</h2>
 <h4 id="audio_nodeoutputclassfx__oscillator_1ad443f83c5e49e2a849e44fadef36bd9f"><em>(audio_node)</em> <a href="#classfx__oscillator_1ad443f83c5e49e2a849e44fadef36bd9f"><code>output</code></a></h4>
 <p>Audio routing node: primary audio oscillator output</p>
 <h4 id="control_nodefreqclassfx__oscillator_1aeeb44f7cd3b37d8426de735d765ad992"><em>(control_node)</em> <a href="#classfx__oscillator_1aeeb44f7cd3b37d8426de735d765ad992"><code>freq</code></a></h4>
@@ -763,7 +830,7 @@ void footswitch_2_pressed() {
 <h1 id="classfx_phase_shifter">class <code>fx_phase_shifter</code></h1>
 <p>Effect: Phase shifter for creating rich phase shifts.</p>
 <p>Example: <strong>phase<em>shifter</em>1.c</strong></p>
-<h2 id="details-13">Details</h2>
+<h2 id="details-14">Details</h2>
 <h4 id="audio_nodeinputclassfx__phase__shifter_1a6b3c2e7b30e37e8f39f4ea74edcc1da8"><em>(audio_node)</em> <a href="#classfx__phase__shifter_1a6b3c2e7b30e37e8f39f4ea74edcc1da8"><code>input</code></a></h4>
 <p>Audio routing node: primary audio input</p>
 <h4 id="audio_nodeoutputclassfx__phase__shifter_1a1516ae9bc8081a37bd4b587cc8cbdbdf"><em>(audio_node)</em> <a href="#classfx__phase__shifter_1a1516ae9bc8081a37bd4b587cc8cbdbdf"><code>output</code></a></h4>
@@ -804,7 +871,7 @@ void footswitch_2_pressed() {
 <p>Print the parameters for this effect.</p>
 <h1 id="classfx_pitch_shift">class <code>fx_pitch_shift</code></h1>
 <p>Effect: Pitch shifter - shifts audio up or down in pitch.</p>
-<h2 id="details-14">Details</h2>
+<h2 id="details-15">Details</h2>
 <h4 id="audio_nodeinputclassfx__pitch__shift_1aa1388ecdbad1942b8c69e21d4c99ab53"><em>(audio_node)</em> <a href="#classfx__pitch__shift_1aa1388ecdbad1942b8c69e21d4c99ab53"><code>input</code></a></h4>
 <p>Audio routing node: primary audio input</p>
 <h4 id="audio_nodeoutputclassfx__pitch__shift_1ae66bfa5587f5e89beba7d94a91f56d75"><em>(audio_node)</em> <a href="#classfx__pitch__shift_1ae66bfa5587f5e89beba7d94a91f56d75"><code>output</code></a></h4>
@@ -885,7 +952,7 @@ void sw2_pressed() { }
 void sw3_pressed() { }
 void sw4_pressed() { }
 </code></pre>
-<h2 id="details-15">Details</h2>
+<h2 id="details-16">Details</h2>
 <h4 id="audio_nodeinputclassfx__ring__mod_1aaca095dddcc3928c199203636a5a0b70"><em>(audio_node)</em> <a href="#classfx__ring__mod_1aaca095dddcc3928c199203636a5a0b70"><code>input</code></a></h4>
 <p>Audio routing node [input]: primary audio input</p>
 <h4 id="audio_nodeoutputclassfx__ring__mod_1aef3f3aa115f4f9dc1e553c44c9acd0fd"><em>(audio_node)</em> <a href="#classfx__ring__mod_1aef3f3aa115f4f9dc1e553c44c9acd0fd"><code>output</code></a></h4>
@@ -911,45 +978,6 @@ void sw4_pressed() { }
 </ul>
 <h4 id="modifierprint_paramsclassfx__ring__mod_1a5fbb19b69e4fa7ebd16b22e541a664cdvoid"><em>(modifier)</em> <a href="#classfx__ring__mod_1a5fbb19b69e4fa7ebd16b22e541a664cd"><code>print_params</code></a><code>(void)</code></h4>
 <p>Prints the parameters for the delay effect.</p>
-<h1 id="classfx_shaper">class <code>fx_shaper</code></h1>
-<p>Effect: Slicer - chops up audio in the time domain and pipes to different effects.</p>
-<h2 id="details-16">Details</h2>
-<h4 id="audio_nodeinputclassfx__shaper_1aac7d9824de259c99f4c78860d82e431d"><em>(audio_node)</em> <a href="#classfx__shaper_1aac7d9824de259c99f4c78860d82e431d"><code>input</code></a></h4>
-<p>Audio routing node: primary audio input</p>
-<h4 id="audio_nodeoutputclassfx__shaper_1a668b07367e86458eebf4df8bb7834e48"><em>(audio_node)</em> <a href="#classfx__shaper_1a668b07367e86458eebf4df8bb7834e48"><code>output</code></a></h4>
-<p>Audio routing node: primary audio output</p>
-<h4 id="audio_nodesynth_outputclassfx__shaper_1ab43076dbb5b856bd1feebae14ebf264b"><em>(audio_node)</em> <a href="#classfx__shaper_1ab43076dbb5b856bd1feebae14ebf264b"><code>synth_output</code></a></h4>
-<p>Audio routing node: synth only raw output</p>
-<h4 id="audio_nodeoct_1_outputclassfx__shaper_1a31d87d2308a09a531e4e0a24615cbd94"><em>(audio_node)</em> <a href="#classfx__shaper_1a31d87d2308a09a531e4e0a24615cbd94"><code>oct_1_output</code></a></h4>
-<p>Audio routing node: octave 1 raw output</p>
-<h4 id="audio_nodeoct_2_outputclassfx__shaper_1a076ca83c5ff4954d9663ce1a97352626"><em>(audio_node)</em> <a href="#classfx__shaper_1a076ca83c5ff4954d9663ce1a97352626"><code>oct_2_output</code></a></h4>
-<p>Audio routing node: octave 2 raw output</p>
-<h4 id="control_nodeclean_mixclassfx__shaper_1a11dbafe1599ea165db54e8b59325fec2"><em>(control_node)</em> <a href="#classfx__shaper_1a11dbafe1599ea165db54e8b59325fec2"><code>clean_mix</code></a></h4>
-<p>Control routing node: Clean mix (0.0 -&gt; 1.0)</p>
-<h4 id="control_nodeshaper_mixclassfx__shaper_1a33987bb824b29074be6b6d2e8658c1f8"><em>(control_node)</em> <a href="#classfx__shaper_1a33987bb824b29074be6b6d2e8658c1f8"><code>shaper_mix</code></a></h4>
-<p>Control routing node: Shaper mix (0.0 -&gt; 1.0)</p>
-<h4 id="control_nodeoct_1_mixclassfx__shaper_1ad65aa0f9c1040c3f45e0a8807e4e4b67"><em>(control_node)</em> <a href="#classfx__shaper_1ad65aa0f9c1040c3f45e0a8807e4e4b67"><code>oct_1_mix</code></a></h4>
-<p>Control routing node: Octave below mix (0.0 -&gt; 1.0)</p>
-<h4 id="control_nodeoct_2_mixclassfx__shaper_1a0cc7befb9e2638c9386b0051fcd5e086"><em>(control_node)</em> <a href="#classfx__shaper_1a0cc7befb9e2638c9386b0051fcd5e086"><code>oct_2_mix</code></a></h4>
-<p>Control routing node: Two octaves below mix (0.0 -&gt; 1.0)</p>
-<h4 id="initializerfx_shaperclassfx__shaper_1a443695f97f603e9782a80ce2ad0058baclean_mixshaper_mixoct_1_mixoct_2_mix"><em>(initializer)</em> <a href="#classfx__shaper_1a443695f97f603e9782a80ce2ad0058ba"><code>fx_shaper</code></a><code>(clean_mix,shaper_mix,oct_1_mix,oct_2_mix)</code></h4>
-<p>Constructor for the shaper.</p>
-<ul>
-<li><p><code>clean_mix</code> The clean mix (0.0 -&gt; 1.0) </p></li>
-<li><p><code>shaper_mix</code> The shaper mix (0.0 -&gt; 1.0) </p></li>
-<li><p><code>oct_1_mix</code> The octal 1 mix (0.0 -&gt; 1.0) </p></li>
-<li><p><code>oct_2_mix</code> The octal 2 mix (0.0 -&gt; 1.0)</p></li>
-</ul>
-<h4 id="modifierenableclassfx__shaper_1a40a90f65699e4fced2f8cf0219bc24f1"><em>(modifier)</em> <a href="#classfx__shaper_1a40a90f65699e4fced2f8cf0219bc24f1"><code>enable</code></a><code>()</code></h4>
-<p>Enable the amplitude modululator (it is enabled by default)</p>
-<h4 id="modifierbypassclassfx__shaper_1aabef8fb08b81b0240a4cde94e23b74ce"><em>(modifier)</em> <a href="#classfx__shaper_1aabef8fb08b81b0240a4cde94e23b74ce"><code>bypass</code></a><code>()</code></h4>
-<p>Bypass the amplitude modululator (will just pass clean audio through)</p>
-<h4 id="modifierset_clean_mixclassfx__shaper_1ab0481a07fb9198b78fd563d059ca61d5clean_mix"><em>(modifier)</em> <a href="#classfx__shaper_1ab0481a07fb9198b78fd563d059ca61d5"><code>set_clean_mix</code></a><code>(clean_mix)</code></h4>
-<h4 id="modifierset_shaper_mixclassfx__shaper_1ae63201b51bfaf1e770256fb4940b31efshaper_mix"><em>(modifier)</em> <a href="#classfx__shaper_1ae63201b51bfaf1e770256fb4940b31ef"><code>set_shaper_mix</code></a><code>(shaper_mix)</code></h4>
-<h4 id="modifierset_oct_1_mixclassfx__shaper_1a3a949b53cd2394511dbe58c08d28ba93oct_1_mix"><em>(modifier)</em> <a href="#classfx__shaper_1a3a949b53cd2394511dbe58c08d28ba93"><code>set_oct_1_mix</code></a><code>(oct_1_mix)</code></h4>
-<h4 id="modifierset_oct_2_mixclassfx__shaper_1a3c1dd193f155c6095195b960a1b4a3ceoct_2_mix"><em>(modifier)</em> <a href="#classfx__shaper_1a3c1dd193f155c6095195b960a1b4a3ce"><code>set_oct_2_mix</code></a><code>(oct_2_mix)</code></h4>
-<h4 id="modifierprint_paramsclassfx__shaper_1a20e8109535f876b202ae0843c6a96e1evoid"><em>(modifier)</em> <a href="#classfx__shaper_1a20e8109535f876b202ae0843c6a96e1e"><code>print_params</code></a><code>(void)</code></h4>
-<p>Print the parameters for this effect.</p>
 <h1 id="classfx_slicer">class <code>fx_slicer</code></h1>
 <p>Effect: Slicer - chops up audio in the time domain and pipes to different effects.</p>
 <p>Copyright (c) 2019 Run Jump Labs LLC. All rights reserved. Example: </p>
@@ -1141,24 +1169,36 @@ void loop() {
 <h4 id="control_noderate_hzclassfx__variable__delay_1a4b8417112ba1196b03f0d29b8998ce9f"><em>(control_node)</em> <a href="#classfx__variable__delay_1a4b8417112ba1196b03f0d29b8998ce9f"><code>rate_hz</code></a></h4>
 <p>Control routing node [input]: modulation rate in Hz</p>
 <h4 id="control_nodefeedbackclassfx__variable__delay_1a8d402d84f9415c711d72d72c4a92c77b"><em>(control_node)</em> <a href="#classfx__variable__delay_1a8d402d84f9415c711d72d72c4a92c77b"><code>feedback</code></a></h4>
-<h4 id="initializerfx_variable_delayclassfx__variable__delay_1a9fb9b742eefcf08eb2e026824a31384avar_del_rate_hzvar_del_depthvar_del_feedbackosc_typesvar_del_mod_type"><em>(initializer)</em> <a href="#classfx__variable__delay_1a9fb9b742eefcf08eb2e026824a31384a"><code>fx_variable_delay</code></a><code>(var_del_rate_hz,var_del_depth,var_del_feedback,OSC_TYPES var_del_mod_type)</code></h4>
+<h4 id="initializerfx_variable_delayclassfx__variable__delay_1a217641554df3b9eec906c3ee1d0e4f78rate_hzdepthfeedbackosc_typesmod_type"><em>(initializer)</em> <a href="#classfx__variable__delay_1a217641554df3b9eec906c3ee1d0e4f78"><code>fx_variable_delay</code></a><code>(rate_hz,depth,feedback,OSC_TYPES mod_type)</code></h4>
 <p>Basic constructor/initializer for variable delay.</p>
 <ul>
-<li><p><code>var_del_rate_hz</code> The modulation rate in Hz </p></li>
-<li><p><code>var_del_depth</code> The modulation depth (0.0 -&gt; 1.0) </p></li>
-<li><p><code>var_del_feedback</code> The feedback from output to input (-1.0 -&gt; 1.0) </p></li>
-<li><p><code>var_del_mod_type</code> The shape of the waveform used to modulate (e.g. OSC<em>SINE, OSC</em>TRI, etc.)</p></li>
+<li><p><code>rate_hz</code> The modulation rate in Hz </p></li>
+<li><p><code>depth</code> The modulation depth (0.0 -&gt; 1.0) </p></li>
+<li><p><code>feedback</code> The feedback from output to input (-1.0 -&gt; 1.0) </p></li>
+<li><p><code>mod_type</code> The shape of the waveform used to modulate (e.g. OSC<em>SINE, OSC</em>TRI, etc.)</p></li>
 </ul>
-<h4 id="initializerfx_variable_delayclassfx__variable__delay_1aa8345309d8a9ae9ced2eb53b3b12c4a1var_del_rate_hzvar_del_depthvar_del_feedbackvar_del_buf_size_msvar_del_mix_cleanosc_typesvar_del_mod_typeboolvar_del_ext_mod"><em>(initializer)</em> <a href="#classfx__variable__delay_1aa8345309d8a9ae9ced2eb53b3b12c4a1"><code>fx_variable_delay</code></a><code>(var_del_rate_hz,var_del_depth,var_del_feedback,var_del_buf_size_ms,var_del_mix_clean,OSC_TYPES var_del_mod_type,bool var_del_ext_mod)</code></h4>
+<h4 id="initializerfx_variable_delayclassfx__variable__delay_1a880a476800343adb94c8196c5b00d980rate_hzdepthfeedbackbuf_size_msmix_cleanosc_typesmod_typeboolext_mod"><em>(initializer)</em> <a href="#classfx__variable__delay_1a880a476800343adb94c8196c5b00d980"><code>fx_variable_delay</code></a><code>(rate_hz,depth,feedback,buf_size_ms,mix_clean,OSC_TYPES mod_type,bool ext_mod)</code></h4>
 <p>Basic constructor/initializer for variable delay.</p>
 <ul>
-<li><p><code>var_del_rate_hz</code> The modulation rate in Hz </p></li>
-<li><p><code>var_del_depth</code> The modulation depth (0.0 -&gt; 1.0) </p></li>
-<li><p><code>var_del_feedback</code> The feedback from output to input (-1.0 -&gt;1.0) </p></li>
-<li><p><code>var_del_buf_size_ms</code> The size of the audio in milliseconds (start wtih a value around 30) </p></li>
-<li><p><code>var_del_mix_clean</code> The clean mix. If this is set to 0.0, then you'll just get the pitch changing aspect of the wave that can used for tape delay simulators, etc. </p></li>
-<li><p><code>var_del_mod_type</code> The shape of the waveform used to modulate (e.g. OSC<em>SINE, OSC</em>TRI, etc.) </p></li>
-<li><p><code>var_del_ext_mod</code> whether to use an external modulation source (set to true or false)</p></li>
+<li><p><code>rate_hz</code> The modulation rate in Hz </p></li>
+<li><p><code>depth</code> The modulation depth (0.0 -&gt; 1.0) </p></li>
+<li><p><code>feedback</code> The feedback from output to input (-1.0 -&gt;1.0) </p></li>
+<li><p><code>buf_size_ms</code> The size of the audio in milliseconds (start wtih a value around 30) </p></li>
+<li><p><code>mix_clean</code> The clean mix. If this is set to 0.0, then you'll just get the pitch changing aspect of the wave that can used for tape delay simulators, etc. </p></li>
+<li><p><code>mod_type</code> The shape of the waveform used to modulate (e.g. OSC<em>SINE, OSC</em>TRI, etc.) </p></li>
+<li><p><code>ext_mod</code> whether to use an external modulation source (set to true or false)</p></li>
+</ul>
+<h4 id="initializerfx_variable_delayclassfx__variable__delay_1a5cb98bc0cd729ddca50470e6d6e1925frate_hzdepthfeedbackbuf_size_msmix_cleanosc_typesmod_typeboolext_modinitial_phase"><em>(initializer)</em> <a href="#classfx__variable__delay_1a5cb98bc0cd729ddca50470e6d6e1925f"><code>fx_variable_delay</code></a><code>(rate_hz,depth,feedback,buf_size_ms,mix_clean,OSC_TYPES mod_type,bool ext_mod,initial_phase)</code></h4>
+<p>Basic constructor/initializer for variable delay.</p>
+<ul>
+<li><p><code>rate_hz</code> The modulation rate in Hz </p></li>
+<li><p><code>depth</code> The modulation depth (0.0 -&gt; 1.0) </p></li>
+<li><p><code>feedback</code> The feedback from output to input (-1.0 -&gt;1.0) </p></li>
+<li><p><code>buf_size_ms</code> The size of the audio in milliseconds (start wtih a value around 30) </p></li>
+<li><p><code>mix_clean</code> The clean mix. If this is set to 0.0, then you'll just get the pitch changing aspect of the wave that can used for tape delay simulators, etc. </p></li>
+<li><p><code>mod_type</code> The shape of the waveform used to modulate (e.g. OSC<em>SINE, OSC</em>TRI, etc.) </p></li>
+<li><p><code>ext_mod</code> whether to use an external modulation source (set to true or false) </p></li>
+<li><p><code>initial</code></p></li>
 </ul>
 <h4 id="modifierenableclassfx__variable__delay_1ad40a88ff09f879bcb21a6ee55d8771e8"><em>(modifier)</em> <a href="#classfx__variable__delay_1ad40a88ff09f879bcb21a6ee55d8771e8"><code>enable</code></a><code>()</code></h4>
 <p>Enable the <strong>this_effect</strong> (it is enabled by default)</p>
