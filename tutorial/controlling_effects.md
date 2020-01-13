@@ -4,15 +4,16 @@ title: Docs
 ---
 
 
-### The basics of controlling effects
-
+# The basics of controlling effects
+------
 We've been talking a lot about getting effects set up and running.  Now let's talk about how to change the proverbial knobs on the effects once they're running.
 
 Now, take a deep breath and get comfortable because this next sentence is important.  There are two ways we can control effects:
  1. we can use other effects that generate control signals (like the envelope tracker) to control the parameters of other effects or...
  1. we can control the parameters directly from our Arduino program.
 
-##### Option 1: Using effect control nodes
+## Option 1: Using effect control nodes
+------
 Similar to our audio nodes, all effects have several *control nodes* that are inputs for controlling their individual parameters (like delay length and feedback).  Some effects have *control node* outputs like the envelop filter which are control signals based on the audio going through these effects.
 
 Remember when you read "an envelope tracker is just measuring an audio signal and may just have an audio `input` node but no audio `output` node"?  Well, the envelop tracker has an *audio* `input` node and a *control* `output` node.  Similarly, a synth have a *control* `input` node (like a musical node to play) but have an *audio* `output` node where the synthesized audio is sent.
@@ -53,7 +54,8 @@ void setup() {
 }                                 
 ```
 
-##### Option 2: Directly controlling parameters
+## Option 2: Directly controlling parameters
+------
 All effects also include dedicated routines for controlling their parameters.  When these routines are called, the effects running on the DSP are immediately updated so these happen in real time.
 
 The `loop()` function is where we can make these modifications.
@@ -101,7 +103,8 @@ void loop() {
 }
 
 ```
-##### Option 3: Controlling effects with external sensors
+## Option 3: Controlling effects with external sensors
+------
 Where things get really cool is when we begin using sensors and other sources outside the pedal to set parameters.  We could use a motion sensor to control a parameter like so
 
 ```
