@@ -6,9 +6,9 @@ title: Docs
 # Introduction 
 ------
 
-Welcome the DreamMaker FX!  This is an audio platform that makes it very easy to create powerful and unique instrument effects.\
-It is designed to be accesible for experienced programmers and those who have done no programming.\
-\
+Welcome the DreamMaker FX!  This is an audio platform that makes it very easy to create powerful and unique instrument effects.
+It is designed to be accesible for experienced programmers and those who have done no programming.
+
 At its core, this platform is a microprocessor that connects to a powerful SHARC DSP.  We program the microprocessor using Arduino tools making it very easy.
 
 Beyond audio processing, the DreamMaker FX hardware offers lots of options for expanding the hardware.  External sensors can be easily wired and connected to various effect parameters.  The DreamMaker FX hardware also features an RF transceiver meaning that it can communicate wireless with other DreamMaker FX units (or wireless sensors) and exchange various types of parameter information.
