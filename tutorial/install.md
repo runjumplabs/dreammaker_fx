@@ -30,8 +30,10 @@ First order of business, let's go download some free software and get rolling.
 
     ![DreamMaker FX package](https://runjumplabs.github.io/dreammaker_fx/assets/images/dmfx-package.png)
  
- * Select teh DreamMaker FX hardeare
+ * Select the DreamMaker FX hardeare
     * Navigate to `Tools` -> `Board `.  At the very bottom of the list you should see `DreamMaker FX (SAMD51/ARM Cortex M4`.  Select it.
+
+![DreamMaker FX package](https://runjumplabs.github.io/dreammaker_fx/assets/images/select-board.png)
 
  * Make some bitchin' effects and play some rock and/or roll very loudly.
 
