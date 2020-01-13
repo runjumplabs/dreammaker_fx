@@ -40,10 +40,6 @@ So rather than learning some arcane programming language and software tools, you
 [https://www.arduino.cc/en/Tutorial/HomePage?from=Main.Tutorials](https://www.arduino.cc/en/Tutorial/HomePage?from=Main.Tutorials)
 
 Okay, so buckle in and get ready to blow some minds.
-``` C
 
-	int x = 10;
-
-```
 
 
