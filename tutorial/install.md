@@ -33,7 +33,7 @@ First order of business, let's go download some free software and get rolling.
  * Select the DreamMaker FX hardeare
     * Navigate to `Tools` -> `Board `.  At the very bottom of the list you should see `DreamMaker FX (SAMD51/ARM Cortex M4`.  Select it.
 
-![DreamMaker FX package](https://runjumplabs.github.io/dreammaker_fx/assets/images/select-board.png)
+    ![DreamMaker FX package](https://runjumplabs.github.io/dreammaker_fx/assets/images/select-board.png)
 
  * Make some bitchin' effects and play some rock and/or roll very loudly.
 
@@ -42,7 +42,8 @@ The setup process is very similar to Adafruit boards which use the same Arduino 
 ## Updating the DreamMaker FX package
 ------
 
-There are always updates happening with new effects, bug fixes and improvements!  To update your system
+There are always updates happening with new effects, bug fixes and improvements!  When you do a first time install, you'll have the latest and greatest.  However, it's always good to check back to see if there are updates.
+
  * In the Arduino program:
     * Navigate to `Tools` -> `Board` -> `Board Manager`.
     * Either type `dream` in the search box, or scroll down until you find `DreamMaker FX by Run Jump Labs`.
