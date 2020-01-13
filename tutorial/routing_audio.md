@@ -4,23 +4,26 @@ title: Docs
 ---
 
 
-### The basics of routing audio
-
+# The basics of routing audio
+------
 Get ready because we're going to start using the word _node_ a lot.  I hope that's okay.  A node is what it sounds like: it's a *node*.  Or a point of connection.  
 
-##### Effect audio nodes
+## Effect audio nodes
+------
 Each effect has one or more *nodes* that can pipe audio into it or out of it.  All effects that process audio have both an `input` node and an `output` node.  Things like an envelope tracker that are just measuring an audio signal may just have an audio `input` node but no audio `output` node.  Also, some effects have additional nodes beyond `input` and `output` and this is where shit gets real.  Did you see the movie Inception?  That question will make sense eventually.  
 
 Details on the nodes that each effect has can be found in Appendix A.
 
-##### System audio nodes
+## System audio nodes
+------
 And the system has *nodes* for input from instrument and output to amp.
 
  * `pedal.instr_in` is the input jack of the pedal.  This might blow your mind, but this is actually an output jack in the sense that it is outputting audio that we can send to the inputs of other effects.
 
  * `pedal.amp_out` is the output hack of the pedal.  This might blow your mind again, but this is actually an input jack in the sense that it is receiving audio from other effects (and then sending to the amp).
 
-##### Connecting nodes
+## Connecting nodes
+------
  As we just saw in the echo example, there is a function called `route_audio` that we use to connect our effects to the input and output jacks of the pedal and also to each other.  The first *argument* of this function is an output node and the second *argument* is an input node.
 
  Let's use it in a (programming) sentence.  In this example, we're going to have a tremelo that then feeds into a delay.  It'll be like having your guitar plugged into a tremelo pedal that then plugs into a delay pedal that then plugs into your amp.  
@@ -78,7 +81,8 @@ void setup() {
 
 Pretty cool, right?
 
-##### A few routing rules
+## A few routing rules
+------
 Obey these rules to avoid humiliation and sadness:
 
 1. An output node can be routed to multiple input nodes

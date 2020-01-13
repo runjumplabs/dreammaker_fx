@@ -1,10 +1,11 @@
 ---
-layout: naked
+layout: extra_naked
 title: Docs
 ---
 
 
-### The basics of creating / adding effects
+# The basics of creating / adding effects
+------
 
 As you hopefully remember from 12 seconds ago, we create/declare the effects we want to use at the top of program.
 
