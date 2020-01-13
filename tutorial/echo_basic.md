@@ -34,7 +34,7 @@ Let's start by creating a simple echo effect to see how the pieces fit together.
 ## 1. Add the effects library of functions
 ------
 
-At the top of the file, we'll add a line that will link in all of the functions, variables and objects that you'll use to create your effects.  At the very top of the file, add `#include "dreammakerfx.h"`.  You'll add this line to the top of every Arduino sketch you create for this platform.
+At the top of the file, we'll add a line that will link in all of the functions, variables and objects that you'll use to create your effects.  At the very top of the file, add `#include <dreammakerfx.h>`.  You'll add this line to the top of every Arduino sketch you create for this platform.
 
 ```
 // Include DreamMaker FX library of effects routines
@@ -49,7 +49,7 @@ Above the setup routine, we will add (aka *declare*) any effect and synth *objec
 
 In this case, we are going to create a single echo / delay effect object and name it `my_echo_1`.  When we initialize an echo object, it takes two *arguments* or initial parameters.  The first is how long the echo is in milliseconds (1000th of a second).  And the second is the *feedback* ratio (between 0.0 and 1.0) which determines how much audio is fed back into the echo and thus how long the echo lasts.  If feedback is set to 1.0, it will echo forever.  And if feedback is set to 0.0, it won't echo at all.  Let's set the echo length to be 1 second (or 1000 milliseconds) and the feedback ratio at 0.7.
 
-Add the following code after your `#include "dm_fx.h"` line.  
+Add the following code after your `#include <dreammakerfx.h>` line.  
 
 
 ```
