@@ -44,7 +44,7 @@ It is practically impossible to "brick" the DreamMaker FX hardware.  If the DM_F
 
 The first method is shown below.
 
-!(Placing DreamMaker FX into bootloader mode](https://runjumplabs.github.io/dreammaker_fx/assets/images/bootloader1.gif)
+![Placing DreamMaker FX into bootloader mode](https://runjumplabs.github.io/dreammaker_fx/assets/images/bootloader1.gif)
 
 If the LEDs don't do the little dance as shown in the video, then follow this simple procedure:
  1. Unscrew the backplate of the pedal
