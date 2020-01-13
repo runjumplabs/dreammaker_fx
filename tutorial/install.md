@@ -27,6 +27,8 @@ First order of business, let's go download some free software and get rolling.
     * Navigate to `Tools` -> `Board` -> `Board Manager`.
     * Either type `dream` in the search box, or scroll down until you find `DreamMaker FX by Run Jump Labs`.
     * Click `Install`. This will take a few minutes; then hit `Close`.
+
+    ![DreamMaker FX package](https://runjumplabs.github.io/dreammaker_fx/assets/images/dmfx-package.png)
  
  * Select teh DreamMaker FX hardeare
     * Navigate to `Tools` -> `Board `.  At the very bottom of the list you should see `DreamMaker FX (SAMD51/ARM Cortex M4`.  Select it.
