@@ -1,20 +1,21 @@
 ---
-layout: naked
+layout: extra_naked
 title: Docs
 ---
 
-### Building a Basic Echo Effect
+# Building a Basic Echo Effect
+------
 
 Effects and synth code is coded in the Arduino IDE and coded in the C++ programming language.  However, one doesn't have to be a programmer to use this platform.  The coding patterns for creating various effect and synth components, wiring them together and controlling their parameters is straight forward.
 
 
-#### Basic Arduino anatomy
-
+## Basic Arduino anatomy
+------
 With the Arduino app open, go to File->New.  You'll see a new text editor window appear with a new "sketch" (aka a program in Arduino-speak).  This sketch will come pre-populated with two *functions*. One is called `setup()` and another is called `loop()`.  
 
 When the sketch is downloaded to our hardware, it will run any commands in the `setup()` function first.  And then it will run the `loop()` function indefinitely. 
 
-```
+``` C
 void setup() {
   // put your setup code here, to run once:
 
@@ -30,17 +31,19 @@ So when creating effects, we will define how the effects connect together in the
 
 Let's start by creating a simple echo effect to see how the pieces fit together.
 
-##### 1. Add the effects library of functions
+## 1. Add the effects library of functions
+------
 
-At the top of the file, we'll add a line that will link in all of the functions, variables and objects that you'll use to create your effects.  At the very top of the file, add `#include "dm_fx.h"`.  You'll add this line to the top of every Arduino sketch you create for this platform.
+At the top of the file, we'll add a line that will link in all of the functions, variables and objects that you'll use to create your effects.  At the very top of the file, add `#include "dreammakerfx.h"`.  You'll add this line to the top of every Arduino sketch you create for this platform.
 
 ```
 // Include DreamMaker FX library of effects routines
-#include "dm_fx.h"
+#include <dreammakerfx.h>
 ```
 
 
-##### 2. Add any effects or synthesis *objects*
+## 2. Add any effects or synthesis *objects*
+------
 
 Above the setup routine, we will add (aka *declare*) any effect and synth *objects* that we'll be using.  When we add an object, in many cases we will also provide the initial parameters.  
 
@@ -55,13 +58,14 @@ fx_delay   my_echo_1(1000.0,  // 1 second echo
                      0.7);    // 0.7 feedback ratio
 ```
 
-##### 3. Route the effect into our pedal
+## 3. Route the effect into our pedal
+------
 
 Next, in the `setup()` routine, we need to initialize our effects `pedal` and route the audio from the pedal in and out jacks through the various effects and synth objects we're using.  
-```
+``` C
 void setup() {
 
-  pedal.init();   // Initialize the system
+  pedal.init(true);   // Initialize the system and enable debug mode
 
   // Connect our effect(s) to input and output jacks
   pedal.route_audio(pedal.instr_in, my_echo_1.input);		// Instr in -> echo in
@@ -74,7 +78,7 @@ void setup() {
 
 Let's deconstruct what we just did here.
 
-First, we *called* the `pedal.init();` function to set up our system.
+First, we *called* the `pedal.init(true);` function to set up our system.  By passing a true to this function, we're also enabling debug mode and the pedal will output status infomation.
 
 Next, we connected the audio from the input jack of our pedal (aka `instr_in`) to the input of our echo object (aka `my_echo_1.input`) using the `route_audio()` function.  
 
@@ -84,11 +88,12 @@ In this case, we just have one object.  We routed / wired the instr_in to the in
 
 And finally, we call `pedal.run();` which takes our effect configuration, performs the magic, sends it over to the DSP where the effects are run.
 
-##### 4. Add service function to our loop
+## 4. Add service function to our loop
+------
 
 The last thing we need to do is add the `pedal.service();` function call in our `loop()` function.  This function basically checks in the with the DSP, updates any parameters that need to be updated, and retrieves information from the DSP.
 
-````
+``` C
 void loop() {
   // put your main code here, to run repeatedly:
 
@@ -97,13 +102,13 @@ void loop() {
 }
 ```
 
-##### Bringing it all together
-
+## Bringing it all together
+------
 Let's now look at the whole echo effect:
 
-```
+``` C
 // Include our library of effects routines
-#include "dm_fx.h"
+#include <dreammakerfx.h>
 
 // Create/declare one echo effect and configure it
 fx_delay   my_echo_1(1000.0,  // 1 second echo
@@ -111,7 +116,7 @@ fx_delay   my_echo_1(1000.0,  // 1 second echo
 
 void setup() {
 
-  pedal.init();   // Initialize the system
+  pedal.init(true);   // Initialize the system and enable debug mode
 
   // Connect our effect(s) to input and output jacks
   pedal.route_audio(pedal.instr_in, my_echo_1.input);		// Instr in -> echo in
@@ -130,7 +135,8 @@ void loop() {
 
 ```
 
-#### Running the effect on hardware
+## Running the effect on hardware
+------
 
 As discussed in the installation section, be sure the LED near the USB jack is fading in / fading out.  This means the platform is in bootloader mode and is ready to accept a new effect.  If the LED is not doing this, press the reset button twice in quick succession.
 

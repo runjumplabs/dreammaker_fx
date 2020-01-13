@@ -27,15 +27,11 @@ The DreamMaker FX hardware is not USB powered so you'll need to plug it into the
 
 Plug the DreamMaker FX hardware into the USB port on your computer.  Make sure the USB cable you are using is not a charging cable.  There are lots of microUSB charging cables out there that just have wires for power and ground and no data!  
 
-You should see a new drive show on your machine called DM_FX.  If the DreamMaker FX hardare doesn't show up when you plug it into your PC or Mac, you need to put it back into bootloader mode.  
+You should see a new drive show on your machine called DM_FX.  If the DreamMaker FX hardare doesn't show up when you plug it into your PC or Mac, you need to put it back into bootloader mode.  See below on the process for putting the pedal into bootloader mode.  If this doesn't work, double-check your USB cable as it may be a charging cable.
 
 In Arduino IDE, go to Tools->Board.  You should see lots of options.  At the end of the list, you should see DreamMaker FX (SAMD51/ARM Cortex M4 Core).  Select this and you're ready to download effects!
 
-Last thing and this is important: due to a massive brain fart, the input and output guitar jacks are actually backwards :/ The guitar plugs in next to the brass antenna connector hanging off the back of the board.  And the amp plugs into the other side (P2).
-
-Before you upload a new effect from the Arduino application, quickly press the reset button twice.  This puts it back into bootloader mode.  If you don't do this, you may find that subsequent program downloads fail.  
-
-There are four other LEDs on the hardware that dance around together once the DSP is running.  If you download an effect and these stop dancing, something has gone catastrophically wrong.  Let me (Dan) know if this happens!
+Last thing and this is important: the input and output guitar jacks are actually backwards :/ The guitar plugs in next to the brass antenna connector hanging off the back of the board.  And the amp plugs into the other side (P2).
 
 
 # Placing the DreamMaker FX Hardware into Bootloader mode
