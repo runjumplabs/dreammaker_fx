@@ -1,5 +1,5 @@
 ---
-layout: naked
+layout: extra_naked
 title: Docs
 ---
 
