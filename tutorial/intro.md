@@ -3,7 +3,8 @@ layout: extra_naked
 title: Docs
 ---
 
-#### Introduction 
+# Introduction 
+------
 
 Welcome the DreamMaker FX!  This is an audio platform that makes it very easy to create powerful and unique instrument effects.
 
