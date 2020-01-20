@@ -1,3 +1,8 @@
+---
+layout: extra_naked
+title: API Docs
+---
+
 # Summary
 
  Members                        | Descriptions                                
