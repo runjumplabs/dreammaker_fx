@@ -1,5 +1,5 @@
 ---
-layout: extra_naked
+layout: api
 title: API Documentation
 ---
 # Summary
