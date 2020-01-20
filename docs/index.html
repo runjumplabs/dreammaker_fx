@@ -85,19 +85,19 @@ title: Docs
 <iframe width="560" height="315" src="https://www.youtube.com/embed/AxZVMyIFqcA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe>
 <p>Example: </p>
 <pre><code>/**
- * This is an implementation of a typical delay / echo pedal.   
- * 
+ * This is an implementation of a typical delay / echo pedal.
+ *
  * Left pot: depth - the depth of the tremelo effect
  * Center pot: delay time - modulation rate
  * Right pot: type of modulation - from counterclockwise to clockwise is sine -&gt; triangle -&gt; square -&gt; random
- * 
+ *
  * Left footswitch: bypass - turns on and off the effect
  * Right footswitch: tap - tap it a few times at a set interval to update the vibrato modulation rate
- * 
+ *
  * This effect uses a tiny amount of the available processing power and memory.
  * It's provided as an example of how to use the various features of the fx_amplitude_mod block
- * 
- * 
+ *
+ *
  */
 #include &lt;dreammakerfx.h&gt;
 
@@ -114,7 +114,7 @@ void setup() {
 
   // Route audio from instrument -&gt; fx_amplitude_mod -&gt; amp
   pedal.route_audio(pedal.instr_in, tremy.input);
-  pedal.route_audio(tremy.output, pedal.amp_out);  
+  pedal.route_audio(tremy.output, pedal.amp_out);
 
   // left footswitch is bypass
   pedal.add_bypass_button(FOOTSWITCH_LEFT);
@@ -130,21 +130,21 @@ void setup() {
 void loop() {
 
   // If new tempo has been tapped in, use that to control tremelo rate
-  if (pedal.new_tap_interval()) { 
+  if (pedal.new_tap_interval()) {
     tremy.set_rate_hz(pedal.get_tap_freq_hz());
-  } 
+  }
 
   // Left pot controls depth
-  if (pedal.pot_left.has_changed()) { 
-    tremy.set_depth(pedal.pot_left.val);     
-  } 
+  if (pedal.pot_left.has_changed()) {
+    tremy.set_depth(pedal.pot_left.val);
+  }
 
   // Center pot controls rate
-  if (pedal.pot_center.has_changed()) { 
+  if (pedal.pot_center.has_changed()) {
     float rate_hz = pedal.pot_center.val* 10.0;
     pedal.set_tap_blink_rate_hz(rate_hz);
-    tremy.set_rate_hz(rate_hz);     
-  } 
+    tremy.set_rate_hz(rate_hz);
+  }
 
   // Right pot sets the oscillator type
   if (pedal.pot_right.has_changed()) {
@@ -156,11 +156,11 @@ void loop() {
       tremy.set_lfo_type(OSC_SQUARE_SOFT);
     } else {
       tremy.set_lfo_type(OSC_RANDOM);
-    }      
+    }
   }
 
    // Run pedal service to take care of stuff
-  pedal.service();  
+  pedal.service();
 
 }
 </code></pre>
@@ -293,18 +293,18 @@ void loop() {
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8nM5GsNNbyA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe>
 <p>Example: </p>
 <pre><code>/**
- * This is an implementation of a typical compressor pedal   
- * 
+ * This is an implementation of a typical compressor pedal
+ *
  * Left pot: depth - the threshold where compression kicks in
  * Center pot: delay time - the amount to compress after threshold crossed
  * Right pot: type of modulation - output gain
- * 
+ *
  * Left footswitch: bypass - turns on and off the effect
  * Right footswitch: gain boost - press to double instrument volume when effect engaged
- * 
+ *
  * This effect uses a tiny amount of the available processing power and memory.
  * It's provided as an example of how to use the various features of the fx_compressor block
- * 
+ *
  */
 #include &lt;dreammakerfx.h&gt;
 
@@ -339,29 +339,29 @@ void loop() {
 
   // The right footswitch is being used as a momentary gain boost of 2x
   if (pedal.button_pressed(FOOTSWITCH_RIGHT, true)) {
-    compressor.set_output_gain(pot_gain_setting*2.0);      
+    compressor.set_output_gain(pot_gain_setting*2.0);
   }
   if (pedal.button_released(FOOTSWITCH_RIGHT, true)) {
     compressor.set_output_gain(pot_gain_setting);
   }
 
   // Left pot changes threshold from -12dB to -72dB
-  if (pedal.pot_left.has_changed()) { 
+  if (pedal.pot_left.has_changed()) {
       compressor.set_threshold(-12.0 - (pedal.pot_left.val*60));
-  } 
+  }
 
   // Center pot sets compression ratio
-  if (pedal.pot_center.has_changed()) { 
-    compressor.set_ratio(pedal.pot_center.val*100.0);
-  } 
+  if (pedal.pot_center.has_changed()) {
+    compressor.set_ratio(pedal.pot_center.val_log*100.0);
+  }
 
   // Right pot controls compressor output gain
-  if (pedal.pot_right.has_changed()) { 
+  if (pedal.pot_right.has_changed()) {
     pot_gain_setting = pedal.pot_right.val*6;
     compressor.set_output_gain(pot_gain_setting);
-  } 
+  }
 
-  // Service 
+  // Service
   pedal.service();
 
 }
@@ -518,27 +518,27 @@ void loop() {
 <p>Here's a nice summary of clipping using polynomials to create various types of distortions topic: <a href="http://sites.music.columbia.edu/cmc/music-dsp/FAQs/guitar_distortion_FAQ.html">http://sites.music.columbia.edu/cmc/music-dsp/FAQs/guitar<em>distortion</em>FAQ.html</a></p>
 <p>Example: </p>
 <pre><code>/**
- * This is an implementation of a basic distortion pedal   
- * 
+ * This is an implementation of a basic distortion pedal
+ *
  * Left pot: depth - the threshold where compression kicks in
  * Center pot: delay time - the amount to compress after threshold crossed
  * Right pot: type of modulation - output gain
- * 
+ *
  * Left footswitch: bypass - turns on and off the effect
  * Right footswitch: drive boost - hold down to set drive to max
- * 
+ *
  * This effect uses a tiny amount of the available processing power and memory.
  * It's provided as an example of how to use the various features of the fx_compressor block
- * 
+ *
  */
 #include &lt;dreammakerfx.h&gt;
 
 fx_destructor       destruct(0.1,           // Clipping level (from 0 to 1.0) - lower is heavier distortion
-                             4.0,           // Input drive 
+                             4.0,           // Input drive
                              SMOOTH_CLIP);  // Distortion function = fuzz
 
 fx_biquad_filter    tone_filter(800.0,              // Initial filter cutoff freq
-                                1.0,                // Standard resonance 
+                                1.0,                // Standard resonance
                                 BIQUAD_TYPE_BPF);   // Filter type is bandpass
 
 
@@ -688,7 +688,9 @@ void loop() {
 <p>Effect: Looper - capture and playback loops.</p>
 <p>Here's a nice tutorial on how looper pedals work in general <iframe width="560" height="315" src="https://www.youtube.com/embed/Gd0NhglZWtw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe></p>
 <p>Example: </p>
-<pre><code>/*
+<pre><code> #include "dreammmakerfx.h"
+
+/*
 This is a basic looper pedal that uses the route_control() function to pass the tapped
 loop length along to an echo effect. The echo effect is set to 1/4 the lenght of the loop
 so each time a new loop is set, the echo time is updated to.
@@ -726,69 +728,22 @@ void setup() {
   pedal.route_audio(echo.output, pedal.amp_out);
 
   // Connect the tapped loop length of our looper to the delay size and divide by 1/4 and convert to milliseconds (so four echoes per loop)
-  pedal.route_control(loopy.loop_length_seconds, 
-                      echo.length_ms, 
+  pedal.route_control(loopy.loop_length_seconds,
+                      echo.length_ms,
                       250.0,        // Scale by 1000 * 1/4 (convert to ms and then divide by 4 so we get four echoes)
                       0);           // Offset = 0
 
-  // Optional code to print out the routing details to console
-  if (true) {
-    pedal.print_instance_stack();
-    pedal.print_routing_table();
-    pedal.print_param_tables();
-  }
 
   // Run this effect
   pedal.run();
-
-  // Disable echo initially
-  echo.bypass();
 
 }
 
 void loop() {
 
 
-  // Service 
+  // Service
   pedal.service();
-}
-
-// Footswitch 1 - typically used for enable/bypass
-void footswitch_1_pressed() { 
-
-  // Declared as static so state is preserved between calls
-  static bool bypassed = false;
-
-  // Bypass code
-  if (bypassed) {
-    // If we are currently bypassed, switch pedal to active mode and turn on LED next to SW1
-    pedal.enable_fx();
-    digitalWrite(PIN_FOOTSW_LED_1, HIGH); // Turn on LED
-  } else {
-    // If we are currently active, switch pedal to bypassed mode and turn off LED next to SW1
-    pedal.bypass_fx();
-    digitalWrite(PIN_FOOTSW_LED_1, LOW);  // Turn off LED
-  }
-  bypassed = !bypassed; // Toggle bypassed state variable
-}
-
-// Footswitch 2 - used to trigger loop
-void footswitch_2_pressed() {
-
-  static bool looping = false;
-
-  if (!looping) {
-    loopy.start_loop_recording();
-    Serial.println("\nLoop recording");
-    digitalWrite(PIN_FOOTSW_LED_2, HIGH); // Turn on LED
-  } else {
-    loopy.stop_loop_recording();
-    Serial.println("\nLoop recording complete");
-    digitalWrite(PIN_FOOTSW_LED_2, LOW); // Turn off LED
-    echo.enable();
-  }
-
-  looping = !looping;
 }
 </code></pre>
 <h2 id="details-8">Details</h2>
