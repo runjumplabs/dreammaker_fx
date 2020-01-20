@@ -4,7 +4,7 @@ production_url : https://runjumplabs.github.io/dreammaker_fx
 include: ['docs/']
 
 markdown: kramdown
-
+highlighter: rouge
 collections:
   effect_types:
     output: true

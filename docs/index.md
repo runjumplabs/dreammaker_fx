@@ -1,8 +1,4 @@
 ---
-layout: api
-title: API Documentation
----
----
 # Summary
 
  Members                        | Descriptions                                
