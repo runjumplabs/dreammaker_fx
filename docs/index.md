@@ -2,6 +2,18 @@
 layout: api
 title: API Documentation
 ---
+---
+layout: api
+title: API Documentation
+---
+---
+layout: api
+title: API Documentation
+---
+---
+layout: api
+title: API Documentation
+---
 # Summary
 
  Members                        | Descriptions                                
@@ -354,9 +366,9 @@ Here's a nice video about three different parameters of a biquad: f: cutoff/cent
 `public fx_control_node * `[`q`](#classfx__biquad__filter_1a4a4821b7190483d41339969237612c04) | Control routing node: width of the filter
 `public fx_control_node * `[`gain`](#classfx__biquad__filter_1a76aa6221915b88905f3b45f1cc0f7929) | Control routing node: gain of the filter (used in shelving filters)
 `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1aea807f35dde115fe6897cf96900d2926)`(float filt_freq,float filt_resonance,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type)` | Basic constructor for biquad filter.
-`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1a05c86bf75f906d74fb22d00c42f858e7)`(float filt_freq,float filt_resonance,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,BIQUAD_FILTER_ORDER order)` | Basic constructor for biquad filter.
-`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ae0b02c6616a737417bb0037cab6af05c)`(float filt_freq,float filt_resonance,float filter_gain,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`EFFECT_TRANSITION_SPEED`](#dm__fx__effects__defines_8h_1a0292d9069ee59ac7258602ae1b1101d2)` trans_speed)` | Advanced constructor for biquad filter.
-`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ab8ff8e47928ea9a5df9063ef2686d4aa)`(float filt_freq,float filt_resonance,float filter_gain_db,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`EFFECT_TRANSITION_SPEED`](#dm__fx__effects__defines_8h_1a0292d9069ee59ac7258602ae1b1101d2)` trans_speed,BIQUAD_FILTER_ORDER order)` | Advanced constructor for biquad filter.
+`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1a05c86bf75f906d74fb22d00c42f858e7)`(float filt_freq,float filt_resonance,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`BIQUAD_FILTER_ORDER`](#dm__fx__effects__defines_8h_1a618f7ad9198b8e9ff1c988f3d5eefefb)` order)` | Basic constructor for biquad filter.
+`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ae0b02c6616a737417bb0037cab6af05c)`(float filt_freq,float filt_resonance,float filter_gain,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`EFFECT_TRANSITION_SPEED`](#group__Enumerations_1ga0292d9069ee59ac7258602ae1b1101d2)` trans_speed)` | Advanced constructor for biquad filter.
+`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ab8ff8e47928ea9a5df9063ef2686d4aa)`(float filt_freq,float filt_resonance,float filter_gain_db,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`EFFECT_TRANSITION_SPEED`](#group__Enumerations_1ga0292d9069ee59ac7258602ae1b1101d2)` trans_speed,`[`BIQUAD_FILTER_ORDER`](#dm__fx__effects__defines_8h_1a618f7ad9198b8e9ff1c988f3d5eefefb)` order)` | Advanced constructor for biquad filter.
 `public inline void `[`enable`](#classfx__biquad__filter_1aaf296f748135cba4ec2dcb8eb72ae229)`()` | Enable the biquad filter (it is enabled by default)
 `public inline void `[`bypass`](#classfx__biquad__filter_1ae1df4e211ed2861d1dd1c11e88f7af7a)`()` | Bypass the biquad filter (will just pass clean audio through)
 `public inline void `[`set_freq`](#classfx__biquad__filter_1ad25d7d137c74ba15ff8aae13772f7691)`(float freq)` | Sets a new cutoff/critical frequency (Hz).
@@ -398,7 +410,7 @@ Basic constructor for biquad filter.
 
 * `filt_type` The filter type, see BIQUAD_FILTER_TYPE for options
 
-#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1a05c86bf75f906d74fb22d00c42f858e7)`(float filt_freq,float filt_resonance,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,BIQUAD_FILTER_ORDER order)` {#classfx__biquad__filter_1a05c86bf75f906d74fb22d00c42f858e7}
+#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1a05c86bf75f906d74fb22d00c42f858e7)`(float filt_freq,float filt_resonance,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`BIQUAD_FILTER_ORDER`](#dm__fx__effects__defines_8h_1a618f7ad9198b8e9ff1c988f3d5eefefb)` order)` {#classfx__biquad__filter_1a05c86bf75f906d74fb22d00c42f858e7}
 
 Basic constructor for biquad filter.
 
@@ -411,7 +423,7 @@ Basic constructor for biquad filter.
 
 * `order` The order of the filter (higher = tighter)
 
-#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ae0b02c6616a737417bb0037cab6af05c)`(float filt_freq,float filt_resonance,float filter_gain,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`EFFECT_TRANSITION_SPEED`](#dm__fx__effects__defines_8h_1a0292d9069ee59ac7258602ae1b1101d2)` trans_speed)` {#classfx__biquad__filter_1ae0b02c6616a737417bb0037cab6af05c}
+#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ae0b02c6616a737417bb0037cab6af05c)`(float filt_freq,float filt_resonance,float filter_gain,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`EFFECT_TRANSITION_SPEED`](#group__Enumerations_1ga0292d9069ee59ac7258602ae1b1101d2)` trans_speed)` {#classfx__biquad__filter_1ae0b02c6616a737417bb0037cab6af05c}
 
 Advanced constructor for biquad filter.
 
@@ -426,7 +438,7 @@ Advanced constructor for biquad filter.
 
 * `trans_speed` The transaction speed when new filter parameters are suppliued, see EFFECT_TRANSITION_SPEED for options
 
-#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ab8ff8e47928ea9a5df9063ef2686d4aa)`(float filt_freq,float filt_resonance,float filter_gain_db,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`EFFECT_TRANSITION_SPEED`](#dm__fx__effects__defines_8h_1a0292d9069ee59ac7258602ae1b1101d2)` trans_speed,BIQUAD_FILTER_ORDER order)` {#classfx__biquad__filter_1ab8ff8e47928ea9a5df9063ef2686d4aa}
+#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ab8ff8e47928ea9a5df9063ef2686d4aa)`(float filt_freq,float filt_resonance,float filter_gain_db,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`EFFECT_TRANSITION_SPEED`](#group__Enumerations_1ga0292d9069ee59ac7258602ae1b1101d2)` trans_speed,`[`BIQUAD_FILTER_ORDER`](#dm__fx__effects__defines_8h_1a618f7ad9198b8e9ff1c988f3d5eefefb)` order)` {#classfx__biquad__filter_1ab8ff8e47928ea9a5df9063ef2686d4aa}
 
 Advanced constructor for biquad filter.
 
@@ -947,8 +959,8 @@ void loop() {
 `public fx_audio_node * `[`output`](#classfx__destructor_1a158a2d7421fa46d57cc4ede297a5437e) | Audio routing node [output]: primary audio output
 `public fx_control_node * `[`param_1`](#classfx__destructor_1a12a568312921f87d35a0dd3f4f8e0bc6) | Control routing node [input]: clipping threshold (0.0 -> 1.0)
 `public fx_control_node * `[`param_2`](#classfx__destructor_1af0f29b6db5fa74a39ce5d6562555acb3) | Control routing node [input]: input drive multiplier before destructor (up to 64.0)
-`public inline  `[`fx_destructor`](#classfx__destructor_1a4e0e00623681636a95b1533fa4a9753d)`(float param_1,float param_2,DESTRUCTOR_TYPE clip_type)` | Basic constructor for the destructor.
-`public inline  `[`fx_destructor`](#classfx__destructor_1a18bf3bcfe2a035859b01e201c2240859)`(float param_1,float param_2,DESTRUCTOR_TYPE clip_type,bool upsample)` | Advanced constructor for the destructor.
+`public inline  `[`fx_destructor`](#classfx__destructor_1a4e0e00623681636a95b1533fa4a9753d)`(float param_1,float param_2,`[`DESTRUCTOR_TYPE`](#dm__fx__effects__defines_8h_1a1b467688e64507632004453c05632b64)` clip_type)` | Basic constructor for the destructor.
+`public inline  `[`fx_destructor`](#classfx__destructor_1a18bf3bcfe2a035859b01e201c2240859)`(float param_1,float param_2,`[`DESTRUCTOR_TYPE`](#dm__fx__effects__defines_8h_1a1b467688e64507632004453c05632b64)` clip_type,bool upsample)` | Advanced constructor for the destructor.
 `public inline void `[`enable`](#classfx__destructor_1ae6508408f362e499ef10e38d4d717b9e)`()` | Enable the destructor (it is enabled by default)
 `public inline void `[`bypass`](#classfx__destructor_1a055f88b1889bba2f78b641fda272d96a)`()` | Bypass the destructor (will just pass clean audio through)
 `public inline void `[`set_param_1`](#classfx__destructor_1a4b6f0afb22d356a234b4ec9f5f663af7)`(float new_param_1)` | Sets the clipping threshold.
@@ -973,7 +985,7 @@ Control routing node [input]: clipping threshold (0.0 -> 1.0)
 
 Control routing node [input]: input drive multiplier before destructor (up to 64.0)
 
-#### `public inline  `[`fx_destructor`](#classfx__destructor_1a4e0e00623681636a95b1533fa4a9753d)`(float param_1,float param_2,DESTRUCTOR_TYPE clip_type)` {#classfx__destructor_1a4e0e00623681636a95b1533fa4a9753d}
+#### `public inline  `[`fx_destructor`](#classfx__destructor_1a4e0e00623681636a95b1533fa4a9753d)`(float param_1,float param_2,`[`DESTRUCTOR_TYPE`](#dm__fx__effects__defines_8h_1a1b467688e64507632004453c05632b64)` clip_type)` {#classfx__destructor_1a4e0e00623681636a95b1533fa4a9753d}
 
 Basic constructor for the destructor.
 
@@ -984,7 +996,7 @@ Basic constructor for the destructor.
 
 * `clip_type` Destructor function; See `DESTRUCTOR_TYPE` in Special parameters and constants
 
-#### `public inline  `[`fx_destructor`](#classfx__destructor_1a18bf3bcfe2a035859b01e201c2240859)`(float param_1,float param_2,DESTRUCTOR_TYPE clip_type,bool upsample)` {#classfx__destructor_1a18bf3bcfe2a035859b01e201c2240859}
+#### `public inline  `[`fx_destructor`](#classfx__destructor_1a18bf3bcfe2a035859b01e201c2240859)`(float param_1,float param_2,`[`DESTRUCTOR_TYPE`](#dm__fx__effects__defines_8h_1a1b467688e64507632004453c05632b64)` clip_type,bool upsample)` {#classfx__destructor_1a18bf3bcfe2a035859b01e201c2240859}
 
 Advanced constructor for the destructor.
 
@@ -1084,7 +1096,7 @@ Effect: Gain - used to increase or decrease the volume of an audio signal.
 `public fx_audio_node * `[`output`](#classfx__gain_1adac79db68119e32509a27ee24d1d7c6e) | Audio routing node: primary audio output
 `public fx_control_node * `[`gain`](#classfx__gain_1a68685d3f20555db915e64c8a869fcfa7) | Control routing node: gain value input - you can then link the envelope filter to this to create slow swell effects
 `public inline  `[`fx_gain`](#classfx__gain_1a2300b426bb620f6197ff600ff5745b00)`(float gain_val)` | Basic constructor/initializer for gain.
-`public inline  `[`fx_gain`](#classfx__gain_1ad1818cd57161ec431908add185673057)`(float gain_val,`[`EFFECT_TRANSITION_SPEED`](#dm__fx__effects__defines_8h_1a0292d9069ee59ac7258602ae1b1101d2)` gain_trans_speed)` | Advanced constructor for the gain.
+`public inline  `[`fx_gain`](#classfx__gain_1ad1818cd57161ec431908add185673057)`(float gain_val,`[`EFFECT_TRANSITION_SPEED`](#group__Enumerations_1ga0292d9069ee59ac7258602ae1b1101d2)` gain_trans_speed)` | Advanced constructor for the gain.
 `public inline void `[`enable`](#classfx__gain_1ac1432865de90f7dad9e5457c422058b7)`()` | Enable the **this_effect** (it is enabled by default)
 `public inline void `[`bypass`](#classfx__gain_1a871e0d71dddc9000a26aea56caf2daf6)`()` | Bypass the **this_effect** (will just pass clean audio through)
 `public inline void `[`set_gain`](#classfx__gain_1a889982b1829aeea799e2df228363fe81)`(float new_gain)` | Sets the gain multiplier. For example, a value of 2 will double the volume/amplitude and a value of 0.5 will halve the volume/amplitude.
@@ -1112,7 +1124,7 @@ Basic constructor/initializer for gain.
 #### Parameters
 * `gain_val` The gain value
 
-#### `public inline  `[`fx_gain`](#classfx__gain_1ad1818cd57161ec431908add185673057)`(float gain_val,`[`EFFECT_TRANSITION_SPEED`](#dm__fx__effects__defines_8h_1a0292d9069ee59ac7258602ae1b1101d2)` gain_trans_speed)` {#classfx__gain_1ad1818cd57161ec431908add185673057}
+#### `public inline  `[`fx_gain`](#classfx__gain_1ad1818cd57161ec431908add185673057)`(float gain_val,`[`EFFECT_TRANSITION_SPEED`](#group__Enumerations_1ga0292d9069ee59ac7258602ae1b1101d2)` gain_trans_speed)` {#classfx__gain_1ad1818cd57161ec431908add185673057}
 
 Advanced constructor for the gain.
 
@@ -2480,4 +2492,94 @@ Sets the the type of oscillator used as the LFO.
 
 Prints the parameters for this effect.
 
-Generated by [Moxygen](https://sourcey.com/moxygen)
+Generated by [Moxygen](https://sourcey.com/moxygen)# group `Enumerations` {#group__Enumerations}
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+`enum `[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)            | : Types of oscillators
+`enum `[`EFFECT_TRANSITION_SPEED`](#group__Enumerations_1ga0292d9069ee59ac7258602ae1b1101d2)            | : Transition time when new parameters are loaded
+`enum `[`BIQUAD_FILTER_TYPE`](#group__Enumerations_1ga9b7d24918081e2a37ecbbe1521978296)            | : Type of biquad filter
+`enum `[`BIQUAD_FILTER_ORDER`](#group__Enumerations_1ga618f7ad9198b8e9ff1c988f3d5eefefb)            | : Biquad filter order. The higher the order, the more intense the filtering effect
+`enum `[`DESTRUCTOR_TYPE`](#group__Enumerations_1ga1b467688e64507632004453c05632b64)            | : Destructor functions
+
+## Members
+
+#### `enum `[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176) {#group__Enumerations_1gada898a149424188b3a23010c8fe89176}
+
+ Values                         | Descriptions                                
+--------------------------------|---------------------------------------------
+OSC_NONE            | 
+OSC_SINE            | Sine wave
+OSC_TRIANGLE            | Triangle wave
+OSC_TRIANGLE_CLIPPED            | Clipped triangle wave (param1 is the clipping threshold)
+OSC_SQUARE            | Square wave
+OSC_SQUARE_SOFT            | Square wave with smoothed transitions so no abrubt changes when used as a control source
+OSC_PULSE            | Pulse wave (param1 is the duty cycle from 0.0 to 1.0)
+OSC_RAMP_POS            | Ramp wave with positive slope
+OSC_RAMP_NEG            | Ramp wave with negative slope
+OSC_RANDOM            | Random wave
+OSC_CLIPPED_TRI            | 
+OSC_TOTAL            | 
+
+: Types of oscillators
+
+#### `enum `[`EFFECT_TRANSITION_SPEED`](#group__Enumerations_1ga0292d9069ee59ac7258602ae1b1101d2) {#group__Enumerations_1ga0292d9069ee59ac7258602ae1b1101d2}
+
+ Values                         | Descriptions                                
+--------------------------------|---------------------------------------------
+TRANS_VERY_FAST            | < 1 ms
+TRANS_FAST            | ~ 3 ms
+TRANS_MED            | ~ 6 ms
+TRANS_SLOW            | ~ 25 ms
+TRANS_VERY_SLOW            | ~ 80 ms
+TRANS_TOTAL            | 
+
+: Transition time when new parameters are loaded
+
+#### `enum `[`BIQUAD_FILTER_TYPE`](#group__Enumerations_1ga9b7d24918081e2a37ecbbe1521978296) {#group__Enumerations_1ga9b7d24918081e2a37ecbbe1521978296}
+
+ Values                         | Descriptions                                
+--------------------------------|---------------------------------------------
+BIQUAD_TYPE_LPF            | Low-pass filter
+BIQUAD_TYPE_HPF            | High-pass filter
+BIQUAD_TYPE_BPF            | Band-pass filter
+BIQUAD_TYPE_NOTCH            | Notch filter
+BIQUAD_TYPE_PEAKING            | Peaking filter (used in parametric filters)
+BIQUAD_TYPE_L_SHELF            | Low shelf
+BIQUAD_TYPE_H_SHELF            | High shelf
+BIQUAD_TYPE_TOTAL            | 
+
+: Type of biquad filter
+
+[![Video](http://img.youtube.com/vi/rkwS6vigSyE/0.jpg)](https://www.youtube.com/watch?v=rkwS6vigSyE)
+
+
+#### `enum `[`BIQUAD_FILTER_ORDER`](#group__Enumerations_1ga618f7ad9198b8e9ff1c988f3d5eefefb) {#group__Enumerations_1ga618f7ad9198b8e9ff1c988f3d5eefefb}
+
+ Values                         | Descriptions                                
+--------------------------------|---------------------------------------------
+BIQUAD_ORDER_2            | 2nd order
+BIQUAD_ORDER_4            | 4th order
+BIQUAD_ORDER_6            | 6th order
+BIQUAD_ORDER_8            | 8th order
+BIQUAD_ORDER_TOTAL            | 
+
+: Biquad filter order. The higher the order, the more intense the filtering effect
+
+#### `enum `[`DESTRUCTOR_TYPE`](#group__Enumerations_1ga1b467688e64507632004453c05632b64) {#group__Enumerations_1ga1b467688e64507632004453c05632b64}
+
+ Values                         | Descriptions                                
+--------------------------------|---------------------------------------------
+SMOOTH_CLIP            | Smooth polynomial clipping like tube distortion
+SMOOTHER_CLIP            | Smoother polynomial clipping like tube distortion
+SMOOTH_FUZZ            | Smooth polynomial clipping that is rectified like a fuzz pedal
+BIT_CRUSHER            | Digital bit reduction
+SAMPLE_RATE_CRUSHER            | Digital sample-rate reduction
+SINE_CLIPPER            | Wave shaping with sine function - introduces interesting high frequencies components
+DIGITAL_PULVERIZER            | Digital destruction
+POLY_TOTAL            | 
+
+: Destructor functions
+
