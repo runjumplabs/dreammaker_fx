@@ -353,10 +353,10 @@ Here's a nice video about three different parameters of a biquad: f: cutoff/cent
 `public fx_control_node * `[`freq`](#classfx__biquad__filter_1a3f44ee6d1f9dbc892a22cecbc63eddd4) | Control routing node: center/critical frequency of the filter in Hz (i.e. 800.0 for 800Hz)
 `public fx_control_node * `[`q`](#classfx__biquad__filter_1a4a4821b7190483d41339969237612c04) | Control routing node: width of the filter
 `public fx_control_node * `[`gain`](#classfx__biquad__filter_1a76aa6221915b88905f3b45f1cc0f7929) | Control routing node: gain of the filter (used in shelving filters)
-`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1aea807f35dde115fe6897cf96900d2926)`(float filt_freq,float filt_resonance,BIQUAD_FILTER_TYPE filt_type)` | Basic constructor for biquad filter.
-`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1a05c86bf75f906d74fb22d00c42f858e7)`(float filt_freq,float filt_resonance,BIQUAD_FILTER_TYPE filt_type,BIQUAD_FILTER_ORDER order)` | Basic constructor for biquad filter.
-`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ae0b02c6616a737417bb0037cab6af05c)`(float filt_freq,float filt_resonance,float filter_gain,BIQUAD_FILTER_TYPE filt_type,EFFECT_TRANSITION_SPEED trans_speed)` | Advanced constructor for biquad filter.
-`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ab8ff8e47928ea9a5df9063ef2686d4aa)`(float filt_freq,float filt_resonance,float filter_gain_db,BIQUAD_FILTER_TYPE filt_type,EFFECT_TRANSITION_SPEED trans_speed,BIQUAD_FILTER_ORDER order)` | Advanced constructor for biquad filter.
+`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1aea807f35dde115fe6897cf96900d2926)`(float filt_freq,float filt_resonance,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type)` | Basic constructor for biquad filter.
+`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1a05c86bf75f906d74fb22d00c42f858e7)`(float filt_freq,float filt_resonance,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,BIQUAD_FILTER_ORDER order)` | Basic constructor for biquad filter.
+`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ae0b02c6616a737417bb0037cab6af05c)`(float filt_freq,float filt_resonance,float filter_gain,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`EFFECT_TRANSITION_SPEED`](#dm__fx__effects__defines_8h_1a0292d9069ee59ac7258602ae1b1101d2)` trans_speed)` | Advanced constructor for biquad filter.
+`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ab8ff8e47928ea9a5df9063ef2686d4aa)`(float filt_freq,float filt_resonance,float filter_gain_db,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`EFFECT_TRANSITION_SPEED`](#dm__fx__effects__defines_8h_1a0292d9069ee59ac7258602ae1b1101d2)` trans_speed,BIQUAD_FILTER_ORDER order)` | Advanced constructor for biquad filter.
 `public inline void `[`enable`](#classfx__biquad__filter_1aaf296f748135cba4ec2dcb8eb72ae229)`()` | Enable the biquad filter (it is enabled by default)
 `public inline void `[`bypass`](#classfx__biquad__filter_1ae1df4e211ed2861d1dd1c11e88f7af7a)`()` | Bypass the biquad filter (will just pass clean audio through)
 `public inline void `[`set_freq`](#classfx__biquad__filter_1ad25d7d137c74ba15ff8aae13772f7691)`(float freq)` | Sets a new cutoff/critical frequency (Hz).
@@ -387,7 +387,7 @@ Control routing node: width of the filter
 
 Control routing node: gain of the filter (used in shelving filters)
 
-#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1aea807f35dde115fe6897cf96900d2926)`(float filt_freq,float filt_resonance,BIQUAD_FILTER_TYPE filt_type)` {#classfx__biquad__filter_1aea807f35dde115fe6897cf96900d2926}
+#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1aea807f35dde115fe6897cf96900d2926)`(float filt_freq,float filt_resonance,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type)` {#classfx__biquad__filter_1aea807f35dde115fe6897cf96900d2926}
 
 Basic constructor for biquad filter.
 
@@ -398,7 +398,7 @@ Basic constructor for biquad filter.
 
 * `filt_type` The filter type, see BIQUAD_FILTER_TYPE for options
 
-#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1a05c86bf75f906d74fb22d00c42f858e7)`(float filt_freq,float filt_resonance,BIQUAD_FILTER_TYPE filt_type,BIQUAD_FILTER_ORDER order)` {#classfx__biquad__filter_1a05c86bf75f906d74fb22d00c42f858e7}
+#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1a05c86bf75f906d74fb22d00c42f858e7)`(float filt_freq,float filt_resonance,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,BIQUAD_FILTER_ORDER order)` {#classfx__biquad__filter_1a05c86bf75f906d74fb22d00c42f858e7}
 
 Basic constructor for biquad filter.
 
@@ -411,7 +411,7 @@ Basic constructor for biquad filter.
 
 * `order` The order of the filter (higher = tighter)
 
-#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ae0b02c6616a737417bb0037cab6af05c)`(float filt_freq,float filt_resonance,float filter_gain,BIQUAD_FILTER_TYPE filt_type,EFFECT_TRANSITION_SPEED trans_speed)` {#classfx__biquad__filter_1ae0b02c6616a737417bb0037cab6af05c}
+#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ae0b02c6616a737417bb0037cab6af05c)`(float filt_freq,float filt_resonance,float filter_gain,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`EFFECT_TRANSITION_SPEED`](#dm__fx__effects__defines_8h_1a0292d9069ee59ac7258602ae1b1101d2)` trans_speed)` {#classfx__biquad__filter_1ae0b02c6616a737417bb0037cab6af05c}
 
 Advanced constructor for biquad filter.
 
@@ -426,7 +426,7 @@ Advanced constructor for biquad filter.
 
 * `trans_speed` The transaction speed when new filter parameters are suppliued, see EFFECT_TRANSITION_SPEED for options
 
-#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ab8ff8e47928ea9a5df9063ef2686d4aa)`(float filt_freq,float filt_resonance,float filter_gain_db,BIQUAD_FILTER_TYPE filt_type,EFFECT_TRANSITION_SPEED trans_speed,BIQUAD_FILTER_ORDER order)` {#classfx__biquad__filter_1ab8ff8e47928ea9a5df9063ef2686d4aa}
+#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ab8ff8e47928ea9a5df9063ef2686d4aa)`(float filt_freq,float filt_resonance,float filter_gain_db,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`EFFECT_TRANSITION_SPEED`](#dm__fx__effects__defines_8h_1a0292d9069ee59ac7258602ae1b1101d2)` trans_speed,BIQUAD_FILTER_ORDER order)` {#classfx__biquad__filter_1ab8ff8e47928ea9a5df9063ef2686d4aa}
 
 Advanced constructor for biquad filter.
 
@@ -1084,7 +1084,7 @@ Effect: Gain - used to increase or decrease the volume of an audio signal.
 `public fx_audio_node * `[`output`](#classfx__gain_1adac79db68119e32509a27ee24d1d7c6e) | Audio routing node: primary audio output
 `public fx_control_node * `[`gain`](#classfx__gain_1a68685d3f20555db915e64c8a869fcfa7) | Control routing node: gain value input - you can then link the envelope filter to this to create slow swell effects
 `public inline  `[`fx_gain`](#classfx__gain_1a2300b426bb620f6197ff600ff5745b00)`(float gain_val)` | Basic constructor/initializer for gain.
-`public inline  `[`fx_gain`](#classfx__gain_1ad1818cd57161ec431908add185673057)`(float gain_val,EFFECT_TRANSITION_SPEED gain_trans_speed)` | Advanced constructor for the gain.
+`public inline  `[`fx_gain`](#classfx__gain_1ad1818cd57161ec431908add185673057)`(float gain_val,`[`EFFECT_TRANSITION_SPEED`](#dm__fx__effects__defines_8h_1a0292d9069ee59ac7258602ae1b1101d2)` gain_trans_speed)` | Advanced constructor for the gain.
 `public inline void `[`enable`](#classfx__gain_1ac1432865de90f7dad9e5457c422058b7)`()` | Enable the **this_effect** (it is enabled by default)
 `public inline void `[`bypass`](#classfx__gain_1a871e0d71dddc9000a26aea56caf2daf6)`()` | Bypass the **this_effect** (will just pass clean audio through)
 `public inline void `[`set_gain`](#classfx__gain_1a889982b1829aeea799e2df228363fe81)`(float new_gain)` | Sets the gain multiplier. For example, a value of 2 will double the volume/amplitude and a value of 0.5 will halve the volume/amplitude.
@@ -1112,7 +1112,7 @@ Basic constructor/initializer for gain.
 #### Parameters
 * `gain_val` The gain value
 
-#### `public inline  `[`fx_gain`](#classfx__gain_1ad1818cd57161ec431908add185673057)`(float gain_val,EFFECT_TRANSITION_SPEED gain_trans_speed)` {#classfx__gain_1ad1818cd57161ec431908add185673057}
+#### `public inline  `[`fx_gain`](#classfx__gain_1ad1818cd57161ec431908add185673057)`(float gain_val,`[`EFFECT_TRANSITION_SPEED`](#dm__fx__effects__defines_8h_1a0292d9069ee59ac7258602ae1b1101d2)` gain_trans_speed)` {#classfx__gain_1ad1818cd57161ec431908add185673057}
 
 Advanced constructor for the gain.
 
