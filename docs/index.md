@@ -151,7 +151,7 @@ Here's a video demonstrating how amplitude modulators work: [![Video](http://img
 
 
 Code example: 
-``` C
+```cpp
 /**
  * This is an implementation of a typical delay / echo pedal.
  *
@@ -502,7 +502,7 @@ Here's a nice primer on how compressors work:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8nM5GsNNbyA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe>
 
 Example: 
-``` C
+```cpp
 /**
  * This is an implementation of a typical compressor pedal
  *
@@ -668,7 +668,7 @@ This is basically an echo effect.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/E36AkCAzGWo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe>
 
 Example: 
-``` C
+```cpp
 /**
  * This is an implementation of a typical delay / echo pedal.   
  * 
@@ -864,7 +864,7 @@ Effect: Destructor - provides various types of hard and soft destructors for cre
 Here's a nice summary of clipping using polynomials to create various types of distortions topic: [http://sites.music.columbia.edu/cmc/music-dsp/FAQs/guitar_distortion_FAQ.html](http://sites.music.columbia.edu/cmc/music-dsp/FAQs/guitar_distortion_FAQ.html)
 
 Example: 
-``` C
+```cpp
 /**
  * This is an implementation of a basic distortion pedal
  *
@@ -1169,7 +1169,7 @@ Effect: Looper - capture and playback loops.
 Here's a nice tutorial on how looper pedals work in general <iframe width="560" height="315" src="https://www.youtube.com/embed/Gd0NhglZWtw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe>
 
 Example: 
-``` C
+```cpp
  #include "dreammmakerfx.h"
 
 /*
@@ -1917,7 +1917,7 @@ Effect: Ring modulator - frequency modulates the audio - crazy sounding.
 The following example is a full ring modulator pedal with tone control, wet/dry mix and of course ring modulator.
 
 
-``` C
+```cpp
 #include <dreammakerfx.h>
 
 
@@ -2053,7 +2053,7 @@ class fx_slicer
 Effect: Slicer - chops up audio in the time domain and pipes to different effects.
 
 Example: 
-``` C
+```cpp
 /*
 
  The slicer switches between output channels at a predefined rate.  It is 
@@ -2250,7 +2250,7 @@ The variable delay effect is the basis for a number of time-varying delay effect
 Here's a nice tutorial on how variable delays work in these various building blocks: [https://www.dsprelated.com/freebooks/pasp/Time_Varying_Delay_Effects.html](https://www.dsprelated.com/freebooks/pasp/Time_Varying_Delay_Effects.html)
 
 Example: 
-``` C
+```cpp
 /**
  * This is an implementation of a typical flanger pedal.   
  * 
