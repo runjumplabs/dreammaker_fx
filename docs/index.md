@@ -2,18 +2,6 @@
 layout: api
 title: API Documentation
 ---
----
-layout: api
-title: API Documentation
----
----
-layout: api
-title: API Documentation
----
----
-layout: api
-title: API Documentation
----
 # Summary
 
  Members                        | Descriptions                                
@@ -254,12 +242,12 @@ void loop() {
 `public fx_control_node * `[`depth`](#classfx__amplitude__mod_1a25ef00aa85c14e895710a505a9c6e0bd) | Control routing node: amplifude modulator depth (should be between 0.0 and 1.0)
 `public fx_control_node * `[`rate_hz`](#classfx__amplitude__mod_1ad85024759667cd9decc11e4fb24461ef) | Control routing node: amplitide modulator rate (Hz) (i.e. 1.0 = once per second)
 `public inline  `[`fx_amplitude_mod`](#classfx__amplitude__mod_1acfe6780b005b6b34ba58e82b9b64cf50)`(float rate_hz,float depth)` | Basic constructor/initializer for amplitude modulator.
-`public inline  `[`fx_amplitude_mod`](#classfx__amplitude__mod_1a354b528d3a59d766b7fc3e1ed74427f9)`(float rate_hz,float depth,float initial_phase_deg,`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` modulation_type,bool use_ext_modulator)` | Advanced constructor for the amplitude modulator.
+`public inline  `[`fx_amplitude_mod`](#classfx__amplitude__mod_1a354b528d3a59d766b7fc3e1ed74427f9)`(float rate_hz,float depth,float initial_phase_deg,`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` modulation_type,bool use_ext_modulator)` | Advanced constructor for the amplitude modulator.
 `public inline void `[`enable`](#classfx__amplitude__mod_1a4c21c0e9725c1dd515a2bf0b2fb8f99e)`()` | Enable the amplitude modululator (it is enabled by default)
 `public inline void `[`bypass`](#classfx__amplitude__mod_1a5d5ef5ff79e9c553a9ee5116c3dfa516)`()` | Bypass the amplitude modululator (will just pass clean audio through)
 `public inline void `[`set_depth`](#classfx__amplitude__mod_1ac0c2c2ab77761c961cd569d36e26ab17)`(float depth)` | Sets the depth of the amplitude modululator.
 `public inline void `[`set_rate_hz`](#classfx__amplitude__mod_1a90b19e7b942c13979bddeba8579813a4)`(float rate_hz)` | Sets the rate of the modulator in Hertz (cycles per second)
-`public inline void `[`set_lfo_type`](#classfx__amplitude__mod_1a2561e4ad01e6a629409b59d73a86caf3)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` new_type)` | Sets the the type of oscillator used as the LFO.
+`public inline void `[`set_lfo_type`](#classfx__amplitude__mod_1a2561e4ad01e6a629409b59d73a86caf3)`(`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` new_type)` | Sets the the type of oscillator used as the LFO.
 `public inline void `[`print_params`](#classfx__amplitude__mod_1a62563870f85a17142b545e1e8b718fdf)`(void)` | Print the parameters for this effect.
 
 ## Members
@@ -293,7 +281,7 @@ Basic constructor/initializer for amplitude modulator.
 
 * `modulation_depth` The amp modifier depth (0.0 is no modulation -> 1.0 is full modulation)
 
-#### `public inline  `[`fx_amplitude_mod`](#classfx__amplitude__mod_1a354b528d3a59d766b7fc3e1ed74427f9)`(float rate_hz,float depth,float initial_phase_deg,`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` modulation_type,bool use_ext_modulator)` {#classfx__amplitude__mod_1a354b528d3a59d766b7fc3e1ed74427f9}
+#### `public inline  `[`fx_amplitude_mod`](#classfx__amplitude__mod_1a354b528d3a59d766b7fc3e1ed74427f9)`(float rate_hz,float depth,float initial_phase_deg,`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` modulation_type,bool use_ext_modulator)` {#classfx__amplitude__mod_1a354b528d3a59d766b7fc3e1ed74427f9}
 
 Advanced constructor for the amplitude modulator.
 
@@ -330,7 +318,7 @@ Sets the rate of the modulator in Hertz (cycles per second)
 #### Parameters
 * `rate_hz` The rate hz
 
-#### `public inline void `[`set_lfo_type`](#classfx__amplitude__mod_1a2561e4ad01e6a629409b59d73a86caf3)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` new_type)` {#classfx__amplitude__mod_1a2561e4ad01e6a629409b59d73a86caf3}
+#### `public inline void `[`set_lfo_type`](#classfx__amplitude__mod_1a2561e4ad01e6a629409b59d73a86caf3)`(`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` new_type)` {#classfx__amplitude__mod_1a2561e4ad01e6a629409b59d73a86caf3}
 
 Sets the the type of oscillator used as the LFO.
 
@@ -365,10 +353,10 @@ Here's a nice video about three different parameters of a biquad: f: cutoff/cent
 `public fx_control_node * `[`freq`](#classfx__biquad__filter_1a3f44ee6d1f9dbc892a22cecbc63eddd4) | Control routing node: center/critical frequency of the filter in Hz (i.e. 800.0 for 800Hz)
 `public fx_control_node * `[`q`](#classfx__biquad__filter_1a4a4821b7190483d41339969237612c04) | Control routing node: width of the filter
 `public fx_control_node * `[`gain`](#classfx__biquad__filter_1a76aa6221915b88905f3b45f1cc0f7929) | Control routing node: gain of the filter (used in shelving filters)
-`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1aea807f35dde115fe6897cf96900d2926)`(float filt_freq,float filt_resonance,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type)` | Basic constructor for biquad filter.
-`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1a05c86bf75f906d74fb22d00c42f858e7)`(float filt_freq,float filt_resonance,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`BIQUAD_FILTER_ORDER`](#dm__fx__effects__defines_8h_1a618f7ad9198b8e9ff1c988f3d5eefefb)` order)` | Basic constructor for biquad filter.
-`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ae0b02c6616a737417bb0037cab6af05c)`(float filt_freq,float filt_resonance,float filter_gain,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`EFFECT_TRANSITION_SPEED`](#group__Enumerations_1ga0292d9069ee59ac7258602ae1b1101d2)` trans_speed)` | Advanced constructor for biquad filter.
-`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ab8ff8e47928ea9a5df9063ef2686d4aa)`(float filt_freq,float filt_resonance,float filter_gain_db,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`EFFECT_TRANSITION_SPEED`](#group__Enumerations_1ga0292d9069ee59ac7258602ae1b1101d2)` trans_speed,`[`BIQUAD_FILTER_ORDER`](#dm__fx__effects__defines_8h_1a618f7ad9198b8e9ff1c988f3d5eefefb)` order)` | Advanced constructor for biquad filter.
+`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1aea807f35dde115fe6897cf96900d2926)`(float filt_freq,float filt_resonance,`[`BIQUAD_FILTER_TYPE`](#group__Enumerations_1ga9b7d24918081e2a37ecbbe1521978296)` filt_type)` | Basic constructor for biquad filter.
+`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1a05c86bf75f906d74fb22d00c42f858e7)`(float filt_freq,float filt_resonance,`[`BIQUAD_FILTER_TYPE`](#group__Enumerations_1ga9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`BIQUAD_FILTER_ORDER`](#group__Enumerations_1ga618f7ad9198b8e9ff1c988f3d5eefefb)` order)` | Basic constructor for biquad filter.
+`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ae0b02c6616a737417bb0037cab6af05c)`(float filt_freq,float filt_resonance,float filter_gain,`[`BIQUAD_FILTER_TYPE`](#group__Enumerations_1ga9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`EFFECT_TRANSITION_SPEED`](#group__Enumerations_1ga0292d9069ee59ac7258602ae1b1101d2)` trans_speed)` | Advanced constructor for biquad filter.
+`public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ab8ff8e47928ea9a5df9063ef2686d4aa)`(float filt_freq,float filt_resonance,float filter_gain_db,`[`BIQUAD_FILTER_TYPE`](#group__Enumerations_1ga9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`EFFECT_TRANSITION_SPEED`](#group__Enumerations_1ga0292d9069ee59ac7258602ae1b1101d2)` trans_speed,`[`BIQUAD_FILTER_ORDER`](#group__Enumerations_1ga618f7ad9198b8e9ff1c988f3d5eefefb)` order)` | Advanced constructor for biquad filter.
 `public inline void `[`enable`](#classfx__biquad__filter_1aaf296f748135cba4ec2dcb8eb72ae229)`()` | Enable the biquad filter (it is enabled by default)
 `public inline void `[`bypass`](#classfx__biquad__filter_1ae1df4e211ed2861d1dd1c11e88f7af7a)`()` | Bypass the biquad filter (will just pass clean audio through)
 `public inline void `[`set_freq`](#classfx__biquad__filter_1ad25d7d137c74ba15ff8aae13772f7691)`(float freq)` | Sets a new cutoff/critical frequency (Hz).
@@ -399,7 +387,7 @@ Control routing node: width of the filter
 
 Control routing node: gain of the filter (used in shelving filters)
 
-#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1aea807f35dde115fe6897cf96900d2926)`(float filt_freq,float filt_resonance,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type)` {#classfx__biquad__filter_1aea807f35dde115fe6897cf96900d2926}
+#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1aea807f35dde115fe6897cf96900d2926)`(float filt_freq,float filt_resonance,`[`BIQUAD_FILTER_TYPE`](#group__Enumerations_1ga9b7d24918081e2a37ecbbe1521978296)` filt_type)` {#classfx__biquad__filter_1aea807f35dde115fe6897cf96900d2926}
 
 Basic constructor for biquad filter.
 
@@ -410,7 +398,7 @@ Basic constructor for biquad filter.
 
 * `filt_type` The filter type, see BIQUAD_FILTER_TYPE for options
 
-#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1a05c86bf75f906d74fb22d00c42f858e7)`(float filt_freq,float filt_resonance,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`BIQUAD_FILTER_ORDER`](#dm__fx__effects__defines_8h_1a618f7ad9198b8e9ff1c988f3d5eefefb)` order)` {#classfx__biquad__filter_1a05c86bf75f906d74fb22d00c42f858e7}
+#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1a05c86bf75f906d74fb22d00c42f858e7)`(float filt_freq,float filt_resonance,`[`BIQUAD_FILTER_TYPE`](#group__Enumerations_1ga9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`BIQUAD_FILTER_ORDER`](#group__Enumerations_1ga618f7ad9198b8e9ff1c988f3d5eefefb)` order)` {#classfx__biquad__filter_1a05c86bf75f906d74fb22d00c42f858e7}
 
 Basic constructor for biquad filter.
 
@@ -423,7 +411,7 @@ Basic constructor for biquad filter.
 
 * `order` The order of the filter (higher = tighter)
 
-#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ae0b02c6616a737417bb0037cab6af05c)`(float filt_freq,float filt_resonance,float filter_gain,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`EFFECT_TRANSITION_SPEED`](#group__Enumerations_1ga0292d9069ee59ac7258602ae1b1101d2)` trans_speed)` {#classfx__biquad__filter_1ae0b02c6616a737417bb0037cab6af05c}
+#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ae0b02c6616a737417bb0037cab6af05c)`(float filt_freq,float filt_resonance,float filter_gain,`[`BIQUAD_FILTER_TYPE`](#group__Enumerations_1ga9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`EFFECT_TRANSITION_SPEED`](#group__Enumerations_1ga0292d9069ee59ac7258602ae1b1101d2)` trans_speed)` {#classfx__biquad__filter_1ae0b02c6616a737417bb0037cab6af05c}
 
 Advanced constructor for biquad filter.
 
@@ -438,7 +426,7 @@ Advanced constructor for biquad filter.
 
 * `trans_speed` The transaction speed when new filter parameters are suppliued, see EFFECT_TRANSITION_SPEED for options
 
-#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ab8ff8e47928ea9a5df9063ef2686d4aa)`(float filt_freq,float filt_resonance,float filter_gain_db,`[`BIQUAD_FILTER_TYPE`](#dm__fx__effects__defines_8h_1a9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`EFFECT_TRANSITION_SPEED`](#group__Enumerations_1ga0292d9069ee59ac7258602ae1b1101d2)` trans_speed,`[`BIQUAD_FILTER_ORDER`](#dm__fx__effects__defines_8h_1a618f7ad9198b8e9ff1c988f3d5eefefb)` order)` {#classfx__biquad__filter_1ab8ff8e47928ea9a5df9063ef2686d4aa}
+#### `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ab8ff8e47928ea9a5df9063ef2686d4aa)`(float filt_freq,float filt_resonance,float filter_gain_db,`[`BIQUAD_FILTER_TYPE`](#group__Enumerations_1ga9b7d24918081e2a37ecbbe1521978296)` filt_type,`[`EFFECT_TRANSITION_SPEED`](#group__Enumerations_1ga0292d9069ee59ac7258602ae1b1101d2)` trans_speed,`[`BIQUAD_FILTER_ORDER`](#group__Enumerations_1ga618f7ad9198b8e9ff1c988f3d5eefefb)` order)` {#classfx__biquad__filter_1ab8ff8e47928ea9a5df9063ef2686d4aa}
 
 Advanced constructor for biquad filter.
 
@@ -959,8 +947,8 @@ void loop() {
 `public fx_audio_node * `[`output`](#classfx__destructor_1a158a2d7421fa46d57cc4ede297a5437e) | Audio routing node [output]: primary audio output
 `public fx_control_node * `[`param_1`](#classfx__destructor_1a12a568312921f87d35a0dd3f4f8e0bc6) | Control routing node [input]: clipping threshold (0.0 -> 1.0)
 `public fx_control_node * `[`param_2`](#classfx__destructor_1af0f29b6db5fa74a39ce5d6562555acb3) | Control routing node [input]: input drive multiplier before destructor (up to 64.0)
-`public inline  `[`fx_destructor`](#classfx__destructor_1a4e0e00623681636a95b1533fa4a9753d)`(float param_1,float param_2,`[`DESTRUCTOR_TYPE`](#dm__fx__effects__defines_8h_1a1b467688e64507632004453c05632b64)` clip_type)` | Basic constructor for the destructor.
-`public inline  `[`fx_destructor`](#classfx__destructor_1a18bf3bcfe2a035859b01e201c2240859)`(float param_1,float param_2,`[`DESTRUCTOR_TYPE`](#dm__fx__effects__defines_8h_1a1b467688e64507632004453c05632b64)` clip_type,bool upsample)` | Advanced constructor for the destructor.
+`public inline  `[`fx_destructor`](#classfx__destructor_1a4e0e00623681636a95b1533fa4a9753d)`(float param_1,float param_2,`[`DESTRUCTOR_TYPE`](#group__Enumerations_1ga1b467688e64507632004453c05632b64)` clip_type)` | Basic constructor for the destructor.
+`public inline  `[`fx_destructor`](#classfx__destructor_1a18bf3bcfe2a035859b01e201c2240859)`(float param_1,float param_2,`[`DESTRUCTOR_TYPE`](#group__Enumerations_1ga1b467688e64507632004453c05632b64)` clip_type,bool upsample)` | Advanced constructor for the destructor.
 `public inline void `[`enable`](#classfx__destructor_1ae6508408f362e499ef10e38d4d717b9e)`()` | Enable the destructor (it is enabled by default)
 `public inline void `[`bypass`](#classfx__destructor_1a055f88b1889bba2f78b641fda272d96a)`()` | Bypass the destructor (will just pass clean audio through)
 `public inline void `[`set_param_1`](#classfx__destructor_1a4b6f0afb22d356a234b4ec9f5f663af7)`(float new_param_1)` | Sets the clipping threshold.
@@ -985,7 +973,7 @@ Control routing node [input]: clipping threshold (0.0 -> 1.0)
 
 Control routing node [input]: input drive multiplier before destructor (up to 64.0)
 
-#### `public inline  `[`fx_destructor`](#classfx__destructor_1a4e0e00623681636a95b1533fa4a9753d)`(float param_1,float param_2,`[`DESTRUCTOR_TYPE`](#dm__fx__effects__defines_8h_1a1b467688e64507632004453c05632b64)` clip_type)` {#classfx__destructor_1a4e0e00623681636a95b1533fa4a9753d}
+#### `public inline  `[`fx_destructor`](#classfx__destructor_1a4e0e00623681636a95b1533fa4a9753d)`(float param_1,float param_2,`[`DESTRUCTOR_TYPE`](#group__Enumerations_1ga1b467688e64507632004453c05632b64)` clip_type)` {#classfx__destructor_1a4e0e00623681636a95b1533fa4a9753d}
 
 Basic constructor for the destructor.
 
@@ -996,7 +984,7 @@ Basic constructor for the destructor.
 
 * `clip_type` Destructor function; See `DESTRUCTOR_TYPE` in Special parameters and constants
 
-#### `public inline  `[`fx_destructor`](#classfx__destructor_1a18bf3bcfe2a035859b01e201c2240859)`(float param_1,float param_2,`[`DESTRUCTOR_TYPE`](#dm__fx__effects__defines_8h_1a1b467688e64507632004453c05632b64)` clip_type,bool upsample)` {#classfx__destructor_1a18bf3bcfe2a035859b01e201c2240859}
+#### `public inline  `[`fx_destructor`](#classfx__destructor_1a18bf3bcfe2a035859b01e201c2240859)`(float param_1,float param_2,`[`DESTRUCTOR_TYPE`](#group__Enumerations_1ga1b467688e64507632004453c05632b64)` clip_type,bool upsample)` {#classfx__destructor_1a18bf3bcfe2a035859b01e201c2240859}
 
 Advanced constructor for the destructor.
 
@@ -1512,7 +1500,7 @@ Effect: - chops up audio in the time domain and pipes to different effects.
 `public fx_control_node * `[`octave_mix`](#classfx__octave_1ae9fbe75c4c6076219f91eaec1a178844) | Control routing node: Shaper mix (0.0 -> 1.0)
 `public fx_control_node * `[`oct_1_mix`](#classfx__octave_1af2f99541ecdf6b798d29f574b3ca9bbf) | Control routing node: Octave below mix (0.0 -> 1.0)
 `public fx_control_node * `[`oct_2_mix`](#classfx__octave_1a989bbf38060257de6df644ae2908dca3) | Control routing node: Two octaves below mix (0.0 -> 1.0)
-`public inline  `[`fx_octave`](#classfx__octave_1a3eeb7dc1b3e91b6c35a1f21d64ef53a3)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` type,float clean_mix,float oct_0_mix,float oct_1_mix,float oct_2_mix)` | Constructor for the octave.
+`public inline  `[`fx_octave`](#classfx__octave_1a3eeb7dc1b3e91b6c35a1f21d64ef53a3)`(`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` type,float clean_mix,float oct_0_mix,float oct_1_mix,float oct_2_mix)` | Constructor for the octave.
 `public inline void `[`enable`](#classfx__octave_1abca5ff95385e0721f8ab2267d7ee3b0d)`()` | Enable the amplitude modululator (it is enabled by default)
 `public inline void `[`bypass`](#classfx__octave_1a10164ff7320aa607ce847a8f40bd4292)`()` | Bypass the amplitude modululator (will just pass clean audio through)
 `public inline void `[`set_clean_mix`](#classfx__octave_1a22543217b05834576aa61058b9ef913b)`(float clean_mix)` | Sets clean / instrument mix.
@@ -1560,7 +1548,7 @@ Control routing node: Octave below mix (0.0 -> 1.0)
 
 Control routing node: Two octaves below mix (0.0 -> 1.0)
 
-#### `public inline  `[`fx_octave`](#classfx__octave_1a3eeb7dc1b3e91b6c35a1f21d64ef53a3)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` type,float clean_mix,float oct_0_mix,float oct_1_mix,float oct_2_mix)` {#classfx__octave_1a3eeb7dc1b3e91b6c35a1f21d64ef53a3}
+#### `public inline  `[`fx_octave`](#classfx__octave_1a3eeb7dc1b3e91b6c35a1f21d64ef53a3)`(`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` type,float clean_mix,float oct_0_mix,float oct_1_mix,float oct_2_mix)` {#classfx__octave_1a3eeb7dc1b3e91b6c35a1f21d64ef53a3}
 
 Constructor for the octave.
 
@@ -1638,13 +1626,13 @@ Utility: Oscillator that can has both audio and control outputs.
 `public fx_control_node * `[`amplitude`](#classfx__oscillator_1aee2c66fe29de2ec4f47bce0ed77b2445) | Control routing node: amplitude of the oscillator (linear, typically between 0.0 and 1.0)
 `public fx_control_node * `[`offset`](#classfx__oscillator_1a97089210c8bfbb4bbd1071699289ad76) | Control routing node: The DC offset of the amplifier. Useful if you're using this to control parameters in ranges not centered around 0.0.
 `public fx_control_node * `[`value`](#classfx__oscillator_1a80c56e026c17bea6c0b00b83338e1982) | Control routing node: The current value of the oscillator. Connect this node to external oscillator nodes for effects.
-`public inline  `[`fx_oscillator`](#classfx__oscillator_1af7cd903dc9cc687017083aa6abbd24d3)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` osc_type,float freq,float amplitude)` | Basic constructor for an oscillator when used as an audio source.
-`public inline  `[`fx_oscillator`](#classfx__oscillator_1a6f60a4769a531aca7030a97586d8e6b4)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` osc_type,float freq,float amplitude,float initial_phase)` | Basic constructor for an oscillator used as a control source.
+`public inline  `[`fx_oscillator`](#classfx__oscillator_1af7cd903dc9cc687017083aa6abbd24d3)`(`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` osc_type,float freq,float amplitude)` | Basic constructor for an oscillator when used as an audio source.
+`public inline  `[`fx_oscillator`](#classfx__oscillator_1a6f60a4769a531aca7030a97586d8e6b4)`(`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` osc_type,float freq,float amplitude,float initial_phase)` | Basic constructor for an oscillator used as a control source.
 `public inline void `[`enable`](#classfx__oscillator_1af8097f269a5e90da896abd8f7e6ef5e2)`()` | Enable the oscillator (it is enabled by default)
 `public inline void `[`bypass`](#classfx__oscillator_1a7af21ed9e597c2c00d85dac8d0fc7346)`()` | Bypass the oscillator (it will provide just a constant value)
 `public inline void `[`set_frequency`](#classfx__oscillator_1a70f61ffee6744da72ecc8ea3cda9e1ad)`(float freq)` | Upates the frequency in Hz of the current oscillator.
 `public inline void `[`set_amplitude`](#classfx__oscillator_1abd4b26763cbf698b21293ebff30d03a2)`(float amplitude)` | Updates the amplitude for the current oscillator.
-`public inline void `[`set_oscillator_type`](#classfx__oscillator_1abf8c1deb5e5aebf8243f2712e2613115)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` new_type)` | Sets the oscillator type.
+`public inline void `[`set_oscillator_type`](#classfx__oscillator_1abf8c1deb5e5aebf8243f2712e2613115)`(`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` new_type)` | Sets the oscillator type.
 `public inline void `[`print_params`](#classfx__oscillator_1a630f9545124147322faea04790240e61)`(void)` | Print the parameters for this effect.
 
 ## Members
@@ -1669,7 +1657,7 @@ Control routing node: The DC offset of the amplifier. Useful if you're using thi
 
 Control routing node: The current value of the oscillator. Connect this node to external oscillator nodes for effects.
 
-#### `public inline  `[`fx_oscillator`](#classfx__oscillator_1af7cd903dc9cc687017083aa6abbd24d3)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` osc_type,float freq,float amplitude)` {#classfx__oscillator_1af7cd903dc9cc687017083aa6abbd24d3}
+#### `public inline  `[`fx_oscillator`](#classfx__oscillator_1af7cd903dc9cc687017083aa6abbd24d3)`(`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` osc_type,float freq,float amplitude)` {#classfx__oscillator_1af7cd903dc9cc687017083aa6abbd24d3}
 
 Basic constructor for an oscillator when used as an audio source.
 
@@ -1680,7 +1668,7 @@ Basic constructor for an oscillator when used as an audio source.
 
 * `amplitude` The amplitude (linear scale e.g. 0.0 -> 1.0 typically)
 
-#### `public inline  `[`fx_oscillator`](#classfx__oscillator_1a6f60a4769a531aca7030a97586d8e6b4)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` osc_type,float freq,float amplitude,float initial_phase)` {#classfx__oscillator_1a6f60a4769a531aca7030a97586d8e6b4}
+#### `public inline  `[`fx_oscillator`](#classfx__oscillator_1a6f60a4769a531aca7030a97586d8e6b4)`(`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` osc_type,float freq,float amplitude,float initial_phase)` {#classfx__oscillator_1a6f60a4769a531aca7030a97586d8e6b4}
 
 Basic constructor for an oscillator used as a control source.
 
@@ -1715,7 +1703,7 @@ Updates the amplitude for the current oscillator.
 #### Parameters
 * `amplitude` The amplitude (linear)
 
-#### `public inline void `[`set_oscillator_type`](#classfx__oscillator_1abf8c1deb5e5aebf8243f2712e2613115)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` new_type)` {#classfx__oscillator_1abf8c1deb5e5aebf8243f2712e2613115}
+#### `public inline void `[`set_oscillator_type`](#classfx__oscillator_1abf8c1deb5e5aebf8243f2712e2613115)`(`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` new_type)` {#classfx__oscillator_1abf8c1deb5e5aebf8243f2712e2613115}
 
 Sets the oscillator type.
 
@@ -1747,13 +1735,13 @@ Example: **phase_shifter_1.c**
 `public fx_control_node * `[`rate_hz`](#classfx__phase__shifter_1aee41f77d8694d6267ae46aff7bafe052) | Control routing node: phase shifter rate (Hz) (i.e. 1.0 = once per second)
 `public fx_control_node * `[`feedback`](#classfx__phase__shifter_1ad024eec3755afff22c3d79899a443370) | Control routing node: phase shifter feedback (should be between -1.0 and 1.0)
 `public inline  `[`fx_phase_shifter`](#classfx__phase__shifter_1a3a121772ae94e0f4821bbc67349881d3)`(float rate_hz,float depth,float feedback)` | Basic constructor/initializer for the phase shifter.
-`public inline  `[`fx_phase_shifter`](#classfx__phase__shifter_1a4acc2b17739a801a72623dd645b1b32c)`(float rate_hz,float depth,float feedback,float inital_phase,`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` mod_type)` | Constructs a new instance.
+`public inline  `[`fx_phase_shifter`](#classfx__phase__shifter_1a4acc2b17739a801a72623dd645b1b32c)`(float rate_hz,float depth,float feedback,float inital_phase,`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` mod_type)` | Constructs a new instance.
 `public inline void `[`enable`](#classfx__phase__shifter_1a02b925c2b19530efcda28486ff7d286a)`()` | Enable the phase shifter (it is enabled by default)
 `public inline void `[`bypass`](#classfx__phase__shifter_1a361a5bd72a429333d3e1a0120332c19f)`()` | Bypass the phase shifter (will just pass clean audio through)
 `public inline void `[`set_depth`](#classfx__phase__shifter_1a5775686b16e0adf4f44cfc7701a02b68)`(float depth)` | Sets the depth of the phase shifter.
 `public inline void `[`set_rate_hz`](#classfx__phase__shifter_1acfdf8c4124e0e95cbaa3e5fbf6b23a9f)`(float rate_hz)` | Sets the rate of the phase shifter in Hertz (cycles per second)
 `public inline void `[`set_feedback`](#classfx__phase__shifter_1a48317de95377711857ba1d660bbc4bd7)`(float feedback)` | Sets the feedback of the phase shifter.
-`public inline void `[`set_lfo_type`](#classfx__phase__shifter_1a7089c1b4c3fc15c7f274835c345d3abc)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` new_type)` | Sets the the type of oscillator used as the LFO.
+`public inline void `[`set_lfo_type`](#classfx__phase__shifter_1a7089c1b4c3fc15c7f274835c345d3abc)`(`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` new_type)` | Sets the the type of oscillator used as the LFO.
 `public inline void `[`print_params`](#classfx__phase__shifter_1a4bd5e5a813c8b07fba88fb1b689fc25f)`(void)` | Print the parameters for this effect.
 
 ## Members
@@ -1789,7 +1777,7 @@ Basic constructor/initializer for the phase shifter.
 
 * `feedback` The feedback of the phase shifter
 
-#### `public inline  `[`fx_phase_shifter`](#classfx__phase__shifter_1a4acc2b17739a801a72623dd645b1b32c)`(float rate_hz,float depth,float feedback,float inital_phase,`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` mod_type)` {#classfx__phase__shifter_1a4acc2b17739a801a72623dd645b1b32c}
+#### `public inline  `[`fx_phase_shifter`](#classfx__phase__shifter_1a4acc2b17739a801a72623dd645b1b32c)`(float rate_hz,float depth,float feedback,float inital_phase,`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` mod_type)` {#classfx__phase__shifter_1a4acc2b17739a801a72623dd645b1b32c}
 
 Constructs a new instance.
 
@@ -1833,7 +1821,7 @@ Sets the feedback of the phase shifter.
 #### Parameters
 * `feedback` Feedback value (between -1.0 and 1.0)
 
-#### `public inline void `[`set_lfo_type`](#classfx__phase__shifter_1a7089c1b4c3fc15c7f274835c345d3abc)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` new_type)` {#classfx__phase__shifter_1a7089c1b4c3fc15c7f274835c345d3abc}
+#### `public inline void `[`set_lfo_type`](#classfx__phase__shifter_1a7089c1b4c3fc15c7f274835c345d3abc)`(`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` new_type)` {#classfx__phase__shifter_1a7089c1b4c3fc15c7f274835c345d3abc}
 
 Sets the the type of oscillator used as the LFO.
 
@@ -2330,9 +2318,9 @@ void loop() {
 `public fx_control_node * `[`feedback`](#classfx__variable__delay_1a8d402d84f9415c711d72d72c4a92c77b) | Control routing node [input]: feedback
 `public fx_control_node * `[`mix_clean`](#classfx__variable__delay_1a096fd463ac9e92608bcdc825efcfabe9) | Control routing node [input]: clean signal mix
 `public fx_control_node * `[`mix_delayed`](#classfx__variable__delay_1a04c53cceef811141829a7c3a4ceeb780) | Control routing node [input]: delayed signal mix
-`public inline  `[`fx_variable_delay`](#classfx__variable__delay_1a217641554df3b9eec906c3ee1d0e4f78)`(float rate_hz,float depth,float feedback,`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` mod_type)` | Basic constructor/initializer for variable delay.
-`public inline  `[`fx_variable_delay`](#classfx__variable__delay_1abcd127b2061165c91cebb9b15ce302ad)`(float rate_hz,float depth,float feedback,float buf_size_ms,float mix_clean,float mix_delayed,`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` mod_type,bool ext_mod)` | Basic constructor/initializer for variable delay.
-`public inline  `[`fx_variable_delay`](#classfx__variable__delay_1a9477d5ff572a08f4e8cfe6be7208c97a)`(float rate_hz,float depth,float feedback,float buf_size_ms,float mix_clean,float mix_delayed,`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` mod_type,bool ext_mod,float initial_phase)` | Basic constructor/initializer for variable delay.
+`public inline  `[`fx_variable_delay`](#classfx__variable__delay_1a217641554df3b9eec906c3ee1d0e4f78)`(float rate_hz,float depth,float feedback,`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` mod_type)` | Basic constructor/initializer for variable delay.
+`public inline  `[`fx_variable_delay`](#classfx__variable__delay_1abcd127b2061165c91cebb9b15ce302ad)`(float rate_hz,float depth,float feedback,float buf_size_ms,float mix_clean,float mix_delayed,`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` mod_type,bool ext_mod)` | Basic constructor/initializer for variable delay.
+`public inline  `[`fx_variable_delay`](#classfx__variable__delay_1a9477d5ff572a08f4e8cfe6be7208c97a)`(float rate_hz,float depth,float feedback,float buf_size_ms,float mix_clean,float mix_delayed,`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` mod_type,bool ext_mod,float initial_phase)` | Basic constructor/initializer for variable delay.
 `public inline void `[`enable`](#classfx__variable__delay_1ad40a88ff09f879bcb21a6ee55d8771e8)`()` | Enable the **this_effect** (it is enabled by default)
 `public inline void `[`bypass`](#classfx__variable__delay_1a2b5aa0e4bdba02a38397a8d58fe9882a)`()` | Bypass the **this_effect** (will just pass clean audio through)
 `public inline void `[`set_depth`](#classfx__variable__delay_1a3ac8a8f3aae24224158d17e8d8582815)`(float depth)` | Updates the depth of the variable delay.
@@ -2340,7 +2328,7 @@ void loop() {
 `public inline void `[`set_feedback`](#classfx__variable__delay_1ad3b9ef61ed0db2e93bd15c01d6f98536)`(float feedback)` | Updates the feedback parameter of the variable delay.
 `public inline void `[`set_mix_clean`](#classfx__variable__delay_1afa615e6ee413dd5c4066e798f55df959)`(float mix_clean)` | Updates the clean mix of the variable delay.
 `public inline void `[`set_mix_delayed`](#classfx__variable__delay_1ae1faf9d93f2469fa201a2216ad773dfa)`(float mix_delayed)` | Updates the delayed signal mix of the variable delay.
-`public inline void `[`set_lfo_type`](#classfx__variable__delay_1ad33df6056fe62e2403c86ae4b5c84757)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` new_type)` | Sets the the type of oscillator used as the LFO.
+`public inline void `[`set_lfo_type`](#classfx__variable__delay_1ad33df6056fe62e2403c86ae4b5c84757)`(`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` new_type)` | Sets the the type of oscillator used as the LFO.
 `public inline void `[`print_params`](#classfx__variable__delay_1a69e0bdf848f4f2ab1de57a7f23fb5088)`(void)` | Prints the parameters for this effect.
 
 ## Members
@@ -2381,7 +2369,7 @@ Control routing node [input]: clean signal mix
 
 Control routing node [input]: delayed signal mix
 
-#### `public inline  `[`fx_variable_delay`](#classfx__variable__delay_1a217641554df3b9eec906c3ee1d0e4f78)`(float rate_hz,float depth,float feedback,`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` mod_type)` {#classfx__variable__delay_1a217641554df3b9eec906c3ee1d0e4f78}
+#### `public inline  `[`fx_variable_delay`](#classfx__variable__delay_1a217641554df3b9eec906c3ee1d0e4f78)`(float rate_hz,float depth,float feedback,`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` mod_type)` {#classfx__variable__delay_1a217641554df3b9eec906c3ee1d0e4f78}
 
 Basic constructor/initializer for variable delay.
 
@@ -2394,7 +2382,7 @@ Basic constructor/initializer for variable delay.
 
 * `mod_type` The shape of the waveform used to modulate (e.g. OSC_SINE, OSC_TRI, etc.)
 
-#### `public inline  `[`fx_variable_delay`](#classfx__variable__delay_1abcd127b2061165c91cebb9b15ce302ad)`(float rate_hz,float depth,float feedback,float buf_size_ms,float mix_clean,float mix_delayed,`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` mod_type,bool ext_mod)` {#classfx__variable__delay_1abcd127b2061165c91cebb9b15ce302ad}
+#### `public inline  `[`fx_variable_delay`](#classfx__variable__delay_1abcd127b2061165c91cebb9b15ce302ad)`(float rate_hz,float depth,float feedback,float buf_size_ms,float mix_clean,float mix_delayed,`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` mod_type,bool ext_mod)` {#classfx__variable__delay_1abcd127b2061165c91cebb9b15ce302ad}
 
 Basic constructor/initializer for variable delay.
 
@@ -2415,7 +2403,7 @@ Basic constructor/initializer for variable delay.
 
 * `ext_mod` whether to use an external modulation source (set to true or false)
 
-#### `public inline  `[`fx_variable_delay`](#classfx__variable__delay_1a9477d5ff572a08f4e8cfe6be7208c97a)`(float rate_hz,float depth,float feedback,float buf_size_ms,float mix_clean,float mix_delayed,`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` mod_type,bool ext_mod,float initial_phase)` {#classfx__variable__delay_1a9477d5ff572a08f4e8cfe6be7208c97a}
+#### `public inline  `[`fx_variable_delay`](#classfx__variable__delay_1a9477d5ff572a08f4e8cfe6be7208c97a)`(float rate_hz,float depth,float feedback,float buf_size_ms,float mix_clean,float mix_delayed,`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` mod_type,bool ext_mod,float initial_phase)` {#classfx__variable__delay_1a9477d5ff572a08f4e8cfe6be7208c97a}
 
 Basic constructor/initializer for variable delay.
 
@@ -2481,7 +2469,7 @@ Updates the delayed signal mix of the variable delay.
 #### Parameters
 * `mix_delayed` The new delayed mix value
 
-#### `public inline void `[`set_lfo_type`](#classfx__variable__delay_1ad33df6056fe62e2403c86ae4b5c84757)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` new_type)` {#classfx__variable__delay_1ad33df6056fe62e2403c86ae4b5c84757}
+#### `public inline void `[`set_lfo_type`](#classfx__variable__delay_1ad33df6056fe62e2403c86ae4b5c84757)`(`[`OSC_TYPES`](#group__Enumerations_1gada898a149424188b3a23010c8fe89176)` new_type)` {#classfx__variable__delay_1ad33df6056fe62e2403c86ae4b5c84757}
 
 Sets the the type of oscillator used as the LFO.
 
