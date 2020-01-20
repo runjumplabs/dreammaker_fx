@@ -1,8 +1,7 @@
 ---
 layout: extra_naked
-title: API Docs
+title: API Documentation
 ---
-
 # Summary
 
  Members                        | Descriptions                                
@@ -38,17 +37,7 @@ class fx_adsr_envelope
 
 Effect: Envelope generator.
 
-Copyright (c) 2020 Run Jump Labs LLC. All right reserved.
-
-This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either
-
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-
-The GNU Lesser General Public License can be found here: [https://www.gnu.org/licenses/lgpl-3.0.en.html](https://www.gnu.org/licenses/lgpl-3.0.en.html)
-
-Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USAAn envelope generator creates a volume envelope that can applied to either the audio from the instrument or an oscillator.
+An envelope generator creates a volume envelope that can applied to either the audio from the instrument or an oscillator.
 
 Here's a good explanation of what ADSR means. <iframe width="560" height="315" src="https://www.youtube.com/embed/JT6rixgu4s4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe>
 
@@ -154,23 +143,96 @@ class fx_amplitude_mod
 
 Effect: Amplitude modulator for creating tremelo-like effects.
 
-Copyright (c) 2019 Run Jump Labs LLC. All right reserved.
-
-This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either
-
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-
-The GNU Lesser General Public License can be found here: [https://www.gnu.org/licenses/lgpl-3.0.en.html](https://www.gnu.org/licenses/lgpl-3.0.en.html)
-
-Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USAAn amplitude modulator will change the volume or "amplitude" of the audio to create various types of tremelo effects. Here's a video demonstrating how amplitude modulators work:
+An amplitude modulator will change the volume or "amplitude" of the audio to create various types of tremelo effects. Here's a video demonstrating how amplitude modulators work:
 
 [https://www.youtube.com/watch?v=AxZVMyIFqcA](https://www.youtube.com/watch?v=AxZVMyIFqcA)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/AxZVMyIFqcA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe>
 
-Example: ___amp_mod_1.c___
+Example: 
+```
+/**
+ * This is an implementation of a typical delay / echo pedal.
+ *
+ * Left pot: depth - the depth of the tremelo effect
+ * Center pot: delay time - modulation rate
+ * Right pot: type of modulation - from counterclockwise to clockwise is sine -> triangle -> square -> random
+ *
+ * Left footswitch: bypass - turns on and off the effect
+ * Right footswitch: tap - tap it a few times at a set interval to update the vibrato modulation rate
+ *
+ * This effect uses a tiny amount of the available processing power and memory.
+ * It's provided as an example of how to use the various features of the fx_amplitude_mod block
+ *
+ *
+ */
+#include <dreammakerfx.h>
+
+fx_amplitude_mod  tremy(1.0,       // Rate is 1.0Hz (1 cycle per second)
+                        0.5,       // Initial depth is 0.5 (50% volume reduction)
+                        0.0,       // Initial phase is 0 degrees
+                        OSC_SINE,  // Sine oscillator
+                        false);    // Not using an external oscillator
+
+void setup() {
+
+  // Initialize the pedal!
+  pedal.init();
+
+  // Route audio from instrument -> fx_amplitude_mod -> amp
+  pedal.route_audio(pedal.instr_in, tremy.input);
+  pedal.route_audio(tremy.output, pedal.amp_out);
+
+  // left footswitch is bypass
+  pedal.add_bypass_button(FOOTSWITCH_LEFT);
+
+  // Right foot switch is tap loop length
+  pedal.add_tap_interval_button(FOOTSWITCH_RIGHT, true);
+
+  // Run this effect
+  pedal.run();
+
+}
+
+void loop() {
+
+  // If new tempo has been tapped in, use that to control tremelo rate
+  if (pedal.new_tap_interval()) {
+    tremy.set_rate_hz(pedal.get_tap_freq_hz());
+  }
+
+  // Left pot controls depth
+  if (pedal.pot_left.has_changed()) {
+    tremy.set_depth(pedal.pot_left.val);
+  }
+
+  // Center pot controls rate
+  if (pedal.pot_center.has_changed()) {
+    float rate_hz = pedal.pot_center.val* 10.0;
+    pedal.set_tap_blink_rate_hz(rate_hz);
+    tremy.set_rate_hz(rate_hz);
+  }
+
+  // Right pot sets the oscillator type
+  if (pedal.pot_right.has_changed()) {
+    if (pedal.pot_right.val < 0.25) {
+      tremy.set_lfo_type(OSC_SINE);
+    } else if (pedal.pot_right.val < 0.5) {
+      tremy.set_lfo_type(OSC_TRIANGLE);
+    } else if (pedal.pot_right.val < 0.75) {
+      tremy.set_lfo_type(OSC_SQUARE_SOFT);
+    } else {
+      tremy.set_lfo_type(OSC_RANDOM);
+    }
+  }
+
+   // Run pedal service to take care of stuff
+  pedal.service();
+
+}
+
+```
+
 
 ## Summary
 
@@ -312,17 +374,7 @@ class fx_biquad_filter
 
 Effect: Biquad filter for implementing various types of filters (low pass, high pass, band pass, etc.)
 
-Copyright (c) 2019 Run Jump Labs LLC. All right reserved.
-
-This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either
-
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-
-The GNU Lesser General Public License can be found here: [https://www.gnu.org/licenses/lgpl-3.0.en.html](https://www.gnu.org/licenses/lgpl-3.0.en.html)
-
-Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USAThe biquad filter can be used to create static filters such as equalizers and dynamic filters such as auto-wahs and other interesting swept filtering effects.
+The biquad filter can be used to create static filters such as equalizers and dynamic filters such as auto-wahs and other interesting swept filtering effects.
 
 Here's a nice video about three different parameters of a biquad: f: cutoff/center frequency, q: filter width, and g: filter gain
 
@@ -476,21 +528,88 @@ class fx_compressor
 
 Effect: Compressor/Limiter.
 
-Copyright (c) 2019 Run Jump Labs LLC. All right reserved.
-
-This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either
-
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-
-The GNU Lesser General Public License can be found here: [https://www.gnu.org/licenses/lgpl-3.0.en.html](https://www.gnu.org/licenses/lgpl-3.0.en.html)
-
-Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA Here's a nice primer on how compressors work:
+Here's a nice primer on how compressors work:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8nM5GsNNbyA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe>
 
-Example: ___comp_1.c___
+Example: 
+```
+/**
+ * This is an implementation of a typical compressor pedal
+ *
+ * Left pot: depth - the threshold where compression kicks in
+ * Center pot: delay time - the amount to compress after threshold crossed
+ * Right pot: type of modulation - output gain
+ *
+ * Left footswitch: bypass - turns on and off the effect
+ * Right footswitch: gain boost - press to double instrument volume when effect engaged
+ *
+ * This effect uses a tiny amount of the available processing power and memory.
+ * It's provided as an example of how to use the various features of the fx_compressor block
+ *
+ */
+#include <dreammakerfx.h>
+
+fx_compressor compressor( -30.0,    // Threshold in dB
+                          8,        // Ratio (1:8)
+                          10.0,     // Attack (10ms)
+                          100.0,    // Release (100ms)
+                          2.0);     // Output gain (2x);
+
+void setup() {
+
+  // Initialize the pedal!
+  pedal.init();
+
+  // Route audio from instrument -> fx_compressor -> amp
+  pedal.route_audio(pedal.instr_in, compressor.input);
+  pedal.route_audio(compressor.output, pedal.amp_out);
+
+  // left footswitch is bypass
+  pedal.add_bypass_button(FOOTSWITCH_LEFT);
+
+  // Run this effect
+  pedal.run();
+
+}
+
+// Use this to save our gain setting for when gain boost footswitched released
+float pot_gain_setting = 0;
+
+
+void loop() {
+
+  // The right footswitch is being used as a momentary gain boost of 2x
+  if (pedal.button_pressed(FOOTSWITCH_RIGHT, true)) {
+    compressor.set_output_gain(pot_gain_setting*2.0);
+  }
+  if (pedal.button_released(FOOTSWITCH_RIGHT, true)) {
+    compressor.set_output_gain(pot_gain_setting);
+  }
+
+  // Left pot changes threshold from -12dB to -72dB
+  if (pedal.pot_left.has_changed()) {
+      compressor.set_threshold(-12.0 - (pedal.pot_left.val*60));
+  }
+
+  // Center pot sets compression ratio
+  if (pedal.pot_center.has_changed()) {
+    compressor.set_ratio(pedal.pot_center.val_log*100.0);
+  }
+
+  // Right pot controls compressor output gain
+  if (pedal.pot_right.has_changed()) {
+    pot_gain_setting = pedal.pot_right.val*6;
+    compressor.set_output_gain(pot_gain_setting);
+  }
+
+  // Service
+  pedal.service();
+
+}
+
+```
+
 
 ## Summary
 
@@ -616,21 +735,83 @@ class fx_delay
 
 Effect: Delay/echo.
 
-Copyright (c) 2019 Run Jump Labs LLC. All right reserved.
-
-This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either
-
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-
-The GNU Lesser General Public License can be found here: [https://www.gnu.org/licenses/lgpl-3.0.en.html](https://www.gnu.org/licenses/lgpl-3.0.en.html)
-
-Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USAThis is basically an echo effect.
+This is basically an echo effect.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/E36AkCAzGWo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe>
 
-Example: ___delay_1.c___
+Example: 
+```
+/**
+ * This is an implementation of a typical delay / echo pedal.   
+ * 
+ * Left pot: "feedback" - basically how long the echo lasts before dying out
+ * Center pot: delay time - how far apart the echos are (0.1 to 3 seconds)
+ * Right pot: wet/dry mix - the mix of clean audio and the echo effect
+ * 
+ * Left footswitch: bypass - turns on and off the effect
+ * Right footswitch: tap - tap it a few times at a set interval and the delay will lock on
+ * 
+ * This effect uses a tiny amount of the available processing power and memory.
+ * It's provided as an example of how to use the various features of the fx_delay block
+ * 
+ * 
+ */
+#include <dreammakerfx.h>
+
+fx_delay    my_delay(3000.0,  // 3000 ms / 3 seconds
+                     0.6);    // 0.6 feedback ratio
+
+void setup() {
+  // put your setup code here, to run once:
+
+  // Initialize the pedal!
+  pedal.init();
+
+  // Route audio from instrument -> my_delay -> amp
+  pedal.route_audio(pedal.instr_in, my_delay.input);
+  pedal.route_audio(my_delay.output, pedal.amp_out);
+
+  // left footswitch is bypass
+  pedal.add_bypass_button(FOOTSWITCH_LEFT);
+
+  // Right foot switch is tap delay length
+  pedal.add_tap_interval_button(FOOTSWITCH_RIGHT, true);
+
+  pedal.run();
+}
+
+void loop() {
+
+  // If new delay time has been tapped in, use that
+  if (pedal.new_tap_interval()) { 
+    my_delay.set_length_ms(pedal.get_tap_interval_ms());
+  } 
+
+  // Left pot changes the feedback of the delay (determining how long the echoes last)
+  if (pedal.pot_left.has_changed()) {
+    my_delay.set_feedback(pedal.pot_left.val);
+  }
+  
+  // Right pot changes the wet / dry mix
+  if (pedal.pot_right.has_changed()) {
+    my_delay.set_dry_mix(1.0 - pedal.pot_right.val);
+    my_delay.set_wet_mix(pedal.pot_right.val);
+  }  
+  
+  // Center pot can also be used to change the delay length 
+  // from 100ms to 3000ms
+  if (pedal.pot_center.has_changed()) {
+    float new_length_ms = 100.0 + pedal.pot_center.val*2900.0;
+    my_delay.set_length_ms(new_length_ms);
+    pedal.set_tap_blink_rate_ms(new_length_ms);
+  }    
+  
+  // Service pedal
+  pedal.service();
+}
+
+```
+
 
 ## Summary
 
@@ -751,19 +932,90 @@ class fx_destructor
 
 Effect: Destructor - provides various types of hard and soft destructors for creating different types of distortions.
 
-Copyright (c) 2019 Run Jump Labs LLC. All right reserved.
+Here's a nice summary of clipping using polynomials to create various types of distortions topic: [http://sites.music.columbia.edu/cmc/music-dsp/FAQs/guitar_distortion_FAQ.html](http://sites.music.columbia.edu/cmc/music-dsp/FAQs/guitar_distortion_FAQ.html)
 
-This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either
+Example: 
+```
+/**
+ * This is an implementation of a basic distortion pedal
+ *
+ * Left pot: depth - the threshold where compression kicks in
+ * Center pot: delay time - the amount to compress after threshold crossed
+ * Right pot: type of modulation - output gain
+ *
+ * Left footswitch: bypass - turns on and off the effect
+ * Right footswitch: drive boost - hold down to set drive to max
+ *
+ * This effect uses a tiny amount of the available processing power and memory.
+ * It's provided as an example of how to use the various features of the fx_compressor block
+ *
+ */
+#include <dreammakerfx.h>
 
-version 2.1 of the License, or (at your option) any later version.
+fx_destructor       destruct(0.1,           // Clipping level (from 0 to 1.0) - lower is heavier distortion
+                             4.0,           // Input drive
+                             SMOOTH_CLIP);  // Distortion function = fuzz
 
-This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+fx_biquad_filter    tone_filter(800.0,              // Initial filter cutoff freq
+                                1.0,                // Standard resonance
+                                BIQUAD_TYPE_BPF);   // Filter type is bandpass
 
-The GNU Lesser General Public License can be found here: [https://www.gnu.org/licenses/lgpl-3.0.en.html](https://www.gnu.org/licenses/lgpl-3.0.en.html)
 
-Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USAHere's a nice summary of clipping using polynomials to create various types of distortions topic: [http://sites.music.columbia.edu/cmc/music-dsp/FAQs/guitar_distortion_FAQ.html](http://sites.music.columbia.edu/cmc/music-dsp/FAQs/guitar_distortion_FAQ.html)
+fx_gain             out_gain(1.0);
+void setup() {
+  // put your setup code here, to run once:
 
-Example: ___destructor_1.c___
+  // Initialize the pedal!
+  pedal.init(true, true);
+
+  // Route audio through distortion, tone filter and then output gain
+  pedal.route_audio(pedal.instr_in, destruct.input);
+  pedal.route_audio(destruct.output, tone_filter.input);
+  pedal.route_audio(tone_filter.output, out_gain.input);
+  pedal.route_audio(out_gain.output, pedal.amp_out);
+
+  // left footswitch is bypass
+  pedal.add_bypass_button(FOOTSWITCH_LEFT);
+
+  // Run this effect
+  pedal.run();
+
+}
+
+float pot_drive = 1.0;
+void loop() {
+
+  // When right footswitch is pressed, max drive!
+  if (pedal.button_pressed(FOOTSWITCH_RIGHT, true)) {
+    destruct.set_param_2(16);
+  }
+  if (pedal.button_released(FOOTSWITCH_RIGHT, true)) {
+    destruct.set_param_2(pot_drive);
+  }
+
+  // Left pot is distortion drive
+  if (pedal.pot_left.has_changed()) {
+    pot_drive = 1 + pedal.pot_left.val_log*16.0;
+    destruct.set_param_2(pot_drive);
+  }
+
+  // Center pot is tone knob from 200 to 1200Hz
+  if (pedal.pot_center.has_changed()) {
+    tone_filter.set_freq(200.0 + pedal.pot_center.val*1400.0);
+  }
+
+  // Right pot is out gain
+  if (pedal.pot_right.has_changed()) {
+    out_gain.set_gain(0.3333 + pedal.pot_right.val*3.0);
+  }
+
+  // Run pedal service to take care of stuff
+  pedal.service();
+
+}
+
+```
+
 
 ## Summary
 
@@ -858,17 +1110,7 @@ class fx_envelope_tracker
 
 Effect: Envelope tracker.
 
-Copyright (c) 2019 Run Jump Labs LLC. All right reserved.
-
-This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either
-
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-
-The GNU Lesser General Public License can be found here: [https://www.gnu.org/licenses/lgpl-3.0.en.html](https://www.gnu.org/licenses/lgpl-3.0.en.html)
-
-Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USAHere's a nice tutorial on one effect that can be created with an envelope tracker
+Here's a nice tutorial on one effect that can be created with an envelope tracker
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/gFltSCZVqx0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe>
 
@@ -911,18 +1153,6 @@ class fx_gain
 ```  
 
 Effect: Gain - used to increase or decrease the volume of an audio signal.
-
-Copyright (c) 2019 Run Jump Labs LLC. All right reserved.
-
-This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either
-
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-
-The GNU Lesser General Public License can be found here: [https://www.gnu.org/licenses/lgpl-3.0.en.html](https://www.gnu.org/licenses/lgpl-3.0.en.html)
-
-Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 ## Summary
 
@@ -1004,19 +1234,70 @@ class fx_looper
 
 Effect: Looper - capture and playback loops.
 
-Copyright (c) 2019 Run Jump Labs LLC. All right reserved.
+Here's a nice tutorial on how looper pedals work in general <iframe width="560" height="315" src="https://www.youtube.com/embed/Gd0NhglZWtw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe>
 
-This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either
+Example: 
+```
+ #include "dreammmakerfx.h"
 
-version 2.1 of the License, or (at your option) any later version.
+/*
+This is a basic looper pedal that uses the route_control() function to pass the tapped
+loop length along to an echo effect. The echo effect is set to 1/4 the lenght of the loop
+so each time a new loop is set, the echo time is updated to.
 
-This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+                +--------+    +-----------+
+                |        |    |           |
+                |        |    |           |
+Instr In +----->+ Looper +--->+   Delay   +-----> Amp Out
+                |        |    |           |
+                |        |    |           |
+                +---+----+    +------+----+
+                    |                ^
+                    +----------------+
+                        loop length
 
-The GNU Lesser General Public License can be found here: [https://www.gnu.org/licenses/lgpl-3.0.en.html](https://www.gnu.org/licenses/lgpl-3.0.en.html)
+ */
+#include <dreammakerfx.h>
 
-Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USAHere's a nice tutorial on how looper pedals work in general <iframe width="560" height="315" src="https://www.youtube.com/embed/Gd0NhglZWtw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe>
+fx_looper   loopy( 0.8,   // Dry mix
+                   0.8,   // Looped audio mix
+                   12,    // Max loop length in seconds
+                   false); // Disable FX processing as audio enters the loop
 
-Example: ___looper_1.c___
+fx_delay    echo(3000,    // Max lenght of 3 seconds
+                 0.7 );   // Feedback of 0.7
+
+void setup() {
+
+  // put your setup code here, to run once:
+  pedal.init();
+
+  // for template, just pass audio from input to output jack
+  pedal.route_audio(pedal.instr_in, loopy.input);
+  pedal.route_audio(loopy.output, echo.input);
+  pedal.route_audio(echo.output, pedal.amp_out);
+
+  // Connect the tapped loop length of our looper to the delay size and divide by 1/4 and convert to milliseconds (so four echoes per loop)
+  pedal.route_control(loopy.loop_length_seconds,
+                      echo.length_ms,
+                      250.0,        // Scale by 1000 * 1/4 (convert to ms and then divide by 4 so we get four echoes)
+                      0);           // Offset = 0
+
+
+  // Run this effect
+  pedal.run();
+
+}
+
+void loop() {
+
+
+  // Service
+  pedal.service();
+}
+
+```
+
 
 ## Summary
 
@@ -1145,18 +1426,6 @@ class fx_mixer_2
 ```  
 
 Utility: 2 channel mixer.
-
-Copyright (c) 2019 Run Jump Labs LLC. All right reserved.
-
-This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either
-
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-
-The GNU Lesser General Public License can be found here: [https://www.gnu.org/licenses/lgpl-3.0.en.html](https://www.gnu.org/licenses/lgpl-3.0.en.html)
-
-Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 ## Summary
 
@@ -1296,18 +1565,6 @@ class fx_octave
 
 Effect: - chops up audio in the time domain and pipes to different effects.
 
-Copyright (c) 2019 Run Jump Labs LLC. All right reserved.
-
-This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either
-
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-
-The GNU Lesser General Public License can be found here: [https://www.gnu.org/licenses/lgpl-3.0.en.html](https://www.gnu.org/licenses/lgpl-3.0.en.html)
-
-Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
-
 ## Summary
 
  Members                        | Descriptions                                
@@ -1438,18 +1695,6 @@ class fx_oscillator
 
 Utility: Oscillator that can has both audio and control outputs.
 
-Copyright (c) 2019 Run Jump Labs LLC. All right reserved.
-
-This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either
-
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-
-The GNU Lesser General Public License can be found here: [https://www.gnu.org/licenses/lgpl-3.0.en.html](https://www.gnu.org/licenses/lgpl-3.0.en.html)
-
-Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
-
 ## Summary
 
  Members                        | Descriptions                                
@@ -1556,17 +1801,7 @@ class fx_phase_shifter
 
 Effect: Phase shifter for creating rich phase shifts.
 
-Copyright (c) 2019 Run Jump Labs LLC. All right reserved.
-
-This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either
-
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-
-The GNU Lesser General Public License can be found here: [https://www.gnu.org/licenses/lgpl-3.0.en.html](https://www.gnu.org/licenses/lgpl-3.0.en.html)
-
-Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USAExample: **phase_shifter_1.c**
+Example: **phase_shifter_1.c**
 
 ## Summary
 
@@ -1684,18 +1919,6 @@ class fx_pitch_shift
 
 Effect: Pitch shifter - shifts audio up or down in pitch.
 
-Copyright (c) 2019 Run Jump Labs LLC. All right reserved.
-
-This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either
-
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-
-The GNU Lesser General Public License can be found here: [https://www.gnu.org/licenses/lgpl-3.0.en.html](https://www.gnu.org/licenses/lgpl-3.0.en.html)
-
-Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
-
 ## Summary
 
  Members                        | Descriptions                                
@@ -1751,19 +1974,72 @@ class fx_ring_mod
 
 Effect: Ring modulator - frequency modulates the audio - crazy sounding.
 
-Copyright (c) 2019 Run Jump Labs LLC. All right reserved.
+The following example is a full ring modulator pedal with tone control, wet/dry mix and of course ring modulator.
 
-This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either
 
-version 2.1 of the License, or (at your option) any later version.
+```
+#include <dreammakerfx.h>
 
-This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
 
-The GNU Lesser General Public License can be found here: [https://www.gnu.org/licenses/lgpl-3.0.en.html](https://www.gnu.org/licenses/lgpl-3.0.en.html)
+fx_ring_mod      ring_mod_1(200.0, // Carrier frequency in Hz
+                            0.7);  // Depth 
+fx_gain          wet_mix(0.5);
+fx_gain          dry_mix(0.5);
+fx_biquad_filter ring_mod_tone(500.0, FILTER_WIDTH_MEDIUM, BIQUAD_TYPE_LPF);
+fx_mixer_2       wet_dry_mxer;
 
-Or write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA The following example is a full ring modulator pedal with tone control, wet/dry mix and of course ring modulator.
 
-___ring_mod_1.c___
+void setup() {
+  
+  // Init the effects system
+  pedal.init();
+
+  // Route audio through wet channel (ring mod->tone control)
+  pedal.route_audio(pedal.instr_in, ring_mod_1.input);
+  pedal.route_audio(ring_mod_1.output, ring_mod_tone.input);
+  pedal.route_audio(ring_mod_tone.output, wet_dry_mxer.input_1);
+  
+  // Route audio through dry channel
+  pedal.route_audio(pedal.instr_in, dry_mix.input);
+  pedal.route_audio(dry_mix.output, wet_dry_mxer.input_2);
+
+  // Mix wet and dry to output
+  pedal.route_audio(wet_dry_mxer.output, pedal.amp_out);
+
+  // Run it!
+  pedal.run();
+
+}
+  
+void loop() {
+
+  // Connect Pot 0 to wet dry mix
+  if (pedal.pot_0.has_changed()) { 
+    wet_mix.set_gain(pedal.pot_0.val);
+    dry_mix.set_gain(1.0 - pedal.pot_0.val);
+  } 
+
+  // Connect Pot 1 to carrier rate (Hz) from 50.0 to 1000.0Hz
+  if (pedal.pot_1.has_changed()) { 
+    ring_mod_1.set_freq(950.0 * pedal.pot_1.val+50.0);
+  } 
+
+  // Connect Pot 2 to tone
+  if (pedal.pot_2.has_changed()) { 
+    ring_mod_tone.set_freq((2000 * pedal.pot_2.val) + 500.0);
+  } 
+
+  // Service 
+  pedal.service();
+}
+
+
+void sw1_pressed() { } 
+void sw2_pressed() { }
+void sw3_pressed() { }
+void sw4_pressed() { }
+```
+
 
 ## Summary
 
@@ -1835,7 +2111,98 @@ class fx_slicer
 
 Effect: Slicer - chops up audio in the time domain and pipes to different effects.
 
-Copyright (c) 2019 Run Jump Labs LLC. All rights reserved. Example: ___slicer_1.c___
+Example: 
+```
+/*
+
+ The slicer switches between output channels at a predefined rate.  It is 
+ great for creating interesting rhymic effects.  This effect sends each channel
+ of the slicer through band-pass filters that are tuned to different center
+ frequencies.  The outputs of the filters are then mixed together using a 
+ simple 4 channel mixer.
+  
+               +------------+   +-------------+   +---------+
+               |            +-->+ BPF @ 200Hz +-->+         |
+               |            |   +-------------+   |         |
+               |            |   +-------------+   |         |
+               |            +-->+ BPF @ 1200Hz+-->+         |
+Instr In +---->+ Slicer x 4 |   +-------------+   | Mixer4  +----> Amp Out
+               |            |   +-------------+   |         |
+               |            +-->+ BPF @ 500Hz +-->+         |
+               |            |   +-------------+   |         |
+               |            |   +-------------+   |         |
+               |            +-->+ BPF @ 800Hz +-->+         |
+               +------------+   +-------------+   +---------+
+
+ */
+#include  <dreammakerfx.com>
+
+      
+// Set up a slicer for four channels
+fx_slicer   slice4(1000.0, 4);
+
+// Instances of the four bandpass (BPF) filters at different frequencies
+fx_biquad_filter  filt1(200, FILTER_WIDTH_NARROW, BIQUAD_TYPE_BPF);
+fx_biquad_filter  filt2(1000, FILTER_WIDTH_NARROW, BIQUAD_TYPE_BPF);
+fx_biquad_filter  filt3(500, FILTER_WIDTH_NARROW, BIQUAD_TYPE_BPF);
+fx_biquad_filter  filt4(800, FILTER_WIDTH_NARROW, BIQUAD_TYPE_BPF);
+fx_mixer_4 mix4;
+
+bool go = false;
+bool running = false;
+
+void setup() {
+
+  pedal.init();
+
+  pedal.route_audio(pedal.instr_in, slice4.input);
+  
+  pedal.route_audio(slice4.output_1, filt1.input);
+  pedal.route_audio(slice4.output_2, filt2.input);
+  pedal.route_audio(slice4.output_3, filt3.input);
+  pedal.route_audio(slice4.output_4, filt4.input);
+
+  pedal.route_audio(filt1.output, mix4.input_1);
+  pedal.route_audio(filt2.output, mix4.input_2);
+  pedal.route_audio(filt3.output, mix4.input_3);
+  pedal.route_audio(filt4.output, mix4.input_4);
+  
+  pedal.route_audio(mix4.output, pedal.amp_out);
+
+  // Optional code to print out the routing details to console
+  if (true) {
+    pedal.print_instance_stack();
+    pedal.print_routing_table();
+    pedal.print_param_tables();
+  }
+
+  // Run this effect
+  pedal.run(); 
+
+}
+
+void loop() {
+
+  static int now = millis();
+
+  // Run pedal service to take care of stuff
+  pedal.service();
+
+  // Set period of slicer from 100ms through 3 seconds
+  if (pedal.pot_0.has_changed()) {
+    slice4.set_period_ms(100.0 + 3000.0 * (1.0 - pedal.pot_0.val));
+  }
+
+  if (pedal.pot_1.has_changed()) {
+  }
+  
+  if (pedal.pot_2.has_changed()) {
+  }
+
+}
+
+```
+
 
 ## Summary
 
@@ -1940,7 +2307,81 @@ The variable delay effect is the basis for a number of time-varying delay effect
 
 Here's a nice tutorial on how variable delays work in these various building blocks: [https://www.dsprelated.com/freebooks/pasp/Time_Varying_Delay_Effects.html](https://www.dsprelated.com/freebooks/pasp/Time_Varying_Delay_Effects.html)
 
-Example: ___var_del_1.c___
+Example: 
+```
+/**
+ * This is an implementation of a typical flanger pedal.   
+ * 
+ * Left pot: depth - the depth of the flanger effect
+ * Center pot: delay time - modulation rate
+ * Right pot: feedback - the feedback has a big impact on the sound.  Full counter-clockwise is -1.0
+ *                       center is 0.0, and full clock-wise is 1.0.
+ * 
+ * Left footswitch: bypass - turns on and off the effect
+ * Right footswitch: tap - tap it a few times at a set interval to update the flanger modulation rate
+ * 
+ * This effect uses a tiny amount of the available processing power and memory.
+ * It's provided as an example of how to use the various features of the fx_variable_delay block
+ * 
+ */
+#include <dreammakerfx.h>
+
+fx_variable_delay flangey(1.0,            // Initial oscillator rate of 1Hz (1 cycle / second)
+                          0.5,            // Initial depth of 0.5
+                          0.4,            // Initial feedback of 0.4
+                          OSC_TRIANGLE);  // Use a triangle oscillator
+
+void setup() {
+  
+  // Initialize the pedal!
+  pedal.init();
+
+  // Route audio from instrument -> my_variable_delay -> amp
+  pedal.route_audio(pedal.instr_in, flangey.input);
+  pedal.route_audio(flangey.output, pedal.amp_out);  
+
+  // left footswitch is bypass
+  pedal.add_bypass_button(FOOTSWITCH_LEFT);
+
+  // Right foot switch is tap loop length
+  pedal.add_tap_interval_button(FOOTSWITCH_RIGHT, true);
+
+  // Run this effect
+  pedal.run();
+
+}
+
+
+void loop() {
+
+  // If new tempo has been tapped in, use that to control flange rate
+  if (pedal.new_tap_interval()) { 
+    flangey.set_rate_hz(pedal.get_tap_freq_hz());
+  } 
+
+  // Left pot controls depth of the effect
+  if (pedal.pot_left.has_changed()) { 
+    flangey.set_depth(pedal.pot_left.val);     
+  } 
+
+  // Center pot controls rate
+  if (pedal.pot_center.has_changed()) { 
+    float rate_hz = pedal.pot_center.val* 6.0;
+    pedal.set_tap_blink_rate_hz(rate_hz);
+    flangey.set_rate_hz(rate_hz);     
+  } 
+
+  // Right pot controls the feedback (-1.0 to 1.0)
+  if (pedal.pot_right.has_changed()) {
+   flangey.set_feedback(1.0 - pedal.pot_right.val*2.0);
+  }
+
+   // Run pedal service to take care of stuff
+  pedal.service();  
+}
+
+```
+
 
 ## Summary
 
