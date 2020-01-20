@@ -1,5 +1,4 @@
 ---
-layout: api
 title: API Documentation
 ---
 ---
