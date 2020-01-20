@@ -8,10 +8,8 @@ title: API Documentation
 --------------------------------|---------------------------------------------
 `class `[`fx_adsr_envelope`](#classfx__adsr__envelope) | Effect: Envelope generator.
 `class `[`fx_amplitude_mod`](#classfx__amplitude__mod) | Effect: Amplitude modulator for creating tremelo-like effects.
-`class `[`fx_audio_node`](#classfx__audio__node) | Class for effects audio node.
 `class `[`fx_biquad_filter`](#classfx__biquad__filter) | Effect: Biquad filter for implementing various types of filters (low pass, high pass, band pass, etc.)
 `class `[`fx_compressor`](#classfx__compressor) | Effect: Compressor/Limiter.
-`class `[`fx_control_node`](#classfx__control__node) | Class for effects control node.
 `class `[`fx_delay`](#classfx__delay) | Effect: Delay/echo.
 `class `[`fx_destructor`](#classfx__destructor) | Effect: Destructor - provides various types of hard and soft destructors for creating different types of distortions.
 `class `[`fx_envelope_tracker`](#classfx__envelope__tracker) | Effect: Envelope tracker.
@@ -39,23 +37,24 @@ Effect: Envelope generator.
 
 An envelope generator creates a volume envelope that can applied to either the audio from the instrument or an oscillator.
 
-Here's a good explanation of what ADSR means. <iframe width="560" height="315" src="https://www.youtube.com/embed/JT6rixgu4s4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe>
+Here's a good explanation of what ADSR means: [![Video](http://img.youtube.com/vi/JT6rixgu4s4/0.jpg)](https://www.youtube.com/watch?v=JT6rixgu4s4)
+
 
 ## Summary
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__adsr__envelope_1aa8413d27edd9d165fda5b54a20fbcc9f) | Audio routing node: primary audio input
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__adsr__envelope_1a77decae0c991138a2d6124c45ecf1768) | Audio routing node: primary audio output
-`public `[`fx_control_node`](#classfx__control__node)` * `[`attack_ms`](#classfx__adsr__envelope_1a8755a83229b0613181c6b967e656683d) | Control routing node [input]: envelope attack in milliseconds
-`public `[`fx_control_node`](#classfx__control__node)` * `[`decay_ms`](#classfx__adsr__envelope_1a95f3ec921f735408c042981442071bd0) | Control routing node [input]: envelope decay in milliseconds
-`public `[`fx_control_node`](#classfx__control__node)` * `[`sustain_ms`](#classfx__adsr__envelope_1a356007e4c07a711605921859b50d1e10) | Control routing node [input]: envelope sustain in milliseconds
-`public `[`fx_control_node`](#classfx__control__node)` * `[`release_ms`](#classfx__adsr__envelope_1a1e346c77984b262a02b941210cd72bca) | Control routing node [input]: envelope release in milliseconds
-`public `[`fx_control_node`](#classfx__control__node)` * `[`peak_ratio`](#classfx__adsr__envelope_1aa3c412db728213b42ef53cadb78ede10) | Control routing node [input]: relative volume after attack (0.0 to 1.0) - will be scaled by output volume
-`public `[`fx_control_node`](#classfx__control__node)` * `[`sustain_ratio`](#classfx__adsr__envelope_1aa9a3053c74f419a8b74933f5771da34d) | Control routing node [input]: relative volume during sustain (0.0 to 1.0) - will be scaled by output volume
-`public `[`fx_control_node`](#classfx__control__node)` * `[`gain_out`](#classfx__adsr__envelope_1a4e0eb91c963904e693f0916bac693e2c) | Control routing node [input]: output pain
-`public `[`fx_control_node`](#classfx__control__node)` * `[`playing`](#classfx__adsr__envelope_1a0b3aeec90d68e3d8e29e6756915ede81) | Control routing node [input]: playing - continuously set to non-zero to during play and zero to stop
-`public `[`fx_control_node`](#classfx__control__node)` * `[`value`](#classfx__adsr__envelope_1ae138d6a98e84e3790feb24750fbc82ad) | Control routing node [output]: value of the envelope
+`public fx_audio_node * `[`input`](#classfx__adsr__envelope_1aa8413d27edd9d165fda5b54a20fbcc9f) | Audio routing node: primary audio input
+`public fx_audio_node * `[`output`](#classfx__adsr__envelope_1a77decae0c991138a2d6124c45ecf1768) | Audio routing node: primary audio output
+`public fx_control_node * `[`attack_ms`](#classfx__adsr__envelope_1a8755a83229b0613181c6b967e656683d) | Control routing node [input]: envelope attack in milliseconds
+`public fx_control_node * `[`decay_ms`](#classfx__adsr__envelope_1a95f3ec921f735408c042981442071bd0) | Control routing node [input]: envelope decay in milliseconds
+`public fx_control_node * `[`sustain_ms`](#classfx__adsr__envelope_1a356007e4c07a711605921859b50d1e10) | Control routing node [input]: envelope sustain in milliseconds
+`public fx_control_node * `[`release_ms`](#classfx__adsr__envelope_1a1e346c77984b262a02b941210cd72bca) | Control routing node [input]: envelope release in milliseconds
+`public fx_control_node * `[`peak_ratio`](#classfx__adsr__envelope_1aa3c412db728213b42ef53cadb78ede10) | Control routing node [input]: relative volume after attack (0.0 to 1.0) - will be scaled by output volume
+`public fx_control_node * `[`sustain_ratio`](#classfx__adsr__envelope_1aa9a3053c74f419a8b74933f5771da34d) | Control routing node [input]: relative volume during sustain (0.0 to 1.0) - will be scaled by output volume
+`public fx_control_node * `[`gain_out`](#classfx__adsr__envelope_1a4e0eb91c963904e693f0916bac693e2c) | Control routing node [input]: output pain
+`public fx_control_node * `[`playing`](#classfx__adsr__envelope_1a0b3aeec90d68e3d8e29e6756915ede81) | Control routing node [input]: playing - continuously set to non-zero to during play and zero to stop
+`public fx_control_node * `[`value`](#classfx__adsr__envelope_1ae138d6a98e84e3790feb24750fbc82ad) | Control routing node [output]: value of the envelope
 `public inline  `[`fx_adsr_envelope`](#classfx__adsr__envelope_1a9a0d60c5a0311bec34f9243c7e699c14)`(float attack_ms,float decay_ms,float sustain_ms,float release_ms,float gain_out)` | Constructs a new instance of the envelope.
 `public inline void `[`enable`](#classfx__adsr__envelope_1ac132a4a318fd9e90d683ddbf1a27a1e9)`()` | Enable the **this_effect** (it is enabled by default)
 `public inline void `[`bypass`](#classfx__adsr__envelope_1af33ba71099aa662fa4f559449f044545)`()` | Bypass the **this_effect** (will just pass clean audio through)
@@ -63,47 +62,47 @@ Here's a good explanation of what ADSR means. <iframe width="560" height="315" s
 
 ## Members
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__adsr__envelope_1aa8413d27edd9d165fda5b54a20fbcc9f) {#classfx__adsr__envelope_1aa8413d27edd9d165fda5b54a20fbcc9f}
+#### `public fx_audio_node * `[`input`](#classfx__adsr__envelope_1aa8413d27edd9d165fda5b54a20fbcc9f) {#classfx__adsr__envelope_1aa8413d27edd9d165fda5b54a20fbcc9f}
 
 Audio routing node: primary audio input
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__adsr__envelope_1a77decae0c991138a2d6124c45ecf1768) {#classfx__adsr__envelope_1a77decae0c991138a2d6124c45ecf1768}
+#### `public fx_audio_node * `[`output`](#classfx__adsr__envelope_1a77decae0c991138a2d6124c45ecf1768) {#classfx__adsr__envelope_1a77decae0c991138a2d6124c45ecf1768}
 
 Audio routing node: primary audio output
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`attack_ms`](#classfx__adsr__envelope_1a8755a83229b0613181c6b967e656683d) {#classfx__adsr__envelope_1a8755a83229b0613181c6b967e656683d}
+#### `public fx_control_node * `[`attack_ms`](#classfx__adsr__envelope_1a8755a83229b0613181c6b967e656683d) {#classfx__adsr__envelope_1a8755a83229b0613181c6b967e656683d}
 
 Control routing node [input]: envelope attack in milliseconds
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`decay_ms`](#classfx__adsr__envelope_1a95f3ec921f735408c042981442071bd0) {#classfx__adsr__envelope_1a95f3ec921f735408c042981442071bd0}
+#### `public fx_control_node * `[`decay_ms`](#classfx__adsr__envelope_1a95f3ec921f735408c042981442071bd0) {#classfx__adsr__envelope_1a95f3ec921f735408c042981442071bd0}
 
 Control routing node [input]: envelope decay in milliseconds
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`sustain_ms`](#classfx__adsr__envelope_1a356007e4c07a711605921859b50d1e10) {#classfx__adsr__envelope_1a356007e4c07a711605921859b50d1e10}
+#### `public fx_control_node * `[`sustain_ms`](#classfx__adsr__envelope_1a356007e4c07a711605921859b50d1e10) {#classfx__adsr__envelope_1a356007e4c07a711605921859b50d1e10}
 
 Control routing node [input]: envelope sustain in milliseconds
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`release_ms`](#classfx__adsr__envelope_1a1e346c77984b262a02b941210cd72bca) {#classfx__adsr__envelope_1a1e346c77984b262a02b941210cd72bca}
+#### `public fx_control_node * `[`release_ms`](#classfx__adsr__envelope_1a1e346c77984b262a02b941210cd72bca) {#classfx__adsr__envelope_1a1e346c77984b262a02b941210cd72bca}
 
 Control routing node [input]: envelope release in milliseconds
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`peak_ratio`](#classfx__adsr__envelope_1aa3c412db728213b42ef53cadb78ede10) {#classfx__adsr__envelope_1aa3c412db728213b42ef53cadb78ede10}
+#### `public fx_control_node * `[`peak_ratio`](#classfx__adsr__envelope_1aa3c412db728213b42ef53cadb78ede10) {#classfx__adsr__envelope_1aa3c412db728213b42ef53cadb78ede10}
 
 Control routing node [input]: relative volume after attack (0.0 to 1.0) - will be scaled by output volume
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`sustain_ratio`](#classfx__adsr__envelope_1aa9a3053c74f419a8b74933f5771da34d) {#classfx__adsr__envelope_1aa9a3053c74f419a8b74933f5771da34d}
+#### `public fx_control_node * `[`sustain_ratio`](#classfx__adsr__envelope_1aa9a3053c74f419a8b74933f5771da34d) {#classfx__adsr__envelope_1aa9a3053c74f419a8b74933f5771da34d}
 
 Control routing node [input]: relative volume during sustain (0.0 to 1.0) - will be scaled by output volume
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`gain_out`](#classfx__adsr__envelope_1a4e0eb91c963904e693f0916bac693e2c) {#classfx__adsr__envelope_1a4e0eb91c963904e693f0916bac693e2c}
+#### `public fx_control_node * `[`gain_out`](#classfx__adsr__envelope_1a4e0eb91c963904e693f0916bac693e2c) {#classfx__adsr__envelope_1a4e0eb91c963904e693f0916bac693e2c}
 
 Control routing node [input]: output pain
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`playing`](#classfx__adsr__envelope_1a0b3aeec90d68e3d8e29e6756915ede81) {#classfx__adsr__envelope_1a0b3aeec90d68e3d8e29e6756915ede81}
+#### `public fx_control_node * `[`playing`](#classfx__adsr__envelope_1a0b3aeec90d68e3d8e29e6756915ede81) {#classfx__adsr__envelope_1a0b3aeec90d68e3d8e29e6756915ede81}
 
 Control routing node [input]: playing - continuously set to non-zero to during play and zero to stop
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`value`](#classfx__adsr__envelope_1ae138d6a98e84e3790feb24750fbc82ad) {#classfx__adsr__envelope_1ae138d6a98e84e3790feb24750fbc82ad}
+#### `public fx_control_node * `[`value`](#classfx__adsr__envelope_1ae138d6a98e84e3790feb24750fbc82ad) {#classfx__adsr__envelope_1ae138d6a98e84e3790feb24750fbc82ad}
 
 Control routing node [output]: value of the envelope
 
@@ -143,13 +142,12 @@ class fx_amplitude_mod
 
 Effect: Amplitude modulator for creating tremelo-like effects.
 
-An amplitude modulator will change the volume or "amplitude" of the audio to create various types of tremelo effects. Here's a video demonstrating how amplitude modulators work:
+An amplitude modulator will change the volume or "amplitude" of the audio to create various types of tremelo effects.
 
-[https://www.youtube.com/watch?v=AxZVMyIFqcA](https://www.youtube.com/watch?v=AxZVMyIFqcA)
+Here's a video demonstrating how amplitude modulators work: [![Video](http://img.youtube.com/vi/AxZVMyIFqcA/0.jpg)](https://www.youtube.com/watch?v=AxZVMyIFqcA)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/AxZVMyIFqcA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>=""></iframe>
 
-Example: 
+Code example: 
 ```
 /**
  * This is an implementation of a typical delay / echo pedal.
@@ -238,39 +236,39 @@ void loop() {
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__amplitude__mod_1a52c5dce1e56a9efbceb9f0aa572e35d4) | Audio routing node: primary audio input
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__amplitude__mod_1a3ffb0f78f55a24d56ad40ed71b9c3655) | Audio routing node: primary audio output
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`ext_mod_in`](#classfx__amplitude__mod_1aeedd96b1c4e5e8e1cbf93fb4e134362b) | Audio routing node: external modulator audio input
-`public `[`fx_control_node`](#classfx__control__node)` * `[`depth`](#classfx__amplitude__mod_1a25ef00aa85c14e895710a505a9c6e0bd) | Control routing node: amplifude modulator depth (should be between 0.0 and 1.0)
-`public `[`fx_control_node`](#classfx__control__node)` * `[`rate_hz`](#classfx__amplitude__mod_1ad85024759667cd9decc11e4fb24461ef) | Control routing node: amplitide modulator rate (Hz) (i.e. 1.0 = once per second)
+`public fx_audio_node * `[`input`](#classfx__amplitude__mod_1a52c5dce1e56a9efbceb9f0aa572e35d4) | Audio routing node: primary audio input
+`public fx_audio_node * `[`output`](#classfx__amplitude__mod_1a3ffb0f78f55a24d56ad40ed71b9c3655) | Audio routing node: primary audio output
+`public fx_audio_node * `[`ext_mod_in`](#classfx__amplitude__mod_1aeedd96b1c4e5e8e1cbf93fb4e134362b) | Audio routing node: external modulator audio input
+`public fx_control_node * `[`depth`](#classfx__amplitude__mod_1a25ef00aa85c14e895710a505a9c6e0bd) | Control routing node: amplifude modulator depth (should be between 0.0 and 1.0)
+`public fx_control_node * `[`rate_hz`](#classfx__amplitude__mod_1ad85024759667cd9decc11e4fb24461ef) | Control routing node: amplitide modulator rate (Hz) (i.e. 1.0 = once per second)
 `public inline  `[`fx_amplitude_mod`](#classfx__amplitude__mod_1acfe6780b005b6b34ba58e82b9b64cf50)`(float rate_hz,float depth)` | Basic constructor/initializer for amplitude modulator.
-`public inline  `[`fx_amplitude_mod`](#classfx__amplitude__mod_1a354b528d3a59d766b7fc3e1ed74427f9)`(float rate_hz,float depth,float initial_phase_deg,OSC_TYPES modulation_type,bool use_ext_modulator)` | Advanced constructor for the amplitude modulator.
+`public inline  `[`fx_amplitude_mod`](#classfx__amplitude__mod_1a354b528d3a59d766b7fc3e1ed74427f9)`(float rate_hz,float depth,float initial_phase_deg,`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` modulation_type,bool use_ext_modulator)` | Advanced constructor for the amplitude modulator.
 `public inline void `[`enable`](#classfx__amplitude__mod_1a4c21c0e9725c1dd515a2bf0b2fb8f99e)`()` | Enable the amplitude modululator (it is enabled by default)
 `public inline void `[`bypass`](#classfx__amplitude__mod_1a5d5ef5ff79e9c553a9ee5116c3dfa516)`()` | Bypass the amplitude modululator (will just pass clean audio through)
 `public inline void `[`set_depth`](#classfx__amplitude__mod_1ac0c2c2ab77761c961cd569d36e26ab17)`(float depth)` | Sets the depth of the amplitude modululator.
 `public inline void `[`set_rate_hz`](#classfx__amplitude__mod_1a90b19e7b942c13979bddeba8579813a4)`(float rate_hz)` | Sets the rate of the modulator in Hertz (cycles per second)
-`public inline void `[`set_lfo_type`](#classfx__amplitude__mod_1a2561e4ad01e6a629409b59d73a86caf3)`(OSC_TYPES new_type)` | Sets the the type of oscillator used as the LFO.
+`public inline void `[`set_lfo_type`](#classfx__amplitude__mod_1a2561e4ad01e6a629409b59d73a86caf3)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` new_type)` | Sets the the type of oscillator used as the LFO.
 `public inline void `[`print_params`](#classfx__amplitude__mod_1a62563870f85a17142b545e1e8b718fdf)`(void)` | Print the parameters for this effect.
 
 ## Members
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__amplitude__mod_1a52c5dce1e56a9efbceb9f0aa572e35d4) {#classfx__amplitude__mod_1a52c5dce1e56a9efbceb9f0aa572e35d4}
+#### `public fx_audio_node * `[`input`](#classfx__amplitude__mod_1a52c5dce1e56a9efbceb9f0aa572e35d4) {#classfx__amplitude__mod_1a52c5dce1e56a9efbceb9f0aa572e35d4}
 
 Audio routing node: primary audio input
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__amplitude__mod_1a3ffb0f78f55a24d56ad40ed71b9c3655) {#classfx__amplitude__mod_1a3ffb0f78f55a24d56ad40ed71b9c3655}
+#### `public fx_audio_node * `[`output`](#classfx__amplitude__mod_1a3ffb0f78f55a24d56ad40ed71b9c3655) {#classfx__amplitude__mod_1a3ffb0f78f55a24d56ad40ed71b9c3655}
 
 Audio routing node: primary audio output
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`ext_mod_in`](#classfx__amplitude__mod_1aeedd96b1c4e5e8e1cbf93fb4e134362b) {#classfx__amplitude__mod_1aeedd96b1c4e5e8e1cbf93fb4e134362b}
+#### `public fx_audio_node * `[`ext_mod_in`](#classfx__amplitude__mod_1aeedd96b1c4e5e8e1cbf93fb4e134362b) {#classfx__amplitude__mod_1aeedd96b1c4e5e8e1cbf93fb4e134362b}
 
 Audio routing node: external modulator audio input
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`depth`](#classfx__amplitude__mod_1a25ef00aa85c14e895710a505a9c6e0bd) {#classfx__amplitude__mod_1a25ef00aa85c14e895710a505a9c6e0bd}
+#### `public fx_control_node * `[`depth`](#classfx__amplitude__mod_1a25ef00aa85c14e895710a505a9c6e0bd) {#classfx__amplitude__mod_1a25ef00aa85c14e895710a505a9c6e0bd}
 
 Control routing node: amplifude modulator depth (should be between 0.0 and 1.0)
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`rate_hz`](#classfx__amplitude__mod_1ad85024759667cd9decc11e4fb24461ef) {#classfx__amplitude__mod_1ad85024759667cd9decc11e4fb24461ef}
+#### `public fx_control_node * `[`rate_hz`](#classfx__amplitude__mod_1ad85024759667cd9decc11e4fb24461ef) {#classfx__amplitude__mod_1ad85024759667cd9decc11e4fb24461ef}
 
 Control routing node: amplitide modulator rate (Hz) (i.e. 1.0 = once per second)
 
@@ -283,7 +281,7 @@ Basic constructor/initializer for amplitude modulator.
 
 * `modulation_depth` The amp modifier depth (0.0 is no modulation -> 1.0 is full modulation)
 
-#### `public inline  `[`fx_amplitude_mod`](#classfx__amplitude__mod_1a354b528d3a59d766b7fc3e1ed74427f9)`(float rate_hz,float depth,float initial_phase_deg,OSC_TYPES modulation_type,bool use_ext_modulator)` {#classfx__amplitude__mod_1a354b528d3a59d766b7fc3e1ed74427f9}
+#### `public inline  `[`fx_amplitude_mod`](#classfx__amplitude__mod_1a354b528d3a59d766b7fc3e1ed74427f9)`(float rate_hz,float depth,float initial_phase_deg,`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` modulation_type,bool use_ext_modulator)` {#classfx__amplitude__mod_1a354b528d3a59d766b7fc3e1ed74427f9}
 
 Advanced constructor for the amplitude modulator.
 
@@ -320,7 +318,7 @@ Sets the rate of the modulator in Hertz (cycles per second)
 #### Parameters
 * `rate_hz` The rate hz
 
-#### `public inline void `[`set_lfo_type`](#classfx__amplitude__mod_1a2561e4ad01e6a629409b59d73a86caf3)`(OSC_TYPES new_type)` {#classfx__amplitude__mod_1a2561e4ad01e6a629409b59d73a86caf3}
+#### `public inline void `[`set_lfo_type`](#classfx__amplitude__mod_1a2561e4ad01e6a629409b59d73a86caf3)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` new_type)` {#classfx__amplitude__mod_1a2561e4ad01e6a629409b59d73a86caf3}
 
 Sets the the type of oscillator used as the LFO.
 
@@ -330,40 +328,6 @@ Sets the the type of oscillator used as the LFO.
 #### `public inline void `[`print_params`](#classfx__amplitude__mod_1a62563870f85a17142b545e1e8b718fdf)`(void)` {#classfx__amplitude__mod_1a62563870f85a17142b545e1e8b718fdf}
 
 Print the parameters for this effect.
-
-# class `fx_audio_node` {#classfx__audio__node}
-
-Class for effects audio node.
-
-Audio nodes are audio inputs and outputs. Audio nodes can exist on an effect (i.e. effect inputs and outputs). Audio nodes can also exist on the canvas (i.e. ADC and DAC channels that are part of the hardware).
-
-## Summary
-
- Members                        | Descriptions                                
---------------------------------|---------------------------------------------
-`public NODE_DIRECTION `[`node_direction`](#classfx__audio__node_1a1aa7834fa5a1997e77fd98da8f2f1da6) | 
-`public bool `[`connected`](#classfx__audio__node_1aebe824913f558d68e6aba6e302c98600) | 
-`public char `[`node_name`](#classfx__audio__node_1a2b50a50d563bfe0cfc3dd2136be7f8c4) | 
-`public inline  `[`fx_audio_node`](#classfx__audio__node_1ac675c266ef77ec9a6f7422e6486fc4ec)`(NODE_DIRECTION dir,const char * name,fx_effect * p)` | 
-`public inline  `[`fx_audio_node`](#classfx__audio__node_1a87c39a22d61b0b6ad358145e87eef6cc)`(NODE_DIRECTION dir,const char * name,fx_canvas * p)` | 
-`protected fx_effect * `[`parent_effect`](#classfx__audio__node_1add150e4631e707ba9deb8c2b169e5894) | 
-`protected fx_canvas * `[`parent_canvas`](#classfx__audio__node_1a6ac90ff70e761950927b0194b22ef18a) | 
-
-## Members
-
-#### `public NODE_DIRECTION `[`node_direction`](#classfx__audio__node_1a1aa7834fa5a1997e77fd98da8f2f1da6) {#classfx__audio__node_1a1aa7834fa5a1997e77fd98da8f2f1da6}
-
-#### `public bool `[`connected`](#classfx__audio__node_1aebe824913f558d68e6aba6e302c98600) {#classfx__audio__node_1aebe824913f558d68e6aba6e302c98600}
-
-#### `public char `[`node_name`](#classfx__audio__node_1a2b50a50d563bfe0cfc3dd2136be7f8c4) {#classfx__audio__node_1a2b50a50d563bfe0cfc3dd2136be7f8c4}
-
-#### `public inline  `[`fx_audio_node`](#classfx__audio__node_1ac675c266ef77ec9a6f7422e6486fc4ec)`(NODE_DIRECTION dir,const char * name,fx_effect * p)` {#classfx__audio__node_1ac675c266ef77ec9a6f7422e6486fc4ec}
-
-#### `public inline  `[`fx_audio_node`](#classfx__audio__node_1a87c39a22d61b0b6ad358145e87eef6cc)`(NODE_DIRECTION dir,const char * name,fx_canvas * p)` {#classfx__audio__node_1a87c39a22d61b0b6ad358145e87eef6cc}
-
-#### `protected fx_effect * `[`parent_effect`](#classfx__audio__node_1add150e4631e707ba9deb8c2b169e5894) {#classfx__audio__node_1add150e4631e707ba9deb8c2b169e5894}
-
-#### `protected fx_canvas * `[`parent_canvas`](#classfx__audio__node_1a6ac90ff70e761950927b0194b22ef18a) {#classfx__audio__node_1a6ac90ff70e761950927b0194b22ef18a}
 
 # class `fx_biquad_filter` {#classfx__biquad__filter}
 
@@ -384,11 +348,11 @@ Here's a nice video about three different parameters of a biquad: f: cutoff/cent
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__biquad__filter_1a4a9f3a5ff4eac9f44e1378ee23e3211c) | Audio routing node: primary audio input
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__biquad__filter_1ac4fe4851b422f991882f0f47be3773ab) | Audio routing node: primary audio output
-`public `[`fx_control_node`](#classfx__control__node)` * `[`freq`](#classfx__biquad__filter_1a3f44ee6d1f9dbc892a22cecbc63eddd4) | Control routing node: center/critical frequency of the filter in Hz (i.e. 800.0 for 800Hz)
-`public `[`fx_control_node`](#classfx__control__node)` * `[`q`](#classfx__biquad__filter_1a4a4821b7190483d41339969237612c04) | Control routing node: width of the filter
-`public `[`fx_control_node`](#classfx__control__node)` * `[`gain`](#classfx__biquad__filter_1a76aa6221915b88905f3b45f1cc0f7929) | Control routing node: gain of the filter (used in shelving filters)
+`public fx_audio_node * `[`input`](#classfx__biquad__filter_1a4a9f3a5ff4eac9f44e1378ee23e3211c) | Audio routing node: primary audio input
+`public fx_audio_node * `[`output`](#classfx__biquad__filter_1ac4fe4851b422f991882f0f47be3773ab) | Audio routing node: primary audio output
+`public fx_control_node * `[`freq`](#classfx__biquad__filter_1a3f44ee6d1f9dbc892a22cecbc63eddd4) | Control routing node: center/critical frequency of the filter in Hz (i.e. 800.0 for 800Hz)
+`public fx_control_node * `[`q`](#classfx__biquad__filter_1a4a4821b7190483d41339969237612c04) | Control routing node: width of the filter
+`public fx_control_node * `[`gain`](#classfx__biquad__filter_1a76aa6221915b88905f3b45f1cc0f7929) | Control routing node: gain of the filter (used in shelving filters)
 `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1aea807f35dde115fe6897cf96900d2926)`(float filt_freq,float filt_resonance,BIQUAD_FILTER_TYPE filt_type)` | Basic constructor for biquad filter.
 `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1a05c86bf75f906d74fb22d00c42f858e7)`(float filt_freq,float filt_resonance,BIQUAD_FILTER_TYPE filt_type,BIQUAD_FILTER_ORDER order)` | Basic constructor for biquad filter.
 `public inline  `[`fx_biquad_filter`](#classfx__biquad__filter_1ae0b02c6616a737417bb0037cab6af05c)`(float filt_freq,float filt_resonance,float filter_gain,BIQUAD_FILTER_TYPE filt_type,EFFECT_TRANSITION_SPEED trans_speed)` | Advanced constructor for biquad filter.
@@ -403,23 +367,23 @@ Here's a nice video about three different parameters of a biquad: f: cutoff/cent
 
 ## Members
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__biquad__filter_1a4a9f3a5ff4eac9f44e1378ee23e3211c) {#classfx__biquad__filter_1a4a9f3a5ff4eac9f44e1378ee23e3211c}
+#### `public fx_audio_node * `[`input`](#classfx__biquad__filter_1a4a9f3a5ff4eac9f44e1378ee23e3211c) {#classfx__biquad__filter_1a4a9f3a5ff4eac9f44e1378ee23e3211c}
 
 Audio routing node: primary audio input
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__biquad__filter_1ac4fe4851b422f991882f0f47be3773ab) {#classfx__biquad__filter_1ac4fe4851b422f991882f0f47be3773ab}
+#### `public fx_audio_node * `[`output`](#classfx__biquad__filter_1ac4fe4851b422f991882f0f47be3773ab) {#classfx__biquad__filter_1ac4fe4851b422f991882f0f47be3773ab}
 
 Audio routing node: primary audio output
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`freq`](#classfx__biquad__filter_1a3f44ee6d1f9dbc892a22cecbc63eddd4) {#classfx__biquad__filter_1a3f44ee6d1f9dbc892a22cecbc63eddd4}
+#### `public fx_control_node * `[`freq`](#classfx__biquad__filter_1a3f44ee6d1f9dbc892a22cecbc63eddd4) {#classfx__biquad__filter_1a3f44ee6d1f9dbc892a22cecbc63eddd4}
 
 Control routing node: center/critical frequency of the filter in Hz (i.e. 800.0 for 800Hz)
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`q`](#classfx__biquad__filter_1a4a4821b7190483d41339969237612c04) {#classfx__biquad__filter_1a4a4821b7190483d41339969237612c04}
+#### `public fx_control_node * `[`q`](#classfx__biquad__filter_1a4a4821b7190483d41339969237612c04) {#classfx__biquad__filter_1a4a4821b7190483d41339969237612c04}
 
 Control routing node: width of the filter
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`gain`](#classfx__biquad__filter_1a76aa6221915b88905f3b45f1cc0f7929) {#classfx__biquad__filter_1a76aa6221915b88905f3b45f1cc0f7929}
+#### `public fx_control_node * `[`gain`](#classfx__biquad__filter_1a76aa6221915b88905f3b45f1cc0f7929) {#classfx__biquad__filter_1a76aa6221915b88905f3b45f1cc0f7929}
 
 Control routing node: gain of the filter (used in shelving filters)
 
@@ -615,13 +579,13 @@ void loop() {
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__compressor_1a2c22d60ca1e0c7e6f2c45f3e8e8dd437) | Audio routing node: primary audio input
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__compressor_1a35ca7aaa8bbe1c70112fe9069d35b3d6) | Audio routing node: primary audio output
-`public `[`fx_control_node`](#classfx__control__node)` * `[`threshold`](#classfx__compressor_1a42928cf2614b69066cd1ed73d21d80f1) | Control routing node [input]: Compressor/limiter threshold in dB (i.e. -30.0)
-`public `[`fx_control_node`](#classfx__control__node)` * `[`ratio`](#classfx__compressor_1a15fecdddd6b8410d5ae03779651c0fcf) | Control routing node [input]: Compressor/limiter compression ratio (a value of 100.0 would be a ratio of 1:100)
-`public `[`fx_control_node`](#classfx__control__node)` * `[`attack`](#classfx__compressor_1afb966172a248750454f3480bb9d488b7) | Control routing node [input]: Compressor/limiter attack rate in milliseconds
-`public `[`fx_control_node`](#classfx__control__node)` * `[`release`](#classfx__compressor_1a1197bdfd89e0d4bb9a184a56f40e834e) | Control routing node [input]: Compressor/limiter release rate in milliseconds
-`public `[`fx_control_node`](#classfx__control__node)` * `[`out_gain`](#classfx__compressor_1ae7a36bbef9491c451d94d11ff973b1e4) | Control routing node [input]: Compressor/limiter output gain (linear value so a value of 2.0 would double the signal amplitude)
+`public fx_audio_node * `[`input`](#classfx__compressor_1a2c22d60ca1e0c7e6f2c45f3e8e8dd437) | Audio routing node: primary audio input
+`public fx_audio_node * `[`output`](#classfx__compressor_1a35ca7aaa8bbe1c70112fe9069d35b3d6) | Audio routing node: primary audio output
+`public fx_control_node * `[`threshold`](#classfx__compressor_1a42928cf2614b69066cd1ed73d21d80f1) | Control routing node [input]: Compressor/limiter threshold in dB (i.e. -30.0)
+`public fx_control_node * `[`ratio`](#classfx__compressor_1a15fecdddd6b8410d5ae03779651c0fcf) | Control routing node [input]: Compressor/limiter compression ratio (a value of 100.0 would be a ratio of 1:100)
+`public fx_control_node * `[`attack`](#classfx__compressor_1afb966172a248750454f3480bb9d488b7) | Control routing node [input]: Compressor/limiter attack rate in milliseconds
+`public fx_control_node * `[`release`](#classfx__compressor_1a1197bdfd89e0d4bb9a184a56f40e834e) | Control routing node [input]: Compressor/limiter release rate in milliseconds
+`public fx_control_node * `[`out_gain`](#classfx__compressor_1ae7a36bbef9491c451d94d11ff973b1e4) | Control routing node [input]: Compressor/limiter output gain (linear value so a value of 2.0 would double the signal amplitude)
 `public inline  `[`fx_compressor`](#classfx__compressor_1a74243ee589778514f32e7b71c30e9ce4)`(float thresh,float ratio,float attack,float release,float gain_out)` | 
 `public inline void `[`enable`](#classfx__compressor_1aeba0ed24a0ef7b44fe98a0e23137b638)`()` | Enable the **this_effect** (it is enabled by default)
 `public inline void `[`bypass`](#classfx__compressor_1ada718d7f67f7ad3632e3ff938cd52fdc)`()` | Bypass the **this_effect** (will just pass clean audio through)
@@ -634,31 +598,31 @@ void loop() {
 
 ## Members
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__compressor_1a2c22d60ca1e0c7e6f2c45f3e8e8dd437) {#classfx__compressor_1a2c22d60ca1e0c7e6f2c45f3e8e8dd437}
+#### `public fx_audio_node * `[`input`](#classfx__compressor_1a2c22d60ca1e0c7e6f2c45f3e8e8dd437) {#classfx__compressor_1a2c22d60ca1e0c7e6f2c45f3e8e8dd437}
 
 Audio routing node: primary audio input
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__compressor_1a35ca7aaa8bbe1c70112fe9069d35b3d6) {#classfx__compressor_1a35ca7aaa8bbe1c70112fe9069d35b3d6}
+#### `public fx_audio_node * `[`output`](#classfx__compressor_1a35ca7aaa8bbe1c70112fe9069d35b3d6) {#classfx__compressor_1a35ca7aaa8bbe1c70112fe9069d35b3d6}
 
 Audio routing node: primary audio output
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`threshold`](#classfx__compressor_1a42928cf2614b69066cd1ed73d21d80f1) {#classfx__compressor_1a42928cf2614b69066cd1ed73d21d80f1}
+#### `public fx_control_node * `[`threshold`](#classfx__compressor_1a42928cf2614b69066cd1ed73d21d80f1) {#classfx__compressor_1a42928cf2614b69066cd1ed73d21d80f1}
 
 Control routing node [input]: Compressor/limiter threshold in dB (i.e. -30.0)
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`ratio`](#classfx__compressor_1a15fecdddd6b8410d5ae03779651c0fcf) {#classfx__compressor_1a15fecdddd6b8410d5ae03779651c0fcf}
+#### `public fx_control_node * `[`ratio`](#classfx__compressor_1a15fecdddd6b8410d5ae03779651c0fcf) {#classfx__compressor_1a15fecdddd6b8410d5ae03779651c0fcf}
 
 Control routing node [input]: Compressor/limiter compression ratio (a value of 100.0 would be a ratio of 1:100)
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`attack`](#classfx__compressor_1afb966172a248750454f3480bb9d488b7) {#classfx__compressor_1afb966172a248750454f3480bb9d488b7}
+#### `public fx_control_node * `[`attack`](#classfx__compressor_1afb966172a248750454f3480bb9d488b7) {#classfx__compressor_1afb966172a248750454f3480bb9d488b7}
 
 Control routing node [input]: Compressor/limiter attack rate in milliseconds
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`release`](#classfx__compressor_1a1197bdfd89e0d4bb9a184a56f40e834e) {#classfx__compressor_1a1197bdfd89e0d4bb9a184a56f40e834e}
+#### `public fx_control_node * `[`release`](#classfx__compressor_1a1197bdfd89e0d4bb9a184a56f40e834e) {#classfx__compressor_1a1197bdfd89e0d4bb9a184a56f40e834e}
 
 Control routing node [input]: Compressor/limiter release rate in milliseconds
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`out_gain`](#classfx__compressor_1ae7a36bbef9491c451d94d11ff973b1e4) {#classfx__compressor_1ae7a36bbef9491c451d94d11ff973b1e4}
+#### `public fx_control_node * `[`out_gain`](#classfx__compressor_1ae7a36bbef9491c451d94d11ff973b1e4) {#classfx__compressor_1ae7a36bbef9491c451d94d11ff973b1e4}
 
 Control routing node [input]: Compressor/limiter output gain (linear value so a value of 2.0 would double the signal amplitude)
 
@@ -683,48 +647,6 @@ Bypass the **this_effect** (will just pass clean audio through)
 #### `public inline void `[`set_output_gain`](#classfx__compressor_1a475a80b206024c87f6a38c4bf898d6f6)`(float gain_out)` {#classfx__compressor_1a475a80b206024c87f6a38c4bf898d6f6}
 
 #### `public inline void `[`print_params`](#classfx__compressor_1aae183cb59a7d0299438a65196d91b213)`(void)` {#classfx__compressor_1aae183cb59a7d0299438a65196d91b213}
-
-# class `fx_control_node` {#classfx__control__node}
-
-Class for effects control node.
-
-Control nodes are controller inputs and outputs. Control nodes can exist on effects like an amplitude measurement outupt or delay lenght input. They can also exist in the canvas like a MIDI input or a POT connected to an ADC.
-
-Control nodes are updated at the block level
-
-## Summary
-
- Members                        | Descriptions                                
---------------------------------|---------------------------------------------
-`public uint8_t `[`param_id`](#classfx__control__node_1a286f2e92d2f6bef439b621db7c767712) | 
-`public NODE_DIRECTION `[`node_direction`](#classfx__control__node_1abaf7ac2b3199d83d8bb98298892bca07) | 
-`public CTRL_NODE_TYPE `[`node_type`](#classfx__control__node_1a0be42540e1e5c17ffbf21f7c58cd9a1f) | 
-`public char `[`node_name`](#classfx__control__node_1aef710a77536a268c4897617475430378) | 
-`public bool `[`connected`](#classfx__control__node_1a332ab53d6d5ee80df55d5a59d99e687d) | 
-`public inline  `[`fx_control_node`](#classfx__control__node_1a6eeaf3b33ed1c20f104b35763e625faf)`(NODE_DIRECTION dir,CTRL_NODE_TYPE type,const char * name,fx_effect * p,uint8_t ctrl_param_id)` | 
-`public inline  `[`fx_control_node`](#classfx__control__node_1a0ae8af9a07689cdbd850dcd9cca3ff63)`(NODE_DIRECTION dir,CTRL_NODE_TYPE type,const char * name,fx_canvas * p,uint8_t ctrl_param_id)` | 
-`protected fx_effect * `[`parent_effect`](#classfx__control__node_1acbbacde24b1fca07b855c6ef226dc00e) | 
-`protected fx_canvas * `[`parent_canvas`](#classfx__control__node_1a375a038dadc665c4604a72d5c30448a5) | 
-
-## Members
-
-#### `public uint8_t `[`param_id`](#classfx__control__node_1a286f2e92d2f6bef439b621db7c767712) {#classfx__control__node_1a286f2e92d2f6bef439b621db7c767712}
-
-#### `public NODE_DIRECTION `[`node_direction`](#classfx__control__node_1abaf7ac2b3199d83d8bb98298892bca07) {#classfx__control__node_1abaf7ac2b3199d83d8bb98298892bca07}
-
-#### `public CTRL_NODE_TYPE `[`node_type`](#classfx__control__node_1a0be42540e1e5c17ffbf21f7c58cd9a1f) {#classfx__control__node_1a0be42540e1e5c17ffbf21f7c58cd9a1f}
-
-#### `public char `[`node_name`](#classfx__control__node_1aef710a77536a268c4897617475430378) {#classfx__control__node_1aef710a77536a268c4897617475430378}
-
-#### `public bool `[`connected`](#classfx__control__node_1a332ab53d6d5ee80df55d5a59d99e687d) {#classfx__control__node_1a332ab53d6d5ee80df55d5a59d99e687d}
-
-#### `public inline  `[`fx_control_node`](#classfx__control__node_1a6eeaf3b33ed1c20f104b35763e625faf)`(NODE_DIRECTION dir,CTRL_NODE_TYPE type,const char * name,fx_effect * p,uint8_t ctrl_param_id)` {#classfx__control__node_1a6eeaf3b33ed1c20f104b35763e625faf}
-
-#### `public inline  `[`fx_control_node`](#classfx__control__node_1a0ae8af9a07689cdbd850dcd9cca3ff63)`(NODE_DIRECTION dir,CTRL_NODE_TYPE type,const char * name,fx_canvas * p,uint8_t ctrl_param_id)` {#classfx__control__node_1a0ae8af9a07689cdbd850dcd9cca3ff63}
-
-#### `protected fx_effect * `[`parent_effect`](#classfx__control__node_1acbbacde24b1fca07b855c6ef226dc00e) {#classfx__control__node_1acbbacde24b1fca07b855c6ef226dc00e}
-
-#### `protected fx_canvas * `[`parent_canvas`](#classfx__control__node_1a375a038dadc665c4604a72d5c30448a5) {#classfx__control__node_1a375a038dadc665c4604a72d5c30448a5}
 
 # class `fx_delay` {#classfx__delay}
 
@@ -817,14 +739,14 @@ void loop() {
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__delay_1a07652b9b855e12f74705811f65670068) | Audio routing node [input]: primary audio input
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__delay_1aa247832fc523f7a1d82dcd94e0c46757) | Audio routing node [output]: primary audio output
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`fx_send`](#classfx__delay_1a47d0604757c9fae775e9dc1d0c8e0c43) | Audio routing node [output]: effect loop send before entering delay line of this effect
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`fx_receive`](#classfx__delay_1a48f73cc2af7f37afde7a96e885961d4a) | Audio routing node [output]: effect loop return before entering delay line of this effect
-`public `[`fx_control_node`](#classfx__control__node)` * `[`length_ms`](#classfx__delay_1ab3ab27196c40eaae2fc8f874642eca50) | Control routing node [input]: Length of delay line in milliseconds (1/1000s of a second)
-`public `[`fx_control_node`](#classfx__control__node)` * `[`feedback`](#classfx__delay_1a632917c322f068445ab1772877b24661) | Control routing node [input]: Feedback ratio (between 0.0 and 1.0)
-`public `[`fx_control_node`](#classfx__control__node)` * `[`dry_mix`](#classfx__delay_1a38c230d5672d588c699b514f2dcbac39) | Control routing node [input]: Dry mix (between 0.0 and 1.0)
-`public `[`fx_control_node`](#classfx__control__node)` * `[`wet_mix`](#classfx__delay_1a6f3bbdd01c6153ad211f12b122fe05bb) | Control routing node [input]: Wet mix (between 0.0 and 1.0)
+`public fx_audio_node * `[`input`](#classfx__delay_1a07652b9b855e12f74705811f65670068) | Audio routing node [input]: primary audio input
+`public fx_audio_node * `[`output`](#classfx__delay_1aa247832fc523f7a1d82dcd94e0c46757) | Audio routing node [output]: primary audio output
+`public fx_audio_node * `[`fx_send`](#classfx__delay_1a47d0604757c9fae775e9dc1d0c8e0c43) | Audio routing node [output]: effect loop send before entering delay line of this effect
+`public fx_audio_node * `[`fx_receive`](#classfx__delay_1a48f73cc2af7f37afde7a96e885961d4a) | Audio routing node [output]: effect loop return before entering delay line of this effect
+`public fx_control_node * `[`length_ms`](#classfx__delay_1ab3ab27196c40eaae2fc8f874642eca50) | Control routing node [input]: Length of delay line in milliseconds (1/1000s of a second)
+`public fx_control_node * `[`feedback`](#classfx__delay_1a632917c322f068445ab1772877b24661) | Control routing node [input]: Feedback ratio (between 0.0 and 1.0)
+`public fx_control_node * `[`dry_mix`](#classfx__delay_1a38c230d5672d588c699b514f2dcbac39) | Control routing node [input]: Dry mix (between 0.0 and 1.0)
+`public fx_control_node * `[`wet_mix`](#classfx__delay_1a6f3bbdd01c6153ad211f12b122fe05bb) | Control routing node [input]: Wet mix (between 0.0 and 1.0)
 `public inline  `[`fx_delay`](#classfx__delay_1aac7eb3b50aeb93b9938456ca659e7cd4)`(float delay_len_ms,float feedback)` | Basic constructor for delay effect.
 `public inline  `[`fx_delay`](#classfx__delay_1ae7412fb1c040a2b1b2b515d32cf3513a)`(float delay_len_ms,float delay_len_max_ms,float feedback,float mix_dry,float mix_wet,bool enable_ext_fx)` | Advanced constructor for delay effect.
 `public inline void `[`enable`](#classfx__delay_1aa2b2f620ddfa1b85800aadc764a07f6f)`()` | Enable the **this_effect** (it is enabled by default)
@@ -837,35 +759,35 @@ void loop() {
 
 ## Members
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__delay_1a07652b9b855e12f74705811f65670068) {#classfx__delay_1a07652b9b855e12f74705811f65670068}
+#### `public fx_audio_node * `[`input`](#classfx__delay_1a07652b9b855e12f74705811f65670068) {#classfx__delay_1a07652b9b855e12f74705811f65670068}
 
 Audio routing node [input]: primary audio input
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__delay_1aa247832fc523f7a1d82dcd94e0c46757) {#classfx__delay_1aa247832fc523f7a1d82dcd94e0c46757}
+#### `public fx_audio_node * `[`output`](#classfx__delay_1aa247832fc523f7a1d82dcd94e0c46757) {#classfx__delay_1aa247832fc523f7a1d82dcd94e0c46757}
 
 Audio routing node [output]: primary audio output
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`fx_send`](#classfx__delay_1a47d0604757c9fae775e9dc1d0c8e0c43) {#classfx__delay_1a47d0604757c9fae775e9dc1d0c8e0c43}
+#### `public fx_audio_node * `[`fx_send`](#classfx__delay_1a47d0604757c9fae775e9dc1d0c8e0c43) {#classfx__delay_1a47d0604757c9fae775e9dc1d0c8e0c43}
 
 Audio routing node [output]: effect loop send before entering delay line of this effect
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`fx_receive`](#classfx__delay_1a48f73cc2af7f37afde7a96e885961d4a) {#classfx__delay_1a48f73cc2af7f37afde7a96e885961d4a}
+#### `public fx_audio_node * `[`fx_receive`](#classfx__delay_1a48f73cc2af7f37afde7a96e885961d4a) {#classfx__delay_1a48f73cc2af7f37afde7a96e885961d4a}
 
 Audio routing node [output]: effect loop return before entering delay line of this effect
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`length_ms`](#classfx__delay_1ab3ab27196c40eaae2fc8f874642eca50) {#classfx__delay_1ab3ab27196c40eaae2fc8f874642eca50}
+#### `public fx_control_node * `[`length_ms`](#classfx__delay_1ab3ab27196c40eaae2fc8f874642eca50) {#classfx__delay_1ab3ab27196c40eaae2fc8f874642eca50}
 
 Control routing node [input]: Length of delay line in milliseconds (1/1000s of a second)
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`feedback`](#classfx__delay_1a632917c322f068445ab1772877b24661) {#classfx__delay_1a632917c322f068445ab1772877b24661}
+#### `public fx_control_node * `[`feedback`](#classfx__delay_1a632917c322f068445ab1772877b24661) {#classfx__delay_1a632917c322f068445ab1772877b24661}
 
 Control routing node [input]: Feedback ratio (between 0.0 and 1.0)
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`dry_mix`](#classfx__delay_1a38c230d5672d588c699b514f2dcbac39) {#classfx__delay_1a38c230d5672d588c699b514f2dcbac39}
+#### `public fx_control_node * `[`dry_mix`](#classfx__delay_1a38c230d5672d588c699b514f2dcbac39) {#classfx__delay_1a38c230d5672d588c699b514f2dcbac39}
 
 Control routing node [input]: Dry mix (between 0.0 and 1.0)
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`wet_mix`](#classfx__delay_1a6f3bbdd01c6153ad211f12b122fe05bb) {#classfx__delay_1a6f3bbdd01c6153ad211f12b122fe05bb}
+#### `public fx_control_node * `[`wet_mix`](#classfx__delay_1a6f3bbdd01c6153ad211f12b122fe05bb) {#classfx__delay_1a6f3bbdd01c6153ad211f12b122fe05bb}
 
 Control routing node [input]: Wet mix (between 0.0 and 1.0)
 
@@ -1021,10 +943,10 @@ void loop() {
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__destructor_1acfe69ee1186777714f16434dba235f51) | Audio routing node [input]: primary audio input
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__destructor_1a158a2d7421fa46d57cc4ede297a5437e) | Audio routing node [output]: primary audio output
-`public `[`fx_control_node`](#classfx__control__node)` * `[`param_1`](#classfx__destructor_1a12a568312921f87d35a0dd3f4f8e0bc6) | Control routing node [input]: clipping threshold (0.0 -> 1.0)
-`public `[`fx_control_node`](#classfx__control__node)` * `[`param_2`](#classfx__destructor_1af0f29b6db5fa74a39ce5d6562555acb3) | Control routing node [input]: input drive multiplier before destructor (up to 64.0)
+`public fx_audio_node * `[`input`](#classfx__destructor_1acfe69ee1186777714f16434dba235f51) | Audio routing node [input]: primary audio input
+`public fx_audio_node * `[`output`](#classfx__destructor_1a158a2d7421fa46d57cc4ede297a5437e) | Audio routing node [output]: primary audio output
+`public fx_control_node * `[`param_1`](#classfx__destructor_1a12a568312921f87d35a0dd3f4f8e0bc6) | Control routing node [input]: clipping threshold (0.0 -> 1.0)
+`public fx_control_node * `[`param_2`](#classfx__destructor_1af0f29b6db5fa74a39ce5d6562555acb3) | Control routing node [input]: input drive multiplier before destructor (up to 64.0)
 `public inline  `[`fx_destructor`](#classfx__destructor_1a4e0e00623681636a95b1533fa4a9753d)`(float param_1,float param_2,DESTRUCTOR_TYPE clip_type)` | Basic constructor for the destructor.
 `public inline  `[`fx_destructor`](#classfx__destructor_1a18bf3bcfe2a035859b01e201c2240859)`(float param_1,float param_2,DESTRUCTOR_TYPE clip_type,bool upsample)` | Advanced constructor for the destructor.
 `public inline void `[`enable`](#classfx__destructor_1ae6508408f362e499ef10e38d4d717b9e)`()` | Enable the destructor (it is enabled by default)
@@ -1035,19 +957,19 @@ void loop() {
 
 ## Members
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__destructor_1acfe69ee1186777714f16434dba235f51) {#classfx__destructor_1acfe69ee1186777714f16434dba235f51}
+#### `public fx_audio_node * `[`input`](#classfx__destructor_1acfe69ee1186777714f16434dba235f51) {#classfx__destructor_1acfe69ee1186777714f16434dba235f51}
 
 Audio routing node [input]: primary audio input
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__destructor_1a158a2d7421fa46d57cc4ede297a5437e) {#classfx__destructor_1a158a2d7421fa46d57cc4ede297a5437e}
+#### `public fx_audio_node * `[`output`](#classfx__destructor_1a158a2d7421fa46d57cc4ede297a5437e) {#classfx__destructor_1a158a2d7421fa46d57cc4ede297a5437e}
 
 Audio routing node [output]: primary audio output
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`param_1`](#classfx__destructor_1a12a568312921f87d35a0dd3f4f8e0bc6) {#classfx__destructor_1a12a568312921f87d35a0dd3f4f8e0bc6}
+#### `public fx_control_node * `[`param_1`](#classfx__destructor_1a12a568312921f87d35a0dd3f4f8e0bc6) {#classfx__destructor_1a12a568312921f87d35a0dd3f4f8e0bc6}
 
 Control routing node [input]: clipping threshold (0.0 -> 1.0)
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`param_2`](#classfx__destructor_1af0f29b6db5fa74a39ce5d6562555acb3) {#classfx__destructor_1af0f29b6db5fa74a39ce5d6562555acb3}
+#### `public fx_control_node * `[`param_2`](#classfx__destructor_1af0f29b6db5fa74a39ce5d6562555acb3) {#classfx__destructor_1af0f29b6db5fa74a39ce5d6562555acb3}
 
 Control routing node [input]: input drive multiplier before destructor (up to 64.0)
 
@@ -1118,10 +1040,10 @@ Here's a nice tutorial on one effect that can be created with an envelope tracke
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__envelope__tracker_1a90a1db3263c82aa7b59e7292b777bd82) | 
-`public `[`fx_control_node`](#classfx__control__node)` * `[`decay_speed_ms`](#classfx__envelope__tracker_1ae8aae7e2034e97ac804e26f7cfa9bfbe) | 
-`public `[`fx_control_node`](#classfx__control__node)` * `[`attack_speed_ms`](#classfx__envelope__tracker_1aecc2a5c2cb85119e7120e7e1c1dfa3e5) | 
-`public `[`fx_control_node`](#classfx__control__node)` * `[`envelope`](#classfx__envelope__tracker_1a067a4942058fd43727d9c3575bc44eb2) | 
+`public fx_audio_node * `[`input`](#classfx__envelope__tracker_1a90a1db3263c82aa7b59e7292b777bd82) | 
+`public fx_control_node * `[`decay_speed_ms`](#classfx__envelope__tracker_1ae8aae7e2034e97ac804e26f7cfa9bfbe) | 
+`public fx_control_node * `[`attack_speed_ms`](#classfx__envelope__tracker_1aecc2a5c2cb85119e7120e7e1c1dfa3e5) | 
+`public fx_control_node * `[`envelope`](#classfx__envelope__tracker_1a067a4942058fd43727d9c3575bc44eb2) | 
 `public inline  `[`fx_envelope_tracker`](#classfx__envelope__tracker_1ae5d434f970e66fb028d6955e4feb5904)`(float attack_speed_ms,float decay_speed_ms,bool triggered)` | 
 `public inline void `[`set_attack_speed_ms`](#classfx__envelope__tracker_1adcb2549d59d71a39dff1b39854a3d045)`(float attack_speed_ms)` | 
 `public inline void `[`set_decay_speed_ms`](#classfx__envelope__tracker_1a4d6f81bda9887bb96aaa14b974d5d19a)`(float decay_speed_ms)` | 
@@ -1129,13 +1051,13 @@ Here's a nice tutorial on one effect that can be created with an envelope tracke
 
 ## Members
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__envelope__tracker_1a90a1db3263c82aa7b59e7292b777bd82) {#classfx__envelope__tracker_1a90a1db3263c82aa7b59e7292b777bd82}
+#### `public fx_audio_node * `[`input`](#classfx__envelope__tracker_1a90a1db3263c82aa7b59e7292b777bd82) {#classfx__envelope__tracker_1a90a1db3263c82aa7b59e7292b777bd82}
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`decay_speed_ms`](#classfx__envelope__tracker_1ae8aae7e2034e97ac804e26f7cfa9bfbe) {#classfx__envelope__tracker_1ae8aae7e2034e97ac804e26f7cfa9bfbe}
+#### `public fx_control_node * `[`decay_speed_ms`](#classfx__envelope__tracker_1ae8aae7e2034e97ac804e26f7cfa9bfbe) {#classfx__envelope__tracker_1ae8aae7e2034e97ac804e26f7cfa9bfbe}
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`attack_speed_ms`](#classfx__envelope__tracker_1aecc2a5c2cb85119e7120e7e1c1dfa3e5) {#classfx__envelope__tracker_1aecc2a5c2cb85119e7120e7e1c1dfa3e5}
+#### `public fx_control_node * `[`attack_speed_ms`](#classfx__envelope__tracker_1aecc2a5c2cb85119e7120e7e1c1dfa3e5) {#classfx__envelope__tracker_1aecc2a5c2cb85119e7120e7e1c1dfa3e5}
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`envelope`](#classfx__envelope__tracker_1a067a4942058fd43727d9c3575bc44eb2) {#classfx__envelope__tracker_1a067a4942058fd43727d9c3575bc44eb2}
+#### `public fx_control_node * `[`envelope`](#classfx__envelope__tracker_1a067a4942058fd43727d9c3575bc44eb2) {#classfx__envelope__tracker_1a067a4942058fd43727d9c3575bc44eb2}
 
 #### `public inline  `[`fx_envelope_tracker`](#classfx__envelope__tracker_1ae5d434f970e66fb028d6955e4feb5904)`(float attack_speed_ms,float decay_speed_ms,bool triggered)` {#classfx__envelope__tracker_1ae5d434f970e66fb028d6955e4feb5904}
 
@@ -1158,9 +1080,9 @@ Effect: Gain - used to increase or decrease the volume of an audio signal.
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__gain_1a292efdc7356082aaacf2a79bef496390) | Audio routing node: primary audio input
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__gain_1adac79db68119e32509a27ee24d1d7c6e) | Audio routing node: primary audio output
-`public `[`fx_control_node`](#classfx__control__node)` * `[`gain`](#classfx__gain_1a68685d3f20555db915e64c8a869fcfa7) | Control routing node: gain value input - you can then link the envelope filter to this to create slow swell effects
+`public fx_audio_node * `[`input`](#classfx__gain_1a292efdc7356082aaacf2a79bef496390) | Audio routing node: primary audio input
+`public fx_audio_node * `[`output`](#classfx__gain_1adac79db68119e32509a27ee24d1d7c6e) | Audio routing node: primary audio output
+`public fx_control_node * `[`gain`](#classfx__gain_1a68685d3f20555db915e64c8a869fcfa7) | Control routing node: gain value input - you can then link the envelope filter to this to create slow swell effects
 `public inline  `[`fx_gain`](#classfx__gain_1a2300b426bb620f6197ff600ff5745b00)`(float gain_val)` | Basic constructor/initializer for gain.
 `public inline  `[`fx_gain`](#classfx__gain_1ad1818cd57161ec431908add185673057)`(float gain_val,EFFECT_TRANSITION_SPEED gain_trans_speed)` | Advanced constructor for the gain.
 `public inline void `[`enable`](#classfx__gain_1ac1432865de90f7dad9e5457c422058b7)`()` | Enable the **this_effect** (it is enabled by default)
@@ -1171,15 +1093,15 @@ Effect: Gain - used to increase or decrease the volume of an audio signal.
 
 ## Members
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__gain_1a292efdc7356082aaacf2a79bef496390) {#classfx__gain_1a292efdc7356082aaacf2a79bef496390}
+#### `public fx_audio_node * `[`input`](#classfx__gain_1a292efdc7356082aaacf2a79bef496390) {#classfx__gain_1a292efdc7356082aaacf2a79bef496390}
 
 Audio routing node: primary audio input
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__gain_1adac79db68119e32509a27ee24d1d7c6e) {#classfx__gain_1adac79db68119e32509a27ee24d1d7c6e}
+#### `public fx_audio_node * `[`output`](#classfx__gain_1adac79db68119e32509a27ee24d1d7c6e) {#classfx__gain_1adac79db68119e32509a27ee24d1d7c6e}
 
 Audio routing node: primary audio output
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`gain`](#classfx__gain_1a68685d3f20555db915e64c8a869fcfa7) {#classfx__gain_1a68685d3f20555db915e64c8a869fcfa7}
+#### `public fx_control_node * `[`gain`](#classfx__gain_1a68685d3f20555db915e64c8a869fcfa7) {#classfx__gain_1a68685d3f20555db915e64c8a869fcfa7}
 
 Control routing node: gain value input - you can then link the envelope filter to this to create slow swell effects
 
@@ -1303,17 +1225,17 @@ void loop() {
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__looper_1a8546e55ec37dbff4aa1f6c6f2dcf8b60) | Audio routing node: primary audio input
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__looper_1a9fa368775267435ce6d15b566f8cc199) | Audio routing node: primary audio output
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`preproc_send`](#classfx__looper_1aac75ac7e57037d128831bff2bcb68513) | Audio routing node: pre-loop effects send (process audio before it ends up in the loop)
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`preproc_receive`](#classfx__looper_1aee08a93da19655a0e7c344d0249a49ea) | Audio routing node: pre-loop effects receive (process audio before it ends up in the loop)
-`public `[`fx_control_node`](#classfx__control__node)` * `[`start`](#classfx__looper_1ab84b9fa507e67afe22da6a53bc0ff66f) | Control routing node: Trigger to start loop recording
-`public `[`fx_control_node`](#classfx__control__node)` * `[`stop`](#classfx__looper_1a9bbdaecb62b28c955f479bd7c6e79bda) | Control routing node: Trigger to stop loop recording
-`public `[`fx_control_node`](#classfx__control__node)` * `[`playback_rate`](#classfx__looper_1a597a390c7ef64c1c71a79a0727f1a3ea) | Control routing node: Loop playback rate (1.0 is recorded rate, > 1.0 is faster / higher pitch, < 1.0 is slower, <0 is reverse)
-`public `[`fx_control_node`](#classfx__control__node)` * `[`dry_mix`](#classfx__looper_1ad7b7d16ac156eed0178d498870c35801) | Control routing node: clean/dry mix
-`public `[`fx_control_node`](#classfx__control__node)` * `[`loop_mix`](#classfx__looper_1ac2d6a671a7a74f01112a632fd5d871a6) | Control routing node: clean/dry mix
-`public `[`fx_control_node`](#classfx__control__node)` * `[`loop_length_seconds`](#classfx__looper_1a445745ac04fa40f9a2aa1fd447a65897) | Control routing node: [output] loop length - can be tied to things like delay length to create delay lines that are synced to the loop length
-`public `[`fx_control_node`](#classfx__control__node)` * `[`loop_length_seconds_set`](#classfx__looper_1ad4b220fbde6c9ce3803a31aac0c856a3) | Control routing node: [input] loop length - used to set loop length before a loop is recorded (to sync with other loops)
+`public fx_audio_node * `[`input`](#classfx__looper_1a8546e55ec37dbff4aa1f6c6f2dcf8b60) | Audio routing node: primary audio input
+`public fx_audio_node * `[`output`](#classfx__looper_1a9fa368775267435ce6d15b566f8cc199) | Audio routing node: primary audio output
+`public fx_audio_node * `[`preproc_send`](#classfx__looper_1aac75ac7e57037d128831bff2bcb68513) | Audio routing node: pre-loop effects send (process audio before it ends up in the loop)
+`public fx_audio_node * `[`preproc_receive`](#classfx__looper_1aee08a93da19655a0e7c344d0249a49ea) | Audio routing node: pre-loop effects receive (process audio before it ends up in the loop)
+`public fx_control_node * `[`start`](#classfx__looper_1ab84b9fa507e67afe22da6a53bc0ff66f) | Control routing node: Trigger to start loop recording
+`public fx_control_node * `[`stop`](#classfx__looper_1a9bbdaecb62b28c955f479bd7c6e79bda) | Control routing node: Trigger to stop loop recording
+`public fx_control_node * `[`playback_rate`](#classfx__looper_1a597a390c7ef64c1c71a79a0727f1a3ea) | Control routing node: Loop playback rate (1.0 is recorded rate, > 1.0 is faster / higher pitch, < 1.0 is slower, <0 is reverse)
+`public fx_control_node * `[`dry_mix`](#classfx__looper_1ad7b7d16ac156eed0178d498870c35801) | Control routing node: clean/dry mix
+`public fx_control_node * `[`loop_mix`](#classfx__looper_1ac2d6a671a7a74f01112a632fd5d871a6) | Control routing node: clean/dry mix
+`public fx_control_node * `[`loop_length_seconds`](#classfx__looper_1a445745ac04fa40f9a2aa1fd447a65897) | Control routing node: [output] loop length - can be tied to things like delay length to create delay lines that are synced to the loop length
+`public fx_control_node * `[`loop_length_seconds_set`](#classfx__looper_1ad4b220fbde6c9ce3803a31aac0c856a3) | Control routing node: [input] loop length - used to set loop length before a loop is recorded (to sync with other loops)
 `public inline  `[`fx_looper`](#classfx__looper_1aa2e8fed242f70089c0da68f5867e7006)`(float looper_dry_mix,float looper_loop_mix,float looper_max_length_seconds,bool looper_enable_loop_preprocessing)` | Constructor/initializer for amplitude modulator.
 `public inline void `[`enable`](#classfx__looper_1a9c21dc8e4b7407b636c6b46f6072245b)`()` | Enable the **this_effect** (it is enabled by default)
 `public inline void `[`bypass`](#classfx__looper_1a3d10b14e14d00b4fcad30b9a78fa0468)`()` | Bypass the **this_effect** (will just pass clean audio through)
@@ -1327,47 +1249,47 @@ void loop() {
 
 ## Members
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__looper_1a8546e55ec37dbff4aa1f6c6f2dcf8b60) {#classfx__looper_1a8546e55ec37dbff4aa1f6c6f2dcf8b60}
+#### `public fx_audio_node * `[`input`](#classfx__looper_1a8546e55ec37dbff4aa1f6c6f2dcf8b60) {#classfx__looper_1a8546e55ec37dbff4aa1f6c6f2dcf8b60}
 
 Audio routing node: primary audio input
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__looper_1a9fa368775267435ce6d15b566f8cc199) {#classfx__looper_1a9fa368775267435ce6d15b566f8cc199}
+#### `public fx_audio_node * `[`output`](#classfx__looper_1a9fa368775267435ce6d15b566f8cc199) {#classfx__looper_1a9fa368775267435ce6d15b566f8cc199}
 
 Audio routing node: primary audio output
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`preproc_send`](#classfx__looper_1aac75ac7e57037d128831bff2bcb68513) {#classfx__looper_1aac75ac7e57037d128831bff2bcb68513}
+#### `public fx_audio_node * `[`preproc_send`](#classfx__looper_1aac75ac7e57037d128831bff2bcb68513) {#classfx__looper_1aac75ac7e57037d128831bff2bcb68513}
 
 Audio routing node: pre-loop effects send (process audio before it ends up in the loop)
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`preproc_receive`](#classfx__looper_1aee08a93da19655a0e7c344d0249a49ea) {#classfx__looper_1aee08a93da19655a0e7c344d0249a49ea}
+#### `public fx_audio_node * `[`preproc_receive`](#classfx__looper_1aee08a93da19655a0e7c344d0249a49ea) {#classfx__looper_1aee08a93da19655a0e7c344d0249a49ea}
 
 Audio routing node: pre-loop effects receive (process audio before it ends up in the loop)
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`start`](#classfx__looper_1ab84b9fa507e67afe22da6a53bc0ff66f) {#classfx__looper_1ab84b9fa507e67afe22da6a53bc0ff66f}
+#### `public fx_control_node * `[`start`](#classfx__looper_1ab84b9fa507e67afe22da6a53bc0ff66f) {#classfx__looper_1ab84b9fa507e67afe22da6a53bc0ff66f}
 
 Control routing node: Trigger to start loop recording
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`stop`](#classfx__looper_1a9bbdaecb62b28c955f479bd7c6e79bda) {#classfx__looper_1a9bbdaecb62b28c955f479bd7c6e79bda}
+#### `public fx_control_node * `[`stop`](#classfx__looper_1a9bbdaecb62b28c955f479bd7c6e79bda) {#classfx__looper_1a9bbdaecb62b28c955f479bd7c6e79bda}
 
 Control routing node: Trigger to stop loop recording
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`playback_rate`](#classfx__looper_1a597a390c7ef64c1c71a79a0727f1a3ea) {#classfx__looper_1a597a390c7ef64c1c71a79a0727f1a3ea}
+#### `public fx_control_node * `[`playback_rate`](#classfx__looper_1a597a390c7ef64c1c71a79a0727f1a3ea) {#classfx__looper_1a597a390c7ef64c1c71a79a0727f1a3ea}
 
 Control routing node: Loop playback rate (1.0 is recorded rate, > 1.0 is faster / higher pitch, < 1.0 is slower, <0 is reverse)
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`dry_mix`](#classfx__looper_1ad7b7d16ac156eed0178d498870c35801) {#classfx__looper_1ad7b7d16ac156eed0178d498870c35801}
+#### `public fx_control_node * `[`dry_mix`](#classfx__looper_1ad7b7d16ac156eed0178d498870c35801) {#classfx__looper_1ad7b7d16ac156eed0178d498870c35801}
 
 Control routing node: clean/dry mix
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`loop_mix`](#classfx__looper_1ac2d6a671a7a74f01112a632fd5d871a6) {#classfx__looper_1ac2d6a671a7a74f01112a632fd5d871a6}
+#### `public fx_control_node * `[`loop_mix`](#classfx__looper_1ac2d6a671a7a74f01112a632fd5d871a6) {#classfx__looper_1ac2d6a671a7a74f01112a632fd5d871a6}
 
 Control routing node: clean/dry mix
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`loop_length_seconds`](#classfx__looper_1a445745ac04fa40f9a2aa1fd447a65897) {#classfx__looper_1a445745ac04fa40f9a2aa1fd447a65897}
+#### `public fx_control_node * `[`loop_length_seconds`](#classfx__looper_1a445745ac04fa40f9a2aa1fd447a65897) {#classfx__looper_1a445745ac04fa40f9a2aa1fd447a65897}
 
 Control routing node: [output] loop length - can be tied to things like delay length to create delay lines that are synced to the loop length
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`loop_length_seconds_set`](#classfx__looper_1ad4b220fbde6c9ce3803a31aac0c856a3) {#classfx__looper_1ad4b220fbde6c9ce3803a31aac0c856a3}
+#### `public fx_control_node * `[`loop_length_seconds_set`](#classfx__looper_1ad4b220fbde6c9ce3803a31aac0c856a3) {#classfx__looper_1ad4b220fbde6c9ce3803a31aac0c856a3}
 
 Control routing node: [input] loop length - used to set loop length before a loop is recorded (to sync with other loops)
 
@@ -1431,23 +1353,23 @@ Utility: 2 channel mixer.
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input_1`](#classfx__mixer__2_1ac3dd5da659c05886d30025ba81254da8) | Audio routing node [input]: audio input (mixer channel 1)
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input_2`](#classfx__mixer__2_1a2d60c8289760967e746f43bf3aeddfec) | Audio routing node [input]: audio input (mixer channel 2)
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__mixer__2_1ac9594cf89c58c8c1e566f4b9efdf9a26) | Audio routing node [output]: mixer output
+`public fx_audio_node * `[`input_1`](#classfx__mixer__2_1ac3dd5da659c05886d30025ba81254da8) | Audio routing node [input]: audio input (mixer channel 1)
+`public fx_audio_node * `[`input_2`](#classfx__mixer__2_1a2d60c8289760967e746f43bf3aeddfec) | Audio routing node [input]: audio input (mixer channel 2)
+`public fx_audio_node * `[`output`](#classfx__mixer__2_1ac9594cf89c58c8c1e566f4b9efdf9a26) | Audio routing node [output]: mixer output
 `public inline  `[`fx_mixer_2`](#classfx__mixer__2_1a7b0f04dd3f2a94ce14b6f1bb4e0c5a02)`(void)` | Simple constructor takes no arguments.
 `public inline void `[`print_params`](#classfx__mixer__2_1a223e33aa4ccc94da38b9e43a7e171c1b)`(void)` | Print the parameters for this effect.
 
 ## Members
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input_1`](#classfx__mixer__2_1ac3dd5da659c05886d30025ba81254da8) {#classfx__mixer__2_1ac3dd5da659c05886d30025ba81254da8}
+#### `public fx_audio_node * `[`input_1`](#classfx__mixer__2_1ac3dd5da659c05886d30025ba81254da8) {#classfx__mixer__2_1ac3dd5da659c05886d30025ba81254da8}
 
 Audio routing node [input]: audio input (mixer channel 1)
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input_2`](#classfx__mixer__2_1a2d60c8289760967e746f43bf3aeddfec) {#classfx__mixer__2_1a2d60c8289760967e746f43bf3aeddfec}
+#### `public fx_audio_node * `[`input_2`](#classfx__mixer__2_1a2d60c8289760967e746f43bf3aeddfec) {#classfx__mixer__2_1a2d60c8289760967e746f43bf3aeddfec}
 
 Audio routing node [input]: audio input (mixer channel 2)
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__mixer__2_1ac9594cf89c58c8c1e566f4b9efdf9a26) {#classfx__mixer__2_1ac9594cf89c58c8c1e566f4b9efdf9a26}
+#### `public fx_audio_node * `[`output`](#classfx__mixer__2_1ac9594cf89c58c8c1e566f4b9efdf9a26) {#classfx__mixer__2_1ac9594cf89c58c8c1e566f4b9efdf9a26}
 
 Audio routing node [output]: mixer output
 
@@ -1472,28 +1394,28 @@ Utility: 3 channel mixer.
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input_1`](#classfx__mixer__3_1a517758169a6ef1e81720c9329503bb7a) | Audio routing node [input]: audio input (mixer channel 1)
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input_2`](#classfx__mixer__3_1a4c5d017dc79d7a30be6600f4a07e5cac) | Audio routing node [input]: audio input (mixer channel 2)
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input_3`](#classfx__mixer__3_1a189f7d11234f4f3954fdb95a1cafab0c) | Audio routing node [input]: audio input (mixer channel 3)
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__mixer__3_1aa2f1daf0e3add17a6fa64767842f6ce8) | Audio routing node [output]: mixer output
+`public fx_audio_node * `[`input_1`](#classfx__mixer__3_1a517758169a6ef1e81720c9329503bb7a) | Audio routing node [input]: audio input (mixer channel 1)
+`public fx_audio_node * `[`input_2`](#classfx__mixer__3_1a4c5d017dc79d7a30be6600f4a07e5cac) | Audio routing node [input]: audio input (mixer channel 2)
+`public fx_audio_node * `[`input_3`](#classfx__mixer__3_1a189f7d11234f4f3954fdb95a1cafab0c) | Audio routing node [input]: audio input (mixer channel 3)
+`public fx_audio_node * `[`output`](#classfx__mixer__3_1aa2f1daf0e3add17a6fa64767842f6ce8) | Audio routing node [output]: mixer output
 `public inline  `[`fx_mixer_3`](#classfx__mixer__3_1ae66a67fdf041059f82b28bdd05235402)`(void)` | Simple constructor takes no arguments.
 `public inline void `[`print_params`](#classfx__mixer__3_1a0593fdf1d54570a4b719151823e080a5)`(void)` | Print the parameters for this effect.
 
 ## Members
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input_1`](#classfx__mixer__3_1a517758169a6ef1e81720c9329503bb7a) {#classfx__mixer__3_1a517758169a6ef1e81720c9329503bb7a}
+#### `public fx_audio_node * `[`input_1`](#classfx__mixer__3_1a517758169a6ef1e81720c9329503bb7a) {#classfx__mixer__3_1a517758169a6ef1e81720c9329503bb7a}
 
 Audio routing node [input]: audio input (mixer channel 1)
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input_2`](#classfx__mixer__3_1a4c5d017dc79d7a30be6600f4a07e5cac) {#classfx__mixer__3_1a4c5d017dc79d7a30be6600f4a07e5cac}
+#### `public fx_audio_node * `[`input_2`](#classfx__mixer__3_1a4c5d017dc79d7a30be6600f4a07e5cac) {#classfx__mixer__3_1a4c5d017dc79d7a30be6600f4a07e5cac}
 
 Audio routing node [input]: audio input (mixer channel 2)
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input_3`](#classfx__mixer__3_1a189f7d11234f4f3954fdb95a1cafab0c) {#classfx__mixer__3_1a189f7d11234f4f3954fdb95a1cafab0c}
+#### `public fx_audio_node * `[`input_3`](#classfx__mixer__3_1a189f7d11234f4f3954fdb95a1cafab0c) {#classfx__mixer__3_1a189f7d11234f4f3954fdb95a1cafab0c}
 
 Audio routing node [input]: audio input (mixer channel 3)
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__mixer__3_1aa2f1daf0e3add17a6fa64767842f6ce8) {#classfx__mixer__3_1aa2f1daf0e3add17a6fa64767842f6ce8}
+#### `public fx_audio_node * `[`output`](#classfx__mixer__3_1aa2f1daf0e3add17a6fa64767842f6ce8) {#classfx__mixer__3_1aa2f1daf0e3add17a6fa64767842f6ce8}
 
 Audio routing node [output]: mixer output
 
@@ -1518,33 +1440,33 @@ Utility: 4 channel mixer.
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input_1`](#classfx__mixer__4_1a3736146eb3b471875b3af416c32a7acc) | Audio routing node [input]: audio input (mixer channel 1)
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input_2`](#classfx__mixer__4_1ab4b2f4f9850b67626970e9ee11397f07) | Audio routing node [input]: audio input (mixer channel 2)
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input_3`](#classfx__mixer__4_1ac87286a9ae9a4ba82fb1380c642cdb03) | Audio routing node [input]: audio input (mixer channel 3)
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input_4`](#classfx__mixer__4_1a4d9758b6bf556cf1895b7444ae4dd9e7) | Audio routing node [input]: audio input (mixer channel 4)
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__mixer__4_1ac3dc79fb05062a982e2335dbee8a9f99) | Audio routing node [output]: mixer output
+`public fx_audio_node * `[`input_1`](#classfx__mixer__4_1a3736146eb3b471875b3af416c32a7acc) | Audio routing node [input]: audio input (mixer channel 1)
+`public fx_audio_node * `[`input_2`](#classfx__mixer__4_1ab4b2f4f9850b67626970e9ee11397f07) | Audio routing node [input]: audio input (mixer channel 2)
+`public fx_audio_node * `[`input_3`](#classfx__mixer__4_1ac87286a9ae9a4ba82fb1380c642cdb03) | Audio routing node [input]: audio input (mixer channel 3)
+`public fx_audio_node * `[`input_4`](#classfx__mixer__4_1a4d9758b6bf556cf1895b7444ae4dd9e7) | Audio routing node [input]: audio input (mixer channel 4)
+`public fx_audio_node * `[`output`](#classfx__mixer__4_1ac3dc79fb05062a982e2335dbee8a9f99) | Audio routing node [output]: mixer output
 `public inline  `[`fx_mixer_4`](#classfx__mixer__4_1aaa5d6dc5d83074dda5a1ce6f00d45c67)`(void)` | Simple constructor takes no arguments.
 `public inline void `[`print_params`](#classfx__mixer__4_1a3f5586bcf1bddd567c41c2fae7ecabdf)`(void)` | Print the parameters for this effect.
 
 ## Members
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input_1`](#classfx__mixer__4_1a3736146eb3b471875b3af416c32a7acc) {#classfx__mixer__4_1a3736146eb3b471875b3af416c32a7acc}
+#### `public fx_audio_node * `[`input_1`](#classfx__mixer__4_1a3736146eb3b471875b3af416c32a7acc) {#classfx__mixer__4_1a3736146eb3b471875b3af416c32a7acc}
 
 Audio routing node [input]: audio input (mixer channel 1)
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input_2`](#classfx__mixer__4_1ab4b2f4f9850b67626970e9ee11397f07) {#classfx__mixer__4_1ab4b2f4f9850b67626970e9ee11397f07}
+#### `public fx_audio_node * `[`input_2`](#classfx__mixer__4_1ab4b2f4f9850b67626970e9ee11397f07) {#classfx__mixer__4_1ab4b2f4f9850b67626970e9ee11397f07}
 
 Audio routing node [input]: audio input (mixer channel 2)
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input_3`](#classfx__mixer__4_1ac87286a9ae9a4ba82fb1380c642cdb03) {#classfx__mixer__4_1ac87286a9ae9a4ba82fb1380c642cdb03}
+#### `public fx_audio_node * `[`input_3`](#classfx__mixer__4_1ac87286a9ae9a4ba82fb1380c642cdb03) {#classfx__mixer__4_1ac87286a9ae9a4ba82fb1380c642cdb03}
 
 Audio routing node [input]: audio input (mixer channel 3)
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input_4`](#classfx__mixer__4_1a4d9758b6bf556cf1895b7444ae4dd9e7) {#classfx__mixer__4_1a4d9758b6bf556cf1895b7444ae4dd9e7}
+#### `public fx_audio_node * `[`input_4`](#classfx__mixer__4_1a4d9758b6bf556cf1895b7444ae4dd9e7) {#classfx__mixer__4_1a4d9758b6bf556cf1895b7444ae4dd9e7}
 
 Audio routing node [input]: audio input (mixer channel 4)
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__mixer__4_1ac3dc79fb05062a982e2335dbee8a9f99) {#classfx__mixer__4_1ac3dc79fb05062a982e2335dbee8a9f99}
+#### `public fx_audio_node * `[`output`](#classfx__mixer__4_1ac3dc79fb05062a982e2335dbee8a9f99) {#classfx__mixer__4_1ac3dc79fb05062a982e2335dbee8a9f99}
 
 Audio routing node [output]: mixer output
 
@@ -1569,16 +1491,16 @@ Effect: - chops up audio in the time domain and pipes to different effects.
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__octave_1afaf86d517e4c1df846c65878e5eb8286) | Audio routing node: primary audio input
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__octave_1a78e79bf1b3e4f5585a53d4376783fceb) | Audio routing node: primary audio output
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`synth_output`](#classfx__octave_1a68f34f8f493ba10b98c0bfa8683645a8) | Audio routing node: synth only raw output
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`oct_1_output`](#classfx__octave_1ae3b2f1e055e6c5c30b7f3fe42c7ef75e) | Audio routing node: octave 1 raw output
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`oct_2_output`](#classfx__octave_1a2943cab28eecb0eac3f3ec4bb63c951e) | Audio routing node: octave 2 raw output
-`public `[`fx_control_node`](#classfx__control__node)` * `[`clean_mix`](#classfx__octave_1adc2d6b1da1af82b46622a72dc084f232) | Control routing node: Clean mix (0.0 -> 1.0)
-`public `[`fx_control_node`](#classfx__control__node)` * `[`octave_mix`](#classfx__octave_1ae9fbe75c4c6076219f91eaec1a178844) | Control routing node: Shaper mix (0.0 -> 1.0)
-`public `[`fx_control_node`](#classfx__control__node)` * `[`oct_1_mix`](#classfx__octave_1af2f99541ecdf6b798d29f574b3ca9bbf) | Control routing node: Octave below mix (0.0 -> 1.0)
-`public `[`fx_control_node`](#classfx__control__node)` * `[`oct_2_mix`](#classfx__octave_1a989bbf38060257de6df644ae2908dca3) | Control routing node: Two octaves below mix (0.0 -> 1.0)
-`public inline  `[`fx_octave`](#classfx__octave_1a3eeb7dc1b3e91b6c35a1f21d64ef53a3)`(OSC_TYPES type,float clean_mix,float oct_0_mix,float oct_1_mix,float oct_2_mix)` | Constructor for the octave.
+`public fx_audio_node * `[`input`](#classfx__octave_1afaf86d517e4c1df846c65878e5eb8286) | Audio routing node: primary audio input
+`public fx_audio_node * `[`output`](#classfx__octave_1a78e79bf1b3e4f5585a53d4376783fceb) | Audio routing node: primary audio output
+`public fx_audio_node * `[`synth_output`](#classfx__octave_1a68f34f8f493ba10b98c0bfa8683645a8) | Audio routing node: synth only raw output
+`public fx_audio_node * `[`oct_1_output`](#classfx__octave_1ae3b2f1e055e6c5c30b7f3fe42c7ef75e) | Audio routing node: octave 1 raw output
+`public fx_audio_node * `[`oct_2_output`](#classfx__octave_1a2943cab28eecb0eac3f3ec4bb63c951e) | Audio routing node: octave 2 raw output
+`public fx_control_node * `[`clean_mix`](#classfx__octave_1adc2d6b1da1af82b46622a72dc084f232) | Control routing node: Clean mix (0.0 -> 1.0)
+`public fx_control_node * `[`octave_mix`](#classfx__octave_1ae9fbe75c4c6076219f91eaec1a178844) | Control routing node: Shaper mix (0.0 -> 1.0)
+`public fx_control_node * `[`oct_1_mix`](#classfx__octave_1af2f99541ecdf6b798d29f574b3ca9bbf) | Control routing node: Octave below mix (0.0 -> 1.0)
+`public fx_control_node * `[`oct_2_mix`](#classfx__octave_1a989bbf38060257de6df644ae2908dca3) | Control routing node: Two octaves below mix (0.0 -> 1.0)
+`public inline  `[`fx_octave`](#classfx__octave_1a3eeb7dc1b3e91b6c35a1f21d64ef53a3)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` type,float clean_mix,float oct_0_mix,float oct_1_mix,float oct_2_mix)` | Constructor for the octave.
 `public inline void `[`enable`](#classfx__octave_1abca5ff95385e0721f8ab2267d7ee3b0d)`()` | Enable the amplitude modululator (it is enabled by default)
 `public inline void `[`bypass`](#classfx__octave_1a10164ff7320aa607ce847a8f40bd4292)`()` | Bypass the amplitude modululator (will just pass clean audio through)
 `public inline void `[`set_clean_mix`](#classfx__octave_1a22543217b05834576aa61058b9ef913b)`(float clean_mix)` | Sets clean / instrument mix.
@@ -1590,43 +1512,43 @@ Effect: - chops up audio in the time domain and pipes to different effects.
 
 ## Members
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__octave_1afaf86d517e4c1df846c65878e5eb8286) {#classfx__octave_1afaf86d517e4c1df846c65878e5eb8286}
+#### `public fx_audio_node * `[`input`](#classfx__octave_1afaf86d517e4c1df846c65878e5eb8286) {#classfx__octave_1afaf86d517e4c1df846c65878e5eb8286}
 
 Audio routing node: primary audio input
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__octave_1a78e79bf1b3e4f5585a53d4376783fceb) {#classfx__octave_1a78e79bf1b3e4f5585a53d4376783fceb}
+#### `public fx_audio_node * `[`output`](#classfx__octave_1a78e79bf1b3e4f5585a53d4376783fceb) {#classfx__octave_1a78e79bf1b3e4f5585a53d4376783fceb}
 
 Audio routing node: primary audio output
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`synth_output`](#classfx__octave_1a68f34f8f493ba10b98c0bfa8683645a8) {#classfx__octave_1a68f34f8f493ba10b98c0bfa8683645a8}
+#### `public fx_audio_node * `[`synth_output`](#classfx__octave_1a68f34f8f493ba10b98c0bfa8683645a8) {#classfx__octave_1a68f34f8f493ba10b98c0bfa8683645a8}
 
 Audio routing node: synth only raw output
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`oct_1_output`](#classfx__octave_1ae3b2f1e055e6c5c30b7f3fe42c7ef75e) {#classfx__octave_1ae3b2f1e055e6c5c30b7f3fe42c7ef75e}
+#### `public fx_audio_node * `[`oct_1_output`](#classfx__octave_1ae3b2f1e055e6c5c30b7f3fe42c7ef75e) {#classfx__octave_1ae3b2f1e055e6c5c30b7f3fe42c7ef75e}
 
 Audio routing node: octave 1 raw output
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`oct_2_output`](#classfx__octave_1a2943cab28eecb0eac3f3ec4bb63c951e) {#classfx__octave_1a2943cab28eecb0eac3f3ec4bb63c951e}
+#### `public fx_audio_node * `[`oct_2_output`](#classfx__octave_1a2943cab28eecb0eac3f3ec4bb63c951e) {#classfx__octave_1a2943cab28eecb0eac3f3ec4bb63c951e}
 
 Audio routing node: octave 2 raw output
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`clean_mix`](#classfx__octave_1adc2d6b1da1af82b46622a72dc084f232) {#classfx__octave_1adc2d6b1da1af82b46622a72dc084f232}
+#### `public fx_control_node * `[`clean_mix`](#classfx__octave_1adc2d6b1da1af82b46622a72dc084f232) {#classfx__octave_1adc2d6b1da1af82b46622a72dc084f232}
 
 Control routing node: Clean mix (0.0 -> 1.0)
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`octave_mix`](#classfx__octave_1ae9fbe75c4c6076219f91eaec1a178844) {#classfx__octave_1ae9fbe75c4c6076219f91eaec1a178844}
+#### `public fx_control_node * `[`octave_mix`](#classfx__octave_1ae9fbe75c4c6076219f91eaec1a178844) {#classfx__octave_1ae9fbe75c4c6076219f91eaec1a178844}
 
 Control routing node: Shaper mix (0.0 -> 1.0)
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`oct_1_mix`](#classfx__octave_1af2f99541ecdf6b798d29f574b3ca9bbf) {#classfx__octave_1af2f99541ecdf6b798d29f574b3ca9bbf}
+#### `public fx_control_node * `[`oct_1_mix`](#classfx__octave_1af2f99541ecdf6b798d29f574b3ca9bbf) {#classfx__octave_1af2f99541ecdf6b798d29f574b3ca9bbf}
 
 Control routing node: Octave below mix (0.0 -> 1.0)
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`oct_2_mix`](#classfx__octave_1a989bbf38060257de6df644ae2908dca3) {#classfx__octave_1a989bbf38060257de6df644ae2908dca3}
+#### `public fx_control_node * `[`oct_2_mix`](#classfx__octave_1a989bbf38060257de6df644ae2908dca3) {#classfx__octave_1a989bbf38060257de6df644ae2908dca3}
 
 Control routing node: Two octaves below mix (0.0 -> 1.0)
 
-#### `public inline  `[`fx_octave`](#classfx__octave_1a3eeb7dc1b3e91b6c35a1f21d64ef53a3)`(OSC_TYPES type,float clean_mix,float oct_0_mix,float oct_1_mix,float oct_2_mix)` {#classfx__octave_1a3eeb7dc1b3e91b6c35a1f21d64ef53a3}
+#### `public inline  `[`fx_octave`](#classfx__octave_1a3eeb7dc1b3e91b6c35a1f21d64ef53a3)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` type,float clean_mix,float oct_0_mix,float oct_1_mix,float oct_2_mix)` {#classfx__octave_1a3eeb7dc1b3e91b6c35a1f21d64ef53a3}
 
 Constructor for the octave.
 
@@ -1699,43 +1621,43 @@ Utility: Oscillator that can has both audio and control outputs.
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__oscillator_1ad443f83c5e49e2a849e44fadef36bd9f) | Audio routing node: primary audio oscillator output
-`public `[`fx_control_node`](#classfx__control__node)` * `[`freq`](#classfx__oscillator_1aeeb44f7cd3b37d8426de735d765ad992) | Control routing node: frequency of the oscillator in Hz
-`public `[`fx_control_node`](#classfx__control__node)` * `[`amplitude`](#classfx__oscillator_1aee2c66fe29de2ec4f47bce0ed77b2445) | Control routing node: amplitude of the oscillator (linear, typically between 0.0 and 1.0)
-`public `[`fx_control_node`](#classfx__control__node)` * `[`offset`](#classfx__oscillator_1a97089210c8bfbb4bbd1071699289ad76) | Control routing node: The DC offset of the amplifier. Useful if you're using this to control parameters in ranges not centered around 0.0.
-`public `[`fx_control_node`](#classfx__control__node)` * `[`value`](#classfx__oscillator_1a80c56e026c17bea6c0b00b83338e1982) | Control routing node: The current value of the oscillator. Connect this node to external oscillator nodes for effects.
-`public inline  `[`fx_oscillator`](#classfx__oscillator_1af7cd903dc9cc687017083aa6abbd24d3)`(OSC_TYPES osc_type,float freq,float amplitude)` | Basic constructor for an oscillator when used as an audio source.
-`public inline  `[`fx_oscillator`](#classfx__oscillator_1a6f60a4769a531aca7030a97586d8e6b4)`(OSC_TYPES osc_type,float freq,float amplitude,float initial_phase)` | Basic constructor for an oscillator used as a control source.
+`public fx_audio_node * `[`output`](#classfx__oscillator_1ad443f83c5e49e2a849e44fadef36bd9f) | Audio routing node: primary audio oscillator output
+`public fx_control_node * `[`freq`](#classfx__oscillator_1aeeb44f7cd3b37d8426de735d765ad992) | Control routing node: frequency of the oscillator in Hz
+`public fx_control_node * `[`amplitude`](#classfx__oscillator_1aee2c66fe29de2ec4f47bce0ed77b2445) | Control routing node: amplitude of the oscillator (linear, typically between 0.0 and 1.0)
+`public fx_control_node * `[`offset`](#classfx__oscillator_1a97089210c8bfbb4bbd1071699289ad76) | Control routing node: The DC offset of the amplifier. Useful if you're using this to control parameters in ranges not centered around 0.0.
+`public fx_control_node * `[`value`](#classfx__oscillator_1a80c56e026c17bea6c0b00b83338e1982) | Control routing node: The current value of the oscillator. Connect this node to external oscillator nodes for effects.
+`public inline  `[`fx_oscillator`](#classfx__oscillator_1af7cd903dc9cc687017083aa6abbd24d3)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` osc_type,float freq,float amplitude)` | Basic constructor for an oscillator when used as an audio source.
+`public inline  `[`fx_oscillator`](#classfx__oscillator_1a6f60a4769a531aca7030a97586d8e6b4)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` osc_type,float freq,float amplitude,float initial_phase)` | Basic constructor for an oscillator used as a control source.
 `public inline void `[`enable`](#classfx__oscillator_1af8097f269a5e90da896abd8f7e6ef5e2)`()` | Enable the oscillator (it is enabled by default)
 `public inline void `[`bypass`](#classfx__oscillator_1a7af21ed9e597c2c00d85dac8d0fc7346)`()` | Bypass the oscillator (it will provide just a constant value)
 `public inline void `[`set_frequency`](#classfx__oscillator_1a70f61ffee6744da72ecc8ea3cda9e1ad)`(float freq)` | Upates the frequency in Hz of the current oscillator.
 `public inline void `[`set_amplitude`](#classfx__oscillator_1abd4b26763cbf698b21293ebff30d03a2)`(float amplitude)` | Updates the amplitude for the current oscillator.
-`public inline void `[`set_oscillator_type`](#classfx__oscillator_1abf8c1deb5e5aebf8243f2712e2613115)`(OSC_TYPES new_type)` | Sets the oscillator type.
+`public inline void `[`set_oscillator_type`](#classfx__oscillator_1abf8c1deb5e5aebf8243f2712e2613115)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` new_type)` | Sets the oscillator type.
 `public inline void `[`print_params`](#classfx__oscillator_1a630f9545124147322faea04790240e61)`(void)` | Print the parameters for this effect.
 
 ## Members
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__oscillator_1ad443f83c5e49e2a849e44fadef36bd9f) {#classfx__oscillator_1ad443f83c5e49e2a849e44fadef36bd9f}
+#### `public fx_audio_node * `[`output`](#classfx__oscillator_1ad443f83c5e49e2a849e44fadef36bd9f) {#classfx__oscillator_1ad443f83c5e49e2a849e44fadef36bd9f}
 
 Audio routing node: primary audio oscillator output
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`freq`](#classfx__oscillator_1aeeb44f7cd3b37d8426de735d765ad992) {#classfx__oscillator_1aeeb44f7cd3b37d8426de735d765ad992}
+#### `public fx_control_node * `[`freq`](#classfx__oscillator_1aeeb44f7cd3b37d8426de735d765ad992) {#classfx__oscillator_1aeeb44f7cd3b37d8426de735d765ad992}
 
 Control routing node: frequency of the oscillator in Hz
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`amplitude`](#classfx__oscillator_1aee2c66fe29de2ec4f47bce0ed77b2445) {#classfx__oscillator_1aee2c66fe29de2ec4f47bce0ed77b2445}
+#### `public fx_control_node * `[`amplitude`](#classfx__oscillator_1aee2c66fe29de2ec4f47bce0ed77b2445) {#classfx__oscillator_1aee2c66fe29de2ec4f47bce0ed77b2445}
 
 Control routing node: amplitude of the oscillator (linear, typically between 0.0 and 1.0)
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`offset`](#classfx__oscillator_1a97089210c8bfbb4bbd1071699289ad76) {#classfx__oscillator_1a97089210c8bfbb4bbd1071699289ad76}
+#### `public fx_control_node * `[`offset`](#classfx__oscillator_1a97089210c8bfbb4bbd1071699289ad76) {#classfx__oscillator_1a97089210c8bfbb4bbd1071699289ad76}
 
 Control routing node: The DC offset of the amplifier. Useful if you're using this to control parameters in ranges not centered around 0.0.
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`value`](#classfx__oscillator_1a80c56e026c17bea6c0b00b83338e1982) {#classfx__oscillator_1a80c56e026c17bea6c0b00b83338e1982}
+#### `public fx_control_node * `[`value`](#classfx__oscillator_1a80c56e026c17bea6c0b00b83338e1982) {#classfx__oscillator_1a80c56e026c17bea6c0b00b83338e1982}
 
 Control routing node: The current value of the oscillator. Connect this node to external oscillator nodes for effects.
 
-#### `public inline  `[`fx_oscillator`](#classfx__oscillator_1af7cd903dc9cc687017083aa6abbd24d3)`(OSC_TYPES osc_type,float freq,float amplitude)` {#classfx__oscillator_1af7cd903dc9cc687017083aa6abbd24d3}
+#### `public inline  `[`fx_oscillator`](#classfx__oscillator_1af7cd903dc9cc687017083aa6abbd24d3)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` osc_type,float freq,float amplitude)` {#classfx__oscillator_1af7cd903dc9cc687017083aa6abbd24d3}
 
 Basic constructor for an oscillator when used as an audio source.
 
@@ -1746,7 +1668,7 @@ Basic constructor for an oscillator when used as an audio source.
 
 * `amplitude` The amplitude (linear scale e.g. 0.0 -> 1.0 typically)
 
-#### `public inline  `[`fx_oscillator`](#classfx__oscillator_1a6f60a4769a531aca7030a97586d8e6b4)`(OSC_TYPES osc_type,float freq,float amplitude,float initial_phase)` {#classfx__oscillator_1a6f60a4769a531aca7030a97586d8e6b4}
+#### `public inline  `[`fx_oscillator`](#classfx__oscillator_1a6f60a4769a531aca7030a97586d8e6b4)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` osc_type,float freq,float amplitude,float initial_phase)` {#classfx__oscillator_1a6f60a4769a531aca7030a97586d8e6b4}
 
 Basic constructor for an oscillator used as a control source.
 
@@ -1781,7 +1703,7 @@ Updates the amplitude for the current oscillator.
 #### Parameters
 * `amplitude` The amplitude (linear)
 
-#### `public inline void `[`set_oscillator_type`](#classfx__oscillator_1abf8c1deb5e5aebf8243f2712e2613115)`(OSC_TYPES new_type)` {#classfx__oscillator_1abf8c1deb5e5aebf8243f2712e2613115}
+#### `public inline void `[`set_oscillator_type`](#classfx__oscillator_1abf8c1deb5e5aebf8243f2712e2613115)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` new_type)` {#classfx__oscillator_1abf8c1deb5e5aebf8243f2712e2613115}
 
 Sets the oscillator type.
 
@@ -1807,40 +1729,40 @@ Example: **phase_shifter_1.c**
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__phase__shifter_1a6b3c2e7b30e37e8f39f4ea74edcc1da8) | Audio routing node: primary audio input
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__phase__shifter_1a1516ae9bc8081a37bd4b587cc8cbdbdf) | Audio routing node: primary audio output
-`public `[`fx_control_node`](#classfx__control__node)` * `[`depth`](#classfx__phase__shifter_1a09af8400b1ee18ceb91eb0def1d6d58d) | Control routing node: phase shifter depth (should be between 0.0 and 1.0)
-`public `[`fx_control_node`](#classfx__control__node)` * `[`rate_hz`](#classfx__phase__shifter_1aee41f77d8694d6267ae46aff7bafe052) | Control routing node: phase shifter rate (Hz) (i.e. 1.0 = once per second)
-`public `[`fx_control_node`](#classfx__control__node)` * `[`feedback`](#classfx__phase__shifter_1ad024eec3755afff22c3d79899a443370) | Control routing node: phase shifter feedback (should be between -1.0 and 1.0)
+`public fx_audio_node * `[`input`](#classfx__phase__shifter_1a6b3c2e7b30e37e8f39f4ea74edcc1da8) | Audio routing node: primary audio input
+`public fx_audio_node * `[`output`](#classfx__phase__shifter_1a1516ae9bc8081a37bd4b587cc8cbdbdf) | Audio routing node: primary audio output
+`public fx_control_node * `[`depth`](#classfx__phase__shifter_1a09af8400b1ee18ceb91eb0def1d6d58d) | Control routing node: phase shifter depth (should be between 0.0 and 1.0)
+`public fx_control_node * `[`rate_hz`](#classfx__phase__shifter_1aee41f77d8694d6267ae46aff7bafe052) | Control routing node: phase shifter rate (Hz) (i.e. 1.0 = once per second)
+`public fx_control_node * `[`feedback`](#classfx__phase__shifter_1ad024eec3755afff22c3d79899a443370) | Control routing node: phase shifter feedback (should be between -1.0 and 1.0)
 `public inline  `[`fx_phase_shifter`](#classfx__phase__shifter_1a3a121772ae94e0f4821bbc67349881d3)`(float rate_hz,float depth,float feedback)` | Basic constructor/initializer for the phase shifter.
-`public inline  `[`fx_phase_shifter`](#classfx__phase__shifter_1a4acc2b17739a801a72623dd645b1b32c)`(float rate_hz,float depth,float feedback,float inital_phase,OSC_TYPES mod_type)` | Constructs a new instance.
+`public inline  `[`fx_phase_shifter`](#classfx__phase__shifter_1a4acc2b17739a801a72623dd645b1b32c)`(float rate_hz,float depth,float feedback,float inital_phase,`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` mod_type)` | Constructs a new instance.
 `public inline void `[`enable`](#classfx__phase__shifter_1a02b925c2b19530efcda28486ff7d286a)`()` | Enable the phase shifter (it is enabled by default)
 `public inline void `[`bypass`](#classfx__phase__shifter_1a361a5bd72a429333d3e1a0120332c19f)`()` | Bypass the phase shifter (will just pass clean audio through)
 `public inline void `[`set_depth`](#classfx__phase__shifter_1a5775686b16e0adf4f44cfc7701a02b68)`(float depth)` | Sets the depth of the phase shifter.
 `public inline void `[`set_rate_hz`](#classfx__phase__shifter_1acfdf8c4124e0e95cbaa3e5fbf6b23a9f)`(float rate_hz)` | Sets the rate of the phase shifter in Hertz (cycles per second)
 `public inline void `[`set_feedback`](#classfx__phase__shifter_1a48317de95377711857ba1d660bbc4bd7)`(float feedback)` | Sets the feedback of the phase shifter.
-`public inline void `[`set_lfo_type`](#classfx__phase__shifter_1a7089c1b4c3fc15c7f274835c345d3abc)`(OSC_TYPES new_type)` | Sets the the type of oscillator used as the LFO.
+`public inline void `[`set_lfo_type`](#classfx__phase__shifter_1a7089c1b4c3fc15c7f274835c345d3abc)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` new_type)` | Sets the the type of oscillator used as the LFO.
 `public inline void `[`print_params`](#classfx__phase__shifter_1a4bd5e5a813c8b07fba88fb1b689fc25f)`(void)` | Print the parameters for this effect.
 
 ## Members
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__phase__shifter_1a6b3c2e7b30e37e8f39f4ea74edcc1da8) {#classfx__phase__shifter_1a6b3c2e7b30e37e8f39f4ea74edcc1da8}
+#### `public fx_audio_node * `[`input`](#classfx__phase__shifter_1a6b3c2e7b30e37e8f39f4ea74edcc1da8) {#classfx__phase__shifter_1a6b3c2e7b30e37e8f39f4ea74edcc1da8}
 
 Audio routing node: primary audio input
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__phase__shifter_1a1516ae9bc8081a37bd4b587cc8cbdbdf) {#classfx__phase__shifter_1a1516ae9bc8081a37bd4b587cc8cbdbdf}
+#### `public fx_audio_node * `[`output`](#classfx__phase__shifter_1a1516ae9bc8081a37bd4b587cc8cbdbdf) {#classfx__phase__shifter_1a1516ae9bc8081a37bd4b587cc8cbdbdf}
 
 Audio routing node: primary audio output
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`depth`](#classfx__phase__shifter_1a09af8400b1ee18ceb91eb0def1d6d58d) {#classfx__phase__shifter_1a09af8400b1ee18ceb91eb0def1d6d58d}
+#### `public fx_control_node * `[`depth`](#classfx__phase__shifter_1a09af8400b1ee18ceb91eb0def1d6d58d) {#classfx__phase__shifter_1a09af8400b1ee18ceb91eb0def1d6d58d}
 
 Control routing node: phase shifter depth (should be between 0.0 and 1.0)
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`rate_hz`](#classfx__phase__shifter_1aee41f77d8694d6267ae46aff7bafe052) {#classfx__phase__shifter_1aee41f77d8694d6267ae46aff7bafe052}
+#### `public fx_control_node * `[`rate_hz`](#classfx__phase__shifter_1aee41f77d8694d6267ae46aff7bafe052) {#classfx__phase__shifter_1aee41f77d8694d6267ae46aff7bafe052}
 
 Control routing node: phase shifter rate (Hz) (i.e. 1.0 = once per second)
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`feedback`](#classfx__phase__shifter_1ad024eec3755afff22c3d79899a443370) {#classfx__phase__shifter_1ad024eec3755afff22c3d79899a443370}
+#### `public fx_control_node * `[`feedback`](#classfx__phase__shifter_1ad024eec3755afff22c3d79899a443370) {#classfx__phase__shifter_1ad024eec3755afff22c3d79899a443370}
 
 Control routing node: phase shifter feedback (should be between -1.0 and 1.0)
 
@@ -1855,7 +1777,7 @@ Basic constructor/initializer for the phase shifter.
 
 * `feedback` The feedback of the phase shifter
 
-#### `public inline  `[`fx_phase_shifter`](#classfx__phase__shifter_1a4acc2b17739a801a72623dd645b1b32c)`(float rate_hz,float depth,float feedback,float inital_phase,OSC_TYPES mod_type)` {#classfx__phase__shifter_1a4acc2b17739a801a72623dd645b1b32c}
+#### `public inline  `[`fx_phase_shifter`](#classfx__phase__shifter_1a4acc2b17739a801a72623dd645b1b32c)`(float rate_hz,float depth,float feedback,float inital_phase,`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` mod_type)` {#classfx__phase__shifter_1a4acc2b17739a801a72623dd645b1b32c}
 
 Constructs a new instance.
 
@@ -1899,7 +1821,7 @@ Sets the feedback of the phase shifter.
 #### Parameters
 * `feedback` Feedback value (between -1.0 and 1.0)
 
-#### `public inline void `[`set_lfo_type`](#classfx__phase__shifter_1a7089c1b4c3fc15c7f274835c345d3abc)`(OSC_TYPES new_type)` {#classfx__phase__shifter_1a7089c1b4c3fc15c7f274835c345d3abc}
+#### `public inline void `[`set_lfo_type`](#classfx__phase__shifter_1a7089c1b4c3fc15c7f274835c345d3abc)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` new_type)` {#classfx__phase__shifter_1a7089c1b4c3fc15c7f274835c345d3abc}
 
 Sets the the type of oscillator used as the LFO.
 
@@ -1923,9 +1845,9 @@ Effect: Pitch shifter - shifts audio up or down in pitch.
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__pitch__shift_1aa1388ecdbad1942b8c69e21d4c99ab53) | Audio routing node: primary audio input
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__pitch__shift_1ae66bfa5587f5e89beba7d94a91f56d75) | Audio routing node: primary audio output
-`public `[`fx_control_node`](#classfx__control__node)` * `[`freq_shift`](#classfx__pitch__shift_1a969643a1782ac23c0ac6ee4f008f37b8) | 
+`public fx_audio_node * `[`input`](#classfx__pitch__shift_1aa1388ecdbad1942b8c69e21d4c99ab53) | Audio routing node: primary audio input
+`public fx_audio_node * `[`output`](#classfx__pitch__shift_1ae66bfa5587f5e89beba7d94a91f56d75) | Audio routing node: primary audio output
+`public fx_control_node * `[`freq_shift`](#classfx__pitch__shift_1a969643a1782ac23c0ac6ee4f008f37b8) | 
 `public inline  `[`fx_pitch_shift`](#classfx__pitch__shift_1af4f1d9ebd16d16e642d054b46451edea)`(float pitch_shift_freq)` | 
 `public inline void `[`enable`](#classfx__pitch__shift_1a6cd1950a881800230a91e35c42419d6d)`()` | Enable the pitch shifter (it is enabled by default)
 `public inline void `[`bypass`](#classfx__pitch__shift_1a61e2586e46a2699b9117cd4883027cfd)`()` | Bypass the pitch shifter (will just pass clean audio through)
@@ -1934,15 +1856,15 @@ Effect: Pitch shifter - shifts audio up or down in pitch.
 
 ## Members
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__pitch__shift_1aa1388ecdbad1942b8c69e21d4c99ab53) {#classfx__pitch__shift_1aa1388ecdbad1942b8c69e21d4c99ab53}
+#### `public fx_audio_node * `[`input`](#classfx__pitch__shift_1aa1388ecdbad1942b8c69e21d4c99ab53) {#classfx__pitch__shift_1aa1388ecdbad1942b8c69e21d4c99ab53}
 
 Audio routing node: primary audio input
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__pitch__shift_1ae66bfa5587f5e89beba7d94a91f56d75) {#classfx__pitch__shift_1ae66bfa5587f5e89beba7d94a91f56d75}
+#### `public fx_audio_node * `[`output`](#classfx__pitch__shift_1ae66bfa5587f5e89beba7d94a91f56d75) {#classfx__pitch__shift_1ae66bfa5587f5e89beba7d94a91f56d75}
 
 Audio routing node: primary audio output
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`freq_shift`](#classfx__pitch__shift_1a969643a1782ac23c0ac6ee4f008f37b8) {#classfx__pitch__shift_1a969643a1782ac23c0ac6ee4f008f37b8}
+#### `public fx_control_node * `[`freq_shift`](#classfx__pitch__shift_1a969643a1782ac23c0ac6ee4f008f37b8) {#classfx__pitch__shift_1a969643a1782ac23c0ac6ee4f008f37b8}
 
 #### `public inline  `[`fx_pitch_shift`](#classfx__pitch__shift_1af4f1d9ebd16d16e642d054b46451edea)`(float pitch_shift_freq)` {#classfx__pitch__shift_1af4f1d9ebd16d16e642d054b46451edea}
 
@@ -2045,10 +1967,10 @@ void sw4_pressed() { }
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__ring__mod_1aaca095dddcc3928c199203636a5a0b70) | Audio routing node [input]: primary audio input
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__ring__mod_1aef3f3aa115f4f9dc1e553c44c9acd0fd) | Audio routing node [output]: primary audio output
-`public `[`fx_control_node`](#classfx__control__node)` * `[`freq`](#classfx__ring__mod_1a852138ed03580c9783182ad97b203cdf) | Control routing node [input]: the carrier frequency of the ring moduator (Hz)
-`public `[`fx_control_node`](#classfx__control__node)` * `[`depth`](#classfx__ring__mod_1acccb5350e46d71105a62f7339af23c60) | Control routing node [input]: modulation depth
+`public fx_audio_node * `[`input`](#classfx__ring__mod_1aaca095dddcc3928c199203636a5a0b70) | Audio routing node [input]: primary audio input
+`public fx_audio_node * `[`output`](#classfx__ring__mod_1aef3f3aa115f4f9dc1e553c44c9acd0fd) | Audio routing node [output]: primary audio output
+`public fx_control_node * `[`freq`](#classfx__ring__mod_1a852138ed03580c9783182ad97b203cdf) | Control routing node [input]: the carrier frequency of the ring moduator (Hz)
+`public fx_control_node * `[`depth`](#classfx__ring__mod_1acccb5350e46d71105a62f7339af23c60) | Control routing node [input]: modulation depth
 `public inline  `[`fx_ring_mod`](#classfx__ring__mod_1ab06ae2bc1226aee0af243fdb94756d93)`(float ring_mod_freq,float ring_mod_depth)` | 
 `public inline void `[`enable`](#classfx__ring__mod_1a10937c8528a0a03bd11bba5ec8589cd0)`()` | Enable the ring modulator (it is enabled by default)
 `public inline void `[`bypass`](#classfx__ring__mod_1aa859265613b119a8c1a697ab31e674f5)`()` | Bypass the ring modulator (will just pass clean audio through)
@@ -2058,19 +1980,19 @@ void sw4_pressed() { }
 
 ## Members
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__ring__mod_1aaca095dddcc3928c199203636a5a0b70) {#classfx__ring__mod_1aaca095dddcc3928c199203636a5a0b70}
+#### `public fx_audio_node * `[`input`](#classfx__ring__mod_1aaca095dddcc3928c199203636a5a0b70) {#classfx__ring__mod_1aaca095dddcc3928c199203636a5a0b70}
 
 Audio routing node [input]: primary audio input
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__ring__mod_1aef3f3aa115f4f9dc1e553c44c9acd0fd) {#classfx__ring__mod_1aef3f3aa115f4f9dc1e553c44c9acd0fd}
+#### `public fx_audio_node * `[`output`](#classfx__ring__mod_1aef3f3aa115f4f9dc1e553c44c9acd0fd) {#classfx__ring__mod_1aef3f3aa115f4f9dc1e553c44c9acd0fd}
 
 Audio routing node [output]: primary audio output
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`freq`](#classfx__ring__mod_1a852138ed03580c9783182ad97b203cdf) {#classfx__ring__mod_1a852138ed03580c9783182ad97b203cdf}
+#### `public fx_control_node * `[`freq`](#classfx__ring__mod_1a852138ed03580c9783182ad97b203cdf) {#classfx__ring__mod_1a852138ed03580c9783182ad97b203cdf}
 
 Control routing node [input]: the carrier frequency of the ring moduator (Hz)
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`depth`](#classfx__ring__mod_1acccb5350e46d71105a62f7339af23c60) {#classfx__ring__mod_1acccb5350e46d71105a62f7339af23c60}
+#### `public fx_control_node * `[`depth`](#classfx__ring__mod_1acccb5350e46d71105a62f7339af23c60) {#classfx__ring__mod_1acccb5350e46d71105a62f7339af23c60}
 
 Control routing node [input]: modulation depth
 
@@ -2208,16 +2130,16 @@ void loop() {
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__slicer_1aea4aac4005bfc584929e4db2df9c9556) | Audio routing node: primary audio input
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output_1`](#classfx__slicer_1ae4c1b8d328e228319cd19bff6332930c) | Audio routing node: audio output for slicer channel 0
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output_2`](#classfx__slicer_1aa8520e74bfd31d81ac4cdbcd916160c9) | Audio routing node: audio output for slicer channel 1
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output_3`](#classfx__slicer_1a83ee17093e2ddeb58dd4dbf7ec669f9d) | Audio routing node: audio output for slicer channel 2
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output_4`](#classfx__slicer_1ab1370ec62022c6e3c51a5aef4dfe50a1) | Audio routing node: audio output for slicer channel 3
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output_5`](#classfx__slicer_1a655bf347bcdf202b866aa3e0f68e9fb6) | Audio routing node: audio output for slicer channel 4
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output_6`](#classfx__slicer_1a39a01c6579266750f91aeac02f8f7acc) | Audio routing node: audio output for slicer channel 5
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output_7`](#classfx__slicer_1a45c086598cfae96f1b205e0cde1cb68f) | Audio routing node: audio output for slicer channel 6
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output_8`](#classfx__slicer_1a25eb7888a44e6766c518b916bc30f8a8) | Audio routing node: audio output for slicer channel 7
-`public `[`fx_control_node`](#classfx__control__node)` * `[`period`](#classfx__slicer_1ac2267c3fca1786200fac8e1327cd13a7) | Control routing node: period in in milliseconds
+`public fx_audio_node * `[`input`](#classfx__slicer_1aea4aac4005bfc584929e4db2df9c9556) | Audio routing node: primary audio input
+`public fx_audio_node * `[`output_1`](#classfx__slicer_1ae4c1b8d328e228319cd19bff6332930c) | Audio routing node: audio output for slicer channel 0
+`public fx_audio_node * `[`output_2`](#classfx__slicer_1aa8520e74bfd31d81ac4cdbcd916160c9) | Audio routing node: audio output for slicer channel 1
+`public fx_audio_node * `[`output_3`](#classfx__slicer_1a83ee17093e2ddeb58dd4dbf7ec669f9d) | Audio routing node: audio output for slicer channel 2
+`public fx_audio_node * `[`output_4`](#classfx__slicer_1ab1370ec62022c6e3c51a5aef4dfe50a1) | Audio routing node: audio output for slicer channel 3
+`public fx_audio_node * `[`output_5`](#classfx__slicer_1a655bf347bcdf202b866aa3e0f68e9fb6) | Audio routing node: audio output for slicer channel 4
+`public fx_audio_node * `[`output_6`](#classfx__slicer_1a39a01c6579266750f91aeac02f8f7acc) | Audio routing node: audio output for slicer channel 5
+`public fx_audio_node * `[`output_7`](#classfx__slicer_1a45c086598cfae96f1b205e0cde1cb68f) | Audio routing node: audio output for slicer channel 6
+`public fx_audio_node * `[`output_8`](#classfx__slicer_1a25eb7888a44e6766c518b916bc30f8a8) | Audio routing node: audio output for slicer channel 7
+`public fx_control_node * `[`period`](#classfx__slicer_1ac2267c3fca1786200fac8e1327cd13a7) | Control routing node: period in in milliseconds
 `public inline  `[`fx_slicer`](#classfx__slicer_1aa58475e7abee046901e228b6d6befdfe)`(float period_ms,int32_t channels)` | Basic constructor/initializer for the slicer.
 `public inline void `[`enable`](#classfx__slicer_1a0005ae49c5345637e329d5bdb9b59994)`()` | Enable the slicer (it is enabled by default)
 `public inline void `[`bypass`](#classfx__slicer_1a4c84f21952fb3830fb1b9e9cff115c6b)`()` | Bypass the slicer (will just pass clean audio through)
@@ -2226,43 +2148,43 @@ void loop() {
 
 ## Members
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__slicer_1aea4aac4005bfc584929e4db2df9c9556) {#classfx__slicer_1aea4aac4005bfc584929e4db2df9c9556}
+#### `public fx_audio_node * `[`input`](#classfx__slicer_1aea4aac4005bfc584929e4db2df9c9556) {#classfx__slicer_1aea4aac4005bfc584929e4db2df9c9556}
 
 Audio routing node: primary audio input
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output_1`](#classfx__slicer_1ae4c1b8d328e228319cd19bff6332930c) {#classfx__slicer_1ae4c1b8d328e228319cd19bff6332930c}
+#### `public fx_audio_node * `[`output_1`](#classfx__slicer_1ae4c1b8d328e228319cd19bff6332930c) {#classfx__slicer_1ae4c1b8d328e228319cd19bff6332930c}
 
 Audio routing node: audio output for slicer channel 0
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output_2`](#classfx__slicer_1aa8520e74bfd31d81ac4cdbcd916160c9) {#classfx__slicer_1aa8520e74bfd31d81ac4cdbcd916160c9}
+#### `public fx_audio_node * `[`output_2`](#classfx__slicer_1aa8520e74bfd31d81ac4cdbcd916160c9) {#classfx__slicer_1aa8520e74bfd31d81ac4cdbcd916160c9}
 
 Audio routing node: audio output for slicer channel 1
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output_3`](#classfx__slicer_1a83ee17093e2ddeb58dd4dbf7ec669f9d) {#classfx__slicer_1a83ee17093e2ddeb58dd4dbf7ec669f9d}
+#### `public fx_audio_node * `[`output_3`](#classfx__slicer_1a83ee17093e2ddeb58dd4dbf7ec669f9d) {#classfx__slicer_1a83ee17093e2ddeb58dd4dbf7ec669f9d}
 
 Audio routing node: audio output for slicer channel 2
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output_4`](#classfx__slicer_1ab1370ec62022c6e3c51a5aef4dfe50a1) {#classfx__slicer_1ab1370ec62022c6e3c51a5aef4dfe50a1}
+#### `public fx_audio_node * `[`output_4`](#classfx__slicer_1ab1370ec62022c6e3c51a5aef4dfe50a1) {#classfx__slicer_1ab1370ec62022c6e3c51a5aef4dfe50a1}
 
 Audio routing node: audio output for slicer channel 3
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output_5`](#classfx__slicer_1a655bf347bcdf202b866aa3e0f68e9fb6) {#classfx__slicer_1a655bf347bcdf202b866aa3e0f68e9fb6}
+#### `public fx_audio_node * `[`output_5`](#classfx__slicer_1a655bf347bcdf202b866aa3e0f68e9fb6) {#classfx__slicer_1a655bf347bcdf202b866aa3e0f68e9fb6}
 
 Audio routing node: audio output for slicer channel 4
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output_6`](#classfx__slicer_1a39a01c6579266750f91aeac02f8f7acc) {#classfx__slicer_1a39a01c6579266750f91aeac02f8f7acc}
+#### `public fx_audio_node * `[`output_6`](#classfx__slicer_1a39a01c6579266750f91aeac02f8f7acc) {#classfx__slicer_1a39a01c6579266750f91aeac02f8f7acc}
 
 Audio routing node: audio output for slicer channel 5
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output_7`](#classfx__slicer_1a45c086598cfae96f1b205e0cde1cb68f) {#classfx__slicer_1a45c086598cfae96f1b205e0cde1cb68f}
+#### `public fx_audio_node * `[`output_7`](#classfx__slicer_1a45c086598cfae96f1b205e0cde1cb68f) {#classfx__slicer_1a45c086598cfae96f1b205e0cde1cb68f}
 
 Audio routing node: audio output for slicer channel 6
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output_8`](#classfx__slicer_1a25eb7888a44e6766c518b916bc30f8a8) {#classfx__slicer_1a25eb7888a44e6766c518b916bc30f8a8}
+#### `public fx_audio_node * `[`output_8`](#classfx__slicer_1a25eb7888a44e6766c518b916bc30f8a8) {#classfx__slicer_1a25eb7888a44e6766c518b916bc30f8a8}
 
 Audio routing node: audio output for slicer channel 7
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`period`](#classfx__slicer_1ac2267c3fca1786200fac8e1327cd13a7) {#classfx__slicer_1ac2267c3fca1786200fac8e1327cd13a7}
+#### `public fx_control_node * `[`period`](#classfx__slicer_1ac2267c3fca1786200fac8e1327cd13a7) {#classfx__slicer_1ac2267c3fca1786200fac8e1327cd13a7}
 
 Control routing node: period in in milliseconds
 
@@ -2387,18 +2309,18 @@ void loop() {
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__variable__delay_1adfe9817234303c0a7a3447391e882af6) | Audio routing node [input]: primary audio input
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__variable__delay_1a34e31eab5e3d155aafa553a5fa66c369) | Audio routing node [output]: primary audio output
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`ext_mod_in`](#classfx__variable__delay_1aeb3230729a9af6c6112e90350fe869e6) | Audio routine node [input]: use another signal as the modulator source such as an [fx_oscillator](#classfx__oscillator). The oscillator can be run though the clipper for example to create new types of waveforms.
-`public `[`fx_audio_node`](#classfx__audio__node)` * `[`modulated_out`](#classfx__variable__delay_1ad4379f17a31b9b270b3a1c8f3beb3d81) | Audio routing node [output]: just the pitch modulated signal without mixing in the original signal
-`public `[`fx_control_node`](#classfx__control__node)` * `[`depth`](#classfx__variable__delay_1a6d200c4f53d486513be7c18fc7d948d6) | Control routing node [input]: modulation depth
-`public `[`fx_control_node`](#classfx__control__node)` * `[`rate_hz`](#classfx__variable__delay_1a4b8417112ba1196b03f0d29b8998ce9f) | Control routing node [input]: modulation rate in Hz
-`public `[`fx_control_node`](#classfx__control__node)` * `[`feedback`](#classfx__variable__delay_1a8d402d84f9415c711d72d72c4a92c77b) | Control routing node [input]: feedback
-`public `[`fx_control_node`](#classfx__control__node)` * `[`mix_clean`](#classfx__variable__delay_1a096fd463ac9e92608bcdc825efcfabe9) | Control routing node [input]: clean signal mix
-`public `[`fx_control_node`](#classfx__control__node)` * `[`mix_delayed`](#classfx__variable__delay_1a04c53cceef811141829a7c3a4ceeb780) | Control routing node [input]: delayed signal mix
-`public inline  `[`fx_variable_delay`](#classfx__variable__delay_1a217641554df3b9eec906c3ee1d0e4f78)`(float rate_hz,float depth,float feedback,OSC_TYPES mod_type)` | Basic constructor/initializer for variable delay.
-`public inline  `[`fx_variable_delay`](#classfx__variable__delay_1abcd127b2061165c91cebb9b15ce302ad)`(float rate_hz,float depth,float feedback,float buf_size_ms,float mix_clean,float mix_delayed,OSC_TYPES mod_type,bool ext_mod)` | Basic constructor/initializer for variable delay.
-`public inline  `[`fx_variable_delay`](#classfx__variable__delay_1a9477d5ff572a08f4e8cfe6be7208c97a)`(float rate_hz,float depth,float feedback,float buf_size_ms,float mix_clean,float mix_delayed,OSC_TYPES mod_type,bool ext_mod,float initial_phase)` | Basic constructor/initializer for variable delay.
+`public fx_audio_node * `[`input`](#classfx__variable__delay_1adfe9817234303c0a7a3447391e882af6) | Audio routing node [input]: primary audio input
+`public fx_audio_node * `[`output`](#classfx__variable__delay_1a34e31eab5e3d155aafa553a5fa66c369) | Audio routing node [output]: primary audio output
+`public fx_audio_node * `[`ext_mod_in`](#classfx__variable__delay_1aeb3230729a9af6c6112e90350fe869e6) | Audio routine node [input]: use another signal as the modulator source such as an [fx_oscillator](#classfx__oscillator). The oscillator can be run though the clipper for example to create new types of waveforms.
+`public fx_audio_node * `[`modulated_out`](#classfx__variable__delay_1ad4379f17a31b9b270b3a1c8f3beb3d81) | Audio routing node [output]: just the pitch modulated signal without mixing in the original signal
+`public fx_control_node * `[`depth`](#classfx__variable__delay_1a6d200c4f53d486513be7c18fc7d948d6) | Control routing node [input]: modulation depth
+`public fx_control_node * `[`rate_hz`](#classfx__variable__delay_1a4b8417112ba1196b03f0d29b8998ce9f) | Control routing node [input]: modulation rate in Hz
+`public fx_control_node * `[`feedback`](#classfx__variable__delay_1a8d402d84f9415c711d72d72c4a92c77b) | Control routing node [input]: feedback
+`public fx_control_node * `[`mix_clean`](#classfx__variable__delay_1a096fd463ac9e92608bcdc825efcfabe9) | Control routing node [input]: clean signal mix
+`public fx_control_node * `[`mix_delayed`](#classfx__variable__delay_1a04c53cceef811141829a7c3a4ceeb780) | Control routing node [input]: delayed signal mix
+`public inline  `[`fx_variable_delay`](#classfx__variable__delay_1a217641554df3b9eec906c3ee1d0e4f78)`(float rate_hz,float depth,float feedback,`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` mod_type)` | Basic constructor/initializer for variable delay.
+`public inline  `[`fx_variable_delay`](#classfx__variable__delay_1abcd127b2061165c91cebb9b15ce302ad)`(float rate_hz,float depth,float feedback,float buf_size_ms,float mix_clean,float mix_delayed,`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` mod_type,bool ext_mod)` | Basic constructor/initializer for variable delay.
+`public inline  `[`fx_variable_delay`](#classfx__variable__delay_1a9477d5ff572a08f4e8cfe6be7208c97a)`(float rate_hz,float depth,float feedback,float buf_size_ms,float mix_clean,float mix_delayed,`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` mod_type,bool ext_mod,float initial_phase)` | Basic constructor/initializer for variable delay.
 `public inline void `[`enable`](#classfx__variable__delay_1ad40a88ff09f879bcb21a6ee55d8771e8)`()` | Enable the **this_effect** (it is enabled by default)
 `public inline void `[`bypass`](#classfx__variable__delay_1a2b5aa0e4bdba02a38397a8d58fe9882a)`()` | Bypass the **this_effect** (will just pass clean audio through)
 `public inline void `[`set_depth`](#classfx__variable__delay_1a3ac8a8f3aae24224158d17e8d8582815)`(float depth)` | Updates the depth of the variable delay.
@@ -2406,48 +2328,48 @@ void loop() {
 `public inline void `[`set_feedback`](#classfx__variable__delay_1ad3b9ef61ed0db2e93bd15c01d6f98536)`(float feedback)` | Updates the feedback parameter of the variable delay.
 `public inline void `[`set_mix_clean`](#classfx__variable__delay_1afa615e6ee413dd5c4066e798f55df959)`(float mix_clean)` | Updates the clean mix of the variable delay.
 `public inline void `[`set_mix_delayed`](#classfx__variable__delay_1ae1faf9d93f2469fa201a2216ad773dfa)`(float mix_delayed)` | Updates the delayed signal mix of the variable delay.
-`public inline void `[`set_lfo_type`](#classfx__variable__delay_1ad33df6056fe62e2403c86ae4b5c84757)`(OSC_TYPES new_type)` | Sets the the type of oscillator used as the LFO.
+`public inline void `[`set_lfo_type`](#classfx__variable__delay_1ad33df6056fe62e2403c86ae4b5c84757)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` new_type)` | Sets the the type of oscillator used as the LFO.
 `public inline void `[`print_params`](#classfx__variable__delay_1a69e0bdf848f4f2ab1de57a7f23fb5088)`(void)` | Prints the parameters for this effect.
 
 ## Members
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`input`](#classfx__variable__delay_1adfe9817234303c0a7a3447391e882af6) {#classfx__variable__delay_1adfe9817234303c0a7a3447391e882af6}
+#### `public fx_audio_node * `[`input`](#classfx__variable__delay_1adfe9817234303c0a7a3447391e882af6) {#classfx__variable__delay_1adfe9817234303c0a7a3447391e882af6}
 
 Audio routing node [input]: primary audio input
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`output`](#classfx__variable__delay_1a34e31eab5e3d155aafa553a5fa66c369) {#classfx__variable__delay_1a34e31eab5e3d155aafa553a5fa66c369}
+#### `public fx_audio_node * `[`output`](#classfx__variable__delay_1a34e31eab5e3d155aafa553a5fa66c369) {#classfx__variable__delay_1a34e31eab5e3d155aafa553a5fa66c369}
 
 Audio routing node [output]: primary audio output
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`ext_mod_in`](#classfx__variable__delay_1aeb3230729a9af6c6112e90350fe869e6) {#classfx__variable__delay_1aeb3230729a9af6c6112e90350fe869e6}
+#### `public fx_audio_node * `[`ext_mod_in`](#classfx__variable__delay_1aeb3230729a9af6c6112e90350fe869e6) {#classfx__variable__delay_1aeb3230729a9af6c6112e90350fe869e6}
 
 Audio routine node [input]: use another signal as the modulator source such as an [fx_oscillator](#classfx__oscillator). The oscillator can be run though the clipper for example to create new types of waveforms.
 
-#### `public `[`fx_audio_node`](#classfx__audio__node)` * `[`modulated_out`](#classfx__variable__delay_1ad4379f17a31b9b270b3a1c8f3beb3d81) {#classfx__variable__delay_1ad4379f17a31b9b270b3a1c8f3beb3d81}
+#### `public fx_audio_node * `[`modulated_out`](#classfx__variable__delay_1ad4379f17a31b9b270b3a1c8f3beb3d81) {#classfx__variable__delay_1ad4379f17a31b9b270b3a1c8f3beb3d81}
 
 Audio routing node [output]: just the pitch modulated signal without mixing in the original signal
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`depth`](#classfx__variable__delay_1a6d200c4f53d486513be7c18fc7d948d6) {#classfx__variable__delay_1a6d200c4f53d486513be7c18fc7d948d6}
+#### `public fx_control_node * `[`depth`](#classfx__variable__delay_1a6d200c4f53d486513be7c18fc7d948d6) {#classfx__variable__delay_1a6d200c4f53d486513be7c18fc7d948d6}
 
 Control routing node [input]: modulation depth
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`rate_hz`](#classfx__variable__delay_1a4b8417112ba1196b03f0d29b8998ce9f) {#classfx__variable__delay_1a4b8417112ba1196b03f0d29b8998ce9f}
+#### `public fx_control_node * `[`rate_hz`](#classfx__variable__delay_1a4b8417112ba1196b03f0d29b8998ce9f) {#classfx__variable__delay_1a4b8417112ba1196b03f0d29b8998ce9f}
 
 Control routing node [input]: modulation rate in Hz
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`feedback`](#classfx__variable__delay_1a8d402d84f9415c711d72d72c4a92c77b) {#classfx__variable__delay_1a8d402d84f9415c711d72d72c4a92c77b}
+#### `public fx_control_node * `[`feedback`](#classfx__variable__delay_1a8d402d84f9415c711d72d72c4a92c77b) {#classfx__variable__delay_1a8d402d84f9415c711d72d72c4a92c77b}
 
 Control routing node [input]: feedback
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`mix_clean`](#classfx__variable__delay_1a096fd463ac9e92608bcdc825efcfabe9) {#classfx__variable__delay_1a096fd463ac9e92608bcdc825efcfabe9}
+#### `public fx_control_node * `[`mix_clean`](#classfx__variable__delay_1a096fd463ac9e92608bcdc825efcfabe9) {#classfx__variable__delay_1a096fd463ac9e92608bcdc825efcfabe9}
 
 Control routing node [input]: clean signal mix
 
-#### `public `[`fx_control_node`](#classfx__control__node)` * `[`mix_delayed`](#classfx__variable__delay_1a04c53cceef811141829a7c3a4ceeb780) {#classfx__variable__delay_1a04c53cceef811141829a7c3a4ceeb780}
+#### `public fx_control_node * `[`mix_delayed`](#classfx__variable__delay_1a04c53cceef811141829a7c3a4ceeb780) {#classfx__variable__delay_1a04c53cceef811141829a7c3a4ceeb780}
 
 Control routing node [input]: delayed signal mix
 
-#### `public inline  `[`fx_variable_delay`](#classfx__variable__delay_1a217641554df3b9eec906c3ee1d0e4f78)`(float rate_hz,float depth,float feedback,OSC_TYPES mod_type)` {#classfx__variable__delay_1a217641554df3b9eec906c3ee1d0e4f78}
+#### `public inline  `[`fx_variable_delay`](#classfx__variable__delay_1a217641554df3b9eec906c3ee1d0e4f78)`(float rate_hz,float depth,float feedback,`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` mod_type)` {#classfx__variable__delay_1a217641554df3b9eec906c3ee1d0e4f78}
 
 Basic constructor/initializer for variable delay.
 
@@ -2460,7 +2382,7 @@ Basic constructor/initializer for variable delay.
 
 * `mod_type` The shape of the waveform used to modulate (e.g. OSC_SINE, OSC_TRI, etc.)
 
-#### `public inline  `[`fx_variable_delay`](#classfx__variable__delay_1abcd127b2061165c91cebb9b15ce302ad)`(float rate_hz,float depth,float feedback,float buf_size_ms,float mix_clean,float mix_delayed,OSC_TYPES mod_type,bool ext_mod)` {#classfx__variable__delay_1abcd127b2061165c91cebb9b15ce302ad}
+#### `public inline  `[`fx_variable_delay`](#classfx__variable__delay_1abcd127b2061165c91cebb9b15ce302ad)`(float rate_hz,float depth,float feedback,float buf_size_ms,float mix_clean,float mix_delayed,`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` mod_type,bool ext_mod)` {#classfx__variable__delay_1abcd127b2061165c91cebb9b15ce302ad}
 
 Basic constructor/initializer for variable delay.
 
@@ -2481,7 +2403,7 @@ Basic constructor/initializer for variable delay.
 
 * `ext_mod` whether to use an external modulation source (set to true or false)
 
-#### `public inline  `[`fx_variable_delay`](#classfx__variable__delay_1a9477d5ff572a08f4e8cfe6be7208c97a)`(float rate_hz,float depth,float feedback,float buf_size_ms,float mix_clean,float mix_delayed,OSC_TYPES mod_type,bool ext_mod,float initial_phase)` {#classfx__variable__delay_1a9477d5ff572a08f4e8cfe6be7208c97a}
+#### `public inline  `[`fx_variable_delay`](#classfx__variable__delay_1a9477d5ff572a08f4e8cfe6be7208c97a)`(float rate_hz,float depth,float feedback,float buf_size_ms,float mix_clean,float mix_delayed,`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` mod_type,bool ext_mod,float initial_phase)` {#classfx__variable__delay_1a9477d5ff572a08f4e8cfe6be7208c97a}
 
 Basic constructor/initializer for variable delay.
 
@@ -2547,7 +2469,7 @@ Updates the delayed signal mix of the variable delay.
 #### Parameters
 * `mix_delayed` The new delayed mix value
 
-#### `public inline void `[`set_lfo_type`](#classfx__variable__delay_1ad33df6056fe62e2403c86ae4b5c84757)`(OSC_TYPES new_type)` {#classfx__variable__delay_1ad33df6056fe62e2403c86ae4b5c84757}
+#### `public inline void `[`set_lfo_type`](#classfx__variable__delay_1ad33df6056fe62e2403c86ae4b5c84757)`(`[`OSC_TYPES`](#dm__fx__effects__defines_8h_1ada898a149424188b3a23010c8fe89176)` new_type)` {#classfx__variable__delay_1ad33df6056fe62e2403c86ae4b5c84757}
 
 Sets the the type of oscillator used as the LFO.
 
