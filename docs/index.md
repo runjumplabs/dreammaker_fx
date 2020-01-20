@@ -2,6 +2,7 @@
 layout: api
 title: API Documentation
 ---
+---
 # Summary
 
  Members                        | Descriptions                                
@@ -26,6 +27,7 @@ title: API Documentation
 `class `[`fx_slicer`](#classfx__slicer) | Effect: Slicer - chops up audio in the time domain and pipes to different effects.
 `class `[`fx_variable_delay`](#classfx__variable__delay) | Effect: Variable delay - foundational block of flangers and choruses.
 
+---
 # class `fx_adsr_envelope` {#classfx__adsr__envelope}
 
 ```
@@ -133,6 +135,7 @@ Bypass the **this_effect** (will just pass clean audio through)
 
 Prints the parameters for the delay effect.
 
+---
 # class `fx_amplitude_mod` {#classfx__amplitude__mod}
 
 ```
@@ -329,6 +332,7 @@ Sets the the type of oscillator used as the LFO.
 
 Print the parameters for this effect.
 
+---
 # class `fx_biquad_filter` {#classfx__biquad__filter}
 
 ```
@@ -483,6 +487,7 @@ Sets the filter gain. This is only used in shelving filters.
 
 Print the parameters for this effect.
 
+---
 # class `fx_compressor` {#classfx__compressor}
 
 ```
@@ -648,6 +653,7 @@ Bypass the **this_effect** (will just pass clean audio through)
 
 #### `public inline void `[`print_params`](#classfx__compressor_1aae183cb59a7d0299438a65196d91b213)`(void)` {#classfx__compressor_1aae183cb59a7d0299438a65196d91b213}
 
+---
 # class `fx_delay` {#classfx__delay}
 
 ```
@@ -845,6 +851,7 @@ Updates the wet / delay mix of the delay (0.0 to 1.0)
 
 Prints the parameters for the delay effect.
 
+---
 # class `fx_destructor` {#classfx__destructor}
 
 ```
@@ -1023,6 +1030,7 @@ Sets the input drive before the destructor.
 
 Print the parameters for this effect.
 
+---
 # class `fx_envelope_tracker` {#classfx__envelope__tracker}
 
 ```
@@ -1067,6 +1075,7 @@ Here's a nice tutorial on one effect that can be created with an envelope tracke
 
 #### `public inline void `[`print_params`](#classfx__envelope__tracker_1a7b51364941f46e57860cfbaae1d315db)`(void)` {#classfx__envelope__tracker_1a7b51364941f46e57860cfbaae1d315db}
 
+---
 # class `fx_gain` {#classfx__gain}
 
 ```
@@ -1147,6 +1156,7 @@ Sets the gain multiplier using decibles. For example, a value of 0 will keep vol
 
 Prints the parameters for the delay effect.
 
+---
 # class `fx_looper` {#classfx__looper}
 
 ```
@@ -1340,6 +1350,7 @@ Sets the dry mix.
 
 Prints the parameters for the delay effect.
 
+---
 # class `fx_mixer_2` {#classfx__mixer__2}
 
 ```
@@ -1381,6 +1392,7 @@ Simple constructor takes no arguments.
 
 Print the parameters for this effect.
 
+---
 # class `fx_mixer_3` {#classfx__mixer__3}
 
 ```
@@ -1427,6 +1439,7 @@ Simple constructor takes no arguments.
 
 Print the parameters for this effect.
 
+---
 # class `fx_mixer_4` {#classfx__mixer__4}
 
 ```
@@ -1478,6 +1491,7 @@ Simple constructor takes no arguments.
 
 Print the parameters for this effect.
 
+---
 # class `fx_octave` {#classfx__octave}
 
 ```
@@ -1608,6 +1622,7 @@ Sets the semitone shift for all three octave outputs.
 
 Print the parameters for this effect.
 
+---
 # class `fx_oscillator` {#classfx__oscillator}
 
 ```
@@ -1714,6 +1729,7 @@ Sets the oscillator type.
 
 Print the parameters for this effect.
 
+---
 # class `fx_phase_shifter` {#classfx__phase__shifter}
 
 ```
@@ -1832,6 +1848,7 @@ Sets the the type of oscillator used as the LFO.
 
 Print the parameters for this effect.
 
+---
 # class `fx_pitch_shift` {#classfx__pitch__shift}
 
 ```
@@ -1887,6 +1904,7 @@ Update the pitch shifter value. A freq_shift of 0.5 will drop down one octave. A
 
 Print the parameters for this effect.
 
+---
 # class `fx_ring_mod` {#classfx__ring__mod}
 
 ```
@@ -2024,6 +2042,7 @@ Sets the depth of the ring modulator (0.0 -> 1.0)
 
 Prints the parameters for the delay effect.
 
+---
 # class `fx_slicer` {#classfx__slicer}
 
 ```
@@ -2216,6 +2235,7 @@ Upates the period in milliseconds for the slicer.
 
 Print the parameters for this effect.
 
+---
 # class `fx_variable_delay` {#classfx__variable__delay}
 
 ```
