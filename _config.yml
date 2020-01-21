@@ -2,6 +2,7 @@ baseurl: "/dreammaker_fx"
 production_url : https://runjumplabs.github.io/dreammaker_fx
 
 include: ['docs/']
+include: ['tutorial/']
 
 markdown: kramdown
 collections:
@@ -9,6 +10,5 @@ collections:
     output: true
   effects:
     output: true
-
 
 theme: jekyll-theme-slate

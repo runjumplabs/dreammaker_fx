@@ -1,8 +1,7 @@
 ---
-layout: default
 title: API Documentation
 ---
----
+
 # Summary
 
  Members                        | Descriptions                                
