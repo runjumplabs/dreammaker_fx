@@ -10,3 +10,5 @@ collections:
   effects:
     output: true
 
+
+theme: jekyll-theme-slate
