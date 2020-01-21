@@ -11,4 +11,4 @@ collections:
   effects:
     output: true
 
-theme: jekyll-theme-tactile
+theme: jekyll-theme-hacker
