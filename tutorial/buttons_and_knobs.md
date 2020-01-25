@@ -17,9 +17,9 @@ The buttons can be set up to do the following:
  1. Behave as a momentary effect (i.e. while button is held down, do one thing and when it is release, do something else)
  1. Behave as a toggle for an effect (i.e. tap it once to turn something on, tap it again to turn it off).
 
-** 1. Configuring the button as a pedal bypass switch **
+**1. Configuring the button as a pedal bypass switch**
 
-To configure either the left or right footswtich to become the bypass button for the effect, we use the `pedal.add_bypass_button()` function while defining our pedal routes in `setup()`.  When we __call__ the `pedal.add_bypass_button()` function, we tell it which footswtich to use as the bypass button by using either `FOOTSWITCH_LEFT` or `FOOTSWITCH_RIGHT` as the __argument__.  
+To configure either the left or right footswtich to become the bypass button for the effect, we use the `pedal.add_bypass_button()` function while defining our pedal routes in `setup()`.  When we _call_ the `pedal.add_bypass_button()` function, we tell it which footswtich to use as the bypass button by using either `FOOTSWITCH_LEFT` or `FOOTSWITCH_RIGHT` as the _argument_.  
 
 Let's revisit our delay function and set it up to use the left footswitch as the bypass button.  If you don't add a bypass switch, the effect will just start running out of the gate.
 
@@ -42,7 +42,7 @@ void setup() {
 ```
 
 
-** 2. Configuring the button to be a tap delay/tempo button **
+**2. Configuring the button to be a tap delay/tempo button**
 
 A tap function allows you to tap the switch at a certain tempo/rate.  The Arduino will lock onto this tap rate and it can be used to update things like the rate of a tremelo and the length/time of an echo effect.
 
