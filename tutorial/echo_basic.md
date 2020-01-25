@@ -3,17 +3,19 @@ layout: extra_naked
 title: Docs
 ---
 
-# Building a Basic Echo Effect
+# Building a Basic Echo Pedal
 ------
 
-Effects and synth code is coded in the Arduino IDE and coded in the C++ programming language.  However, one doesn't have to be a programmer to use this platform.  The coding patterns for creating various effect and synth components, wiring them together and controlling their parameters is straight forward.
+As mentioned earlier, one doesn't have to be an experienced programmer to use this platform.  The coding patterns for creating various effect and synth components, wiring them together and controlling their parameters is pretty straight forward.
 
 
 ## Basic Arduino anatomy
 ------
-With the Arduino app open, go to File->New.  You'll see a new text editor window appear with a new "sketch" (aka a program in Arduino-speak).  This sketch will come pre-populated with two *functions*. One is called `setup()` and another is called `loop()`.  
+Let's start by learning the anatomy of a basic Arduino "Sketch" (aka "program" in Arduino speak).
 
-When the sketch is downloaded to our hardware, it will run any commands in the `setup()` function first.  And then it will run the `loop()` function indefinitely. 
+With the Arduino app open, go to File->New.  You'll see a new text editor window appear with a new "sketch".  This sketch will come pre-populated with two *functions*. One is called `setup()` and another is called `loop()`.  
+
+When the sketch is downloaded to our hardware, it will first run any commands in the `setup()` function once.  And then it will run the `loop()` function repeatidly.  Each time you power up the board, it goes through the same sequence (run `setup()` once and then run `loop()` indefinitely).
 
 ``` C
 void setup() {
@@ -65,7 +67,7 @@ Next, in the `setup()` routine, we need to initialize our effects `pedal` and ro
 ``` C
 void setup() {
 
-  pedal.init(true);   // Initialize the system and enable debug mode
+  pedal.init(); 
 
   // Connect our effect(s) to input and output jacks
   pedal.route_audio(pedal.instr_in, my_echo_1.input);		// Instr in -> echo in
@@ -78,7 +80,7 @@ void setup() {
 
 Let's deconstruct what we just did here.
 
-First, we *called* the `pedal.init(true);` function to set up our system.  By passing a true to this function, we're also enabling debug mode and the pedal will output status infomation.
+First, we *called* the `pedal.init(true);` function to set up our system. 
 
 Next, we connected the audio from the input jack of our pedal (aka `instr_in`) to the input of our echo object (aka `my_echo_1.input`) using the `route_audio()` function.  
 
@@ -116,7 +118,7 @@ fx_delay   my_echo_1(1000.0,  // 1 second echo
 
 void setup() {
 
-  pedal.init(true);   // Initialize the system and enable debug mode
+  pedal.init();   // Initialize the system 
 
   // Connect our effect(s) to input and output jacks
   pedal.route_audio(pedal.instr_in, my_echo_1.input);		// Instr in -> echo in
@@ -135,13 +137,15 @@ void loop() {
 
 ```
 
+So you've just created a basic echo stomp box - congratulations!
+
+
 ## Running the effect on hardware
 ------
 
-As discussed in the installation section, be sure the LED near the USB jack is fading in / fading out.  This means the platform is in bootloader mode and is ready to accept a new effect.  If the LED is not doing this, press the reset button twice in quick succession.
+Navigate to Tools -> Serial Monitor.  This will bring up the console log.  When your effect configuration is processed on the Arduino processor, some information will be sent to the console letting you know how things were routed and everything is okay.  You'll also see the telemtry data from the DSP too so you can see if any effect failed to initialize or something went wrong.
 
 Click the __Upload__ button in the upper-left hand side of the Arduino IDE (it's the arrow pointing to the right).  Your code will compile and then download to the board.  After a second or two, you'll hear the echo effect applied to any audio you send through the pedal!
 
 Once you have downloaded an effect, it is stored in memory on the pedal.  If you disconnect the pedal and plug it in later, it will start up running the same effect.  To overwrite the effect currently stored in the pedal, just press the reset button twice in quick success to upload a new effect.
 
-Navigate to Tools -> Serial Monitor.  This will bring up the console log.  When your effect configuration is processed on the Arduino processor, some information will be sent to the console letting you know how things were routed and everything is okay.  You'll also see the telemtry data from the DSP too so you can see if any effect failed to initialize or something went wrong.

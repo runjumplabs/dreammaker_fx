@@ -14,7 +14,7 @@ As you hopefully remember from 12 seconds ago, we create/declare the effects we 
 fx_delay   my_echo_1(1000.0, 0.7);    
 ```
 
-The first word (which in this case is `fx_delay`) is the *type* of effect we want to create.  The API docs contain the complete list of the effects that are available.
+The first word (which in this case is `fx_delay`) is the *type* of effect we want to create.  The API docs (and the next section) contain the complete list of the effects that are available.
 
 We then provide a name for our effect object (which in the example above is `my_echo_1`).  This needs to be a unique word with no spaces (just characters and underscores really).
 

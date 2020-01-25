@@ -88,13 +88,13 @@ void loop() {
   // put your main code here, to run repeatedly:
 
   // Control delay length with pot0
-  if (pedal.pot0.has_changed()) {
-    my_echo_1.set_length_ms(pedal.pot0.val * 1000.0);
+  if (pedal.pot_left.has_changed()) {
+    my_echo_1.set_length_ms(pedal.pot_left.val * 1000.0);
   }
 
   // Control delay feedback with pot1
-  if (pedal.pot1.has_changed()) {
-    my_echo_1.set_length_ms(pedal.pot1.val);
+  if (pedal.pot_right.has_changed()) {
+    my_echo_1.set_length_ms(pedal.pot_right.val);
   }
 
   // sweet nothings to/from DSP
@@ -103,6 +103,10 @@ void loop() {
 }
 
 ```
+
+The next section has more details on how to use the knobs and pots.
+
+
 ## Option 3: Controlling effects with external sensors
 ------
 Where things get really cool is when we begin using sensors and other sources outside the pedal to set parameters.  We could use a motion sensor to control a parameter like so
@@ -115,3 +119,4 @@ void loop() {
   pedal.service();
 }
 ```
+
