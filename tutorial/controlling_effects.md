@@ -28,7 +28,7 @@ Before we get into building this effect, here's one important detail about how w
 
 So let's create our envelop filter:
 
-```
+``` C
 fx_biquad_filter    auto_wah_filter(800.0,               // Initial frequency is
                                     FILTER_WIDTH_NARROW, // Filter is narrow
                                     BIQUAD_TYPE_BPF);    // Filter type is bandpass

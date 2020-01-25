@@ -3,7 +3,7 @@ layout: extra_naked
 title: Docs
 ---
 
-## First time installation 
+# First time installation 
 ------
 
 The DreamMaker FX hardware currently supports Windows 10, OS X, and probably Linux.  If you're running Windows 7, there are a few additional steps that are required to get the UF2 USB device drivers installed.  
@@ -21,7 +21,7 @@ First order of business, let's go download some free software and get rolling.
  * Install the DreamMaker FX Arduino board package In the Arduino IDE:
     * Navigate to either `File` -> `Preferences` on Windows, or `Arduino` -> `Preferences` on Mac. If you're using Linux, we assume you're enough of a bad ass to figure out what to do.
     * In the preferences window, find the text field toward the bottom called `Additional Boards Manager URLs`.
-    * Insert this URL: https://runjumplabs.github.io/arduino-board-index/package_dreammaker_fx_index.json
+    * Insert this URL: `https://runjumplabs.github.io/arduino-board-index/package_dreammaker_fx_index.json`
     * Click OK to close the preferences window.
 
     * Navigate to `Tools` -> `Board` -> `Board Manager`.
@@ -39,7 +39,7 @@ First order of business, let's go download some free software and get rolling.
 
 The setup process is very similar to Adafruit boards which use the same Arduino processor (Atmel SAMD51 family).  This page may offer some additional help [https://learn.adafruit.com/adafruit-metro-m4-express-featuring-atsamd51/setup](https://learn.adafruit.com/adafruit-metro-m4-express-featuring-atsamd51/setup). 
 
-## Updating the DreamMaker FX package
+# Updating the DreamMaker FX Arduino package
 ------
 
 There are always updates happening with new effects, bug fixes and improvements!  When you do a first time install, you'll have the latest and greatest.  However, it's always good to check back to see if there are updates.

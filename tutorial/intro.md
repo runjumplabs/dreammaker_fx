@@ -4,7 +4,7 @@ title: Docs
 ---
 
 # Introduction 
-------
+======
 
 Welcome the DreamMaker FX!  This is an audio platform that makes it very easy to create powerful and unique instrument effects.
 It is designed to be accesible for experienced programmers and those who have done no programming.
