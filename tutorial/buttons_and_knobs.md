@@ -3,7 +3,7 @@ layout: extra_naked
 title: Docs
 ---
 
-# Buttons and Knobs (aka Pots)
+# Buttons, Knobs and Lights
 ------
 
 The DreamMakerFX platform has a few buttons and knobs on it.  Each of these is completely programmable.
@@ -18,6 +18,7 @@ The buttons can be set up to do the following:
  1. Behave as a toggle for an effect (i.e. tap it once to turn something on, tap it again to turn it off).
 
 **1. Configuring the button as a pedal bypass switch**
+------
 
 To configure either the left or right footswtich to become the bypass button for the effect, we use the `pedal.add_bypass_button()` function while defining our pedal routes in `setup()`.  When we _call_ the `pedal.add_bypass_button()` function, we tell it which footswtich to use as the bypass button by using either `FOOTSWITCH_LEFT` or `FOOTSWITCH_RIGHT` as the _argument_.  
 
@@ -43,6 +44,7 @@ void setup() {
 
 
 **2. Configuring the button to be a tap delay/tempo button**
+------
 
 A tap function allows you to tap the switch at a certain tempo/rate.  The Arduino will lock onto this tap rate and it can be used to update things like the rate of a tremelo and the length/time of an echo effect.
 
@@ -96,7 +98,124 @@ loop() {
 
 ```
 
+If we also have the option to change the tempo / time of an effect with other means (like a pot), we may want to update the rate the light is flashing.  In this case, we can use
+`pedal.set_tap_blink_rate_ms()` and `set_tap_blink_rate_ms()` to set a new blink rate.  First argument is which LED and the second is whether or not to flash the LED.
+
 So with just a few lines of code, we've added the ability to tap in a tempo into the pedal to control the rate of LFOs (flangers, phasers, tremelos, vibratos, etc.) or the length of our delays.
  
+**3. Configuring the button to be a momentary switch**
+------
+
+Sometimes it's nice to be able to hold a footswitch down to momentarily change the sound of the effect.
+
+Here, we can use the `pedal.button_pressed()` and `pedal.button_released()` functions.  The first argument is the footswitch to watch (either `FOOTSWITCH_LEFT` or `FOOTSWITCH_RIGHT`).  And the second argument is whether to set the LED next to that footswitch while it is being held down.  Similar to the others, this should be either `true` or `false`.
+
+``` C
+loop() {
+
+	  if (pedal.button_pressed(FOOTSWITCH_RIGHT, true)) {
+	    // Adjust one or more effect parameters when button is held down
+	  }
+	  if (pedal.button_released(FOOTSWITCH_RIGHT, true)) {
+	    // Adjust back one or more effect parameters when button is released
+	  }
+
+  // Service pedal
+  pedal.service();
+
+}
+ ```
+
+ **4. Configuring the button to be a toggle switch**
+ ------
+ This will be implemented soon! 
+
+ In the mean time, you can use the `pedal.button_pressed()` function like so to behave like a toggle:
+
+``` C
+loop() {
+
+	static bool toggle = false;
+	static bool first_press = false;
+
+	if (pedal.button_pressed(FOOTSWITCH_RIGHT, false)) {
+	  // Is this the first time though where button is pressed?
+	  if (first_press) {
+	     toggle = !toggle;
+	  }
+	  first_press = false;
+	} else {
+	  // Reset so next time button goes low, we can respond on first press
+	  first_press = true;
+	}
+
+	// Do effect based on toggle state
+	if (toggle) {
+	  digitalWrite(PIN_FOOTSW_LED_RIGHT, HIGH);
+	  // change effect parameter here when enabled
+	} else {
+	  digitalWrite(PIN_FOOTSW_LED_RIGHT, LOW);
+	  // change effect parameter here when not enabled
+	}
+
+  // Service pedal
+  pedal.service();
+
+}	
+
+```
+
+
+## Configuring the Knobs (aka Pots)
+------
+Just like we have functions to detect when a user has pressed a button, we also have a similar function to detect when a user has adjusted one of the knobs (also known as potentiometerss or just "pots").
+
+The fucnctions `pedal.pot_left.has_changed()`, `pedal.pot_center.has_changed()` and `pedal.pot_right.has_changed()` will return true if the corresponding knob / pot has been adjusted.  
+
+We then have two options for reading the value of the pot: `pedal.pot_0.val` and `pedal.pot_0.val_log`.  In both cases, the range of values will be from 0.0 (full left / counter-clock-wise) to 1.0 (full right / clock-wise).  However, the `pedal.pot_0.val_log` function applies a logarithmic curve to the value.  This can be useful when you want a lot of precision at the low-end of the pot and less at the high end (such as setting frequencies).
+
+The value of the pots will always be between 0.0 and 1.0 so in many cases, we'll need to scale these based on what aspect of the effect we are changing.  For example, if want to use a pot to change the frequency range of a filter from 200.0Hz to 800.0Hz, we'll need to add an offset of 200.0 and then multiply by 600.0 (to map 0.0->1.0 to 200.0->800.0).
+
+Let's add some pots to our delay effect to control time / length, feedback, and the wet/dry mix.  Let's also add the ability to tap a delay and update the tap flash rate when the center pot has changed.
+
+``` C
+void loop() {
+
+  // If new delay time has been tapped in, use that
+  if (pedal.new_tap_interval()) { 
+    my_delay.set_length_ms(pedal.get_tap_interval_ms());
+  } 
+
+  // Left pot changes the volume of the first loop
+  if (pedal.pot_left.has_changed()) {
+    my_delay.set_feedback(pedal.pot_left.val);
+  }
+  
+  // Right pot changes the wet / dry mix
+  if (pedal.pot_right.has_changed()) {
+    my_delay.set_dry_mix(1.0 - pedal.pot_right.val);
+    my_delay.set_wet_mix(pedal.pot_right.val);
+  }  
+  
+  // Center pot can also be used to change the delay length 
+  // from 100ms to 3000ms
+  if (pedal.pot_center.has_changed()) {
+    float new_length_ms = 100.0 + pedal.pot_center.val*2900.0;
+    my_delay.set_length_ms(new_length_ms);
+    pedal.set_tap_blink_rate_ms(new_length_ms);
+  }    
+  
+  // Service pedal
+  pedal.service();
+}
+```
+
+
+## Turning on and off the Lights (aka LEDs)
+------
+
+The two lights (aka LEDs) next to each footswtich can be controlled using the Arduino `digitalWrite()` function.  The first argument is the footswitch LED `PIN_FOOTSW_LED_LEFT` or `PIN_FOOTSW_LED_RIGHT` and the next argument is whether is should be on / `HIGH` or off `LOW`.
+
+To turn on the left LED, we'd do this: `digitalWrite(PIN_FOOTSW_LED_LEFT, HIGH)`.  And to turn off that LED, we'd do this: `digitalWrite(PIN_FOOTSW_LED_LEFT, LOW)`.
 
 
