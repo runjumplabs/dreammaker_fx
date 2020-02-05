@@ -4,31 +4,30 @@ title: Docs
 ---
 
 # Introduction 
-------
+======
 
-Welcome the DreamMaker FX!  This is an audio platform that makes it very easy to create powerful and unique instrument effects.
+Welcome the DreamMaker FX!  This is an audio platform that makes it very easy to create powerful and share unique instrument effects.
+
 It is designed to be accesible for experienced programmers and those who have done no programming.
 
-At its core, this platform is a microprocessor that connects to a powerful SHARC DSP.  We program the microprocessor using Arduino tools making it very easy.
+At its core, this platform consists of a microprocessor connected to a powerful SHARC DSP.  SHARC DSPs are specialized audio processors used in lots of high-end audio gear.  But we don't need to worry about writing DSP code or dealing with the complexities of DSP system design.  
 
-Beyond audio processing, the DreamMaker FX hardware offers lots of options for expanding the hardware.  External sensors can be easily wired and connected to various effect parameters.  The DreamMaker FX hardware also features an RF transceiver meaning that it can communicate wireless with other DreamMaker FX units (or wireless sensors) and exchange various types of parameter information.
+Beyond audio processing, the DreamMaker FX hardware offers lots of options for expanding the hardware.  External sensors can be easily wired and connected to various effect parameters.  
 
-## So how does this thing work?
+## Option 1: No programming at all!
 ------
+When you plug the DreamMakerFX pedal into your Mac or PC, it will show up as a mounted drive (DM_FX).  You can download a "UF2" file of the sketch right to that drive and it will start running.  This is a great option if you have no interest in programming and just wnat to start playing through some of the creations you find on this site!
 
-Okay, here it is: you write simple code (or copy and paste it from the web) into a simple, free programming tool (Arduino).  And then a bunch of magic happens and suddenly you're playing through the coolest effect you've ever heard.  
 
-In this case, the magic is a super powerful SHARC DSP chip that is a friendly companion of the little chip that runs our programs.  Unlike other Arduino based effects platforms, this one uses a DSP complete with FFT accelerators and other hardware that gives you at least an order (maybe two) of magnitude in processing performance over other Arduino-based effects platforms.  The DSP is where all of the audio processing is done.  But you don't need to know anything about that.  Just believe in magic.
-
-## Programming? Is this going to hurt?
+## Option 2: Start building your own creations with Arduino
 ------
+Arduino is a programming platform that is designed to make programming easier and more accessible than it normally is.  With just a few lines of code, you can begin creating your own pedal creations.
 
-It's going to be great.  Don't be a baby.  Do you know how to type?  Do you know how to follow basic examples?  Have you ever copied and pasted on a computer before?  You're going to be amazing.  
+There are a few ways you can get started:
+ * Download a "pedal pack" from the Browse Pedals page and start playing with these
+ * Download a pedal design that someone else has created on this site.
+ * Start with the Basic echo pedal tutorial and start building from the ground up!
 
-## Programming? It's 2019, isn't there an easier way?
-------
-
-Programming allows us to do some cooler stuff that gets a bit tricky with some of the more graphical approaches out there.  And we're programming Arduino-style.  Yes, that's a thing.  Are you ready?  Yes you are.  Do not be afraid.  You are going to be great.
 
 ## What is that word, Arduino?
 ------

@@ -30,7 +30,7 @@ And the system has *nodes* for input from instrument and output to amp.
 
  (*note: if it's not yet obvious, you can call each effect you create just about whatever you want*).
 
-```
+``` C
 // Create objects for these effects
 fx_amplitude_mod  happy_tremelo(1.0, 0.5);      // 1Hz rate, 0.5 depth
 fx_delay          sweet_baby_echo(1000.0, 0.7); // 1000ms, 0.7 feedback  
@@ -53,7 +53,7 @@ Or let's get more crazy.  Let's say we have a delay pedal and each time through 
 
 The fx_delay has two additional nodes called `fx_send` and `fx_receive`.  We're going to run these through our handy-dandy pitch shifter.  For this, we're going to use the more advanced delay setup function that allows us to pass a few additional parameters (more info in Appendix A on this):
 
-```
+``` C
 // Create objects for these effects
 fx_delay          echoey_snail(1000.0,     // Delay length: 1000ms
                               1000.0,     // Max delay length: 1000ms
@@ -86,12 +86,12 @@ Pretty cool, right?
 Obey these rules to avoid humiliation and sadness:
 
 1. An output node can be routed to multiple input nodes
-```
+``` C
 pedal.route_audio(pedal.instr_in, delay_1.input);
 pedal.route_audio(pedal.instr_in, delay_2.input);
 ```
 2. An input node can only have one input.  However, you can use the `fx_mixer` nodes if you want to send multiple outputs to an input.
-```
+``` C
 pedal.route_audio(delay_1.output, my_mixer_2.input_1);
 pedal.route_audio(delay_2.output, my_mixer_2.input_2);
 pedal.route_audio(my_mixer_2, pedal.amp_out);
