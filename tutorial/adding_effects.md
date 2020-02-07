@@ -35,7 +35,7 @@ Just make sure each object you create/declare in your system has a unique name e
 ``` C
 // Create/declare one echo effect and configure it
 fx_delay        ricky_bobby(1000.0, 0.7);    
-fx_pitch_shift  ricky_bobby(0.8);    // BAD! DON'T DO THIS!    
+fx_pitch_shift  ricky_bobby(0.8);    // BAD! DON'T DO THIS, ricky_bobby already exists!   
 ```
 
 Oh yeah, this is important: in some cases an effect will have a few different ways you can initialize it.  Most effects have a *simple* initializer that you just need to pass one or two values to.  And, they may have a more *advanced* initializer that allows you to do ever more things with that effect. Usually the advanced initializer is a super-set of the simple initializer.
