@@ -53,14 +53,14 @@ Sketch version: 1.0
                              SMOOTH_CLIP)</span></span>;  <span class="hljs-comment">// Distortion function = fuzz</span>
 
 <span class="hljs-function">fx_biquad_filter    <span class="hljs-title">tone_filter</span><span class="hljs-params">(<span class="hljs-number">800.0</span>,              <span class="hljs-comment">// Initial filter cutoff freq</span>
-                                <span class="hljs-number">1.0</span>,                <span class="hljs-comment">// Standard resonance </span>
-                                BIQUAD_TYPE_BPF)</span></span>;   <span class="hljs-comment">// Filter type is bandpass</span>
+                                <span class="hljs-number">2.0</span>,                <span class="hljs-comment">// Standard resonance </span>
+                                BIQUAD_TYPE_LPF)</span></span>;   <span class="hljs-comment">// Filter type is lowpass</span>
 
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span> </span>{
   <span class="hljs-comment">// put your setup code here, to run once:</span>
 
   <span class="hljs-comment">// Initialize the pedal!</span>
-  pedal.init();
+  pedal.init(<span class="hljs-literal">true</span>, <span class="hljs-literal">true</span>);
 
   <span class="hljs-comment">// Route audio through distortion, tone filter and then output gain</span>
   pedal.route_audio(pedal.instr_in, destruct.input);
@@ -70,7 +70,7 @@ Sketch version: 1.0
   <span class="hljs-comment">// left footswitch is bypass</span>
   pedal.add_bypass_button(FOOTSWITCH_LEFT);
 
-  <span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) {
+  <span class="hljs-keyword">if</span> (<span class="hljs-literal">false</span>) {
       pedal.print_instance_stack();
       pedal.print_routing_table();
       pedal.print_param_tables();
@@ -89,6 +89,7 @@ Sketch version: 1.0
     destruct.set_input_drive(<span class="hljs-number">16</span>);
   }
   <span class="hljs-keyword">if</span> (pedal.button_released(FOOTSWITCH_RIGHT, <span class="hljs-literal">true</span>)) {
+    <span class="hljs-comment">// When footswitch is released, restore previous value</span>
     destruct.set_input_drive(pot_drive);
   }
 
@@ -105,7 +106,7 @@ Sketch version: 1.0
 
   <span class="hljs-comment">// Right pot is output gain</span>
   <span class="hljs-keyword">if</span> (pedal.pot_right.has_changed()) {
-    destruct.set_output_gain(<span class="hljs-number">0.3333</span> + pedal.pot_right.val*<span class="hljs-number">3.0</span>);
+    destruct.set_output_gain(<span class="hljs-number">1.0</span> + pedal.pot_right.val*<span class="hljs-number">6.0</span>);
   }
 
   <span class="hljs-comment">// Run pedal service to take care of stuff</span>
